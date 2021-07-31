@@ -10,7 +10,7 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "axe-moveright-3.png",
+					"filename": "enemy-axeman-moveright-3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "axeman-moveleft-1.png",
+					"filename": "enemy-axeman-moveleft-1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "axe-moveright-0.png",
+					"filename": "enemy-axeman-moveright-0.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "axe-moveright-2.png",
+					"filename": "enemy-axeman-moveright-2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "axe-moveright-1.png",
+					"filename": "enemy-axeman-moveright-1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "axeman-atkdown-1.png",
+					"filename": "enemy-axeman-atkdown-1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "axeman-moveleft-0.png",
+					"filename": "enemy-axeman-moveleft-0.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "axeman-atkdown-2.png",
+					"filename": "enemy-axeman-atkdown-2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "axeman-movedown-0.png",
+					"filename": "enemy-axeman-movedown-0.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "axeman-movedown-1.png",
+					"filename": "enemy-axeman-movedown-1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "axeman-movedown-2.png",
+					"filename": "enemy-axeman-movedown-2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "axeman-movedown-4.png",
+					"filename": "enemy-axeman-movedown-4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "axeman-movedown-3.png",
+					"filename": "enemy-axeman-movedown-3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "axeman-moveleft-2.png",
+					"filename": "enemy-axeman-moveleft-2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "axeman-moveup-0.png",
+					"filename": "enemy-axeman-moveup-0.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "axeman-moveup-2.png",
+					"filename": "enemy-axeman-moveup-2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "axeman-moveup-1.png",
+					"filename": "enemy-axeman-moveup-1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "axeman-moveup-3.png",
+					"filename": "enemy-axeman-moveup-3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "axeman-atkdown-0.png",
+					"filename": "enemy-axeman-atkdown-0.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

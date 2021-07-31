@@ -1,0 +1,272 @@
+{
+	"textures": [
+		{
+			"image": "enemy-rat.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 57,
+				"h": 196
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "enemy-rat-moveleft-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 42,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 8,
+						"w": 34,
+						"h": 30
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 34,
+						"h": 30
+					}
+				},
+				{
+					"filename": "enemy-rat-movedown-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 42,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 6,
+						"w": 19,
+						"h": 34
+					},
+					"frame": {
+						"x": 37,
+						"y": 1,
+						"w": 19,
+						"h": 34
+					}
+				},
+				{
+					"filename": "enemy-rat-moveright-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 42,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 8,
+						"w": 34,
+						"h": 30
+					},
+					"frame": {
+						"x": 1,
+						"y": 33,
+						"w": 34,
+						"h": 30
+					}
+				},
+				{
+					"filename": "enemy-rat-movedown-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 42,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 19,
+						"h": 32
+					},
+					"frame": {
+						"x": 37,
+						"y": 37,
+						"w": 19,
+						"h": 32
+					}
+				},
+				{
+					"filename": "enemy-rat-moveleft-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 42,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 9,
+						"w": 34,
+						"h": 27
+					},
+					"frame": {
+						"x": 1,
+						"y": 65,
+						"w": 34,
+						"h": 27
+					}
+				},
+				{
+					"filename": "enemy-rat-movedown-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 42,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 19,
+						"h": 32
+					},
+					"frame": {
+						"x": 37,
+						"y": 71,
+						"w": 19,
+						"h": 32
+					}
+				},
+				{
+					"filename": "enemy-rat-moveright-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 42,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 9,
+						"w": 34,
+						"h": 27
+					},
+					"frame": {
+						"x": 1,
+						"y": 94,
+						"w": 34,
+						"h": 27
+					}
+				},
+				{
+					"filename": "enemy-rat-moveup-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 42,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 9,
+						"w": 19,
+						"h": 28
+					},
+					"frame": {
+						"x": 37,
+						"y": 105,
+						"w": 19,
+						"h": 28
+					}
+				},
+				{
+					"filename": "enemy-rat-moveleft-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 42,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 9,
+						"w": 32,
+						"h": 27
+					},
+					"frame": {
+						"x": 1,
+						"y": 123,
+						"w": 32,
+						"h": 27
+					}
+				},
+				{
+					"filename": "enemy-rat-moveup-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 42,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 9,
+						"w": 19,
+						"h": 28
+					},
+					"frame": {
+						"x": 35,
+						"y": 135,
+						"w": 19,
+						"h": 28
+					}
+				},
+				{
+					"filename": "enemy-rat-moveright-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 42,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 9,
+						"w": 32,
+						"h": 27
+					},
+					"frame": {
+						"x": 1,
+						"y": 152,
+						"w": 32,
+						"h": 27
+					}
+				},
+				{
+					"filename": "enemy-rat-moveup-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 42,
+						"h": 42
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 8,
+						"w": 18,
+						"h": 30
+					},
+					"frame": {
+						"x": 35,
+						"y": 165,
+						"w": 18,
+						"h": 30
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:08d017b13e5e492b50cadc8410790fed:a3b637ea8a0434f9a383a9cbf163101d:807988e8f7d1009304becfbb22699df6$"
+	}
+}

@@ -1,7 +1,7 @@
 {
 	"textures": [
 		{
-			"image": "enemy-dino.png",
+			"image": "enemy-dinosaur.png",
 			"format": "RGBA8888",
 			"size": {
 				"w": 54,
