@@ -5,4 +5,6 @@ const enemies = [
     PathToJSON: "enemies/enemy-rat.json"
   }
 ];
+
+
 export{enemies}
