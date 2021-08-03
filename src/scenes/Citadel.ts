@@ -93,11 +93,6 @@ export default class Citadel extends Phaser.Scene {
     this.lights.setAmbientColor(0x000000)
   }
 
-  StartGame = () => {
-    this.SummonMobs(this.RatGroup, this.RatID, this.MaxRats)
-
-  }
-
   CreateAnimationSet = (animations: Phaser.Types.Animations.Animation[]) => {
     animations.forEach((animation) => {
       this.anims.create(animation);
@@ -117,13 +112,15 @@ export default class Citadel extends Phaser.Scene {
   }
 
   SummonMobs = (group: Phaser.Physics.Arcade.Group, enemyid: string, instances: number) => {
-    console.log("in summon mobs")
-
     for (let countmade = 0; countmade < instances; countmade++) {
       let mobX = this.RandomCoord(1920)
       let mobY = this.RandomCoord(1080)
-      group.get(mobX, mobY, enemyid).setPipeline('Light2D').setAlpha(this.MobAlpha)
-      this.NumberOfRats++
+      if (this.RatGroup.children.entries.length < this.MaxRats){
+        group.get(mobX, mobY, enemyid).setPipeline('Light2D').setAlpha(this.MobAlpha)
+      } else {
+        console.log('Could not create rat. Too Many')
+      }
+      
     }
   }
 
@@ -155,42 +152,52 @@ export default class Citadel extends Phaser.Scene {
     if (direction == 'stop') {
       this.player.anims.stop();
       this.player.setVelocity(0);
+      this.IsAnyKeyPressed = false
       return
     }
-    this.player.setVelocity(this.getVelocityXByDirection(direction), this.getVelocityYByDirection(direction));
-    this.player.anims.play(`player-move${direction}`, true);
     if (direction) {
       this.IsAnyKeyPressed = true;
     }
-  }
-  getVelocityXByDirection = (direction: string): number => {
-    let _velocity = 0
-    switch (direction) {
+    console.log("direction before switchcase: ", direction);
+    switch (direction){
       case 'up':
-        return 0
+        this.player.setVelocity(0, -this.PlayerSpeed)
+        this.player.anims.play(`player-move${direction}`, true);
+        return
       case 'down':
-        return 0
+        this.player.setVelocity(0, this.PlayerSpeed)
+        this.player.anims.play(`player-move${direction}`, true);
+        return
       case 'left':
-        return -this.PlayerSpeed
+        this.player.setVelocity(-this.PlayerSpeed, 0)
+        this.player.anims.play(`player-move${direction}`, true);
+        return
       case 'right':
-        return this.PlayerSpeed
+        this.player.setVelocity(this.PlayerSpeed, 0)
+        this.player.anims.play(`player-move${direction}`, true);
+        return
+      case 'leftanddown':
+        this.player.setVelocity(-this.PlayerSpeed, this.PlayerSpeed)
+        this.player.anims.play('player-moveleft', true);
+        return
+      case 'leftandup':
+        this.player.setVelocity(-this.PlayerSpeed, -this.PlayerSpeed)
+        this.player.anims.play('player-moveleft', true);
+        return
+      case 'rightanddown':
+        this.player.setVelocity(this.PlayerSpeed, this.PlayerSpeed)
+        this.player.anims.play('player-moveright', true);
+        return
+      case 'rightandup':
+        this.player.setVelocity(this.PlayerSpeed, -this.PlayerSpeed)
+        this.player.anims.play('player-moveright', true);
+        return
     }
-    return _velocity
+    //this.player.setVelocity(this.getVelocityXByDirection(direction), this.getVelocityYByDirection(direction));
+   // this.player.anims.play(`player-move${direction}`, true);
+
   }
-  getVelocityYByDirection = (direction: string): number => {
-    let _velocity = 0
-    switch (direction) {
-      case 'up':
-        return -this.PlayerSpeed
-      case 'down':
-        return this.PlayerSpeed
-      case 'left':
-        return 0
-      case 'right':
-        return 0
-    }
-    return _velocity
-  }
+
   create() {
 
     let keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W)
@@ -198,7 +205,9 @@ export default class Citadel extends Phaser.Scene {
     let keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S)
     let keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D)
 
+
     this.CustomKeys = [keyW, keyA, keyS, keyD]
+
     // const enum Layers {
     //  Ground,
     //  Walls,
@@ -269,32 +278,47 @@ export default class Citadel extends Phaser.Scene {
       classType: Rat
     })
 
-    this.StartGame();
+    this.SummonMobs(this.RatGroup, this.RatID, this.MaxRats)
     //SquareBos.get(this.RandomCoord(100),this.RandomCoord(200),'enemy-squarebo')  
     // AxeMen.get(this.RandomCoord(100),this.RandomCoord(200),'enemy-axeman')
     // Dinosaurs.get(this.RandomCoord(100),this.RandomCoord(200),'dinosaur')
-    console.log(this.RatGroup.children.entries[2])
+  
   }
 
 
   update(t: number, dt: number) {
+    let leftKeys = this.CustomKeys[1].isDown || this.keys.left?.isDown
+    let rightKeys = this.CustomKeys[3].isDown || this.keys.right?.isDown
+    let upKeys = this.CustomKeys[0].isDown || this.keys.up?.isDown
+    let downKeys = this.CustomKeys[2].isDown || this.keys.down?.isDown
 
+    let leftAndUp = leftKeys && upKeys
+    let rightAndUp = rightKeys && upKeys
+    let leftAndDown = leftKeys && downKeys
+    let rightAndDown = rightKeys && downKeys
     if (!this.keys || !this.player) {
-
       return;
     }
     if (this.IsAnyKeyPressed) {
       this.RemoveTitle()
     }
-    if (this.CustomKeys[1].isDown || this.keys.left?.isDown) {
-      this.movePlayer('left');
-    } else if (this.CustomKeys[3].isDown || this.keys.right?.isDown) {
-      this.movePlayer('right')
-    } else if (this.CustomKeys[0].isDown || this.keys.up?.isDown) {
+    if (leftAndUp) {
+      this.movePlayer('leftandup');
+    } else if (rightAndUp) {
+      this.movePlayer('rightandup')
+    } else if (leftAndDown) {
+      this.movePlayer('leftanddown')
+    } else if (rightAndDown) {
+      this.movePlayer('rightanddown')
+    } else if (upKeys) {
       this.movePlayer('up')
-    } else if (this.CustomKeys[2].isDown || this.keys.down?.isDown) {
+    } else if (rightKeys){
+      this.movePlayer('right')
+    } else if (leftKeys){
+      this.movePlayer('left')
+    } else if (downKeys){
       this.movePlayer('down')
-    } else {
+    }else {
       this.movePlayer('stop')
     }
   }
