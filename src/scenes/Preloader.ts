@@ -14,7 +14,7 @@ export default class Preloader extends Phaser.Scene {
         enemies.forEach(enemy => {
             this.load.atlas(enemy.name,enemy.PathToPNG, enemy.PathToJSON)
         })
-      
+        
     }
 
     create() {

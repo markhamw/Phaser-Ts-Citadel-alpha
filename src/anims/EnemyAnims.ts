@@ -94,6 +94,17 @@ const GetRatAnims = (anims: Phaser.Animations.AnimationManager, rate: number) =>
       }),
       repeat: -1,
       frameRate: rate,
+    },
+    {
+      key: `enemy-rat-movedown`,
+      frames: anims.generateFrameNames('enemy-rat', {
+        start: 0,
+        end: 2,
+        prefix: 'enemy-rat-movedown-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
     }
 
   ]

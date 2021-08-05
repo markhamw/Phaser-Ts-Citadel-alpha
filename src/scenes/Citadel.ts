@@ -17,7 +17,6 @@ export default class Citadel extends Phaser.Scene {
   PlayerID: string;
   DebugCollideColor: Phaser.Display.Color;
   DebugFaceColor: Phaser.Display.Color;
-  Lines: Array<Phaser.GameObjects.BitmapText>
   private keys!: Phaser.Types.Input.Keyboard.CursorKeys;
   player!: Phaser.Physics.Arcade.Sprite;
   private TitleFontSize: number;
@@ -30,16 +29,15 @@ export default class Citadel extends Phaser.Scene {
   private TitleTextInstructionsGameObject2!: Phaser.GameObjects.BitmapText
   private TitleFrame!: Phaser.GameObjects.Rectangle
   private IsAnyKeyPressed!: boolean
-  private NumberOfRats!: number
+  private IsTitleDisplayed!: boolean
   private MaxRats: number;
   private MobAlpha: number
-  private MovePlayer = (event) => { console.log('test') }
   private RatGroup!: Phaser.Physics.Arcade.Group
   private RatID: string;
   private CustomKeys!: Phaser.Input.Keyboard.Key[]
   private Spotlight!: Phaser.GameObjects.Light
   private SpotlightBaseIntensity!: number;
-
+ 
   constructor() {
     super("citadel");
     this.ShouldEnableDebugForCollision = true;
@@ -52,28 +50,33 @@ export default class Citadel extends Phaser.Scene {
     this.PlayerHealth = 1000;
     this.DebugCollideColor = new Phaser.Display.Color(243, 234, 48, 255);
     this.DebugFaceColor = new Phaser.Display.Color(40, 39, 37, 255);
-    this.Lines = new Array<Phaser.GameObjects.BitmapText>()
     this.TitleText = "--=== Willys Ratfights ===--"
     this.TitleFontSize = 100
     this.TitleX = 400
     this.TitleY = 65
     this.TitleAlpha = .5
     this.IsAnyKeyPressed = false;
-    this.NumberOfRats = 0;
+    this.IsTitleDisplayed = true;
     this.MaxRats = 20;
     this.SpotlightBaseIntensity = 10;
-
+    
   }
 
 
 
   preload() {
     this.keys = this.input.keyboard.createCursorKeys();
-    const spotLightColors = [
-      0xffffff, 0xff0000, 0x00ff00, 0x00ffff, 0xff00ff, 0xffff00
-    ];
-    const startingSpotlightColor = 0;
-    this.Spotlight = this.lights.addLight(0, 0, 480).setIntensity(this.SpotlightBaseIntensity);
+  
+    this.Spotlight = this.lights.addLight(0, 0, 480).
+    setIntensity(this.SpotlightBaseIntensity).
+    setColor(0xffffff);
+    
+    const playerMoveUp = 'player-moveup'
+    const playerMoveDown = 'player-movedown'
+    const playerMoveRight = 'player-moveright'
+    const playerMoveLeft = 'player-moveleft'
+
+
     this.Spotlight.scrollFactorX = 0
     this.Spotlight.scrollFactorY = 0
     this.player = this.physics.add.sprite(
@@ -82,15 +85,18 @@ export default class Citadel extends Phaser.Scene {
       this.PlayerID,
       "player-idledown.png"
     ).setPipeline('Light2D').setAlpha(0.2);
-    this.SetTitle();
+    this.ShowTitle();
   }
 
-  RemoveTitle = () => {
-    this.TitleFrame.destroy()
-    this.TitleTextGameObject.destroy()
-    this.TitleTextInstructionsGameObject.destroy()
-    this.TitleTextInstructionsGameObject2.destroy()
-    this.lights.setAmbientColor(0x000000)
+  StartGameplayAndRemoveTitle = () => {
+    if (this.IsTitleDisplayed){
+      this.TitleFrame.destroy()
+      this.TitleTextGameObject.destroy()
+      this.TitleTextInstructionsGameObject.destroy()
+      this.TitleTextInstructionsGameObject2.destroy()
+      this.lights.setAmbientColor(0x000000)
+      this.IsTitleDisplayed = false
+    }
   }
 
   CreateAnimationSet = (animations: Phaser.Types.Animations.Animation[]) => {
@@ -100,7 +106,7 @@ export default class Citadel extends Phaser.Scene {
   };
 
 
-  SetTitle = () => {
+  ShowTitle = () => {
     this.TitleFrame = this.add.rectangle(900, 600, 1910, 1070, 0x000000).setAlpha(.5);
     this.TitleFrame.setStrokeStyle(20, 0x574b38);
     this.TitleTextGameObject = this.add.bitmapText(this.TitleX, this.TitleY, 'customfont', this.TitleText, 32)
@@ -109,6 +115,10 @@ export default class Citadel extends Phaser.Scene {
       .setFontSize(this.TitleFontSize)
     this.TitleTextInstructionsGameObject = this.add.bitmapText(600, 185, 'customfont', "Use W,A,S,D or arrow keys (press any key)", 32).setPipeline('Light2D').setAlpha(.2)
     this.TitleTextInstructionsGameObject2 = this.add.bitmapText(600, 215, 'customfont', "Use the cursor or touch to light the area", 32).setPipeline('Light2D').setAlpha(.2)
+  }
+
+  GetNumberOfRats = ():number => {
+    return this.RatGroup.children.entries.length
   }
 
   SummonMobs = (group: Phaser.Physics.Arcade.Group, enemyid: string, instances: number) => {
@@ -126,7 +136,8 @@ export default class Citadel extends Phaser.Scene {
 
   RandomCoord = (max: number): number => {
     let num = Math.floor(Math.random() * max);
-    if (num > 49) {
+    let minimumAbritraryCoordValue = 49
+    if (num > minimumAbritraryCoordValue) {
       return num;
     } else return num + 30;
   };
@@ -144,10 +155,7 @@ export default class Citadel extends Phaser.Scene {
       });
     }
   };
-  movePlayerUp = () => {
-    this.player.setVelocity(-this.PlayerSpeed, 0);
-    this.player.anims.play("player-moveleft", true);
-  }
+  
   movePlayer = (direction: string) => {
     if (direction == 'stop') {
       this.player.anims.stop();
@@ -155,6 +163,7 @@ export default class Citadel extends Phaser.Scene {
       this.IsAnyKeyPressed = false
       return
     }
+    
     if (direction) {
       this.IsAnyKeyPressed = true;
     }
@@ -224,8 +233,6 @@ export default class Citadel extends Phaser.Scene {
     // this.Collides(wallsLayer);
     // this.Collides(decorationsLayer);
 
-
-
     //this.player.setScale(1.75)
     // this.physics.add.collider(this.player, wallsLayer);
     // this.physics.add.collider(this.player, decorationsLayer);
@@ -233,17 +240,15 @@ export default class Citadel extends Phaser.Scene {
     this.CreateAnimationSet(GetPlayerAnims(this.anims, this.PlayerFrameRate, this.PlayerID));
     //this.CreateAnimationSet(GetSquareBoAnims(this.anims,10))
     //this.CreateAnimationSet(GetDinoSaurAnims(this.anims,10))
-    this.CreateAnimationSet(GetRatAnims(this.anims, 10))
-    // this.player.body.setSize(this.player.width * 2, this.player.height *  2)
+    this.CreateAnimationSet(GetRatAnims(this.anims, 4))
+    //this.player.body.setSize(this.player.width * 2, this.player.height *  2)
     // this.player.body.offset.y = 20;
     this.cameras.main.startFollow(this.player, false).setPipeline('Light2D');
 
 
-
-    //this.Lines.push(line1)  
     this.lights.enable();
 
-    this.lights.setAmbientColor(0xFFFFFF);
+    this.lights.setAmbientColor(0x808080);
 
 
 
@@ -275,9 +280,13 @@ export default class Citadel extends Phaser.Scene {
     //  classType: Axeman
     // })
     this.RatGroup = this.physics.add.group({
-      classType: Rat
+      classType: Rat,
+      //createCallback: (go)=>{
+          
+        //  console.log("hi",this.player.x,this.player.y)
+      //}
     })
-
+    
     this.SummonMobs(this.RatGroup, this.RatID, this.MaxRats)
     //SquareBos.get(this.RandomCoord(100),this.RandomCoord(200),'enemy-squarebo')  
     // AxeMen.get(this.RandomCoord(100),this.RandomCoord(200),'enemy-axeman')
@@ -291,7 +300,10 @@ export default class Citadel extends Phaser.Scene {
     let rightKeys = this.CustomKeys[3].isDown || this.keys.right?.isDown
     let upKeys = this.CustomKeys[0].isDown || this.keys.up?.isDown
     let downKeys = this.CustomKeys[2].isDown || this.keys.down?.isDown
-
+    console.log("num of rats",this.GetNumberOfRats())
+    if ((this.MaxRats - this.GetNumberOfRats()) >= 5){
+      this.SummonMobs(this.RatGroup, this.RatID, Phaser.Math.Between(1,5))
+    }
     let leftAndUp = leftKeys && upKeys
     let rightAndUp = rightKeys && upKeys
     let leftAndDown = leftKeys && downKeys
@@ -300,7 +312,7 @@ export default class Citadel extends Phaser.Scene {
       return;
     }
     if (this.IsAnyKeyPressed) {
-      this.RemoveTitle()
+      this.StartGameplayAndRemoveTitle()
     }
     if (leftAndUp) {
       this.movePlayer('leftandup');
