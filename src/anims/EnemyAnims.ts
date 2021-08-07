@@ -110,6 +110,60 @@ const GetRatAnims = (anims: Phaser.Animations.AnimationManager, rate: number) =>
   ]
 }
 
+const GetChortAnims = (anims: Phaser.Animations.AnimationManager, rate: number) => {
+  return [
+    {
+      key: `enemy-chort-idle`,
+      frames: anims.generateFrameNames('enemy-chort', {
+        start: 0,
+        end: 3,
+        prefix: 'enemy-chort-idle',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-chort-run`,
+      frames: anims.generateFrameNames('enemy-chort', {
+        start: 0,
+        end: 3,
+        prefix: 'enemy-chort-run',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+
+  ]
+}
+
+const GetBigChortAnims = (anims: Phaser.Animations.AnimationManager, rate: number) => {
+  return [
+    {
+      key: `enemy-bigchort-idle`,
+      frames: anims.generateFrameNames('enemy-bigchort', {
+        start: 0,
+        end: 3,
+        prefix: 'big_demon_idle_anim_f',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-bigchort-run`,
+      frames: anims.generateFrameNames('enemy-bigchort', {
+        start: 0,
+        end: 3,
+        prefix: 'big_demon_run_anim_f',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+  ]
+}
 
 const GetDinoSaurAnims = (anims: Phaser.Animations.AnimationManager, rate: number) => {
   return [
@@ -139,5 +193,7 @@ export {
   GetSquareBoAnims,
   GetAxeManAnims,
   GetDinoSaurAnims,
-  GetRatAnims
+  GetRatAnims,
+  GetChortAnims,
+  GetBigChortAnims,
 }

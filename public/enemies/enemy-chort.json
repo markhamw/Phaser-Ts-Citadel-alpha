@@ -1,0 +1,187 @@
+{
+	"textures": [
+		{
+			"image": "enemy-chort",
+			"format": "RGBA8888",
+			"size": {
+				"w": 25,
+				"h": 95
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "enemy-chort-run3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 14,
+						"h": 21
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 14,
+						"h": 21
+					}
+				},
+				{
+					"filename": "enemy-chort-idle3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 3,
+						"w": 11,
+						"h": 21
+					},
+					"frame": {
+						"x": 0,
+						"y": 21,
+						"w": 11,
+						"h": 21
+					}
+				},
+				{
+					"filename": "enemy-chort-run2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 3,
+						"w": 11,
+						"h": 20
+					},
+					"frame": {
+						"x": 0,
+						"y": 42,
+						"w": 11,
+						"h": 20
+					}
+				},
+				{
+					"filename": "enemy-chort-run4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 5,
+						"w": 12,
+						"h": 19
+					},
+					"frame": {
+						"x": 0,
+						"y": 62,
+						"w": 12,
+						"h": 19
+					}
+				},
+				{
+					"filename": "enemy-chort-idle0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 6,
+						"w": 11,
+						"h": 18
+					},
+					"frame": {
+						"x": 11,
+						"y": 21,
+						"w": 11,
+						"h": 18
+					}
+				},
+				{
+					"filename": "enemy-chort-run1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 8,
+						"w": 11,
+						"h": 16
+					},
+					"frame": {
+						"x": 14,
+						"y": 0,
+						"w": 11,
+						"h": 16
+					}
+				},
+				{
+					"filename": "enemy-chort-idle2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 9,
+						"w": 11,
+						"h": 15
+					},
+					"frame": {
+						"x": 11,
+						"y": 39,
+						"w": 11,
+						"h": 15
+					}
+				},
+				{
+					"filename": "enemy-chort-idle1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 10,
+						"w": 11,
+						"h": 14
+					},
+					"frame": {
+						"x": 0,
+						"y": 81,
+						"w": 11,
+						"h": 14
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://free-tex-packer.com",
+		"version": "0.6.7"
+	}
+}
