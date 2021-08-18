@@ -1,3 +1,5 @@
+/// <reference path="../game/gamelogic.ts" />
+
 import Phaser, { FacebookInstantGamesLeaderboard } from "phaser";
 import { enemies } from "~/enemies/enemies";
 import Squarebo from "../enemies/Squarebo";
@@ -16,10 +18,12 @@ import Rat from "~/enemies/Rat";
 import Player from "~/characters/Player";
 import BigChort from "~/enemies/BigChort";
 
+import { GetWASDKeys, CreateAnimationSet } from "~/game/gamelogic";
+
 const enum Layers {
   Ground,
   Walls,
-  Decoration,
+  Decorations,
 }
 
 export default class Citadel extends Phaser.Scene {
@@ -57,7 +61,7 @@ export default class Citadel extends Phaser.Scene {
 
   constructor() {
     super("citadel");
-    this.ShouldEnableDebugForCollision = true;
+    this.ShouldEnableDebugForCollision = false;
     this.PlayerFrameRate = 10;
     this.PlayerName = "";
     this.PlayerID = "player";
@@ -69,42 +73,15 @@ export default class Citadel extends Phaser.Scene {
     this.DebugCollideColor = new Phaser.Display.Color(243, 234, 48, 255);
     this.DebugFaceColor = new Phaser.Display.Color(40, 39, 37, 255);
     this.TitleText = "--=== Willys Ratfights ===--";
-    this.TitleFontSize = 100;
-    this.TitleX = 400;
-    this.TitleY = 65;
+    this.TitleFontSize = 70;
+    this.TitleX = -350;
+    this.TitleY = 15;
     this.TitleAlpha = 0.5;
     this.IsAnyKeyPressed = false;
     this.IsTitleDisplayed = true;
-    this.MaxRats = 20;
+    this.MaxRats = 3;
     this.MaxBigChorts = 1;
-    this.SpotlightBaseIntensity = 3;
-  }
-
-  preload() {
-    this.keys = this.input.keyboard.createCursorKeys();
-
-    this.Spotlight = this.lights
-      .addLight(0, 0, 480)
-      .setIntensity(this.SpotlightBaseIntensity)
-      .setColor(0xffffff);
-    this.Spotlight.scrollFactorX = 0;
-    this.Spotlight.scrollFactorY = 0;
-
-
-    const map = this.make.tilemap({ key: "citadel" });
-    const tileset = map.addTilesetImage("dungeon-tileset-ii", "tiles");
-
-    map
-      .createLayer(Layers.Ground, tileset)
-      .setPipeline("Light2D")
-      .setAlpha(1);
-
-    this.player = this.physics.add
-      .sprite(900, 600, this.PlayerID, "player-idledown.png")
-      .setPipeline("Light2D")
-      .setAlpha(1);
-
-    this.ShowTitle();
+    this.SpotlightBaseIntensity = 1;
   }
 
   DontShowTitle = () => {
@@ -113,22 +90,16 @@ export default class Citadel extends Phaser.Scene {
       this.TitleTextGameObject.destroy();
       this.TitleTextInstructionsGameObject.destroy();
       this.TitleTextInstructionsGameObject2.destroy();
-      this.lights.setAmbientColor(0x000000);
+      // this.lights.setAmbientColor(0x000000);
       this.IsTitleDisplayed = false;
     }
   };
 
-  CreateAnimationSet = (animations: Phaser.Types.Animations.Animation[]) => {
-    animations.forEach((animation) => {
-      this.anims.create(animation);
-    });
-  };
-
   ShowTitle = () => {
-    this.TitleFrame = this.add
-      .rectangle(900, 600, 1910, 1070, 0x000000)
-      .setAlpha(0.5);
-    this.TitleFrame.setStrokeStyle(20, 0x574b38);
+    this.TitleFrame = this.add.rectangle(100, 100, 1010, 520, 0x000000);
+    this.TitleFrame.fillColor = 0x000000;
+
+    this.TitleFrame.setStrokeStyle(10, 0x574b38);
     this.TitleTextGameObject = this.add
       .bitmapText(this.TitleX, this.TitleY, "customfont", this.TitleText, 32)
       .setPipeline("Light2D")
@@ -136,8 +107,8 @@ export default class Citadel extends Phaser.Scene {
       .setFontSize(this.TitleFontSize);
     this.TitleTextInstructionsGameObject = this.add
       .bitmapText(
-        600,
-        185,
+        100,
+        100,
         "customfont",
         "Use W,A,S,D or arrow keys (press any key)",
         32
@@ -172,7 +143,8 @@ export default class Citadel extends Phaser.Scene {
         group
           .get(mobX, mobY, enemyid)
           .setPipeline("Light2D")
-          .setAlpha(this.MobAlpha);
+          .setAlpha(this.MobAlpha)
+          .setSize(32, 32);
       } else {
         console.log("Could not create rat. Too Many");
       }
@@ -270,60 +242,102 @@ export default class Citadel extends Phaser.Scene {
     // this.player.anims.play(`player-move${direction}`, true);
   };
 
-  create() {
-    let keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-    let keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-    let keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-    let keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+  preload() {
+    CreateAnimationSet(this, GetPlayerAnims(this.anims, this.PlayerFrameRate, this.PlayerID));
+    CreateAnimationSet(this, GetRatAnims(this.anims, 4));
+    CreateAnimationSet(this, GetChortAnims(this.anims, 4));
+    CreateAnimationSet(this, GetBigChortAnims(this.anims, 4));
 
-    this.CustomKeys = [keyW, keyA, keyS, keyD];
+    this.keys = this.input.keyboard.createCursorKeys();
+    this.Spotlight = this.lights
+      .addLight(0, 0, 480)
+      .setIntensity(this.SpotlightBaseIntensity)
+      .setColor(0xffcc99);
 
+    this.Spotlight.scrollFactorX = 1;
+    this.Spotlight.scrollFactorY = 1;
 
+    const map = this.make.tilemap({ key: "citadel" });
+    const map2 = this.make.tilemap({ key: "citadel2" });
+    //const map2decorative = this.make.tilemap({ key: "citadel2decorative" });
 
+    // const tileset = map.addTilesetImage("dungeon-tileset-ii", "tiles");
+    // const tileset = map.addTilesetImage("citadel2", "tiles2");
+    const tileset2 = map2.addTilesetImage("citadel2", "tiles2");
+   // const tileset2decorative = map2.addTilesetImage(
+   //   "citadel2decorative",
+   //   "citadel2decorative"
+   // );
+
+    const groundLayer = map2
+      .createLayer(Layers.Ground, tileset2)
+      .setPipeline("Light2D")
+      .setAlpha(1);
+    const wallsLayer = map2
+      .createLayer(Layers.Walls, tileset2)
+      .setPipeline("Light2D")
+      .setAlpha(1);
+    //const decorationsLayer = map2
+    //  .createLayer(Layers.Decorations, tileset2decorative)
+    //  .setPipeline("Light2D")
+    //  .setAlpha(1);
+    //const outerGroundsLayer = map.createLayer(Layers.OuterGrounds, tileset).setPipeline("Light2D").setAlpha(1);
+    /// const decorationsLayer = map.createLayer(Layers.Decorations, tileset2).setPipeline("Light2D").setAlpha(1);
+    //this.ShowTitle();
+
+    this.player = this.physics.add
+      .sprite(600, 240, this.PlayerID, "player-idledown.png")
+      .setPipeline("Light2D")
+      .setAlpha(1);
+
+    this.player.body.setSize(this.player.width * 0.5, this.player.height * 0.5);
 
     // const decorationsLayer = map.createLayer(Layers.Decoration, tileset);
-    // const wallsLayer = map.createLayer(Layers.Walls, tileset);
+    // const groundLayer = map.createLayer(Layers.Ground, tileset);
+    this.RatGroup = this.physics.add.group({
+      classType: Rat,
+      createCallback: (go)=>{
+        const ratObj = go as Rat
+        ratObj.body.onCollide = true
+      },
+      collideWorldBounds: true,
+      
+      //  console.log("hi",this.player.x,this.player.y)
+      //}
+    });
+    this.Collides(groundLayer);
+    this.Collides(wallsLayer);
+    //  this.Collides(outerGroundsLayer);
+   // this.Collides(decorationsLayer);
 
-    // this.Collides(wallsLayer);
-    // this.Collides(decorationsLayer);
+    this.physics.add.collider(this.player, groundLayer);
+    // this.physics.add.collider(this.player, outerGroundsLayer)
+    this.physics.add.collider(this.player, wallsLayer);
+   // this.physics.add.collider(this.player, decorationsLayer);
+    this.physics.add.collider(this.RatGroup, wallsLayer);
 
-    //this.player.setScale(1.75)
-    // this.physics.add.collider(this.player, wallsLayer);
-    // this.physics.add.collider(this.player, decorationsLayer);
+    const RatShouldSpawnIfThereIsRoom = this.time.addEvent({
+      delay: 20000,
+      repeat: -1,
+      callback: () => {
+        if (this.GetNumberOfRats() < this.MaxRats) {
+          this.SummonRats(this.RatGroup, this.RatID, 1);
+        }
+      },
+    });
+  }
 
-    this.CreateAnimationSet(
-      GetPlayerAnims(this.anims, this.PlayerFrameRate, this.PlayerID)
-    );
-    //this.CreateAnimationSet(GetSquareBoAnims(this.anims,10))
-    //this.CreateAnimationSet(GetDinoSaurAnims(this.anims,10))
-    this.CreateAnimationSet(GetRatAnims(this.anims, 4));
-    this.CreateAnimationSet(GetChortAnims(this.anims, 4));
-    this.CreateAnimationSet(GetBigChortAnims(this.anims, 4));
-    //this.player.body.setSize(this.player.width * 2, this.player.height *  2)
+  create() {
+    this.CustomKeys = GetWASDKeys(this);
+
+
     // this.player.body.offset.y = 20;
     this.cameras.main.startFollow(this.player, false).setPipeline("Light2D");
 
     this.lights.enable();
 
-    this.lights.setAmbientColor(0x808080);
+    this.lights.setAmbientColor(0x000000);
 
-    let UpdateLight = (pointer, spotlight: Phaser.GameObjects.Light) => {
-      this.Spotlight.x = pointer.x;
-      this.Spotlight.y = pointer.y;
-    };
-
-    let IntenseLight = (pointer, spotlight: Phaser.GameObjects.Light) => {
-      this.Spotlight.setIntensity(this.Spotlight.intensity + 10);
-      this.Spotlight.setRadius(440);
-    };
-    let NormalLight = (pointer, spotlight: Phaser.GameObjects.Light) => {
-      this.Spotlight.setIntensity(this.SpotlightBaseIntensity);
-      this.Spotlight.setRadius(380);
-    };
-
-    this.input.on("pointermove", UpdateLight);
-    this.input.on("pointerdown", IntenseLight);
-    this.input.on("pointerup", NormalLight);
     // const Dinosaurs = this.physics.add.group({
     //   classType:Dinosaur
     // })
@@ -333,18 +347,13 @@ export default class Citadel extends Phaser.Scene {
     //const AxeMen = this.physics.add.group({
     //  classType: Axeman
     // })
-    this.RatGroup = this.physics.add.group({
-      classType: Rat,
-      //createCallback: (go)=>{
 
-      //  console.log("hi",this.player.x,this.player.y)
-      //}
-    });
 
     this.BigChortGroup = this.physics.add.group({
       classType: BigChort,
     });
-    this.SummonRats(this.RatGroup, this.RatID, this.MaxRats);
+
+    this.SummonRats(this.RatGroup, this.RatID, 1);
     //SquareBos.get(this.RandomCoord(100),this.RandomCoord(200),'enemy-squarebo')
     // AxeMen.get(this.RandomCoord(100),this.RandomCoord(200),'enemy-axeman')
     // Dinosaurs.get(this.RandomCoord(100),this.RandomCoord(200),'dinosaur')
@@ -355,9 +364,9 @@ export default class Citadel extends Phaser.Scene {
     if (!this.keys || !this.player) {
       return;
     }
-    if (this.IsAnyKeyPressed) {
-      this.DontShowTitle();
-    }
+    this.Spotlight.x = this.player.x;
+    this.Spotlight.y = this.player.y;
+
     let leftKeys = this.CustomKeys[1].isDown || this.keys.left?.isDown;
     let rightKeys = this.CustomKeys[3].isDown || this.keys.right?.isDown;
     let upKeys = this.CustomKeys[0].isDown || this.keys.up?.isDown;
@@ -366,10 +375,6 @@ export default class Citadel extends Phaser.Scene {
     let rightAndUp = rightKeys && upKeys;
     let leftAndDown = leftKeys && downKeys;
     let rightAndDown = rightKeys && downKeys;
-    console.log("num of rats", this.GetNumberOfRats());
-    if (this.MaxRats - this.GetNumberOfRats() >= 5) {
-      this.SummonRats(this.RatGroup, this.RatID, Phaser.Math.Between(1, 5));
-    }
 
     if (leftAndUp) {
       this.movePlayer("leftandup");

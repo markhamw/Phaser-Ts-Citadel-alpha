@@ -5,10 +5,10 @@ import Preloader from './scenes/Preloader'
 export default new Phaser.Game({
 	scene: [Preloader, Citadel],
 	type: Phaser.WEBGL,
-	width: 1920,
-	height: 1080,
-	backgroundColor: '0x000000',
+	width: 1010,
+	height: 540,
 	
+	backgroundColor: '0x393929',
 	physics: {
 		default: 'arcade',
 		arcade: {
@@ -17,8 +17,8 @@ export default new Phaser.Game({
 		debug: false,
 		}
 	},
-	//scale: {
-	//	zoom:2,
-	//},
+	scale: {
+		zoom:2,
+	},
 
 })

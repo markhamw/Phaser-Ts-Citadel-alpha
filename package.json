@@ -29,7 +29,8 @@
 	"dependencies": {
 		"phaser": "^3.55.2",
 		"phaser-matter-collision-plugin": "^0.10.2",
-		"public": "^0.1.5"
+		"public": "^0.1.5",
+		"sounds": "^1.0.2"
 	},
 	"parcelCleanPaths": [
 		"dist"

@@ -1,5 +1,5 @@
-import Phaser from "phaser";
-
+import Phaser, { FacebookInstantGamesLeaderboard } from "phaser";
+import Citadel from "~/scenes/Citadel";
 
 enum Direction {
     UP,
@@ -27,12 +27,13 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
     private RatSpeed = Phaser.Math.Between(15, 65)
     private moveEvent: Phaser.Time.TimerEvent
     private DiscardCurrentTrashTalk: Phaser.Time.TimerEvent
+    private SelfDestructIfDistanceFromOriginIsTooLarge: Phaser.Time.TimerEvent
     private CurrentTrashTalk!: Phaser.GameObjects.BitmapText
     private RatAlpha!: number;
     private StartingXLoc: number;
-    private StartingYLoc: number;
-    private ShouldBeDestroyedDuetoDistance: boolean;
-
+    private StartingYLoc: number; 
+    private Spotlight!: Phaser.GameObjects.Light;
+  
     constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
         super(scene, x, y, texture, frame)
         this.moveEvent = scene.time.addEvent({
@@ -54,33 +55,60 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
             repeat: -1,
             callback:()=>{
                 if (this.CurrentTrashTalk.visible){
+                    this.CurrentTrashTalk.setActive(false)
                     this.CurrentTrashTalk.visible=false
-                }
-                if (this.distanceFromStartingLocation() > 1000){
-                    this.ShouldBeDestroyedDuetoDistance = true
-                }
-                if (this.ShouldBeDestroyedDuetoDistance){
-                    this.destroy()
-                    this.CurrentTrashTalk.destroy()
-                    
                 }
             }
         })
+        this.SelfDestructIfDistanceFromOriginIsTooLarge = scene.time.addEvent({
+            delay: 1100,
+            repeat: -1,
+            callback: ()=>{
+                if (this.distanceFromStartingLocation() > 100){
+                this.selfDestruct()
+                }
+            }
+        })
+
         this.StartingXLoc = x
         this.StartingYLoc = y
         this.CurrentTrashTalk = scene.add.bitmapText(this.x, this.y, 'customfont', VocalEmotes[Phaser.Math.Between(0,7)], 16 ).setPipeline('Light2D').setAlpha(this.RatAlpha)
         this.CurrentTrashTalk.visible=false;
         this.RatAlpha = .2
-        this.ShouldBeDestroyedDuetoDistance=false;
+        this.Spotlight = this.scene.lights.addLight(this.x,this.y,75,0x66FF66, 1)
+        this.scene.physics.world.on(Phaser.Physics.Arcade.Events.TILE_COLLIDE,this.handleCollision, this.scene)
         
+       
     }
+    private handleCollision(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile){
+            if (go !== this){
+                return
+            }
+            console.log('Collision detected')
+    }
+
+    Scream = () => {
+        this.scene.sound.play('ratsound',{detune: 150, volume: .1})
+    } 
 
     distanceFromStartingLocation = ():number => {
         return Phaser.Math.FloorTo(Phaser.Math.Distance.Between(this.x,this.y,this.StartingXLoc,this.StartingYLoc))
     }
+
+    selfDestruct = () => {
+        this.moveEvent.destroy()
+        this.CurrentTrashTalk.destroy()
+        this.DiscardCurrentTrashTalk.destroy()
+        this.SelfDestructIfDistanceFromOriginIsTooLarge.destroy()
+        this.scene.lights.removeLight(this.Spotlight)
+        this.Scream()
+        this.destroy()
+    }
+
     preUpdate(t: number, dt: number) {
         super.preUpdate(t, dt)
-        this.CurrentTrashTalk.setPosition(this.x+25,this.y-25)  
+        this.CurrentTrashTalk.setPosition(this.x+25,this.y-25)
+        this.Spotlight.setPosition(this.x,this.y)
         switch (this.facing) {
             case Direction.UP:
                 this.setVelocity(0, -this.RatSpeed)
