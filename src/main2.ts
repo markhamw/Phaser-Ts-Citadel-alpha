@@ -4,12 +4,12 @@ import Preloader from './scenes/Preloader'
 import Titlescene from './scenes/Titlescene'
 
 export default new Phaser.Game({
-	scene: [Preloader, Titlescene,Citadel],
+	scene: [Preloader,Titlescene],
 	type: Phaser.WEBGL,
 	width: 1920,
-	height: 1080,
+	height: 100,
 	autoFocus: true,
-	backgroundColor: '0x000000',
+	backgroundColor: '0xFFFFFF',
 	
 	physics: {
 		default: 'arcade',

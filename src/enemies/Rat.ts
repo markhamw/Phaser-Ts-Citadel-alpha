@@ -1,5 +1,6 @@
 import Phaser, { FacebookInstantGamesLeaderboard } from "phaser";
 import Citadel from "~/scenes/Citadel";
+import { Guid } from "guid-typescript"
 
 enum Direction {
     UP,
@@ -11,6 +12,32 @@ enum Direction {
     LEFTANDUP,
     LEFTANDDOWN,
     IDLE,
+}
+enum RatNameStart{
+    Do,
+    Ra,
+    Ba,
+    Ji,
+    Ti,
+    Di,
+    Ci,
+    Co,
+    Li,
+    Vo,
+    Va,
+    Ri
+}
+
+enum RatNameEnd{
+    brik,
+    dok,
+    kil,
+    kol,
+    ridi,
+    rodi,
+    sishi,
+    duus,
+    ruus,
 }
 
 enum VocalEmotes {
@@ -27,13 +54,15 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
     private RatSpeed = Phaser.Math.Between(15, 65)
     private moveEvent: Phaser.Time.TimerEvent
     private DiscardCurrentTrashTalk: Phaser.Time.TimerEvent
-    private SelfDestructIfDistanceFromOriginIsTooLarge: Phaser.Time.TimerEvent
+    
     private CurrentTrashTalk!: Phaser.GameObjects.BitmapText
     private RatAlpha!: number;
     private StartingXLoc: number;
     private StartingYLoc: number; 
     private Spotlight!: Phaser.GameObjects.Light;
-  
+    private EntityID: Guid;
+    private ratname:string;
+
     constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
         super(scene, x, y, texture, frame)
         this.moveEvent = scene.time.addEvent({
@@ -60,7 +89,7 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
                 }
             }
         })
-        this.SelfDestructIfDistanceFromOriginIsTooLarge = scene.time.addEvent({
+/*         this.SelfDestructIfDistanceFromOriginIsTooLarge = scene.time.addEvent({
             delay: 1100,
             repeat: -1,
             callback: ()=>{
@@ -68,7 +97,7 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
                 this.selfDestruct()
                 }
             }
-        })
+        }) */
 
         this.StartingXLoc = x
         this.StartingYLoc = y
@@ -76,19 +105,38 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
         this.CurrentTrashTalk.visible=false;
         this.RatAlpha = .2
         this.Spotlight = this.scene.lights.addLight(this.x,this.y,75,0x66FF66, 1)
-        this.scene.physics.world.on(Phaser.Physics.Arcade.Events.TILE_COLLIDE,this.handleCollision, this.scene)
-        
-       
-    }
-    private handleCollision(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile){
-            if (go !== this){
-                return
-            }
-            console.log('Collision detected')
+       this.scene.physics.world.on(Phaser.Physics.Arcade.Events.TILE_COLLIDE, this.handleCollision, this.scene)
+       this.scene.physics.world.on(Phaser.Physics.Arcade.Events.COLLIDE,  this.handleCollisionWithSprite, this.scene)
+       this.EntityID = Guid.create()
+       this.ratname = this.getNewName
     }
 
+    get getNewName(){
+        return RatNameStart[Phaser.Math.Between(0,11)] + RatNameEnd[Phaser.Math.Between(0,8)]
+    }
+    
+    get getEntityID(){
+        return this.EntityID
+    }
+    
+    private handleCollision(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile){
+        let _go = go as unknown as Rat
+
+        _go.moveEvent.callback()
+
+        console.log('Collision with tile/map detected')
+        console.log('EntityID:',_go.getEntityID)
+        console.log('Entity Name:',_go.ratname)
+    }
+
+    private handleCollisionWithSprite(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile){
+        let _go = go as Rat
+        _go.moveEvent.callback()
+        console.log('Collision with sprite detected')
+}
     Scream = () => {
-        this.scene.sound.play('ratsound',{detune: 150, volume: .1})
+        this.scene.sound.play('ratsound',{detune: Phaser.Math.Between(150,250), volume: .1})
+
     } 
 
     distanceFromStartingLocation = ():number => {
@@ -99,11 +147,10 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
         this.moveEvent.destroy()
         this.CurrentTrashTalk.destroy()
         this.DiscardCurrentTrashTalk.destroy()
-        this.SelfDestructIfDistanceFromOriginIsTooLarge.destroy()
         this.scene.lights.removeLight(this.Spotlight)
         this.Scream()
         this.destroy()
-    }
+    } 
 
     preUpdate(t: number, dt: number) {
         super.preUpdate(t, dt)
