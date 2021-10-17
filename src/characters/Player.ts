@@ -8,10 +8,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         
     }
 
-    GetPlayerSprite = (x: number, y: number, id: string, frame: string) => {
-        
-    }
-
+    
 
       
 }

@@ -42,13 +42,13 @@ export default class Citadel extends Phaser.Scene {
   private MaxRats: number;
   private MaxBigChorts: number;
   private MobAlpha: number;
-  private RatGroup!: Phaser.Physics.Arcade.Group;
+  RatGroup!: Phaser.Physics.Arcade.Group;
   private RatID: string;
   private CustomKeys!: Phaser.Input.Keyboard.Key[];
   private Spotlight!: Phaser.GameObjects.Light;
   private SpotlightBaseIntensity!: number;
   private isAttacking: boolean;
-
+  private openingtext!: Phaser.GameObjects.Text;
   constructor() {
     super("citadel");
     this.ShouldEnableDebugForCollision = false;
@@ -106,10 +106,10 @@ export default class Citadel extends Phaser.Scene {
     }
   };
 
-
   preload() {
     this.swipesound = this.game.sound.add("knifeswipe");
-
+    let music = this.game.sound.add("rainyfeelsbyDonnieOzone");
+    music.play({ volume: 0.1 });
     CreateAnimationSet(this, GetPlayerAnims(this.anims, this.PlayerFrameRate, this.PlayerID));
     CreateAnimationSet(this, GetRatAnims(this.anims, 4));
     CreateAnimationSet(this, GetLightAnims(this.anims, 4));
@@ -159,15 +159,13 @@ export default class Citadel extends Phaser.Scene {
         }
       },
     });
-
-
   }
 
   create() {
     this.CustomKeys = GetWASDKeys(this);
 
     this.cameras.main.startFollow(this.player, false).setPipeline("Light2D");
-  
+
     this.physics.world.setBounds(0, 0, 2880, 960);
     this.cameras.main.setBounds(0, 0, 2880, 960, true);
 
@@ -176,6 +174,33 @@ export default class Citadel extends Phaser.Scene {
 
     this.SummonRats(this.RatGroup, this.RatID, 1);
 
+    let addOpeningText = this.time.addEvent({
+      delay: 5000,
+      repeat: 0,
+      callback: () => {
+        this.openingtext = this.add.text(this.player.x, this.player.y, "Damnit I need a friggin bigger knife");
+      },
+    });
+
+    let updateOpeningText = this.time.addEvent({
+      delay: 20,
+      repeat: -1,
+      callback: () => {
+        if (this.openingtext) {
+          this.openingtext.setPosition(this.player.x + 10, this.player.y - 20);
+        }
+      },
+    });
+
+    let RemoveOpeningText = this.time.addEvent({
+      delay: 10000,
+      repeat: 0,
+      callback: () => {
+        addOpeningText.destroy()
+        updateOpeningText.destroy()
+        this.openingtext.destroy();
+      },
+    });
 
     const lightPositions = [
       { x: 113, y: 40 },
@@ -184,19 +209,27 @@ export default class Citadel extends Phaser.Scene {
       { x: 720, y: 40 },
       { x: 848, y: 40 },
       { x: 1135, y: 40 },
-      
+
       { x: 65, y: 374 },
       { x: 176, y: 374 },
     ];
 
-    lightPositions.forEach( (pos)=>{
-    let light = this.physics.add.sprite(pos.x, pos.y, "lights", "torch_1.png").setPipeline("Light2D");
+    lightPositions.forEach((pos) => {
+      let light = this.physics.add.sprite(pos.x, pos.y, "lights", "torch_1.png").setPipeline("Light2D");
 
-    let lightsource= this.lights.addLight(pos.x, pos.y, 1150).setIntensity(.75).setColor(0xffcc99);
+      let lightsource = this.lights.addLight(pos.x, pos.y, 1150).setIntensity(0.75).setColor(0xffcc99);
+
+      light.anims.play("light-on");
+    });
+
+    let eevent = this.events.addListener("player-attack-event", () => {
+      let rats = this.RatGroup.getChildren
+
+      console.log(rats)
+
+    });
+   
     
-    light.anims.play('light-on')
-    })
-
   }
 
   update(t: number, dt: number) {
@@ -211,8 +244,8 @@ export default class Citadel extends Phaser.Scene {
     let rightAndUp = rightKeys && upKeys;
     let leftAndDown = leftKeys && downKeys;
     let rightAndDown = rightKeys && downKeys;
-    
-    let isAnyKeyDown = leftKeys || rightKeys || upKeys || downKeys || leftAndUp ||rightAndUp || leftAndDown || rightAndDown   
+
+    let isAnyKeyDown = leftKeys || rightKeys || upKeys || downKeys || leftAndUp || rightAndUp || leftAndDown || rightAndDown;
 
     if (leftAndUp) {
       this.directionFacing = Direction.LEFT;
@@ -250,20 +283,23 @@ export default class Citadel extends Phaser.Scene {
       this.player.anims.play("player-idle", true);
       this.player.setVelocity(0);
     }
-    if (isAnyKeyDown && this.keys.shift.isDown){
-      this.PlayerSpeed = 200
+    if (isAnyKeyDown && this.keys.shift.isDown) {
+      this.PlayerSpeed = 200;
     }
-    if (!this.keys.shift.isDown){
-      this.PlayerSpeed = 100
+    if (!this.keys.shift.isDown) {
+      this.PlayerSpeed = 100;
     }
 
     if (this.keys.space.isDown) {
-      this.swipesound.play({ loop: false , volume: .1,rate:.8});
-      this.player.setVelocity(0)
+      this.swipesound.play({ loop: false, volume: 0.2, rate: 0.8 });
+      this.player.setVelocity(0);
+      this.events.emit("player-attack-event",this.player);
+
       switch (this.directionFacing) {
         case Direction.LEFT:
           console.log("in attack left");
           this.player.anims.play(`player-attackleft`, true);
+
           break;
         case Direction.DOWN:
           console.log("in attack down");

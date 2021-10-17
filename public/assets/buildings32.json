@@ -1,0 +1,209 @@
+{
+	"textures": [
+		{
+			"image": "buildings32.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 64,
+				"h": 163
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "Stables.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 32
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 32,
+						"h": 32
+					}
+				},
+				{
+					"filename": "Cartographer.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 0,
+						"w": 26,
+						"h": 32
+					},
+					"frame": {
+						"x": 35,
+						"y": 1,
+						"w": 26,
+						"h": 32
+					}
+				},
+				{
+					"filename": "TradingPost.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 32
+					},
+					"frame": {
+						"x": 1,
+						"y": 35,
+						"w": 32,
+						"h": 32
+					}
+				},
+				{
+					"filename": "Sanctuary.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 0,
+						"w": 25,
+						"h": 32
+					},
+					"frame": {
+						"x": 35,
+						"y": 35,
+						"w": 25,
+						"h": 32
+					}
+				},
+				{
+					"filename": "BlackMarket.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 32,
+						"h": 25
+					},
+					"frame": {
+						"x": 1,
+						"y": 69,
+						"w": 32,
+						"h": 25
+					}
+				},
+				{
+					"filename": "Prison.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 31,
+						"h": 32
+					},
+					"frame": {
+						"x": 1,
+						"y": 96,
+						"w": 31,
+						"h": 32
+					}
+				},
+				{
+					"filename": "Forge.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 29,
+						"h": 32
+					},
+					"frame": {
+						"x": 34,
+						"y": 96,
+						"w": 29,
+						"h": 32
+					}
+				},
+				{
+					"filename": "FountainOfYouth.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 30,
+						"h": 31
+					},
+					"frame": {
+						"x": 1,
+						"y": 130,
+						"w": 30,
+						"h": 31
+					}
+				},
+				{
+					"filename": "Tavern.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 29,
+						"h": 32
+					},
+					"frame": {
+						"x": 33,
+						"y": 130,
+						"w": 29,
+						"h": 32
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:22fa5962f5c9b2e638e7c99eff9ad176:45f1bcc95befe2034d9e4ea01e85bbcc:484f049042be199ced6b08ffca67189e$"
+	}
+}

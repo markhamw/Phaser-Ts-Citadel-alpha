@@ -1,4 +1,5 @@
 import { Scene } from "phaser";
+import { WRGame } from "~/game/game";
 
 export default class Titlescene extends Phaser.Scene {
   private TitleFontSize: number;
@@ -6,21 +7,25 @@ export default class Titlescene extends Phaser.Scene {
   private TitleY: number;
   private TitleAlpha: number;
   private isStarted: boolean;
-
+  wrGame!: WRGame;
   private TitleFrame!: Phaser.GameObjects.Rectangle;
 
   private keys!: Phaser.Types.Input.Keyboard.CursorKeys;
 
   constructor() {
     super("Titlescene");
-    this.TitleFontSize = 32;
-    this.TitleX = 80;
-    this.TitleY = 30;
-    this.TitleAlpha = 0.5;
+    this.TitleFontSize = 16 ;
+    this.TitleX = 70;
+    this.TitleY = 70;
+    this.TitleAlpha = 0.85;
     this.isStarted = false;
   }
 
-
+  init(data){
+    this.wrGame = data;
+    this.wrGame.playerCurrentScene = 'Title'
+    console.log(this.wrGame)
+  }
 
   preload() {
     this.keys = this.input.keyboard.createCursorKeys();
@@ -28,15 +33,13 @@ export default class Titlescene extends Phaser.Scene {
 
   }
 
-  StartCitadel = () => {
-    this.scene.start('citadel')
-  }
+
 
  
   SetupEvents = () =>{
      
     let Start = ()=>{
-      this.scene.start('citadel')
+      this.scene.start('Overworld', this.wrGame)
     }
     
     let SceneChangeEvent = this.time.addEvent({
@@ -59,12 +62,12 @@ export default class Titlescene extends Phaser.Scene {
         let doorClose = this.game.sound.add("doorClose");
 
         this.cameras.main.fadeOut(2000, 0, 0, 0);
-        step1.play({ delay: 2 });
-        step2.play({ delay: 3 });
-        step3.play({ delay: 4 });
-        step4.play({ delay: 5 });
-        doorOpen.play({ delay: 6.5 });
-        doorClose.play({ delay: 8.0 });
+        step1.play({ delay: 2, volume:.2 });
+        step2.play({ delay: 3, volume:.2 });
+        step3.play({ delay: 4, volume:.2 });
+        step4.play({ delay: 5, volume:.2 });
+        doorOpen.play({ delay: 6.5, volume:.2 });
+        doorClose.play({ delay: 8.0, volume:.2 });
         
       },
     });
@@ -74,27 +77,40 @@ export default class Titlescene extends Phaser.Scene {
 
   DisplayLetter = () => {
     const letterToWilly = `
-    Willy, 
-    
-
-        We've had reports of large to medium sized rodents
-        bollocksing around the catacombs. They act like they
-        own the place. I am EXCEEDINLGY confident 
-        you'll cleanse the filth from the cellars.
         
-        I'll pay the usual rate
-
-        ps. Dont let me them bite. Their bites are poisonous.
-        
-                                                       
-                                                              Constable Green`;
-
-    this.TitleFrame = this.add.rectangle(0, 0, 1010, 520, 0x574b38);
-    this.TitleFrame.setStrokeStyle(10, 0x574b38);
-    this.TitleFrame.setOrigin(0, 0);
-    this.TitleFrame.fillColor = 0x000000;
-    this.add.bitmapText(this.TitleX, this.TitleY, "customfont", letterToWilly, this.TitleFontSize).setAlpha(this.TitleAlpha);
+        ${this.wrGame.playerName}, 
     
+        Lately, we have been getting raided by ${this.wrGame.kingRat} and,
+        his gang.
+
+        Can you believe it? The rat bastard built
+        a complex underground passage!
+
+        When I was a young man, the rats didnt have the 
+        capacity to build anything but crude holes to hide in.
+
+        Anyway, you're our only hope...
+        
+        When you receive this message, please come help
+        kill them, or you can kiss the usual rate
+        of ${this.wrGame.taskRate}gp goodbye 
+
+        ps. Dont let them bite. Their bites are poisonous.
+        
+        
+                                               Good Luck,     
+                                               Constable Green
+                                               
+                                               
+                                               
+                                               
+                                               
+               (Press SPACE when you're ready to begin..)`;
+
+    let scroll = this.add.sprite(40,0,'scroll');
+    scroll.setOrigin(0,0)
+    scroll.setScale(.44)
+    let text = this.add.bitmapText(this.TitleX, this.TitleY, "invertedfontyellow", letterToWilly, this.TitleFontSize).setAlpha(this.TitleAlpha);
   };
 
   create() {
@@ -108,7 +124,7 @@ export default class Titlescene extends Phaser.Scene {
         noteShuffle.play({ volume: 0.5 });
       },
     });
- 
+
     let displayLetter = this.time.addEvent({
       delay: 1000,
       repeat: 0,
@@ -118,17 +134,25 @@ export default class Titlescene extends Phaser.Scene {
     });
 
     this.events.addListener('start',()=>{
-        this.SetupEvents()
+      let FadeOut = this.time.addEvent({
+        delay: 4000,
+        repeat: 0,
+        callback: () => {
+          this.cameras.main.fadeOut(4000, 0, 0, 0);
+          this.scene.start('Overworld')
+        },
+      });
+      
     })
 
   }
  
-
   update(){
     if (this.keys.space.isDown && !this.isStarted){
+    
       this.isStarted = true;
       this.events.emit('start')
-    }
+    } 
     
   }
     

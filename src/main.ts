@@ -2,15 +2,22 @@ import Phaser, { AUTO } from 'phaser'
 import Citadel from './scenes/Citadel'
 import Preloader from './scenes/Preloader'
 import Titlescene from './scenes/Titlescene'
+import Splash from './scenes/Splash'
+import Overworld from './scenes/Overworld'
 
-export default new Phaser.Game({
-	scene: [Preloader, Titlescene,Citadel],
+export default new Phaser.Game(
+	{
+	scene: [Preloader,Titlescene,Splash,Overworld],
 	type: Phaser.WEBGL,
-	width: 1920,
-	height: 1080,
 	autoFocus: true,
 	backgroundColor: '0x000000',
-	
+	scale: {
+		parent: 'app',
+		mode: Phaser.Scale.FIT,
+		width: 500,
+		height: 500,
+		autoCenter: Phaser.Scale.Center
+	},
 	physics: {
 		default: 'arcade',
 		arcade: {
@@ -19,9 +26,8 @@ export default new Phaser.Game({
 		debug: false,
 		}
 	},
-	scale: {
-		zoom:1,
-	},
+	
 	disableContextMenu:true,
 	
+
 })

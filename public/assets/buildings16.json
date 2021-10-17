@@ -1,0 +1,230 @@
+{
+	"textures": [
+		{
+			"image": "buildings16.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 57,
+				"h": 54
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "Barrier.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "EyeOfTheMagi.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 19,
+						"y": 1,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "Keymaster&#39;sTent.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 37,
+						"y": 1,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "OneWayMonolithExit.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 19,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "Seer&#39;sHut.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 19,
+						"y": 19,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "BigSign.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 14,
+						"h": 16
+					},
+					"frame": {
+						"x": 37,
+						"y": 19,
+						"w": 14,
+						"h": 16
+					}
+				},
+				{
+					"filename": "OneWayMonolithEntrance.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 15,
+						"h": 15
+					},
+					"frame": {
+						"x": 1,
+						"y": 37,
+						"w": 15,
+						"h": 15
+					}
+				},
+				{
+					"filename": "WindowOfTheMagi.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 13,
+						"h": 16
+					},
+					"frame": {
+						"x": 18,
+						"y": 37,
+						"w": 13,
+						"h": 16
+					}
+				},
+				{
+					"filename": "MagicWell.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 12,
+						"h": 16
+					},
+					"frame": {
+						"x": 33,
+						"y": 37,
+						"w": 12,
+						"h": 16
+					}
+				},
+				{
+					"filename": "Sign.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 1,
+						"w": 9,
+						"h": 13
+					},
+					"frame": {
+						"x": 47,
+						"y": 37,
+						"w": 9,
+						"h": 13
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:e0f2d57fb20c6df360bb002e278a46e4:ea22dea483b35a8f242b5d498043e693:00f300acd7a1e698c57c879ba8024bdd$"
+	}
+}
