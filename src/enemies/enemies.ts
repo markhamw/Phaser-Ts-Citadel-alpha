@@ -1,10 +1,16 @@
 const enemies = [
   {
     name: "enemy-rat",
-    PathToPNG: "enemies/enemy-rat.png",
-    PathToJSON: "enemies/enemy-rat.json"
+    PathToPNG: "enemies/goblin.png",
+    PathToJSON: "enemies/goblin.json"
+  },
+  {
+    name: "enemy-ratogre",
+    PathToPNG: "enemies/ogre.png",
+    PathToJSON: "enemies/ogre.json"
   },
 ];
 
 
 export{enemies}
+

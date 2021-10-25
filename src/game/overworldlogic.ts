@@ -20,14 +20,21 @@ export const buildingsforWorldMap: Placement[] = [
     { collection: "buildings32", tag: "Tavern.png", location: { x: 320, y: 310 } },
     { collection: "buildings32", tag: "TradingPost.png", location: { x: 250, y: 130 } },
     { collection: "buildings32", tag: "Sanctuary.png", location: { x: 115, y: 365 } },
-    { collection: "buildings32", tag: "Prison.png", location: { x: 415, y: 95 } },
-    { collection: "buildings16", tag: "EyeOfTheMagi.png", location: { x: 415, y: 115 } },
-    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 155, y: 95 } },
+    
+    { collection: "buildings32", tag: "Prison.png", location: { x: 365, y: 95 } },
+    { collection: "buildings16", tag: "EyeOfTheMagi.png", location: { x: 365, y: 115 } },
+    
+    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 205, y: 95 } },
+    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 215, y: 95 } },
+    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 245, y: 53 } },
+    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 265, y: 95 } },
+    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 405, y: 145 } },
+    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 305, y: 130 } },
   ];
 
 export const GenerateBuildings = (scene:Overworld) => {
     buildingsforWorldMap.forEach((building) => {
-      scene.add.sprite(building.location.x, building.location.y, building.collection, building.tag).setPipeline("Light2D");
+      scene.add.sprite(building.location.x, building.location.y, building.collection, building.tag).setScale(1.15);
     });
   };
 
@@ -40,11 +47,9 @@ export const RandomCloud = (scene:Overworld) => {
     let cloudx = Math.floor(Math.random() * maxXorY);
     let cloudy = Math.floor(Math.random() * maxXorY);
 
-    let cloudshadow = scene.physics.add.sprite(cloudx + 40, cloudy + 50, "cloudsshadows", `Clouds${cloudNum}.png`).setAlpha(0.1).setPipeline('Light2D');
-    let cloud = scene.physics.add.sprite(cloudx, cloudy, "clouds", `Clouds${cloudNum}.png`).setAlpha(0.2).setPipeline('Light2D');
+    let cloudshadow = scene.physics.add.sprite(cloudx + 40, cloudy + 50, "cloudsshadows", `Clouds${cloudNum}.png`).setAlpha(0.1);
+    let cloud = scene.physics.add.sprite(cloudx, cloudy, "clouds", `Clouds${cloudNum}.png`).setAlpha(0.2);
 
-    let window = scene.physics.add.sprite(0, 0, "window");
-    window.setOrigin(0.0);
     let cloudSize = Math.floor(Math.random() * 6) + 2;
 
     cloud.setScale(cloudSize);
@@ -52,6 +57,8 @@ export const RandomCloud = (scene:Overworld) => {
 
     cloudshadow.setVelocity(scene.winddirection.xspeed, scene.winddirection.yspeed);
     cloud.setVelocity(scene.winddirection.xspeed, scene.winddirection.yspeed);
+
+    scene.numberofclouds++;
 
     let appeardelay = Math.floor(Math.random() * 30000) + 10000;
    
@@ -83,7 +90,7 @@ export const RandomCloud = (scene:Overworld) => {
       callback: () => {
         cloud.destroy();
         cloudshadow.destroy();
-        scene.numberofclouds -= 1;
+        scene.numberofclouds--;
       },
     });
   };

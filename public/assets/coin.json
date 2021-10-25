@@ -1,0 +1,104 @@
+{
+	"textures": [
+		{
+			"image": "coin.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 34,
+				"h": 14
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "coin_1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 2,
+						"w": 12,
+						"h": 12
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 12,
+						"h": 12
+					}
+				},
+				{
+					"filename": "coin_2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 2,
+						"w": 10,
+						"h": 12
+					},
+					"frame": {
+						"x": 15,
+						"y": 1,
+						"w": 10,
+						"h": 12
+					}
+				},
+				{
+					"filename": "coin_4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 2,
+						"w": 10,
+						"h": 12
+					},
+					"frame": {
+						"x": 15,
+						"y": 1,
+						"w": 10,
+						"h": 12
+					}
+				},
+				{
+					"filename": "coin_3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 2,
+						"w": 6,
+						"h": 12
+					},
+					"frame": {
+						"x": 27,
+						"y": 1,
+						"w": 6,
+						"h": 12
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:7e2f0698db09540eafb98e1872c80d8e:4234b6926081e58dc0b317fa856fe34d:37dcde439de7f7292f96409a4c62c08e$"
+	}
+}

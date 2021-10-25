@@ -1,6 +1,7 @@
 import Phaser, { FacebookInstantGamesLeaderboard } from "phaser";
 import Citadel from "~/scenes/Citadel";
 import { Guid } from "guid-typescript"
+import { getNewRatName } from "~/game/gamelogic";
 
 enum Direction {
     UP,
@@ -26,7 +27,7 @@ enum VocalEmotes {
 export default class Rat extends Phaser.Physics.Arcade.Sprite {
 
     private facing = Phaser.Math.Between(0, 7)
-    private RatSpeed = Phaser.Math.Between(15, 65)
+    private RatSpeed = Phaser.Math.Between(0, 2)
     private moveEvent: Phaser.Time.TimerEvent
     private DiscardCurrentTrashTalk: Phaser.Time.TimerEvent
     
@@ -34,7 +35,6 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
     private RatAlpha!: number;
     private StartingXLoc: number;
     private StartingYLoc: number; 
-    private Spotlight!: Phaser.GameObjects.Light;
     private EntityID: Guid;
     private ratname:string;
 
@@ -46,15 +46,16 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
                 this.CurrentTrashTalk.visible= false;
                 let chanceForIdle = Phaser.Math.Between(0, 4);
                 let chanceForEmote = Phaser.Math.Between(0, 4);
-                this.RatSpeed = chanceForIdle == 1 ? 0 : Phaser.Math.Between(15, 165)
+                this.RatSpeed = chanceForIdle == 1 ? 0 : Phaser.Math.Between(0, 3)
                 this.facing = chanceForIdle == 1 ? Direction.IDLE : Phaser.Math.Between(0, 7)
                 if (chanceForEmote==1){
                     this.CurrentTrashTalk.visible = true;
+                } else if (chanceForEmote==2){
                 }
             },
             loop: true
         });
-        this.scene.events.addListener('player-attack-event',(player)=>{
+        this.scene.events.addListener('player-interact-event',(player)=>{
             
             console.log('heard by rat in listener')
             console.log(`${this.ratname} is at ${this.x} ${this.y}`)
@@ -84,24 +85,19 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
 
         this.StartingXLoc = x
         this.StartingYLoc = y
-        this.CurrentTrashTalk = scene.add.bitmapText(this.x, this.y, 'customfont', VocalEmotes[Phaser.Math.Between(0,7)], 16 ).setPipeline('Light2D').setAlpha(this.RatAlpha)
+        this.CurrentTrashTalk = scene.add.bitmapText(this.x, this.y, 'customfont', VocalEmotes[Phaser.Math.Between(0,7)], 16 )
         this.CurrentTrashTalk.visible=false;
-        this.RatAlpha = .2
-        this.Spotlight = this.scene.lights.addLight(this.x,this.y,75,0x66FF66, 1)
+        
        this.scene.physics.world.on(Phaser.Physics.Arcade.Events.TILE_COLLIDE, this.handleCollision, this.scene)
        this.scene.physics.world.on(Phaser.Physics.Arcade.Events.COLLIDE,  this.handleCollisionWithSprite, this.scene)
        this.EntityID = Guid.create()
-       this.ratname = this.getNewName
+       this.ratname = getNewRatName()
     }
 
     isNearPlayer(player: Phaser.Physics.Arcade.Sprite): boolean{
         return true
     }
 
-    get getNewName(){
-        return RatNameStart[Phaser.Math.Between(0,11)] + RatNameEnd[Phaser.Math.Between(0,8)]
-    }
-    
     get getEntityID(){
         return this.EntityID
     }
@@ -121,10 +117,9 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
         _go.moveEvent.callback()
         console.log('Collision with sprite detected')
 }
-    Scream = () => {
+  /*   Scream = () => {
         this.scene.sound.play('ratsound',{detune: Phaser.Math.Between(150,250), volume: .1})
-
-    } 
+    }  */
 
     distanceFromStartingLocation = ():number => {
         return Phaser.Math.FloorTo(Phaser.Math.Distance.Between(this.x,this.y,this.StartingXLoc,this.StartingYLoc))
@@ -134,20 +129,19 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
         this.moveEvent.destroy()
         this.CurrentTrashTalk.destroy()
         this.DiscardCurrentTrashTalk.destroy()
-        this.scene.lights.removeLight(this.Spotlight)
-        this.Scream()
+        
+      //  this.Scream()
         this.destroy()
     } 
 
     preload(){
-        this.scene.events.addListener('player-attack-event',()=>{
+        this.scene.events.addListener('player-interact-event',()=>{
             console.log("Rat heard player attack event")
         })
     }
     preUpdate(t: number, dt: number) {
         super.preUpdate(t, dt)
         this.CurrentTrashTalk.setPosition(this.x+25,this.y-25)
-        this.Spotlight.setPosition(this.x,this.y) 
         switch (this.facing) {
             case Direction.UP:
                 this.setVelocity(0, -this.RatSpeed)
@@ -182,7 +176,7 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
                 this.anims.play('enemy-rat-moveright', true)
                 break
             case Direction.IDLE:
-                this.setVelocity(this.RatSpeed, this.RatSpeed)
+                this.setVelocity(0, 0)
                 this.anims.play('enemy-rat-idle', true)
         }
     }

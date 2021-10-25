@@ -25,12 +25,26 @@ enum RatNameEnd{
   duus,
   ruus,
 }
+enum RatRoyalty{
+  'the Stank',
+  'the Foul',
+  'el Rancid',
+  'the KingRat',
+  'dook Duke',
+  'du Harme',
+  'le Prince',
+}
 
-export function getNewKingRatName(){
+
+function getNewKingRatName(){
+  return RatNameStart[Phaser.Math.Between(0,11)] + RatNameEnd[Phaser.Math.Between(0,8)] +' '+ RatRoyalty[Phaser.Math.Between(0,6)]
+}
+
+function getNewRatName(){
   return RatNameStart[Phaser.Math.Between(0,11)] + RatNameEnd[Phaser.Math.Between(0,8)]
 }
 
-function GetWASDKeys(scene: Phaser.Scene): Phaser.Input.Keyboard.Key[] {
+function AddWASDKeysToScene(scene: Phaser.Scene): Phaser.Input.Keyboard.Key[] {
   let W = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
   let A = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
   let S = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
@@ -38,7 +52,6 @@ function GetWASDKeys(scene: Phaser.Scene): Phaser.Input.Keyboard.Key[] {
   return [W, A, S, D];
 }
 
-function ResizeGame(): void {}
 function CreateAnimationSet(
   scene: Phaser.Scene,
   animations: Phaser.Types.Animations.Animation[]
@@ -48,6 +61,12 @@ function CreateAnimationSet(
   });
 }
 
+function RandomCoord(max: number): number {
+  let num = Math.floor(Math.random() * max);
+  let minimumAbritraryCoordValue = 49;
+  if (num > minimumAbritraryCoordValue) {
+    return num;
+  } else return num + 30;
+};
 
-
-export { GetWASDKeys, CreateAnimationSet };
+export { AddWASDKeysToScene, CreateAnimationSet, getNewKingRatName, getNewRatName, RandomCoord };
