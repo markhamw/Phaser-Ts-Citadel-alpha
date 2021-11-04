@@ -17,12 +17,25 @@ const GetRatAnims = (anims: Phaser.Animations.AnimationManager, rate: number) =>
 
     },
     {
+      key: `enemy-rat-dead`,
+      frames: anims.generateFrameNames('enemy-rat', {
+        start: 208,
+        end: 211,
+        prefix: 'tower-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+
+    },
+    {
       key: `enemy-rat-moveleft`,
       frames: anims.generateFrameNames('enemy-rat', {
         start: 196,
         end: 199,
         prefix: 'tower-',
         suffix: '.png',
+       
       }),
       repeat: -1,
       frameRate: rate,
@@ -100,6 +113,7 @@ const GetRatOgreAnims = (anims: Phaser.Animations.AnimationManager, rate: number
       }),
       repeat: -1,
       frameRate: rate,
+      
     },
 
     {
@@ -160,8 +174,93 @@ const GetRatOgreAnims = (anims: Phaser.Animations.AnimationManager, rate: number
 
   ]
 }
+const GetShamanAnims = (anims: Phaser.Animations.AnimationManager, rate: number) => {
+  return [
+    {
+      key: `enemy-shaman-idle`,
+      frames: anims.generateFrameNames('enemy-shaman', {
+        start: 316,
+        end: 319,
+        prefix: 'tower-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+
+    },
+    {
+      key: `enemy-shaman-moveleft`,
+      frames: anims.generateFrameNames('enemy-shaman', {
+        start: 320,
+        end: 323,
+        prefix: 'tower-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+      
+    },
+
+    {
+      key: `enemy-shaman-moveright`,
+      frames: anims.generateFrameNames('enemy-shaman', {
+        start: 320,
+        end: 323,
+        prefix: 'tower-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-shaman-dead`,
+      frames: anims.generateFrameNames('enemy-shaman', {
+        start: 329,
+        end: 335,
+        prefix: 'tower-',
+        suffix: '.png',
+      }),
+      repeat: 0,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-shaman-moveup`,
+      frames: anims.generateFrameNames('enemy-shaman', {
+        start: 320,
+        end: 323,
+        prefix: 'tower-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-shaman-movedown`,
+      frames: anims.generateFrameNames('enemy-shaman', {
+        start: 320,
+        end: 323,
+        prefix: 'tower-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-shaman-attack`,
+      frames: anims.generateFrameNames('enemy-shaman', {
+        start: 324,
+        end: 328,
+        prefix: 'tower-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    }
+
+  ]
+}
 export {
 
-  GetRatAnims, GetRatOgreAnims
+  GetRatAnims, GetRatOgreAnims, GetShamanAnims
 
 }

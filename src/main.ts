@@ -3,12 +3,13 @@ import Citadel from './scenes/Citadel'
 import Preloader from './scenes/Preloader'
 import Titlescene from './scenes/Titlescene'
 import Splash from './scenes/Splash'
-import Overworld from './scenes/Overworld'
+import Overworld from './scenes/OverworldTitle'
 import PlayerNameAndPortrait from './scenes/PlayerNameAndPortrait'
+import OverworldTitle from './scenes/OverworldTitle'
 
 export default new Phaser.Game(
 	{
-	scene: [Preloader,PlayerNameAndPortrait,Titlescene,Splash,Overworld],
+	scene: [Preloader,PlayerNameAndPortrait,Titlescene,Splash,OverworldTitle],
 	type: Phaser.WEBGL,
 	autoFocus: true,
 	//backgroundColor: '0x000000',

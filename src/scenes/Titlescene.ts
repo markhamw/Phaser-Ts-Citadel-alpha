@@ -73,46 +73,40 @@ export default class Titlescene extends Phaser.Scene {
   };
 
   DisplayLetter = () => {
-    const letterToWilly = `
-        
-        ${this.wrGame.playerName}, 
+    const letterToWilly = 
+`
+${this.wrGame.playerName}, 
     
-        We have reports of raids by the likes of 
-        ${this.wrGame.kingRat} et al.
+We have reports of raids on the island!!
+         
+The vermin followers of ${this.wrGame.kingRat} 
+have been raiding our villages.
 
-        Can you believe it? The rat bastard built
-        a complex underground passage!
-
-        When I was a young man, the rats didnt have the 
-        capacity to build anything but crude holes to hide in.
-
-        Anyway, you're our only hope...
-        
-        When you receive this message, please come 
-        help clear them out. 
-
-        ps. Dont let them bite. Their bites are poisonous.
+We need you to stop them!
         
         
-                                               Good Luck,     
-                                               Constable Green
+                       THAAAANKS!,     
+                       Constable Green
                                                
                                                
-                                               
-                                               
-                                               
-               (Press SPACE when you're ready to begin..)`;
+`;
 
-    let scroll = this.add.sprite(40, 0, "scroll").setPipeline("Light2D");
+    let scroll = this.add.sprite(0, 0, "scroll").setPipeline("Light2D");
     scroll.setOrigin(0, 0);
     scroll.setScale(0.44);
+    
+    Phaser.Display.Align.In.Center(scroll, this.add.zone(240,230,500,500));
+    
     let text = this.add
       .bitmapText(this.TitleX, this.TitleY, "invertedfontyellow", letterToWilly, this.TitleFontSize)
       .setAlpha(this.TitleAlpha)
       .setPipeline("Light2D");
+  Phaser.Display.Align.In.Center(text,this.add.zone(0,0,200,200))
   };
-
+  
   create() {
+  
+
     this.cameras.main.setPipeline("Light2D");
     this.lights.enable();
     this.light = this.lights.addLight(250, 250, 500,0x888888, 5);

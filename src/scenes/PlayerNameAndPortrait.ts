@@ -10,7 +10,7 @@ export default class PlayerNameAndPortrait extends Phaser.Scene {
   constructor() {
     super("PlayerNameAndPortrait");
   }
-
+  
   init(data) {
     this.wrGame = data;
     this.wrGame.playerCurrentScene = "Title";

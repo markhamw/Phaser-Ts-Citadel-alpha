@@ -140,13 +140,13 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
         })
     }
     preUpdate(t: number, dt: number) {
+        this.flipX = false;
         super.preUpdate(t, dt)
         this.CurrentTrashTalk.setPosition(this.x+25,this.y-25)
         switch (this.facing) {
             case Direction.UP:
                 this.setVelocity(0, -this.RatSpeed)
                 this.anims.play('enemy-rat-moveup', true)
-                
             case Direction.DOWN:
                 this.setVelocity(0, this.RatSpeed)
                 this.anims.play('enemy-rat-movedown', true)
@@ -154,6 +154,7 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
             case Direction.LEFT:
                 this.setVelocity(-this.RatSpeed, 0)
                 this.anims.play('enemy-rat-moveleft', true)
+                this.flipX = true;
                 break
             case Direction.RIGHT:
                 this.setVelocity(this.RatSpeed, 0)
@@ -162,10 +163,12 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
             case Direction.LEFTANDUP:
                 this.setVelocity(-this.RatSpeed, -this.RatSpeed)
                 this.anims.play('enemy-rat-moveleft', true)
+                this.flipX = true;
                 break
             case Direction.LEFTANDDOWN:
                 this.setVelocity(-this.RatSpeed, this.RatSpeed)
                 this.anims.play('enemy-rat-moveleft', true)
+                this.flipX = true;
                 break
             case Direction.RIGHTANDUP:
                 this.setVelocity(this.RatSpeed, -this.RatSpeed)

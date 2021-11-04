@@ -1,16 +1,18 @@
 import { WRGame } from "~/game/game";
-import { AddWASDKeysToScene } from "~/game/gamelogic";
+import { AddWASDKeysToScene, RandomCoord } from "~/game/gamelogic";
 
 export default class Splash extends Phaser.Scene {
  
   private keys!: Phaser.Types.Input.Keyboard.CursorKeys;
   wasd!: Phaser.Input.Keyboard.Key[];
-  private light!: Phaser.GameObjects.Light;
+  //private light!: Phaser.GameObjects.Light;
+  private lightColor!: number;
+  private lightColors: number[] = [0x00FFFF, 0x00FF00, 0xFFFF00, 0xFF0000, 0xFF00FF, 0xFFFFFF];
   private isStarted: boolean;
   wrGame!: WRGame;
   menuOption!: Phaser.GameObjects.Text;
   titleImage!: Phaser.GameObjects.Sprite;
-
+  
   constructor() {
     super("Splash");
    this.isStarted = false;
@@ -30,20 +32,31 @@ export default class Splash extends Phaser.Scene {
 
   create() {
     let music = this.sound.play('idunnobygrapesofwrath',{volume:.002})
-    this.titleImage = this.add.sprite(0,0,'titlegraphic').setPipeline('Light2D');
+    this.titleImage = this.add.sprite(0,0,'titlegraphic').setAlpha(1)
     this.titleImage.setOrigin(0,0);
-    this.titleImage.setScale(1.56)
-    let willys = this.add.text(100, 100, "WILLYS", {fontFamily:"Times New Roman", fontSize: "64px", fontStyle:"Bold",  color: "#000000"})
-    let ratfights = this.add.text(100, 100, "RATFIGHTS", {fontFamily:"Times New Roman", fontSize: "64px", fontStyle:"Bold",  color: "#000000"}).setAlpha(.6)
+    this.titleImage.setScale(1)
+    let island = this.add.text(100, 100, "Island", {fontFamily:"Pixel", fontSize: "64px",  color: "#000055"})
+    island.setShadow(2, 2, "#000066", 2, true, true);
+
+    let willys = this.add.text(100, 100, "Willys", {fontFamily:"Pixel", fontSize: "64px",  color: "#0000FF"})
+    willys.setShadow(2, 2, "#000066", 2, true, true);
+
+    Phaser.Display.Align.In.Center(this.titleImage,this.add.zone(240,240,500,500))
     Phaser.Display.Align.In.Center(willys,this.add.zone(240,130,200,200))
-    Phaser.Display.Align.In.Center(ratfights,this.add.zone(240,170,200,200))
-    this.lights.enable();
+    Phaser.Display.Align.In.Center(island,this.add.zone(240,160,200,200))
+  //  this.lights.enable();
 
       this.keys.space.on('up', () => {
         this.Start();
     })
-    this.light = this.lights.addLight(250, 250, 500,0x888888, 5);
+    //this.light = this.lights.addLight(250, 250, 500,0x888888, 5);
 
+  /*   this.keys.shift.on('up', () => {
+      this.light.setIntensity(this.light.intensity + 1);
+      this.lightColor = this.lightColors[randomInt(0,5)];
+      this.light.setColor(this.lightColor);
+    })  */   
+   
   }
   ShowMenu = () =>{
     this.titleImage.visible = false;
@@ -112,10 +125,10 @@ export default class Splash extends Phaser.Scene {
 
   update(){
     
-    this.light.x = this.input.activePointer.x;
-    this.light.y = this.input.activePointer.y;
+  //  this.light.x = this.input.activePointer.x;
+ //   this.light.y = this.input.activePointer.y;
     let S = this.wasd[2]
-    this.input.mousePointer.smoothFactor = .021;
+    
 
  
     if (this.isStarted && S.isDown) {
@@ -126,3 +139,9 @@ export default class Splash extends Phaser.Scene {
   
 
 }
+
+function randomInt(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+

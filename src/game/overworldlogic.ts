@@ -1,4 +1,4 @@
-import Overworld from "~/scenes/Overworld";
+import Overworld from "~/scenes/OverworldTitle";
 
 export type WindDirection = {
     xspeed: number;
@@ -20,6 +20,7 @@ export const buildingsforWorldMap: Placement[] = [
     { collection: "buildings32", tag: "Tavern.png", location: { x: 320, y: 310 } },
     { collection: "buildings32", tag: "TradingPost.png", location: { x: 250, y: 130 } },
     { collection: "buildings32", tag: "Sanctuary.png", location: { x: 115, y: 365 } },
+    { collection: "buildings32", tag: "Cartographer.png", location: { x: 47, y: 39 } },
     
     { collection: "buildings32", tag: "Prison.png", location: { x: 365, y: 95 } },
     { collection: "buildings16", tag: "EyeOfTheMagi.png", location: { x: 365, y: 115 } },
@@ -34,7 +35,7 @@ export const buildingsforWorldMap: Placement[] = [
 
 export const GenerateBuildings = (scene:Overworld) => {
     buildingsforWorldMap.forEach((building) => {
-      scene.add.sprite(building.location.x, building.location.y, building.collection, building.tag).setScale(1.15);
+      scene.add.sprite(building.location.x, building.location.y, building.collection, building.tag).setScale(1.45);
     });
   };
 

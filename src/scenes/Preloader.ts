@@ -18,7 +18,7 @@ export default class Preloader extends Phaser.Scene {
         this.load.tilemapTiledJSON("allbiomes","tiles/tilemap.json");
 
         this.load.image('window1',"assets/window1.png")
-    
+        
         this.load.atlas('buildings32',"assets/buildings32.png","assets/buildings32.json")
 
         this.load.atlas('buildings16',"assets/buildings16.png","assets/buildings16.json")
@@ -46,7 +46,9 @@ export default class Preloader extends Phaser.Scene {
         this.load.image("border","assets/border.png")
         this.load.image("titlegraphic","assets/TitleGraphic.png")
 
-   
+        
+
+        
         enemies.forEach(enemy => {
             this.load.atlas(enemy.name,enemy.PathToPNG, enemy.PathToJSON)
         }) 
@@ -54,7 +56,9 @@ export default class Preloader extends Phaser.Scene {
         this.load.audio('ratsound',["assets/ratscream.mp3"])
         this.load.audio('knifeswipe',["assets/knifeSwipe2.mp3"])
         
-
+        this.load.bitmapFont("customfont", "fonts/Guevara_0.png", "fonts/Guevara.xml");
+        this.load.bitmapFont("invertedfont", "fonts/font-inverted.png", "fonts/Guevara.xml");
+        this.load.bitmapFont("invertedfontyellow", "fonts/font-inverted-yellow.png", "fonts/Guevara.xml");
 
 
         this.load.audio('Forest1',["assets/Forest1.mp3"])
@@ -67,8 +71,10 @@ export default class Preloader extends Phaser.Scene {
         this.load.audio('doorOpen',["assets/doorOpen_2.ogg"])
         this.load.audio('doorClose',["assets/doorClose_4.ogg"])
        
-        this.load.audio('rainyfeelsbyDonnieOzone',["assets/music.mp3"])
+        //zsthis.load.audio('rainyfeelsbyDonnieOzone',["assets/music.mp3"])
       
+        this.load.audio('music2',["assets/music2.mp3"])
+        
     
     }
 
@@ -87,7 +93,7 @@ export default class Preloader extends Phaser.Scene {
             
         }
 
-        this.scene.start("Splash", wrGame);
+        this.scene.start("OverworldTitle", wrGame);
      /*    this.scene.start("Overworld", wrGame); */
         
     }

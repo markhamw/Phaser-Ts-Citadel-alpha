@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import { GetOverworldPlayerAnims, GetPlayerAnims } from "~/anims/PlayerAnims";
 import { Condition, PlayerStatus, Speech } from "~/game/game";
 import { AddWASDKeysToScene, CreateAnimationSet } from "~/game/gamelogic";
-import Overworld from "~/scenes/Overworld";
+import Overworld from "~/scenes/OverworldTitle";
 
 declare global {
   namespace Phaser.GameObjects {

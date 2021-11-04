@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+
 enum RatNameStart{
   Do,
   Ra,
@@ -69,4 +70,4 @@ function RandomCoord(max: number): number {
   } else return num + 30;
 };
 
-export { AddWASDKeysToScene, CreateAnimationSet, getNewKingRatName, getNewRatName, RandomCoord };
+export { AddWASDKeysToScene, CreateAnimationSet, getNewKingRatName, getNewRatName, RandomCoord,  };

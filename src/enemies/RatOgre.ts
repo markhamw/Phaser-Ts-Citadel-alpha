@@ -136,15 +136,17 @@ export default class RatOgre extends Phaser.Physics.Arcade.Sprite {
         this.scene.events.addListener('player-interact-event',()=>{
             console.log("RatOgre heard player attack event")
         })
+        
     }
     preUpdate(t: number, dt: number) {
+        this.flipX = false;
         super.preUpdate(t, dt)
         this.CurrentTrashTalk.setPosition(this.x+25,this.y-25)
         switch (this.facing) {
             case Direction.UP:
                 this.setVelocity(0, -this.RatSpeed)
                 this.anims.play('enemy-ratogre-moveup', true)
-                
+                break
             case Direction.DOWN:
                 this.setVelocity(0, this.RatSpeed)
                 this.anims.play('enemy-ratogre-movedown', true)
@@ -152,6 +154,7 @@ export default class RatOgre extends Phaser.Physics.Arcade.Sprite {
             case Direction.LEFT:
                 this.setVelocity(-this.RatSpeed, 0)
                 this.anims.play('enemy-ratogre-moveleft', true)
+                this.flipX = true;
                 break
             case Direction.RIGHT:
                 this.setVelocity(this.RatSpeed, 0)
@@ -160,10 +163,12 @@ export default class RatOgre extends Phaser.Physics.Arcade.Sprite {
             case Direction.LEFTANDUP:
                 this.setVelocity(-this.RatSpeed, -this.RatSpeed)
                 this.anims.play('enemy-ratogre-moveleft', true)
+                this.flipX = true;
                 break
             case Direction.LEFTANDDOWN:
                 this.setVelocity(-this.RatSpeed, this.RatSpeed)
                 this.anims.play('enemy-ratogre-moveleft', true)
+                this.flipX = true;
                 break
             case Direction.RIGHTANDUP:
                 this.setVelocity(this.RatSpeed, -this.RatSpeed)
@@ -176,6 +181,7 @@ export default class RatOgre extends Phaser.Physics.Arcade.Sprite {
             case Direction.IDLE:
                 this.setVelocity(0, 0)
                 this.anims.play('enemy-ratogre-idle', true)
+                break
         }
     }
 }
