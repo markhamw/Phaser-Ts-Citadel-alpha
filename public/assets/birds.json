@@ -1,0 +1,2036 @@
+{
+	"textures": [
+		{
+			"image": "birds.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 128,
+				"h": 347
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "birds-85.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 25,
+						"w": 34,
+						"h": 22
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 34,
+						"h": 22
+					}
+				},
+				{
+					"filename": "birds-88.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 25,
+						"w": 34,
+						"h": 22
+					},
+					"frame": {
+						"x": 37,
+						"y": 1,
+						"w": 34,
+						"h": 22
+					}
+				},
+				{
+					"filename": "birds-91.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 25,
+						"w": 34,
+						"h": 22
+					},
+					"frame": {
+						"x": 73,
+						"y": 1,
+						"w": 34,
+						"h": 22
+					}
+				},
+				{
+					"filename": "birds-50.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 23,
+						"w": 18,
+						"h": 25
+					},
+					"frame": {
+						"x": 109,
+						"y": 1,
+						"w": 18,
+						"h": 25
+					}
+				},
+				{
+					"filename": "birds-94.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 25,
+						"w": 34,
+						"h": 22
+					},
+					"frame": {
+						"x": 1,
+						"y": 25,
+						"w": 34,
+						"h": 22
+					}
+				},
+				{
+					"filename": "birds-49.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 25,
+						"w": 32,
+						"h": 20
+					},
+					"frame": {
+						"x": 37,
+						"y": 25,
+						"w": 32,
+						"h": 20
+					}
+				},
+				{
+					"filename": "birds-52.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 25,
+						"w": 32,
+						"h": 20
+					},
+					"frame": {
+						"x": 71,
+						"y": 25,
+						"w": 32,
+						"h": 20
+					}
+				},
+				{
+					"filename": "birds-84.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 19,
+						"w": 22,
+						"h": 29
+					},
+					"frame": {
+						"x": 105,
+						"y": 28,
+						"w": 22,
+						"h": 29
+					}
+				},
+				{
+					"filename": "birds-55.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 25,
+						"w": 32,
+						"h": 20
+					},
+					"frame": {
+						"x": 37,
+						"y": 47,
+						"w": 32,
+						"h": 20
+					}
+				},
+				{
+					"filename": "birds-58.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 25,
+						"w": 32,
+						"h": 20
+					},
+					"frame": {
+						"x": 71,
+						"y": 47,
+						"w": 32,
+						"h": 20
+					}
+				},
+				{
+					"filename": "birds-87.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 19,
+						"w": 22,
+						"h": 29
+					},
+					"frame": {
+						"x": 105,
+						"y": 59,
+						"w": 22,
+						"h": 29
+					}
+				},
+				{
+					"filename": "birds-60.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 23,
+						"w": 26,
+						"h": 25
+					},
+					"frame": {
+						"x": 1,
+						"y": 49,
+						"w": 26,
+						"h": 25
+					}
+				},
+				{
+					"filename": "birds-63.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 23,
+						"w": 26,
+						"h": 25
+					},
+					"frame": {
+						"x": 29,
+						"y": 69,
+						"w": 26,
+						"h": 25
+					}
+				},
+				{
+					"filename": "birds-66.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 23,
+						"w": 26,
+						"h": 25
+					},
+					"frame": {
+						"x": 1,
+						"y": 76,
+						"w": 26,
+						"h": 25
+					}
+				},
+				{
+					"filename": "birds-69.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 23,
+						"w": 26,
+						"h": 25
+					},
+					"frame": {
+						"x": 57,
+						"y": 69,
+						"w": 26,
+						"h": 25
+					}
+				},
+				{
+					"filename": "birds-53.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 23,
+						"w": 18,
+						"h": 25
+					},
+					"frame": {
+						"x": 85,
+						"y": 69,
+						"w": 18,
+						"h": 25
+					}
+				},
+				{
+					"filename": "birds-90.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 19,
+						"w": 22,
+						"h": 29
+					},
+					"frame": {
+						"x": 105,
+						"y": 90,
+						"w": 22,
+						"h": 29
+					}
+				},
+				{
+					"filename": "birds-72.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 23,
+						"w": 26,
+						"h": 25
+					},
+					"frame": {
+						"x": 29,
+						"y": 96,
+						"w": 26,
+						"h": 25
+					}
+				},
+				{
+					"filename": "birds-75.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 23,
+						"w": 26,
+						"h": 25
+					},
+					"frame": {
+						"x": 1,
+						"y": 103,
+						"w": 26,
+						"h": 25
+					}
+				},
+				{
+					"filename": "birds-78.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 23,
+						"w": 26,
+						"h": 25
+					},
+					"frame": {
+						"x": 57,
+						"y": 96,
+						"w": 26,
+						"h": 25
+					}
+				},
+				{
+					"filename": "birds-56.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 23,
+						"w": 18,
+						"h": 25
+					},
+					"frame": {
+						"x": 85,
+						"y": 96,
+						"w": 18,
+						"h": 25
+					}
+				},
+				{
+					"filename": "birds-93.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 19,
+						"w": 22,
+						"h": 29
+					},
+					"frame": {
+						"x": 105,
+						"y": 121,
+						"w": 22,
+						"h": 29
+					}
+				},
+				{
+					"filename": "birds-81.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 23,
+						"w": 26,
+						"h": 25
+					},
+					"frame": {
+						"x": 29,
+						"y": 123,
+						"w": 26,
+						"h": 25
+					}
+				},
+				{
+					"filename": "birds-62.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 30,
+						"w": 26,
+						"h": 18
+					},
+					"frame": {
+						"x": 1,
+						"y": 130,
+						"w": 26,
+						"h": 18
+					}
+				},
+				{
+					"filename": "birds-65.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 30,
+						"w": 26,
+						"h": 18
+					},
+					"frame": {
+						"x": 57,
+						"y": 123,
+						"w": 26,
+						"h": 18
+					}
+				},
+				{
+					"filename": "birds-59.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 23,
+						"w": 18,
+						"h": 25
+					},
+					"frame": {
+						"x": 85,
+						"y": 123,
+						"w": 18,
+						"h": 25
+					}
+				},
+				{
+					"filename": "birds-68.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 30,
+						"w": 26,
+						"h": 18
+					},
+					"frame": {
+						"x": 57,
+						"y": 143,
+						"w": 26,
+						"h": 18
+					}
+				},
+				{
+					"filename": "birds-86.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 24,
+						"w": 18,
+						"h": 23
+					},
+					"frame": {
+						"x": 85,
+						"y": 150,
+						"w": 18,
+						"h": 23
+					}
+				},
+				{
+					"filename": "birds-48.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 22,
+						"w": 22,
+						"h": 24
+					},
+					"frame": {
+						"x": 105,
+						"y": 152,
+						"w": 22,
+						"h": 24
+					}
+				},
+				{
+					"filename": "birds-71.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 30,
+						"w": 26,
+						"h": 18
+					},
+					"frame": {
+						"x": 1,
+						"y": 150,
+						"w": 26,
+						"h": 18
+					}
+				},
+				{
+					"filename": "birds-74.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 30,
+						"w": 26,
+						"h": 18
+					},
+					"frame": {
+						"x": 29,
+						"y": 150,
+						"w": 26,
+						"h": 18
+					}
+				},
+				{
+					"filename": "birds-77.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 30,
+						"w": 26,
+						"h": 18
+					},
+					"frame": {
+						"x": 57,
+						"y": 163,
+						"w": 26,
+						"h": 18
+					}
+				},
+				{
+					"filename": "birds-89.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 24,
+						"w": 18,
+						"h": 23
+					},
+					"frame": {
+						"x": 85,
+						"y": 175,
+						"w": 18,
+						"h": 23
+					}
+				},
+				{
+					"filename": "birds-51.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 22,
+						"w": 22,
+						"h": 24
+					},
+					"frame": {
+						"x": 105,
+						"y": 178,
+						"w": 22,
+						"h": 24
+					}
+				},
+				{
+					"filename": "birds-80.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 30,
+						"w": 26,
+						"h": 18
+					},
+					"frame": {
+						"x": 1,
+						"y": 170,
+						"w": 26,
+						"h": 18
+					}
+				},
+				{
+					"filename": "birds-83.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 30,
+						"w": 26,
+						"h": 18
+					},
+					"frame": {
+						"x": 29,
+						"y": 170,
+						"w": 26,
+						"h": 18
+					}
+				},
+				{
+					"filename": "birds-61.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 33,
+						"w": 26,
+						"h": 15
+					},
+					"frame": {
+						"x": 57,
+						"y": 183,
+						"w": 26,
+						"h": 15
+					}
+				},
+				{
+					"filename": "birds-64.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 33,
+						"w": 26,
+						"h": 15
+					},
+					"frame": {
+						"x": 1,
+						"y": 190,
+						"w": 26,
+						"h": 15
+					}
+				},
+				{
+					"filename": "birds-67.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 33,
+						"w": 26,
+						"h": 15
+					},
+					"frame": {
+						"x": 29,
+						"y": 190,
+						"w": 26,
+						"h": 15
+					}
+				},
+				{
+					"filename": "birds-70.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 33,
+						"w": 26,
+						"h": 15
+					},
+					"frame": {
+						"x": 57,
+						"y": 200,
+						"w": 26,
+						"h": 15
+					}
+				},
+				{
+					"filename": "birds-92.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 24,
+						"w": 18,
+						"h": 23
+					},
+					"frame": {
+						"x": 85,
+						"y": 200,
+						"w": 18,
+						"h": 23
+					}
+				},
+				{
+					"filename": "birds-54.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 22,
+						"w": 22,
+						"h": 24
+					},
+					"frame": {
+						"x": 105,
+						"y": 204,
+						"w": 22,
+						"h": 24
+					}
+				},
+				{
+					"filename": "birds-73.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 33,
+						"w": 26,
+						"h": 15
+					},
+					"frame": {
+						"x": 1,
+						"y": 207,
+						"w": 26,
+						"h": 15
+					}
+				},
+				{
+					"filename": "birds-76.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 33,
+						"w": 26,
+						"h": 15
+					},
+					"frame": {
+						"x": 29,
+						"y": 207,
+						"w": 26,
+						"h": 15
+					}
+				},
+				{
+					"filename": "birds-79.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 33,
+						"w": 26,
+						"h": 15
+					},
+					"frame": {
+						"x": 57,
+						"y": 217,
+						"w": 26,
+						"h": 15
+					}
+				},
+				{
+					"filename": "birds-95.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 24,
+						"w": 18,
+						"h": 23
+					},
+					"frame": {
+						"x": 85,
+						"y": 225,
+						"w": 18,
+						"h": 23
+					}
+				},
+				{
+					"filename": "birds-57.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 22,
+						"w": 22,
+						"h": 24
+					},
+					"frame": {
+						"x": 105,
+						"y": 230,
+						"w": 22,
+						"h": 24
+					}
+				},
+				{
+					"filename": "birds-82.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 33,
+						"w": 26,
+						"h": 15
+					},
+					"frame": {
+						"x": 1,
+						"y": 224,
+						"w": 26,
+						"h": 15
+					}
+				},
+				{
+					"filename": "birds-12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 29,
+						"y": 224,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-14.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 29,
+						"y": 224,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-15.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 241,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-17.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 241,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-18.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 55,
+						"y": 234,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-20.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 55,
+						"y": 234,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-21.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 27,
+						"y": 242,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-23.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 259,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-36.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 26,
+						"w": 12,
+						"h": 22
+					},
+					"frame": {
+						"x": 81,
+						"y": 250,
+						"w": 12,
+						"h": 22
+					}
+				},
+				{
+					"filename": "birds-24.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 53,
+						"y": 252,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-26.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 53,
+						"y": 252,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-27.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 27,
+						"y": 260,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-29.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 27,
+						"y": 260,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-30.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 277,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-32.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 277,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-33.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 53,
+						"y": 270,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-35.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 53,
+						"y": 270,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-13.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 32,
+						"w": 23,
+						"h": 16
+					},
+					"frame": {
+						"x": 27,
+						"y": 278,
+						"w": 23,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-16.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 32,
+						"w": 23,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 295,
+						"w": 23,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-19.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 32,
+						"w": 23,
+						"h": 16
+					},
+					"frame": {
+						"x": 95,
+						"y": 256,
+						"w": 23,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-37.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 25,
+						"w": 12,
+						"h": 22
+					},
+					"frame": {
+						"x": 1,
+						"y": 313,
+						"w": 12,
+						"h": 22
+					}
+				},
+				{
+					"filename": "birds-38.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 26,
+						"w": 12,
+						"h": 22
+					},
+					"frame": {
+						"x": 1,
+						"y": 313,
+						"w": 12,
+						"h": 22
+					}
+				},
+				{
+					"filename": "birds-39.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 26,
+						"w": 12,
+						"h": 22
+					},
+					"frame": {
+						"x": 15,
+						"y": 313,
+						"w": 12,
+						"h": 22
+					}
+				},
+				{
+					"filename": "birds-22.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 32,
+						"w": 23,
+						"h": 16
+					},
+					"frame": {
+						"x": 79,
+						"y": 274,
+						"w": 23,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-25.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 32,
+						"w": 23,
+						"h": 16
+					},
+					"frame": {
+						"x": 104,
+						"y": 274,
+						"w": 23,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-28.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 32,
+						"w": 23,
+						"h": 16
+					},
+					"frame": {
+						"x": 52,
+						"y": 288,
+						"w": 23,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-40.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 25,
+						"w": 12,
+						"h": 22
+					},
+					"frame": {
+						"x": 29,
+						"y": 296,
+						"w": 12,
+						"h": 22
+					}
+				},
+				{
+					"filename": "birds-41.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 26,
+						"w": 12,
+						"h": 22
+					},
+					"frame": {
+						"x": 29,
+						"y": 296,
+						"w": 12,
+						"h": 22
+					}
+				},
+				{
+					"filename": "birds-42.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 26,
+						"w": 12,
+						"h": 22
+					},
+					"frame": {
+						"x": 29,
+						"y": 320,
+						"w": 12,
+						"h": 22
+					}
+				},
+				{
+					"filename": "birds-43.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 25,
+						"w": 12,
+						"h": 22
+					},
+					"frame": {
+						"x": 43,
+						"y": 306,
+						"w": 12,
+						"h": 22
+					}
+				},
+				{
+					"filename": "birds-44.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 26,
+						"w": 12,
+						"h": 22
+					},
+					"frame": {
+						"x": 43,
+						"y": 306,
+						"w": 12,
+						"h": 22
+					}
+				},
+				{
+					"filename": "birds-31.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 32,
+						"w": 23,
+						"h": 16
+					},
+					"frame": {
+						"x": 43,
+						"y": 330,
+						"w": 23,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-45.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 26,
+						"w": 12,
+						"h": 22
+					},
+					"frame": {
+						"x": 57,
+						"y": 306,
+						"w": 12,
+						"h": 22
+					}
+				},
+				{
+					"filename": "birds-34.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 32,
+						"w": 23,
+						"h": 16
+					},
+					"frame": {
+						"x": 68,
+						"y": 330,
+						"w": 23,
+						"h": 16
+					}
+				},
+				{
+					"filename": "birds-46.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 25,
+						"w": 12,
+						"h": 22
+					},
+					"frame": {
+						"x": 71,
+						"y": 306,
+						"w": 12,
+						"h": 22
+					}
+				},
+				{
+					"filename": "birds-47.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 26,
+						"w": 12,
+						"h": 22
+					},
+					"frame": {
+						"x": 71,
+						"y": 306,
+						"w": 12,
+						"h": 22
+					}
+				},
+				{
+					"filename": "birds-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 25,
+						"w": 12,
+						"h": 20
+					},
+					"frame": {
+						"x": 85,
+						"y": 292,
+						"w": 12,
+						"h": 20
+					}
+				},
+				{
+					"filename": "birds-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 26,
+						"w": 12,
+						"h": 20
+					},
+					"frame": {
+						"x": 85,
+						"y": 292,
+						"w": 12,
+						"h": 20
+					}
+				},
+				{
+					"filename": "birds-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 25,
+						"w": 12,
+						"h": 20
+					},
+					"frame": {
+						"x": 85,
+						"y": 292,
+						"w": 12,
+						"h": 20
+					}
+				},
+				{
+					"filename": "birds-10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 26,
+						"w": 12,
+						"h": 20
+					},
+					"frame": {
+						"x": 93,
+						"y": 314,
+						"w": 12,
+						"h": 20
+					}
+				},
+				{
+					"filename": "birds-11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 25,
+						"w": 12,
+						"h": 20
+					},
+					"frame": {
+						"x": 93,
+						"y": 314,
+						"w": 12,
+						"h": 20
+					}
+				},
+				{
+					"filename": "birds-9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 25,
+						"w": 12,
+						"h": 20
+					},
+					"frame": {
+						"x": 93,
+						"y": 314,
+						"w": 12,
+						"h": 20
+					}
+				},
+				{
+					"filename": "birds-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 25,
+						"w": 12,
+						"h": 20
+					},
+					"frame": {
+						"x": 99,
+						"y": 292,
+						"w": 12,
+						"h": 20
+					}
+				},
+				{
+					"filename": "birds-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 26,
+						"w": 12,
+						"h": 20
+					},
+					"frame": {
+						"x": 99,
+						"y": 292,
+						"w": 12,
+						"h": 20
+					}
+				},
+				{
+					"filename": "birds-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 25,
+						"w": 12,
+						"h": 20
+					},
+					"frame": {
+						"x": 99,
+						"y": 292,
+						"w": 12,
+						"h": 20
+					}
+				},
+				{
+					"filename": "birds-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 25,
+						"w": 12,
+						"h": 20
+					},
+					"frame": {
+						"x": 113,
+						"y": 292,
+						"w": 12,
+						"h": 20
+					}
+				},
+				{
+					"filename": "birds-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 26,
+						"w": 12,
+						"h": 20
+					},
+					"frame": {
+						"x": 113,
+						"y": 292,
+						"w": 12,
+						"h": 20
+					}
+				},
+				{
+					"filename": "birds-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 25,
+						"w": 12,
+						"h": 20
+					},
+					"frame": {
+						"x": 113,
+						"y": 292,
+						"w": 12,
+						"h": 20
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:756336c902f602b1a1c80c39d0baca80:de99855d62ac0d0268f893148f0bb3d4:05064d7bb83a0e2b52752dd6e3168bce$"
+	}
+}

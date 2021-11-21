@@ -317,7 +317,7 @@ export default class OverworldTitle extends Phaser.Scene {
     const baseLayer = map2.createLayer(Layers.Base, tileset3);
     const decorLayer = map2.createLayer(Layers.Decor, tileset3);
 
-    GenerateBuildings(this);
+    GenerateBuildings(this as Overworld);
     RandomCloud(this);
     RandomCloud(this);
     RandomCloud(this);

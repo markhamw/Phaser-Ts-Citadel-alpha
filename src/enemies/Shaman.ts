@@ -26,7 +26,7 @@ export default class Shaman extends Phaser.Physics.Arcade.Sprite {
     private RatSpeed = Phaser.Math.Between(0, 2)
     private moveEvent: Phaser.Time.TimerEvent
     private DiscardCurrentTrashTalk: Phaser.Time.TimerEvent
-    private CurrentTrashTalk!: Phaser.GameObjects.BitmapText
+    private CurrentTrashTalk!: Phaser.GameObjects.Text
     private StartingXLoc: number;
     private StartingYLoc: number; 
     private EntityID: Guid;
@@ -83,7 +83,7 @@ export default class Shaman extends Phaser.Physics.Arcade.Sprite {
 
         this.StartingXLoc = x
         this.StartingYLoc = y
-        this.CurrentTrashTalk = scene.add.bitmapText(this.x, this.y, 'customfont', VocalEmotes[Phaser.Math.Between(0,7)], 16 )
+        this.CurrentTrashTalk = scene.add.text(this.x, this.y, VocalEmotes[Phaser.Math.Between(0,7)] )
         this.CurrentTrashTalk.visible=false;
         
        this.scene.physics.world.on(Phaser.Physics.Arcade.Events.TILE_COLLIDE, this.handleCollision, this.scene)

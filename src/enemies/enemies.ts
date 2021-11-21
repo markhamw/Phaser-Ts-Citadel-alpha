@@ -11,8 +11,8 @@ const enemies = [
   },
   {
     name: "enemy-shaman",
-    PathToPNG: "enemies/allenemies.png",
-    PathToJSON: "enemies/allenemies.json"
+    PathToPNG: "enemies/shaman.png",
+    PathToJSON: "enemies/shaman.json"
   },
 ];
 

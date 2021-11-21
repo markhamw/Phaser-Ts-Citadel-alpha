@@ -39,12 +39,12 @@ export default class OverworldTitle extends Phaser.Scene {
   debug!: boolean;
   titletext1!: Phaser.GameObjects.Text;
   titletext2!: Phaser.GameObjects.Text;
-  titletext3!: Phaser.GameObjects.Text;
   titletext4!: Phaser.GameObjects.Text;
   titletext0!: Phaser.GameObjects.Text;
   leftArrow!: Phaser.GameObjects.Sprite;
   rightArrow!: Phaser.GameObjects.Sprite;
   head!: Phaser.GameObjects.Sprite;
+  hasPlayerPressedSpace: boolean = false;
 
   constructor() {
     super("OverworldTitle");
@@ -60,20 +60,6 @@ export default class OverworldTitle extends Phaser.Scene {
     this.wrGame.playerCurrentScene = "OverWorld";
   }
 
-  setPlayerSpeechBubble = (text: Speech) => {
-    let { line1, line2, line3 } = text;
-
-    this.playerline1.setText(line1).setFontSize(10).setFontStyle("bold").setSize(10, 100);
-    this.playerline2.setText(line2).setFontSize(10).setFontStyle("bold");
-    this.playerline3.setText(line3).setFontSize(10).setFontStyle("bold");
-  };
-
-  updatePlayerSpeechBubble = () => {
-    this.setPlayerSpeechBubble(this.player.currentSpeech);
-    this.playerline1.setPosition(this.player.talkBubble.x + 30, this.player.talkBubble.y);
-    this.playerline2.setPosition(this.player.talkBubble.x + 30, this.player.talkBubble.y + 8);
-    this.playerline3.setPosition(this.player.talkBubble.x + 30, this.player.talkBubble.y + 17);
-  };
 
   createAnimations = () => {
     CreateAnimationSet(this, GetOverworldPlayerAnims(this.anims, 5, "playeroverworld"));
@@ -116,10 +102,33 @@ export default class OverworldTitle extends Phaser.Scene {
     borderBox.setOrigin(0, 0);
     borderBox.setScale(0.98);
     borderBox.setAlpha(0.5);
+    borderBox.setDepth(5);
+  };
+
+  createMenuKeyPressEvents = () => {
+    this.wasd[1].on("up", () => {
+      if (!this.hasPlayerPressedSpace) {
+        this.events.emit("changeHead", "left");
+      }
+
+    });
+    this.wasd[3].on("up", () => {
+      if (!this.hasPlayerPressedSpace) {
+        this.events.emit("changeHead", "right");
+      }
+
+    });
+    this.keys.space.on("up", () => {
+      if (!this.hasPlayerPressedSpace) {
+        this.hasPlayerPressedSpace = true;
+        this.events.emit("startintro");
+      }
+
+    });
   };
 
   createGoldOverlay = () => {
-    this.goldDisplay = this.add.text(60, 470, "x" + this.wrGame.playerGold, { fontSize: "12px", fontFamily: "Pixel", color: "#ffffff" });
+    this.goldDisplay = this.add.text(60, 470, "x" + this.wrGame.playerGold, { fontSize: "12px", fontFamily: "breathfire", color: "#ffffff" });
     this.goldCoin = this.add.sprite(50, 480, "coin", "coin_1.png");
     this.goldCoin.anims.play("coinrotate");
     this.goldCoin.setScale(2);
@@ -157,123 +166,119 @@ export default class OverworldTitle extends Phaser.Scene {
       }
     }
   };
-  createOverworldPlayer = (wrGame: WRGame) => {
-    this.player = this.add.player(320, 325, "playeroverworld", "player-movedown-1.png");
-    this.player.body.setSize(this.player.width * 0.75, this.player.height * 0.75);
 
-    this.player.talkBubble = this.add.sprite(this.player.x, this.player.y - 50, "window1").setScale(0.5);
+  PlayerSay = (text: Speech) => {
 
-    this.player.talkBubble.setOrigin(0.05, 0);
-    this.player.shouldDisplayTalkBubble = true;
+    //create
+    let { line1, line2, line3 } = text;
+    this.player.currentSpeech = text;
+    this.player.talkBubble = this.add.sprite(this.player.x, this.player.y - 50, "window1").setScale(.50).setDepth(5).setAlpha(0).setOrigin(0.05, 0);
     this.player.headPngforTalkBubble = this.add
       .sprite(this.player.talkBubble.x, this.player.talkBubble.y, "playerheads", this.wrGame.playerHead)
       .setScale(1.65)
-      .setOrigin(0.2, -0.07);
+      .setOrigin(0.2, -0.07).setDepth(5).setAlpha(0)
 
-    this.playerline1 = this.add.text(this.player.talkBubble.x + 30, this.player.talkBubble.y, "");
-    this.playerline2 = this.add.text(this.player.talkBubble.x + 30, this.player.talkBubble.y + 8, "");
-    this.playerline3 = this.add.text(this.player.talkBubble.x + 30, this.player.talkBubble.y + 17, "");
+    this.playerline1 = this.add.text(this.player.talkBubble.x + 30, this.player.talkBubble.y, line1).setAlpha(0).setDepth(6).setFontSize(10);
+    this.playerline2 = this.add.text(this.player.talkBubble.x + 30, this.player.talkBubble.y + 8, line2).setAlpha(0).setDepth(6).setFontSize(10);
+    this.playerline3 = this.add.text(this.player.talkBubble.x + 30, this.player.talkBubble.y + 17, line3).setAlpha(0).setDepth(6).setFontSize(10);
 
-    let showTalkBubble = this.time.addEvent({
-      delay: 1000,
-      repeat: -1,
+    let show = this.time.addEvent({
+      delay: 0,
+      repeat: 0,
       callback: () => {
-        if (this.player.shouldDisplayTalkBubble) {
-          this.player.talkBubble.setAlpha(1).setZ(1);
-          this.player.headPngforTalkBubble.setAlpha(1);
-          this.player.shouldDisplayTalkBubble = false;
-        }
+        this.player.talkBubble.setAlpha(1);
+        this.player.headPngforTalkBubble.setAlpha(1)
+        this.playerline1.setAlpha(1);
+        this.playerline2.setAlpha(1);
+        this.playerline3.setAlpha(1);
       },
     });
 
-    let positionTalkBubble = this.time.addEvent({
+    let update = this.time.addEvent({
       delay: 100,
-      repeat: -1,
+      repeat: 50,
       callback: () => {
         this.player.talkBubble.setPosition(this.player.x, this.player.y - 50);
         this.player.headPngforTalkBubble.setPosition(this.player.talkBubble.x, this.player.talkBubble.y);
-        this.setPlayerSpeechBubble(this.player.currentSpeech);
-        this.updatePlayerSpeechBubble();
+        this.playerline1.setPosition(this.player.talkBubble.x + 30, this.player.talkBubble.y);
+        this.playerline2.setPosition(this.player.talkBubble.x + 30, this.player.talkBubble.y + 8);
+        this.playerline3.setPosition(this.player.talkBubble.x + 30, this.player.talkBubble.y + 17);
       },
     });
 
-    let hideTalkBubble = this.time.addEvent({
+    let hide = this.time.addEvent({
       delay: 5000,
-      repeat: -1,
+      repeat: 0,
       callback: () => {
-        if (!this.player.shouldDisplayTalkBubble) {
-          this.player.talkBubble.setAlpha(0);
-          this.player.headPngforTalkBubble.setAlpha(0);
-          this.playerline1.setAlpha(0);
-          this.playerline2.setAlpha(0);
-          this.playerline3.setAlpha(0);
-        }
+        this.player.talkBubble.setAlpha(0);
+        this.player.headPngforTalkBubble.setAlpha(0);
+        this.playerline1.setAlpha(0);
+        this.playerline2.setAlpha(0);
+        this.playerline3.setAlpha(0);
       },
     });
+  }
+
+
+  createOverworldPlayer = (wrGame: WRGame) => {
+    this.player = this.add.player(320, 325, "playeroverworld", "player-movedown-1.png");
+    this.player.body.setSize(this.player.width * 0.75, this.player.height * 0.75);
   };
 
+  addTitleTextToScene = (text: string, x: number, y: number, fontSize: number, fontFamily: string, color: string, depth: number): Phaser.GameObjects.Text => {
+    let textObject = this.add.text(x, y, text, { fontSize: `${fontSize}px`, fontFamily: fontFamily, color: color });
+    textObject.setAlpha(0);
+    textObject.setDepth(depth);
+    textObject.setOrigin(0.5, 0.5);
+    textObject.setShadow(4, 4, "#000000", 8, true, true);
+    textObject.setInteractive();
+    textObject.on("pointerover", () => {
+      textObject.setScale(textObject.scale + .5);
+    }).on("pointerout", () => {
+      textObject.setScale(textObject.scale - .5);
+    });
+    return textObject;
+  }
+
   displayTitleText = () => {
-    this.titletext0 = this.add
-      .text(100, 100, "The Ranger Of", { fontSize: "32px", fontFamily: "Pixel", color: "#ffffff" })
-      .setOrigin(0.5, 0.5)
-      .setAlpha(0);
-    this.titletext0.setShadow(4, 4, "#000000", 2, true, true);
+    let fontFamily = "breathfire";
 
-    this.titletext1 = this.add
-      .text(0, 100, "Ratticus", { fontFamily: "Pixel", fontSize: "48px", color: "#BE620C" })
-      .setAlpha(0)
-      .setScale(1.5)
-      .setOrigin(0.5, 0.5);
-    this.titletext1.setShadow(4, 4, "#3E1E00", 2, true, true);
+    this.titletext0 = this.addTitleTextToScene("The Ranger Of", 100, 100, 32, fontFamily, "#ffffff", 3);
+    this.titletext1 = this.addTitleTextToScene("Ratticus", 0, 100, 48, fontFamily, "#BE620C", 3).setScale(1.5);
+    this.titletext2 = this.addTitleTextToScene("Island", 0, 100, 48, fontFamily, "#000055", 3).setScale(1.5);
+    this.titletext4 = this.addTitleTextToScene("Choose Your Face", 250, 230, 48, fontFamily, "#000000", 3);
 
-    this.titletext2 = this.add
-      .text(0, 100, "Island", { fontFamily: "Pixel", fontSize: "48px", color: "#000055" })
-      .setAlpha(0)
-      .setScale(1.5)
-      .setOrigin(0.5, 0.5);
-    this.titletext2.setShadow(4, 4, "#0000FF", 2, true, true);
+    this.titletext4.on("pointerover", () => {
+      this.titletext4.setText("Use A & D, or the arrows to change, SPACE to Begin");
+    }).on("pointerout", () => { this.titletext4.setText("Choose Your Face") });
 
-    this.titletext3 = this.add
-      .text(0, 100, "Space To Start", { fontFamily: "Pixel", fontSize: "48px", color: "#000000" })
-      .setAlpha(0)
-      .setOrigin(0.5, 0.5);
-    this.titletext3.setShadow(8, 8, "#FFFFFF", 2, true, true);
-
-    this.titletext4 = this.add
-      .text(250, 230, "Choose A Portrait", { fontFamily: "Pixel", fontSize: "24px", color: "#ffffff" })
-      .setOrigin(0.5, 0.5)
-      .setAlpha(0);
-    this.titletext4.setShadow(4, 4, "#000000", 2, true, true);
     Phaser.Display.Align.In.Center(this.titletext4, this.add.zone(250, 300, 200, 200));
-
     Phaser.Display.Align.In.Center(this.titletext0, this.add.zone(250, 100, 200, 200));
     Phaser.Display.Align.In.Center(this.titletext1, this.add.zone(250, 130, 200, 200));
     Phaser.Display.Align.In.Center(this.titletext2, this.add.zone(250, 175, 200, 200));
-    Phaser.Display.Align.In.Center(this.titletext3, this.add.zone(250, 420, 200, 200));
 
-    this.time.addEvent({
-      delay: 100,
-      repeat: 10,
-      callback: () => {
-        this.titletext0.setAlpha((this.titletext1.alpha += 0.1));
-        this.titletext1.setAlpha((this.titletext1.alpha += 0.1));
-        this.titletext2.setAlpha((this.titletext2.alpha += 0.1));
-        this.titletext3.setAlpha((this.titletext3.alpha += 0.065));
-        this.titletext4.setAlpha((this.titletext3.alpha += 0.1));
-
-      },
-    });
-    this.time.addEvent({
+    let fadeTextIn = this.time.addEvent({
       delay: 50,
       repeat: 10,
       callback: () => {
-        this.titletext3.setScale((this.titletext3.scaleX -= 0.025));
-        this.titletext3.setScale((this.titletext3.scaleY -= 0.025));
+        this.titletext0.setAlpha((this.titletext0.alpha += 0.1));
+        this.titletext1.setAlpha((this.titletext1.alpha += 0.1));
+        this.titletext2.setAlpha((this.titletext2.alpha += 0.1));
+        this.titletext4.setAlpha((this.titletext2.alpha += 0.1));
+      },
+    });
+
+    let startingTextAnim = this.time.addEvent({
+      delay: 50,
+      repeat: 10,
+      callback: () => {
+        this.titletext4.setScale((this.titletext4.scaleX -= 0.025));
+        this.titletext4.setScale((this.titletext4.scaleY -= 0.025));
       },
     });
   };
 
-  removeTitleText = () => {
+  startIntro = () => {
     this.time.addEvent({
       delay: 100,
       repeat: 10,
@@ -281,13 +286,13 @@ export default class OverworldTitle extends Phaser.Scene {
         this.titletext0.setAlpha((this.titletext0.alpha -= 0.1));
         this.titletext1.setAlpha((this.titletext1.alpha -= 0.1));
         this.titletext2.setAlpha((this.titletext2.alpha -= 0.1));
-        this.titletext3.setAlpha((this.titletext3.alpha -= 0.065));
         this.titletext4.setAlpha((this.titletext4.alpha -= 0.1));
         this.leftArrow.setAlpha((this.leftArrow.alpha -= 0.1));
         this.rightArrow.setAlpha((this.rightArrow.alpha -= 0.1));
         this.head.setAlpha((this.head.alpha -= 0.1));
       },
     });
+
 
     this.time.addEvent({
       delay: 1100,
@@ -296,53 +301,75 @@ export default class OverworldTitle extends Phaser.Scene {
         this.titletext0.destroy();
         this.titletext1.destroy();
         this.titletext2.destroy();
-        this.titletext3.destroy();
         this.titletext4.destroy();
         this.leftArrow.destroy();
         this.rightArrow.destroy();
         this.head.destroy();
+
       },
     });
 
     this.time.addEvent({
       delay: 1200,
       repeat: 0,
-      callback: () => { 
+      callback: () => {
         this.cameras.main.zoomTo(2, 3000, 'Linear', true);
         this.cameras.main.pan(320, 310, 3000);
 
       },
     });
 
+    this.time.addEvent({
+      delay: 4300,
+      repeat: 0,
+      callback: () => {
+        this.sound.play('doorOpen', { volume: .2 });
+      },
+    });
 
+    this.time.addEvent({
+      delay: 5900,
+      repeat: 0,
+      callback: () => {
+        this.sound.play('doorClose', { volume: .4 });
+      },
+    });
+
+    this.time.addEvent({
+      delay: 6200,
+      repeat: 0,
+      callback: () => {
+        this.createOverworldPlayer(this.wrGame);
+        this.player.setDepth(2);
+      },
+    });
+
+    this.time.addEvent({
+      delay: 6500,
+      repeat: 0,
+      callback: () => {
+        this.cameras.main.zoomTo(1, 3000, 'Linear', true);
+        this.cameras.main.pan(this.cameras.main.centerX, this.cameras.main.centerY, 3000);
+        this.PlayerSay({ line1: "Today is a good", line2: "day to hunt down rat", line3: "scum on my islands" })
+      },
+    });
 
   };
-  ShowMenu = () => {
-    let portraits: string[] = [];
-    let FitToViewScale = 1.8;
-    for (let i = 0; i < 19; i++) {
-      portraits.push(`heads-${i}.png`);
-    }
 
+  AddLeftArrow = () => {
     this.leftArrow = this.add.sprite(130, 260, "arrows", "arrow_scrolling_34.png").setScale(6.5);
-
     Phaser.Display.Align.In.Center(this.leftArrow, this.add.zone(200, 300, 200, 200), -100, 50);
-
     this.leftArrow.setInteractive();
     this.leftArrow.on("pointerdown", () => {
       this.events.emit("changeHead", "left");
     });
+    this.leftArrow.setDepth(3);
+  }
 
-    this.rightArrow = this.add.sprite(230, 260, "arrows", "arrow_scrolling_35.png").setScale(6.5);
-    Phaser.Display.Align.In.Center(this.rightArrow, this.add.zone(200, 300, 200, 200), 200, 50);
-    this.rightArrow.setInteractive();
-    this.rightArrow.on("pointerdown", () => {
-      this.events.emit("changeHead", "right");
-    });
-
+  AddHead = (portraits) => {
     this.head = this.add.sprite(230, 240, "playerheads", this.wrGame.playerHead).setScale(5.4);
     Phaser.Display.Align.In.Center(this.head, this.add.zone(250, 300, 200, 200), 0, 60);
-
+    this.head.setDepth(3);
     this.events.addListener("changeHead", (direction: string) => {
       let currentIndex = portraits.indexOf(this.wrGame.playerHead);
       switch (direction) {
@@ -360,13 +387,37 @@ export default class OverworldTitle extends Phaser.Scene {
           break;
       }
     });
+  }
+
+  AddRightArrow = () => {
+    this.rightArrow = this.add.sprite(230, 260, "arrows", "arrow_scrolling_35.png").setScale(6.5);
+    Phaser.Display.Align.In.Center(this.rightArrow, this.add.zone(200, 300, 200, 200), 200, 50);
+    this.rightArrow.setInteractive();
+    this.rightArrow.on("pointerdown", () => {
+      this.events.emit("changeHead", "right");
+    });
+    this.rightArrow.setDepth(3);
+  }
+
+  ShowMenu = () => {
+    let portraits: string[] = [];
+
+    for (let i = 0; i < 19; i++) {
+      portraits.push(`heads-${i}.png`);
+    }
+
+    this.AddLeftArrow();
+    this.AddRightArrow();
+    this.AddHead(portraits);
   };
 
   preload() {
+
     this.wasd = AddWASDKeysToScene(this);
     this.keys = this.input.keyboard.createCursorKeys();
     let map2 = this.make.tilemap({ key: "allbiomes" });
     const tileset3 = map2.addTilesetImage("allbiomes", "tiles3");
+
     const baseLayer = map2.createLayer(Layers.Base, tileset3);
     const decorLayer = map2.createLayer(Layers.Decor, tileset3);
 
@@ -375,72 +426,55 @@ export default class OverworldTitle extends Phaser.Scene {
     RandomCloud(this);
     RandomCloud(this);
     RandomCloud(this);
-
+    baseLayer.setDepth(0);
+    decorLayer.setDepth(0);
     baseLayer.setCollisionByProperty({ collides: true });
     decorLayer.setCollisionByProperty({ collides: true });
+    this.createAnimations();
+    this.addEnemyGroups();
+    this.SummonShaman(this.ShamanGroup, 'enemy-shaman', 1);
+    this.SummonRatOgres(this.RatOgreGroup, 'enemy-ratogre', 1);
 
-    this.events.addListener("playerSay", () => {
-      this.updatePlayerSpeechBubble();
-    });
+    this.physics.add.collider(this.RatOgreGroup, baseLayer);
+    this.physics.add.collider(this.RatOgreGroup, decorLayer);
+
+    this.physics.add.collider(this.ShamanGroup, baseLayer);
+    this.physics.add.collider(this.ShamanGroup, decorLayer);
+
     this.events.addListener("startintro", () => {
-      this.removeTitleText();
+      this.startIntro();
     });
 
-    let displayTextEvent = this.time.addEvent({
-      delay: 1000,
+    let initialTitleTextEvent = this.time.addEvent({
+      delay: 500,
       repeat: 0,
       callback: () => {
         this.displayTitleText();
         this.ShowMenu();
+        this.createMenuKeyPressEvents();
       },
     });
   }
 
   create() {
-    this.wasd[1].on("up", () => {
-      this.events.emit("changeHead", "left");
-    });
-    this.wasd[3].on("up", () => {
-      this.events.emit("changeHead", "right");
-    });
-    this.keys.space.on("up", () => {
-      this.events.emit("startintro");
-    });
+
 
     this.sound.play("music2", { volume: 0.3, loop: true });
     this.createBorder();
-    this.info = this.add.sprite(0, 0, "info");
-    this.info.setOrigin(0, 0);
-    this.info.setScale(0.97);
 
-    this.time.addEvent({
+    let conditionallyAddCloudsEveryTenSeconds = this.time.addEvent({
       delay: 10000,
       repeat: -1,
       callback: () => {
-        console.log("nubmero f clouds", this.numberofclouds);
         if (this.numberofclouds < 4) {
           RandomCloud(this);
         }
       },
     });
+
   }
 
   update() {
-    if (this.input.keyboard.addKey("F2").isDown) {
-      this.info.setAlpha(1);
-    }
-    if (this.input.keyboard.addKey("F2").isUp) {
-      this.info.setAlpha(0);
-    }
-    if (this.player != null) {
-      if (this.keys.space.isDown) {
-        this.cameras.main.zoom = 2.0;
-        this.cameras.main.startFollow(this.player);
-      } else {
-        this.cameras.main.zoom = 1.0;
-        this.cameras.main.stopFollow();
-        this.cameras.main.centerOn(this.cameras.main.centerX, this.cameras.main.centerY);
-      }
-    }
+
   }
 }

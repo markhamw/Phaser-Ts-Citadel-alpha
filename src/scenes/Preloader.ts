@@ -56,10 +56,6 @@ export default class Preloader extends Phaser.Scene {
         this.load.audio('ratsound',["assets/ratscream.mp3"])
         this.load.audio('knifeswipe',["assets/knifeSwipe2.mp3"])
         
-        this.load.bitmapFont("customfont", "fonts/Guevara_0.png", "fonts/Guevara.xml");
-        this.load.bitmapFont("invertedfont", "fonts/font-inverted.png", "fonts/Guevara.xml");
-        this.load.bitmapFont("invertedfontyellow", "fonts/font-inverted-yellow.png", "fonts/Guevara.xml");
-
 
         this.load.audio('Forest1',["assets/Forest1.mp3"])
         this.load.audio('Forest2',["assets/Forest2.mp3"])

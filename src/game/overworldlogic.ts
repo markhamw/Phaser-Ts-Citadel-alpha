@@ -25,17 +25,24 @@ export const buildingsforWorldMap: Placement[] = [
     { collection: "buildings32", tag: "Prison.png", location: { x: 365, y: 95 } },
     { collection: "buildings16", tag: "EyeOfTheMagi.png", location: { x: 365, y: 115 } },
     
-    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 205, y: 95 } },
-    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 215, y: 95 } },
-    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 245, y: 53 } },
-    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 265, y: 95 } },
-    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 405, y: 145 } },
+
+    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 40, y: 65 } },
+    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 68, y: 85 } },
+
+    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 205, y: 75 } },
+    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 215, y: 75 } },
+    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 245, y: 33 } },
+    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 265, y: 85 } },
+    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 405, y: 135 } },
+    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 395, y: 85 } },
     { collection: "treasures", tag: "OldTreeNests.png", location: { x: 305, y: 130 } },
+    { collection: "treasures", tag: "OldTreeNests.png", location: { x: 335, y: 43 } },
   ];
 
-export const GenerateBuildings = (scene:Overworld) => {
+export const GenerateBuildings = (scene:Phaser.Scene) => {
     buildingsforWorldMap.forEach((building) => {
-      scene.add.sprite(building.location.x, building.location.y, building.collection, building.tag).setScale(1.45);
+      let bldg = scene.add.sprite(building.location.x, building.location.y, building.collection, building.tag).setScale(1.45);
+      bldg.setDepth(1);
     });
   };
 
@@ -48,8 +55,8 @@ export const RandomCloud = (scene:Overworld) => {
     let cloudx = Math.floor(Math.random() * maxXorY);
     let cloudy = Math.floor(Math.random() * maxXorY);
 
-    let cloudshadow = scene.physics.add.sprite(cloudx + 40, cloudy + 50, "cloudsshadows", `Clouds${cloudNum}.png`).setAlpha(0.1);
-    let cloud = scene.physics.add.sprite(cloudx, cloudy, "clouds", `Clouds${cloudNum}.png`).setAlpha(0.2);
+    let cloudshadow = scene.physics.add.sprite(cloudx + 40, cloudy + 50, "cloudsshadows", `Clouds${cloudNum}.png`).setAlpha(0.1).setDepth(2);
+    let cloud = scene.physics.add.sprite(cloudx, cloudy, "clouds", `Clouds${cloudNum}.png`).setAlpha(0.2).setDepth(2);
 
     let cloudSize = Math.floor(Math.random() * 6) + 2;
 

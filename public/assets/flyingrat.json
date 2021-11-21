@@ -1,0 +1,230 @@
+{
+	"textures": [
+		{
+			"image": "flyingrat.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 30,
+				"h": 29
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "flyingrat-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 12,
+						"w": 8,
+						"h": 7
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 8,
+						"h": 7
+					}
+				},
+				{
+					"filename": "flyingrat-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 12,
+						"w": 8,
+						"h": 7
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 8,
+						"h": 7
+					}
+				},
+				{
+					"filename": "flyingrat-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 12,
+						"w": 8,
+						"h": 7
+					},
+					"frame": {
+						"x": 11,
+						"y": 1,
+						"w": 8,
+						"h": 7
+					}
+				},
+				{
+					"filename": "flyingrat-9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 12,
+						"w": 8,
+						"h": 7
+					},
+					"frame": {
+						"x": 11,
+						"y": 1,
+						"w": 8,
+						"h": 7
+					}
+				},
+				{
+					"filename": "flyingrat-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 12,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 21,
+						"y": 1,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "flyingrat-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 10,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 1,
+						"y": 10,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "flyingrat-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 10,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 11,
+						"y": 10,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "flyingrat-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 12,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 21,
+						"y": 11,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "flyingrat-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 10,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 1,
+						"y": 20,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "flyingrat-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 10,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 11,
+						"y": 20,
+						"w": 8,
+						"h": 8
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:c1a19153b265e2354b55ebabcd5c5439:bd05dcc0178bdd7e08683c79381966a9:ff05611346375d31bb65a3340e3edb11$"
+	}
+}

@@ -1,0 +1,482 @@
+{
+	"textures": [
+		{
+			"image": "rogue.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 481,
+				"h": 908
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "Rogue Attack3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 19,
+						"w": 180,
+						"h": 161
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 180,
+						"h": 161
+					}
+				},
+				{
+					"filename": "Rogue Attack2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 19,
+						"w": 171,
+						"h": 161
+					},
+					"frame": {
+						"x": 1,
+						"y": 164,
+						"w": 171,
+						"h": 161
+					}
+				},
+				{
+					"filename": "Rogue Fall1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 9,
+						"w": 152,
+						"h": 171
+					},
+					"frame": {
+						"x": 1,
+						"y": 327,
+						"w": 152,
+						"h": 171
+					}
+				},
+				{
+					"filename": "Rogue Jump5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 9,
+						"w": 152,
+						"h": 171
+					},
+					"frame": {
+						"x": 1,
+						"y": 327,
+						"w": 152,
+						"h": 171
+					}
+				},
+				{
+					"filename": "Rogue Fall2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 9,
+						"w": 152,
+						"h": 171
+					},
+					"frame": {
+						"x": 1,
+						"y": 500,
+						"w": 152,
+						"h": 171
+					}
+				},
+				{
+					"filename": "Rogue Jump4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 9,
+						"w": 152,
+						"h": 171
+					},
+					"frame": {
+						"x": 1,
+						"y": 673,
+						"w": 152,
+						"h": 171
+					}
+				},
+				{
+					"filename": "Rogue Fall3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 19,
+						"w": 152,
+						"h": 161
+					},
+					"frame": {
+						"x": 183,
+						"y": 1,
+						"w": 152,
+						"h": 161
+					}
+				},
+				{
+					"filename": "Rogue IDLE1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 19,
+						"w": 152,
+						"h": 161
+					},
+					"frame": {
+						"x": 174,
+						"y": 164,
+						"w": 152,
+						"h": 161
+					}
+				},
+				{
+					"filename": "Rogue IDLE5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 19,
+						"w": 152,
+						"h": 161
+					},
+					"frame": {
+						"x": 174,
+						"y": 164,
+						"w": 152,
+						"h": 161
+					}
+				},
+				{
+					"filename": "Rogue Jump1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 19,
+						"w": 152,
+						"h": 161
+					},
+					"frame": {
+						"x": 174,
+						"y": 164,
+						"w": 152,
+						"h": 161
+					}
+				},
+				{
+					"filename": "Rogue Attack1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 19,
+						"w": 151,
+						"h": 161
+					},
+					"frame": {
+						"x": 155,
+						"y": 327,
+						"w": 151,
+						"h": 161
+					}
+				},
+				{
+					"filename": "Rogue Death1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 19,
+						"w": 151,
+						"h": 161
+					},
+					"frame": {
+						"x": 155,
+						"y": 490,
+						"w": 151,
+						"h": 161
+					}
+				},
+				{
+					"filename": "Rogue IDLE2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 29,
+						"w": 152,
+						"h": 151
+					},
+					"frame": {
+						"x": 328,
+						"y": 164,
+						"w": 152,
+						"h": 151
+					}
+				},
+				{
+					"filename": "Rogue IDLE4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 29,
+						"w": 152,
+						"h": 151
+					},
+					"frame": {
+						"x": 328,
+						"y": 164,
+						"w": 152,
+						"h": 151
+					}
+				},
+				{
+					"filename": "Rogue Jump2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 29,
+						"w": 152,
+						"h": 151
+					},
+					"frame": {
+						"x": 328,
+						"y": 317,
+						"w": 152,
+						"h": 151
+					}
+				},
+				{
+					"filename": "Rogue Fall4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 29,
+						"w": 161,
+						"h": 151
+					},
+					"frame": {
+						"x": 155,
+						"y": 653,
+						"w": 161,
+						"h": 151
+					}
+				},
+				{
+					"filename": "Rogue Death2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 39,
+						"w": 161,
+						"h": 141
+					},
+					"frame": {
+						"x": 308,
+						"y": 470,
+						"w": 161,
+						"h": 141
+					}
+				},
+				{
+					"filename": "Rogue Death3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 49,
+						"w": 141,
+						"h": 131
+					},
+					"frame": {
+						"x": 337,
+						"y": 1,
+						"w": 141,
+						"h": 131
+					}
+				},
+				{
+					"filename": "Rogue IDLE3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 39,
+						"w": 152,
+						"h": 141
+					},
+					"frame": {
+						"x": 318,
+						"y": 613,
+						"w": 152,
+						"h": 141
+					}
+				},
+				{
+					"filename": "Rogue Death5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 119,
+						"w": 161,
+						"h": 61
+					},
+					"frame": {
+						"x": 1,
+						"y": 846,
+						"w": 161,
+						"h": 61
+					}
+				},
+				{
+					"filename": "Rogue Jump3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 39,
+						"w": 152,
+						"h": 141
+					},
+					"frame": {
+						"x": 318,
+						"y": 756,
+						"w": 152,
+						"h": 141
+					}
+				},
+				{
+					"filename": "Rogue Death4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 109,
+						"w": 151,
+						"h": 71
+					},
+					"frame": {
+						"x": 164,
+						"y": 806,
+						"w": 151,
+						"h": 71
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:8e03a210d7113530e1927a3dfbd35742:80b084ea438d8aabf7f0be3f1d5b4926:b43f8bf58e8b600649e3b2a80c960502$"
+	}
+}

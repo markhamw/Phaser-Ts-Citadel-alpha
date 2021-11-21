@@ -36,11 +36,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   keys!: Phaser.Types.Input.Keyboard.CursorKeys;
   speed!: number;
   isMoving!: boolean;
-  shouldDisplayTalkBubble: boolean = false;
   smokeEffect!: Phaser.GameObjects.Sprite;
   talkBubble!: Phaser.GameObjects.Sprite;
   headPngforTalkBubble!: Phaser.GameObjects.Sprite;
-  textforTalkBubble! : Speech
+  textforTalkBubble!: Speech
   currentSpeech!: Speech;
 
   constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
@@ -77,17 +76,17 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
 
     CreateAnimationSet(this.scene, GetOverworldPlayerAnims(this.scene.anims, 5, "playeroverworld"));
-  
+
   }
 
   preload() {
-  
+
   }
 
-  create() {}
+  create() { }
 
   update() {
-     
+
     let leftKey = this.wasd[1].isDown;
     let rightKey = this.wasd[3].isDown;
     let upKey = this.wasd[0].isDown;
@@ -170,8 +169,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
   }
 
-  setTextForTalkBubble(text: Speech) {
-    this.scene.events.emit("playerSay", text);
+  setTextForTalkBubble() {
+    this.scene.events.emit("playerSay", this.currentSpeech);
   }
 
   preUpdate(t: number, dt: number) {
@@ -189,7 +188,7 @@ Phaser.GameObjects.GameObjectFactory.register(
     this.displayList.add(sprite);
     this.updateList.add(sprite);
     this.scene.physics.world.enableBody(sprite, Phaser.Physics.Arcade.DYNAMIC_BODY);
-  
+
     return sprite;
   }
 );
