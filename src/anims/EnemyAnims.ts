@@ -35,7 +35,7 @@ const GetRatAnims = (anims: Phaser.Animations.AnimationManager, rate: number) =>
         end: 199,
         prefix: 'tower-',
         suffix: '.png',
-       
+
       }),
       repeat: -1,
       frameRate: rate,
@@ -113,7 +113,7 @@ const GetRatOgreAnims = (anims: Phaser.Animations.AnimationManager, rate: number
       }),
       repeat: -1,
       frameRate: rate,
-      
+
     },
 
     {
@@ -198,7 +198,7 @@ const GetShamanAnims = (anims: Phaser.Animations.AnimationManager, rate: number)
       }),
       repeat: -1,
       frameRate: rate,
-      
+
     },
 
     {
@@ -259,8 +259,214 @@ const GetShamanAnims = (anims: Phaser.Animations.AnimationManager, rate: number)
 
   ]
 }
+const GetFlyingRatAnims = (anims: Phaser.Animations.AnimationManager, rate: number) => {
+  return [
+    {
+      key: `enemy-flyingrat-idle`,
+      frames: anims.generateFrameNames('enemy-flyingrat', {
+        start: 0,
+        end: 1,
+        prefix: 'flyingrat-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-flyingrat-moveleft`,
+      frames: anims.generateFrameNames('enemy-flyingrat', {
+        start: 0,
+        end: 4,
+        prefix: 'flyingrat-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+
+    },
+
+    {
+      key: `enemy-flyingrat-moveright`,
+      frames: anims.generateFrameNames('enemy-flyingrat', {
+        start: 5,
+        end: 9,
+        prefix: 'flyingrat-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+
+  ]
+}
+const GetEarthGolemAnims = (anims: Phaser.Animations.AnimationManager, rate: number) => {
+  return [
+    {
+      key: `enemy-earthgolem-idle`,
+      frames: anims.generateFrameNames('enemy-earthgolem', {
+        start: 236,
+        end: 239,
+        prefix: 'tower-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+
+    },
+    {
+      key: `enemy-earthgolem-moveleft`,
+      frames: anims.generateFrameNames('enemy-earthgolem', {
+        start: 240,
+        end: 243,
+        prefix: 'tower-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-earthgolem-moveright`,
+      frames: anims.generateFrameNames('enemy-earthgolem', {
+        start: 240,
+        end: 243,
+        prefix: 'tower-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-earthgolem-dead`,
+      frames: anims.generateFrameNames('enemy-earthgolem', {
+        start: 248,
+        end: 255,
+        prefix: 'tower-',
+        suffix: '.png',
+      }),
+      repeat: 0,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-earthgolem-moveup`,
+      frames: anims.generateFrameNames('enemy-earthgolem', {
+        start: 240,
+        end: 243,
+        prefix: 'tower-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-earthgolem-movedown`,
+      frames: anims.generateFrameNames('enemy-earthgolem', {
+        start: 240,
+        end: 243,
+        prefix: 'tower-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-earthgolem-attack`,
+      frames: anims.generateFrameNames('enemy-earthgolem', {
+        start: 244,
+        end: 247,
+        prefix: 'tower-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    }
+
+  ]
+}
+const GetAirElementalAnims = (anims: Phaser.Animations.AnimationManager, rate: number) => {
+  return [
+    {
+      key: `enemy-airelemental-idle`,
+      frames: anims.generateFrameNames('enemy-airelemental', {
+        start: 25,
+        end: 28,
+        prefix: 'elementals-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+
+    },
+    {
+      key: `enemy-airelemental-moveleft`,
+      frames: anims.generateFrameNames('enemy-airelemental', {
+        start: 29,
+        end: 32,
+        prefix: 'elementals-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-airelemental-moveright`,
+      frames: anims.generateFrameNames('enemy-airelemental', {
+        start: 29,
+        end: 32,
+        prefix: 'elementals-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-airelemental-dead`,
+      frames: anims.generateFrameNames('enemy-airelemental', {
+        start: 40,
+        end: 44,
+        prefix: 'elementals-',
+        suffix: '.png',
+      }),
+      repeat: 0,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-airelemental-moveup`,
+      frames: anims.generateFrameNames('enemy-airelemental', {
+        start: 29,
+        end: 32,
+        prefix: 'elementals-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-airelemental-movedown`,
+      frames: anims.generateFrameNames('enemy-airelemental', {
+        start: 29,
+        end: 32,
+        prefix: 'elementals-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-airelemental-attack`,
+      frames: anims.generateFrameNames('enemy-airelemental', {
+        start: 33,
+        end: 37,
+        prefix: 'elementals-',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    }
+
+  ]
+}
 export {
 
-  GetRatAnims, GetRatOgreAnims, GetShamanAnims
+  GetRatAnims, GetRatOgreAnims, GetShamanAnims, GetFlyingRatAnims, GetEarthGolemAnims, GetAirElementalAnims
 
 }

@@ -11,7 +11,7 @@ export type WRGame = {
   sceneFade: number;
   kingRat: string;
   taskRate: number;
-
+  hasIntroStarted: boolean;
 };
 export enum Condition {
   Healthy,
