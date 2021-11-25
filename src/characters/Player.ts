@@ -52,6 +52,34 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.keys = scene.input.keyboard.createCursorKeys();
     this.speed = 4;
 
+    this.e.on('up', () => {
+      this.scene.events.emit("player-interact-event");
+      console.log("E");
+      //  this.scene.swipesound.play({ loop: false, volume: 0.2, rate: 0.8 });
+      this.setVelocity(0);
+
+      switch (this.direction) {
+        case Direction.LEFT:
+          console.log("in attack left");
+          this.anims.play(`player-attackleft`, true);
+          break;
+        case Direction.DOWN:
+          console.log("in attack down");
+          this.anims.play(`player-attackdown`, true);
+          break;
+        case Direction.UP:
+          console.log("in attack up");
+          this.anims.play(`player-attackup`, true);
+          break;
+        case Direction.RIGHT:
+          console.log("in attack right");
+          this.anims.play(`player-attackright`, true);
+          break;
+      }
+    })
+
+
+
     let updateCondition = scene.time.addEvent({
       delay: 1000,
       repeat: -1,
@@ -136,37 +164,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       this.anims.stop()
     }
     if (this.isMoving && this.keys.shift.isDown) {
-      this.speed = 6;
+      this.speed = 8;
     }
     if (!this.keys.shift.isDown) {
       this.speed = 4;
     }
 
-    //create if statement to detect when e is h
-    if (this.e.isDown) {
-      //this.scene.swipesound.play({ loop: false, volume: 0.2, rate: 0.8 });
-      this.setVelocity(0);
-      this.scene.events.emit("player-interact-event", this);
 
-      switch (this.direction) {
-        case Direction.LEFT:
-          console.log("in attack left");
-          this.anims.play(`player-attackleft`, true);
-          break;
-        case Direction.DOWN:
-          console.log("in attack down");
-          this.anims.play(`player-attackdown`, true);
-          break;
-        case Direction.UP:
-          console.log("in attack up");
-          this.anims.play(`player-attackup`, true);
-          break;
-        case Direction.RIGHT:
-          console.log("in attack right");
-          this.anims.play(`player-attackright`, true);
-          break;
-      }
-    }
   }
 
   setTextForTalkBubble() {

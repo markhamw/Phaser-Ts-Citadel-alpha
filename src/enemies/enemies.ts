@@ -1,3 +1,5 @@
+import Shaman from "./Shaman";
+
 const enemies = [
   {
     name: "enemy-rat",
@@ -31,6 +33,18 @@ const enemies = [
   },
 ];
 
+const newEnemyGroup = (scene: Phaser.Scene, type: any, collides: boolean, collideWorldBounds: boolean) => {
+  return scene.physics.add.group({
+    classType: type,
+    createCallback: (go) => {
+      const ratObj = go as typeof type;
+      ratObj.body.onCollide = collides;
+    },
+    collideWorldBounds: collideWorldBounds,
+  });
+}
+
+
 //
-export { enemies }
+export { enemies, newEnemyGroup }
 

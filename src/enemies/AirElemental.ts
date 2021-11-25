@@ -21,20 +21,18 @@ export default class AirElemental extends Phaser.Physics.Arcade.Sprite {
     private facing = Phaser.Math.Between(0, 4)
     private speed: number;
     private moveEvent: Phaser.Time.TimerEvent
-    private DiscardCurrentTrashTalk: Phaser.Time.TimerEvent
-    private CurrentTrashTalk!: Phaser.GameObjects.Text
     private StartingXLoc: number;
     private StartingYLoc: number;
     private EntityID: Guid;
-
     private isAlive: boolean = true;
 
     constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
         super(scene, x, y, texture, frame)
+
         this.moveEvent = scene.time.addEvent({
             delay: Phaser.Math.Between(2000, 9000),
             callback: () => {
-                this.CurrentTrashTalk.visible = false;
+
                 let chanceForIdle = Phaser.Math.Between(0, 4);
                 let chanceForEmote = Phaser.Math.Between(0, 4);
                 this.facing = chanceForIdle == 1 ? Direction.IDLE : Phaser.Math.Between(0, 7)
@@ -42,28 +40,10 @@ export default class AirElemental extends Phaser.Physics.Arcade.Sprite {
             },
             loop: true
         });
-        this.scene.events.addListener('player-interact-event', (player) => {
-            this.isAlive = false;
-        })
-
-
-        this.DiscardCurrentTrashTalk = scene.time.addEvent({
-            delay: 1000,
-            repeat: -1,
-            callback: () => {
-                if (this.CurrentTrashTalk.visible) {
-                    this.CurrentTrashTalk.setActive(false)
-                    this.CurrentTrashTalk.visible = false
-                }
-            }
-        })
 
         this.speed = Phaser.Math.Between(1, 3);
         this.StartingXLoc = x
         this.StartingYLoc = y
-        this.CurrentTrashTalk = scene.add.text(this.x, this.y, VocalEmotes[Phaser.Math.Between(0, 7)])
-        this.CurrentTrashTalk.visible = false;
-
         this.scene.physics.world.on(Phaser.Physics.Arcade.Events.TILE_COLLIDE, this.handleCollision, this.scene)
         this.scene.physics.world.on(Phaser.Physics.Arcade.Events.COLLIDE, this.handleCollisionWithSprite, this.scene)
         this.EntityID = Guid.create()

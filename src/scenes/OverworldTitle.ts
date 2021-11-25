@@ -10,8 +10,7 @@ import Rat from "~/enemies/Rat";
 import { GetRatAnims, GetRatOgreAnims, GetShamanAnims, GetFlyingRatAnims, GetEarthGolemAnims, GetAirElementalAnims } from "~/anims/EnemyAnims";
 import RatOgre from "~/enemies/RatOgre";
 import Shaman from "~/enemies/Shaman";
-
-import { enemies } from "~/enemies/enemies";
+import { enemies, newEnemyGroup } from "~/enemies/enemies";
 import FlyingRat from "~/enemies/FlyingRat";
 import EarthGolem from "~/enemies/EarthGolem";
 import AirElemental from "~/enemies/AirElemental";
@@ -36,6 +35,7 @@ export default class OverworldTitle extends Phaser.Scene {
   ShamanGroup!: Physics.Arcade.Group;
   FlyingRatGroup!: Physics.Arcade.Group;
   EarthGolemGroup!: Physics.Arcade.Group;
+  AirElementalGroup!: Physics.Arcade.Group;
 
   player!: Player;
   info!: Phaser.GameObjects.Sprite;
@@ -51,11 +51,13 @@ export default class OverworldTitle extends Phaser.Scene {
   titletext2!: Phaser.GameObjects.Text;
   titletext4!: Phaser.GameObjects.Text;
   titletext0!: Phaser.GameObjects.Text;
+
   leftArrow!: Phaser.GameObjects.Sprite;
   rightArrow!: Phaser.GameObjects.Sprite;
   head!: Phaser.GameObjects.Sprite;
-  AirElementalGroup!: Physics.Arcade.Group;
 
+  baseLayer!: Phaser.Tilemaps.TilemapLayer;
+  decorLayer!: Phaser.Tilemaps.TilemapLayer;
 
 
   constructor() {
@@ -84,55 +86,38 @@ export default class OverworldTitle extends Phaser.Scene {
     CreateAnimationSet(this, GetAirElementalAnims(this.anims, 4));
   };
 
-  addEnemyGroups = () => {
-    this.RatGroup = this.physics.add.group({
-      classType: Rat,
-      createCallback: (go) => {
-        const ratObj = go as Rat;
-        ratObj.body.onCollide = true;
-      },
-      collideWorldBounds: true,
-    });
-    this.RatOgreGroup = this.physics.add.group({
-      classType: RatOgre,
-      createCallback: (go) => {
-        const ratObj = go as RatOgre;
-        ratObj.body.onCollide = true;
-      },
-      collideWorldBounds: true,
-    });
-    this.ShamanGroup = this.physics.add.group({
-      classType: Shaman,
-      createCallback: (go) => {
-        const ratObj = go as Shaman;
-        ratObj.body.onCollide = true;
-      },
-      collideWorldBounds: true,
-    });
-    this.FlyingRatGroup = this.physics.add.group({
-      classType: FlyingRat,
-      createCallback: (go) => {
-        const ratObj = go as FlyingRat;
-        ratObj.body.onCollide = false;
-      },
-      collideWorldBounds: true,
-    });
-    this.EarthGolemGroup = this.physics.add.group({
-      classType: EarthGolem,
-      createCallback: (go) => {
-        const ratObj = go as EarthGolem;
-        ratObj.body.onCollide = true;
-      },
-      collideWorldBounds: true,
-    });
-    this.AirElementalGroup = this.physics.add.group({
-      classType: AirElemental,
-      createCallback: (go) => {
-        const ratObj = go as AirElemental;
-        ratObj.body.onCollide = true;
-      },
-      collideWorldBounds: true,
-    });
+  createEnemyGroups = () => {
+
+    this.RatGroup = newEnemyGroup(this, Rat, true, true);
+    this.RatOgreGroup = newEnemyGroup(this, RatOgre, true, true);
+    this.ShamanGroup = newEnemyGroup(this, Shaman, true, true);
+    this.FlyingRatGroup = newEnemyGroup(this, FlyingRat, false, false);
+    this.EarthGolemGroup = newEnemyGroup(this, EarthGolem, true, true);
+    this.AirElementalGroup = newEnemyGroup(this, AirElemental, true, true);
+
+    this.SummonMobs(this.ShamanGroup, 'enemy-shaman', 5);
+    this.SummonMobs(this.RatOgreGroup, 'enemy-ratogre', 5);
+    this.SummonMobs(this.RatGroup, 'enemy-rat', 5);
+    this.SummonMobs(this.FlyingRatGroup, 'enemy-flyingrat', 15);
+    this.SummonMobs(this.EarthGolemGroup, 'enemy-earthgolem', 3);
+    this.SummonMobs(this.AirElementalGroup, 'enemy-airelemental', 3);
+
+    this.physics.add.collider(this.RatOgreGroup, this.baseLayer);
+    this.physics.add.collider(this.RatOgreGroup, this.decorLayer);
+
+    this.physics.add.collider(this.RatGroup, this.baseLayer);
+    this.physics.add.collider(this.RatGroup, this.decorLayer);
+
+    this.physics.add.collider(this.ShamanGroup, this.baseLayer);
+    this.physics.add.collider(this.ShamanGroup, this.decorLayer);
+
+    this.physics.add.collider(this.EarthGolemGroup, this.baseLayer);
+    this.physics.add.collider(this.EarthGolemGroup, this.decorLayer);
+
+    this.physics.add.collider(this.AirElementalGroup, this.baseLayer);
+    this.physics.add.collider(this.AirElementalGroup, this.decorLayer);
+
+
   };
 
   createBorder = () => {
@@ -171,70 +156,12 @@ export default class OverworldTitle extends Phaser.Scene {
     this.goldCoin.anims.play("coinrotate");
     this.goldCoin.setScale(2);
   };
-  SummonRats = (group: Phaser.Physics.Arcade.Group, enemyid: string, instances: number) => {
-    for (let countmade = 0; countmade < instances; countmade++) {
-      let mobX = RandomCoord(200);
-      let mobY = RandomCoord(300);
-      if (this.RatGroup.children.entries.length < 2) {
-        group.get(mobX + 200, mobY + 200, enemyid);
-      } else {
-        console.log("Could not create rat. Too Many");
-      }
-    }
-  };
-  SummonRatOgres = (group: Phaser.Physics.Arcade.Group, enemyid: string, instances: number) => {
-    for (let countmade = 0; countmade < instances; countmade++) {
-      let mobX = RandomCoord(200);
-      let mobY = RandomCoord(300);
-      if (this.RatOgreGroup.children.entries.length < 2) {
-        group.get(mobX + 200, mobY + 200, enemyid);
-      } else {
-        console.log("Could not create rat ogre. Too Many");
-      }
-    }
-  };
-  SummonShaman = (group: Phaser.Physics.Arcade.Group, enemyid: string, instances: number) => {
-    for (let countmade = 0; countmade < instances; countmade++) {
-      let mobX = RandomCoord(200);
-      let mobY = RandomCoord(300);
-      if (this.ShamanGroup.children.entries.length < 2) {
-        group.get(mobX + 200, mobY + 200, enemyid);
-      } else {
-        console.log("Could not create shaman. Too Many");
-      }
-    }
-  };
-  SummonFlyingRats = (group: Phaser.Physics.Arcade.Group, enemyid: string, instances: number) => {
-    for (let countmade = 0; countmade < instances; countmade++) {
-      let mobX = RandomCoord(450);
-      let mobY = RandomCoord(100);
-      if (this.FlyingRatGroup.children.entries.length < 10) {
-        group.get(mobX, mobY, enemyid).setDepth(15);
-      } else {
-        console.log("Could not crdadadadeate flyingrat. Too Many");
-      }
-    }
-  };
-  SummonEarthGolems = (group: Phaser.Physics.Arcade.Group, enemyid: string, instances: number) => {
-    for (let countmade = 0; countmade < instances; countmade++) {
+
+  SummonMobs = (group: Phaser.Physics.Arcade.Group, enemyid: string, numberOfMobsToCreate: number) => {
+    for (let countmade = 0; countmade < numberOfMobsToCreate; countmade++) {
       let mobX = RandomCoord(450);
       let mobY = RandomCoord(450);
-      if (this.EarthGolemGroup.children.entries.length < 10) {
-        group.get(mobX, mobY, enemyid)
-      } else {
-        console.log("Could not create earth golem. Too Many");
-      }
-    }
-  };
-  SummonAirElementals = (group: Phaser.Physics.Arcade.Group, enemyid: string, instances: number) => {
-    for (let countmade = 0; countmade < instances; countmade++) {
-      let mobX = RandomCoord(450);
-      let mobY = RandomCoord(450);
-      if (this.AirElementalGroup.children.entries.length < 10) {
-        group.get(mobX, mobY, enemyid)
-      } else {
-        console.log("Could not create airlemental. Too Many");
-      }
+      group.get(mobX, mobY, enemyid);
     }
   };
 
@@ -248,7 +175,6 @@ export default class OverworldTitle extends Phaser.Scene {
       .sprite(this.player.talkBubble.x, this.player.talkBubble.y, "playerheads", this.wrGame.playerHead)
       .setScale(1.65)
       .setOrigin(0.2, -0.07).setDepth(5).setAlpha(0)
-
     this.playerline1 = this.add.text(this.player.talkBubble.x + 30, this.player.talkBubble.y, line1).setAlpha(0).setDepth(6).setFontSize(10);
     this.playerline2 = this.add.text(this.player.talkBubble.x + 30, this.player.talkBubble.y + 8, line2).setAlpha(0).setDepth(6).setFontSize(10);
     this.playerline3 = this.add.text(this.player.talkBubble.x + 30, this.player.talkBubble.y + 17, line3).setAlpha(0).setDepth(6).setFontSize(10);
@@ -290,10 +216,13 @@ export default class OverworldTitle extends Phaser.Scene {
     });
   }
 
-
   createOverworldPlayer = (wrGame: WRGame) => {
     this.player = this.add.player(320, 325, "playeroverworld", "player-movedown-1.png");
     this.player.body.setSize(this.player.width * 0.75, this.player.height * 0.75);
+
+    this.physics.add.collider(this.player, this.baseLayer);
+    this.physics.add.collider(this.player, this.decorLayer);
+
     this.createGoldOverlay();
 
   };
@@ -493,46 +422,46 @@ export default class OverworldTitle extends Phaser.Scene {
     this.AddHead(portraits);
   };
 
-
-  preload() {
-
-    this.wasd = AddWASDKeysToScene(this);
-    this.keys = this.input.keyboard.createCursorKeys();
+  createTiles() {
     let map2 = this.make.tilemap({ key: "allbiomes" });
     const tileset3 = map2.addTilesetImage("allbiomes", "tiles3");
-    const baseLayer = map2.createLayer(Layers.Base, tileset3);
-    const decorLayer = map2.createLayer(Layers.Decor, tileset3);
 
+    this.baseLayer = map2.createLayer(Layers.Base, tileset3);
+    this.decorLayer = map2.createLayer(Layers.Decor, tileset3);
+
+    this.baseLayer.setDepth(0);
+    this.decorLayer.setDepth(0);
+    this.baseLayer.setCollisionByProperty({ collides: true });
+    this.decorLayer.setCollisionByProperty({ collides: true });
+
+  }
+
+  createStructuresAndWeather() {
     GenerateBuildings(this);
     RandomCloud(this);
     RandomCloud(this);
     RandomCloud(this);
     RandomCloud(this);
-    baseLayer.setDepth(0);
-    decorLayer.setDepth(0);
-    baseLayer.setCollisionByProperty({ collides: true });
-    decorLayer.setCollisionByProperty({ collides: true });
+
+    let conditionallyAddCloudsEveryTenSeconds = this.time.addEvent({
+      delay: 10000,
+      repeat: -1,
+      callback: () => {
+        if (this.numberofclouds < 4) {
+          RandomCloud(this);
+        }
+      },
+    });
+  }
+
+  preload() {
+
+    this.wasd = AddWASDKeysToScene(this);
+    this.keys = this.input.keyboard.createCursorKeys();
+    this.createTiles();
+    this.createStructuresAndWeather();
     this.createAnimations();
-    this.addEnemyGroups();
-
-    this.SummonShaman(this.ShamanGroup, 'enemy-shaman', 5);
-    this.SummonRatOgres(this.RatOgreGroup, 'enemy-ratogre', 5);
-    this.SummonFlyingRats(this.FlyingRatGroup, 'enemy-Flyingrat', 15);
-    this.SummonEarthGolems(this.EarthGolemGroup, 'enemy-earthgolem', 3);
-    this.SummonAirElementals(this.AirElementalGroup, 'enemy-airelemental', 3);
-
-    this.physics.add.collider(this.RatOgreGroup, baseLayer);
-    this.physics.add.collider(this.RatOgreGroup, decorLayer);
-
-    this.physics.add.collider(this.ShamanGroup, baseLayer);
-    this.physics.add.collider(this.ShamanGroup, decorLayer);
-
-    this.physics.add.collider(this.EarthGolemGroup, baseLayer);
-    this.physics.add.collider(this.EarthGolemGroup, decorLayer);
-
-
-    this.physics.add.collider(this.AirElementalGroup, baseLayer);
-    this.physics.add.collider(this.AirElementalGroup, decorLayer);
+    this.createEnemyGroups()
 
     this.events.addListener("startintro", () => {
       this.startIntro();
@@ -551,38 +480,22 @@ export default class OverworldTitle extends Phaser.Scene {
 
   create() {
 
-
-
-    //rewatch vods and add rotation, cpu component
-
     this.sound.play("music2", { volume: 0.3, loop: true });
     this.createBorder();
 
-    let conditionallyAddCloudsEveryTenSeconds = this.time.addEvent({
-      delay: 10000,
-      repeat: -1,
-      callback: () => {
-        if (this.numberofclouds < 4) {
-          RandomCloud(this);
-        }
-      },
-    });
     let conditionallyAddFlyingRatsEveryTenSeconds = this.time.addEvent({
       delay: 10000,
       repeat: -1,
       callback: () => {
         if (this.FlyingRatGroup.children.size < 10) {
-          this.SummonFlyingRats(this.FlyingRatGroup, 'enemy-Flyingrat', 3);
+          this.SummonMobs(this.FlyingRatGroup, 'enemy-Flyingrat', 3);
         }
       },
     });
 
-
   }
 
   update() {
-
-
 
   }
 }
