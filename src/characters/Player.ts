@@ -23,14 +23,19 @@ enum Direction {
   LEFTANDDOWN,
   IDLE,
 }
-
-
-
+const animationsForPlayerByDirection = [{ key: `player-moveup`, repeat: 0 },
+{ key: `player-movedown`, repeat: 0 },
+{ key: `player-moveleft`, repeat: 0 },
+{ key: `player-moveright`, repeat: 0 },
+{ key: `player-moverightandup`, repeat: 0 },
+{ key: `player-moverightanddown`, repeat: 0 },
+{ key: `player-moveleftandup`, repeat: 0 },
+{ key: `player-moveleftanddown`, repeat: 0 },]
 
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   status!: PlayerStatus;
-  direction!: Direction;
+
   wasd!: Phaser.Input.Keyboard.Key[];
   e!: Phaser.Input.Keyboard.Key;
   keys!: Phaser.Types.Input.Keyboard.CursorKeys;
@@ -45,7 +50,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
     super(scene, x, y, texture, frame);
 
-    this.direction = Direction.LEFT;
     this.status = { MaxHP: 100, CurrentHP: 100, Condition: Condition.Healthy };
     this.wasd = AddWASDKeysToScene(scene);
     this.e = scene.input.keyboard.addKey("E");
@@ -57,28 +61,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       console.log("E");
       //  this.scene.swipesound.play({ loop: false, volume: 0.2, rate: 0.8 });
       this.setVelocity(0);
-
-      switch (this.direction) {
-        case Direction.LEFT:
-          console.log("in attack left");
-          this.anims.play(`player-attackleft`, true);
-          break;
-        case Direction.DOWN:
-          console.log("in attack down");
-          this.anims.play(`player-attackdown`, true);
-          break;
-        case Direction.UP:
-          console.log("in attack up");
-          this.anims.play(`player-attackup`, true);
-          break;
-        case Direction.RIGHT:
-          console.log("in attack right");
-          this.anims.play(`player-attackright`, true);
-          break;
-      }
     })
-
-
 
     let updateCondition = scene.time.addEvent({
       delay: 1000,
@@ -102,19 +85,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       },
     });
 
-
     CreateAnimationSet(this.scene, GetOverworldPlayerAnims(this.scene.anims, 5, "playeroverworld"));
 
   }
 
-  preload() {
-
-  }
-
-  create() { }
-
-  update() {
-
+  decideMovement = () => {
     let leftKey = this.wasd[1].isDown;
     let rightKey = this.wasd[3].isDown;
     let upKey = this.wasd[0].isDown;
@@ -127,59 +102,64 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     this.isMoving = leftKey || rightKey || upKey || downKey || leftAndUp || rightAndUp || leftAndDown || rightAndDown;
 
-    if (leftAndUp) {
-      this.direction = Direction.LEFTANDUP;
-      this.setVelocity(-this.speed, -this.speed);
-      this.anims.play("player-moveleftandup", true);
-    } else if (rightAndUp) {
-      this.direction = Direction.RIGHTANDUP;
-      this.setVelocity(this.speed, -this.speed);
-      this.anims.play("player-moverightandup", true);
-    } else if (leftAndDown) {
-      this.direction = Direction.LEFTANDDOWN;
-      this.setVelocity(-this.speed, this.speed);
-      this.anims.play("player-moveleftanddown", true);
-    } else if (rightAndDown) {
-      this.direction = Direction.RIGHTANDDOWN;
-      this.setVelocity(this.speed, this.speed);
-      this.anims.play("player-moverightanddown", true);
-    } else if (upKey) {
-      this.direction = Direction.UP;
-      this.setVelocity(0, -this.speed);
-      this.anims.play(`player-moveup`, true);
-    } else if (rightKey) {
-      this.direction = Direction.RIGHT;
-      this.setVelocity(this.speed, 0);
-      this.anims.play(`player-moveright`, true);
-    } else if (leftKey) {
-      this.direction = Direction.LEFT;
-      this.setVelocity(-this.speed, 0);
-      this.anims.play(`player-moveleft`, true);
-    } else if (downKey) {
-      this.direction = Direction.DOWN;
-      this.setVelocity(0, this.speed);
-      this.anims.play(`player-movedown`, true);
-    } else {
-      this.setVelocity(0);
-      this.anims.stop()
-    }
     if (this.isMoving && this.keys.shift.isDown) {
       this.speed = 8;
     }
+
     if (!this.keys.shift.isDown) {
       this.speed = 4;
     }
 
+    if (leftAndUp) {
+      this.setVelocity(-this.speed, -this.speed);
+      this.playAnimByDirection(Direction.LEFTANDUP);
+    } else if (rightAndUp) {
+      this.setVelocity(this.speed, -this.speed);
+      this.playAnimByDirection(Direction.RIGHTANDUP);
+    } else if (leftAndDown) {
+      this.setVelocity(-this.speed, this.speed);
+      this.playAnimByDirection(Direction.LEFTANDDOWN);
+    } else if (rightAndDown) {
+      this.setVelocity(this.speed, this.speed);
+      this.playAnimByDirection(Direction.RIGHTANDDOWN);
+    } else if (upKey) {
+      this.setVelocity(0, -this.speed);
+      this.playAnimByDirection(Direction.UP);
+    } else if (rightKey) {
+      this.setVelocity(this.speed, 0);
+      this.playAnimByDirection(Direction.RIGHT);
+    } else if (leftKey) {
+      this.setVelocity(-this.speed, 0);
+      this.playAnimByDirection(Direction.LEFT);
+    } else if (downKey) {
+      this.setVelocity(0, this.speed);
+      this.playAnimByDirection(Direction.DOWN);
+    } else {
+      this.setVelocity(0);
+      this.anims.stop()
+    }
+
+
+  }
+  playAnimByDirection = (direction: Direction) => {
+    let animation = animationsForPlayerByDirection[direction] as Phaser.Animations.Animation
+    animation.frameRate = this.isMoving && this.keys.shift.isDown ? 8 : 5;
+    this.anims.play(animation, true);
+  }
+  preload() {
 
   }
 
+  create() { }
+
+  update() {
+    this.decideMovement();
+  }
   setTextForTalkBubble() {
     this.scene.events.emit("playerSay", this.currentSpeech);
   }
-
   preUpdate(t: number, dt: number) {
     super.preUpdate(t, dt);
-
     this.update();
   }
 }

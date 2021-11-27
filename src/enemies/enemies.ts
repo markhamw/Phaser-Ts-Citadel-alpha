@@ -44,7 +44,6 @@ const newEnemyGroup = (scene: Phaser.Scene, type: any, collides: boolean, collid
   });
 }
 
-
 //
 export { enemies, newEnemyGroup }
 

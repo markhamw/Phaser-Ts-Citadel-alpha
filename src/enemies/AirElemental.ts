@@ -47,13 +47,27 @@ export default class AirElemental extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.world.on(Phaser.Physics.Arcade.Events.TILE_COLLIDE, this.handleCollision, this.scene)
         this.scene.physics.world.on(Phaser.Physics.Arcade.Events.COLLIDE, this.handleCollisionWithSprite, this.scene)
         this.EntityID = Guid.create()
-
+        this.scene.events.addListener('removeTitleMobs', () => {
+            this.selfDestruct()
+        })
+        this.scene.events.addListener('fadeMobs', () => {
+            this.fade()
+        })
     }
 
     isNearPlayer(player: Phaser.Physics.Arcade.Sprite): boolean {
         return true
     }
 
+    fade = () => {
+        this.scene.time.addEvent({
+            repeat: 4,
+            delay: 500,
+            callback: () => {
+                this.setAlpha(this.alpha - .3)
+            }
+        })
+    }
     get getEntityID() {
         return this.EntityID
     }
@@ -63,15 +77,14 @@ export default class AirElemental extends Phaser.Physics.Arcade.Sprite {
 
         _go.moveEvent.callback()
 
-        console.log('Collision with tile/map detected')
-        console.log('EntityID:', _go.getEntityID)
+
 
     }
 
     private handleCollisionWithSprite(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile) {
         let _go = go as AirElemental
         _go.moveEvent.callback()
-        console.log('Collision with sprite detected')
+
     }
 
     distanceFromStartingLocation = (): number => {
@@ -79,10 +92,11 @@ export default class AirElemental extends Phaser.Physics.Arcade.Sprite {
     }
 
     selfDestruct = () => {
+        this.moveEvent.destroy()
 
         this.anims.play('enemy-airelemental-dead', true)
+        this.destroy()
     }
-
     preload() {
 
     }
@@ -115,7 +129,7 @@ export default class AirElemental extends Phaser.Physics.Arcade.Sprite {
             }
         } else {
             this.setVelocity(0, 0)
-            this.scene.events.emit('enemy-shaman-dead-event', this)
+            this.scene.events.emit('enemy-airelemental-dead-event', this)
             //this.anims.play('enemy-shaman-dead', true)
         }
 

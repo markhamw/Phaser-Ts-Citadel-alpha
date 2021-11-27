@@ -29,7 +29,7 @@ export default class Shaman extends Phaser.Physics.Arcade.Sprite {
     private StartingXLoc: number;
     private StartingYLoc: number;
     private EntityID: Guid;
-    private ratname: string;
+
     private isAlive: boolean = true;
 
     constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
@@ -43,10 +43,11 @@ export default class Shaman extends Phaser.Physics.Arcade.Sprite {
                 this.RatSpeed = chanceForIdle == 1 ? 0 : Phaser.Math.Between(0, 3)
                 this.facing = chanceForIdle == 1 ? Direction.IDLE : Phaser.Math.Between(0, 7)
                 if (chanceForEmote == 1) {
-                    this.CurrentTrashTalk.visible = true;
-                    this.anims.play('enemy-shaman-attack', true,)
+
                 } else if (chanceForEmote == 2) {
-                    this.anims.play('enemy-shaman-attack', true)
+                    let atk = this.anims.play({ key: 'enemy-shaman-attack', repeat: 0 })
+                } else {
+                    this.anims.play('enemy-shaman-idle', true)
                 }
             },
             loop: true
@@ -55,12 +56,17 @@ export default class Shaman extends Phaser.Physics.Arcade.Sprite {
             this.isAlive = false;
 
         })
+        this.scene.events.addListener('fadeMobs', () => {
+            this.fade()
+        })
         this.scene.events.addListener('enemy-shaman-dead-event', (enemy) => {
             this.anims.play('enemy-shaman-dead', true);
 
             this.once('animationcomplete', (animation, frame) => {
                 this.moveEvent.remove();
                 this.DiscardCurrentTrashTalk.remove();
+                this.isAlive = false;
+
                 this.destroy();
 
             })
@@ -85,11 +91,27 @@ export default class Shaman extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.world.on(Phaser.Physics.Arcade.Events.TILE_COLLIDE, this.handleCollision, this.scene)
         this.scene.physics.world.on(Phaser.Physics.Arcade.Events.COLLIDE, this.handleCollisionWithSprite, this.scene)
         this.EntityID = Guid.create()
-        this.ratname = getNewRatName()
+        this.scene.events.addListener('removeTitleMobs', () => {
+            this.selfDestruct()
+        })
     }
 
-
-
+    selfDestruct = () => {
+        this.anims.play('enemy-shaman-dead', true)
+        this.moveEvent.destroy()
+        this.CurrentTrashTalk.destroy()
+        this.DiscardCurrentTrashTalk.destroy()
+        this.destroy()
+    }
+    fade = () => {
+        this.scene.time.addEvent({
+            repeat: 4,
+            delay: 500,
+            callback: () => {
+                this.setAlpha(this.alpha - .3)
+            }
+        })
+    }
     isNearPlayer(player: Phaser.Physics.Arcade.Sprite): boolean {
         return true
     }
@@ -101,15 +123,13 @@ export default class Shaman extends Phaser.Physics.Arcade.Sprite {
     private handleCollision(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile) {
         let _go = go as unknown as Shaman
         _go.moveEvent.callback()
-        console.log('Collision with tile/map detected')
-        console.log('EntityID:', _go.getEntityID)
-        console.log('Entity Name:', _go.ratname)
+
     }
 
     private handleCollisionWithSprite(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile) {
         let _go = go as Shaman
         _go.moveEvent.callback()
-        console.log('Collision with sprite detected')
+
     }
 
 
@@ -117,10 +137,7 @@ export default class Shaman extends Phaser.Physics.Arcade.Sprite {
         return Phaser.Math.FloorTo(Phaser.Math.Distance.Between(this.x, this.y, this.StartingXLoc, this.StartingYLoc))
     }
 
-    selfDestruct = () => {
 
-        this.anims.play('enemy-shaman-dead', true)
-    }
 
     preload() {
 
@@ -172,8 +189,8 @@ export default class Shaman extends Phaser.Physics.Arcade.Sprite {
                     break
             }
         } else {
-            this.setVelocity(0, 0)
-            this.scene.events.emit('enemy-shaman-dead-event', this)
+            //  this.setVelocity(0, 0)
+            //    this.scene.events.emit('enemy-shaman-dead-event', this)
 
         }
 

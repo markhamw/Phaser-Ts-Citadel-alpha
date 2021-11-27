@@ -66,4 +66,11 @@ export default class FlyingRat extends Phaser.Physics.Arcade.Sprite {
 
 
     }
+
+    selfDestruct = () => {
+        this.moveEvent.destroy()
+
+        this.destroy()
+    }
 }
+

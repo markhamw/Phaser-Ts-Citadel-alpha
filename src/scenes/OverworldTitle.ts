@@ -2,19 +2,18 @@ import { Physics, Scene } from "phaser";
 import { GetOverworldPlayerAnims, GetPlayerAnims } from "~/anims/PlayerAnims";
 import { Speech, WRGame } from "~/game/game";
 import { AddWASDKeysToScene, CreateAnimationSet, RandomCoord } from "~/game/gamelogic";
-import { WindDirection, GenerateBuildings, RandomCloud, buildingsforWorldMap } from "../game/overworldlogic";
-import Player from "~/characters/Player";
+import { WindDirection, GenerateBuildings, RandomCloud, createBorder, AddLeftArrow, AddRightArrow, AddHead, ShowMenu, PlayerSay } from "../game/overworldlogic";
 import "../characters/Player";
 import { GetCoinAnims, GetSmokeAnims } from "~/anims/WorldAnims";
 import Rat from "~/enemies/Rat";
-import { GetRatAnims, GetRatOgreAnims, GetShamanAnims, GetFlyingRatAnims, GetEarthGolemAnims, GetAirElementalAnims } from "~/anims/EnemyAnims";
+import { GetShamanAnims, GetFlyingRatAnims, GetEarthGolemAnims, GetAirElementalAnims, createAnimations } from "~/anims/EnemyAnims";
 import RatOgre from "~/enemies/RatOgre";
 import Shaman from "~/enemies/Shaman";
 import { enemies, newEnemyGroup } from "~/enemies/enemies";
 import FlyingRat from "~/enemies/FlyingRat";
 import EarthGolem from "~/enemies/EarthGolem";
 import AirElemental from "~/enemies/AirElemental";
-
+import Player from "../characters/Player";
 
 const enum Layers {
   Base,
@@ -36,6 +35,8 @@ export default class OverworldTitle extends Phaser.Scene {
   FlyingRatGroup!: Physics.Arcade.Group;
   EarthGolemGroup!: Physics.Arcade.Group;
   AirElementalGroup!: Physics.Arcade.Group;
+
+  buildingsGroup!: Physics.Arcade.Group;
 
   player!: Player;
   info!: Phaser.GameObjects.Sprite;
@@ -74,17 +75,6 @@ export default class OverworldTitle extends Phaser.Scene {
     this.wrGame.playerCurrentScene = "OverWorld";
   }
 
-  createAnimations = () => {
-    CreateAnimationSet(this, GetOverworldPlayerAnims(this.anims, 5, "playeroverworld"));
-    CreateAnimationSet(this, GetCoinAnims(this.anims, 4));
-    CreateAnimationSet(this, GetSmokeAnims(this.anims, 4));
-    CreateAnimationSet(this, GetRatAnims(this.anims, 4));
-    CreateAnimationSet(this, GetRatOgreAnims(this.anims, 4));
-    CreateAnimationSet(this, GetShamanAnims(this.anims, 4));
-    CreateAnimationSet(this, GetFlyingRatAnims(this.anims, 4));
-    CreateAnimationSet(this, GetEarthGolemAnims(this.anims, 4));
-    CreateAnimationSet(this, GetAirElementalAnims(this.anims, 4));
-  };
 
   createEnemyGroups = () => {
 
@@ -95,12 +85,12 @@ export default class OverworldTitle extends Phaser.Scene {
     this.EarthGolemGroup = newEnemyGroup(this, EarthGolem, true, true);
     this.AirElementalGroup = newEnemyGroup(this, AirElemental, true, true);
 
-    this.SummonMobs(this.ShamanGroup, 'enemy-shaman', 5);
-    this.SummonMobs(this.RatOgreGroup, 'enemy-ratogre', 5);
-    this.SummonMobs(this.RatGroup, 'enemy-rat', 5);
+    this.SummonMobs(this.ShamanGroup, 'enemy-shaman', 5, 287, 425);
+    this.SummonMobs(this.RatOgreGroup, 'enemy-ratogre', 5, 156, 284);
+    this.SummonMobs(this.RatGroup, 'enemy-rat', 8, 199, 409);
     this.SummonMobs(this.FlyingRatGroup, 'enemy-flyingrat', 15);
-    this.SummonMobs(this.EarthGolemGroup, 'enemy-earthgolem', 3);
-    this.SummonMobs(this.AirElementalGroup, 'enemy-airelemental', 3);
+    this.SummonMobs(this.EarthGolemGroup, 'enemy-earthgolem', 3, 444, 262);
+    this.SummonMobs(this.AirElementalGroup, 'enemy-airelemental', 1, 374, 392);
 
     this.physics.add.collider(this.RatOgreGroup, this.baseLayer);
     this.physics.add.collider(this.RatOgreGroup, this.decorLayer);
@@ -118,14 +108,6 @@ export default class OverworldTitle extends Phaser.Scene {
     this.physics.add.collider(this.AirElementalGroup, this.decorLayer);
 
 
-  };
-
-  createBorder = () => {
-    let borderBox = this.add.sprite(0, 0, "border");
-    borderBox.setOrigin(0, 0);
-    borderBox.setScale(0.98);
-    borderBox.setAlpha(0.5);
-    borderBox.setDepth(5);
   };
 
   createMenuKeyPressEvents = () => {
@@ -157,63 +139,20 @@ export default class OverworldTitle extends Phaser.Scene {
     this.goldCoin.setScale(2);
   };
 
-  SummonMobs = (group: Phaser.Physics.Arcade.Group, enemyid: string, numberOfMobsToCreate: number) => {
+  SummonMobs = (group: Phaser.Physics.Arcade.Group, enemyid: string, numberOfMobsToCreate: number, x?: number, y?: number) => {
     for (let countmade = 0; countmade < numberOfMobsToCreate; countmade++) {
-      let mobX = RandomCoord(450);
-      let mobY = RandomCoord(450);
+      let mobX = x ?? RandomCoord(450) + 10;
+      let mobY = y ?? RandomCoord(450) + 10
       group.get(mobX, mobY, enemyid);
     }
   };
 
-  PlayerSay = (text: Speech) => {
-
-    //create
-    let { line1, line2, line3 } = text;
-    this.player.currentSpeech = text;
-    this.player.talkBubble = this.add.sprite(this.player.x, this.player.y - 50, "window1").setScale(.50).setDepth(5).setAlpha(0).setOrigin(0.05, 0);
-    this.player.headPngforTalkBubble = this.add
-      .sprite(this.player.talkBubble.x, this.player.talkBubble.y, "playerheads", this.wrGame.playerHead)
-      .setScale(1.65)
-      .setOrigin(0.2, -0.07).setDepth(5).setAlpha(0)
-    this.playerline1 = this.add.text(this.player.talkBubble.x + 30, this.player.talkBubble.y, line1).setAlpha(0).setDepth(6).setFontSize(10);
-    this.playerline2 = this.add.text(this.player.talkBubble.x + 30, this.player.talkBubble.y + 8, line2).setAlpha(0).setDepth(6).setFontSize(10);
-    this.playerline3 = this.add.text(this.player.talkBubble.x + 30, this.player.talkBubble.y + 17, line3).setAlpha(0).setDepth(6).setFontSize(10);
-
-    let show = this.time.addEvent({
-      delay: 0,
-      repeat: 0,
-      callback: () => {
-        this.player.talkBubble.setAlpha(1);
-        this.player.headPngforTalkBubble.setAlpha(1)
-        this.playerline1.setAlpha(1);
-        this.playerline2.setAlpha(1);
-        this.playerline3.setAlpha(1);
-      },
-    });
-
-    let update = this.time.addEvent({
-      delay: 100,
-      repeat: 50,
-      callback: () => {
-        this.player.talkBubble.setPosition(this.player.x, this.player.y - 50);
-        this.player.headPngforTalkBubble.setPosition(this.player.talkBubble.x, this.player.talkBubble.y);
-        this.playerline1.setPosition(this.player.talkBubble.x + 30, this.player.talkBubble.y);
-        this.playerline2.setPosition(this.player.talkBubble.x + 30, this.player.talkBubble.y + 8);
-        this.playerline3.setPosition(this.player.talkBubble.x + 30, this.player.talkBubble.y + 17);
-      },
-    });
-
-    let hide = this.time.addEvent({
-      delay: 5000,
-      repeat: 0,
-      callback: () => {
-        this.player.talkBubble.setAlpha(0);
-        this.player.headPngforTalkBubble.setAlpha(0);
-        this.playerline1.setAlpha(0);
-        this.playerline2.setAlpha(0);
-        this.playerline3.setAlpha(0);
-      },
-    });
+  HidePlayerTalkBubble = () => {
+    this.player.talkBubble.setAlpha(0);
+    this.player.headPngforTalkBubble.setAlpha(0);
+    this.playerline1.setAlpha(0);
+    this.playerline2.setAlpha(0);
+    this.playerline3.setAlpha(0);
   }
 
   createOverworldPlayer = (wrGame: WRGame) => {
@@ -222,7 +161,22 @@ export default class OverworldTitle extends Phaser.Scene {
 
     this.physics.add.collider(this.player, this.baseLayer);
     this.physics.add.collider(this.player, this.decorLayer);
+    this.player.setInteractive();
+    this.player.on("pointerdown", () => {
+      let Hpline = `My HP is ${this.wrGame.playerHP}`;
+      let Gpline = `I have ${this.wrGame.playerGold} gp`
+      let Xpline = `I have ${this.wrGame.playerExperience} xp`
+      PlayerSay(this, { line1: Hpline, line2: Gpline, line3: Xpline })
+    });
+    this.player.on("pointerup", () => {
+      this.HidePlayerTalkBubble();
+    });
 
+    this.buildingsGroup.children.iterate((child) => {
+      child.on("pointerup", () => {
+        PlayerSay(this, { line1: "I can't go there", line2: `Its the ${child.name}`, line3: "" })
+      });
+    })
     this.createGoldOverlay();
 
   };
@@ -248,11 +202,12 @@ export default class OverworldTitle extends Phaser.Scene {
     this.titletext0 = this.addTitleTextToScene("The Ranger Of", 100, 100, 32, fontFamily, "#ffffff", 3);
     this.titletext1 = this.addTitleTextToScene("Ratticus", 0, 100, 48, fontFamily, "#BE620C", 3).setScale(1.5);
     this.titletext2 = this.addTitleTextToScene("Island", 0, 100, 48, fontFamily, "#000055", 3).setScale(1.5);
-    this.titletext4 = this.addTitleTextToScene("Choose Your Face", 250, 230, 20, fontFamily, "#000000", 3).setScale(1.25);
+    this.titletext4 = this.addTitleTextToScene("Choose your avatar", 250, 230, 20, fontFamily, "#000000", 3).setScale(1.25);
 
     this.titletext4.on("pointerover", () => {
-      this.titletext4.setText("Use A & D, or the arrows to change, SPACE to Begin");
-    }).on("pointerout", () => { this.titletext4.setText("Choose your avatar") });
+      this.titletext4.setText("Use A & D or arrows. Space to start. ");
+      this.titletext4.updateText();
+    }).on("pointerout", () => { this.titletext4.setText("Choose your avatar") })
 
     Phaser.Display.Align.In.Center(this.titletext4, this.add.zone(250, 300, 200, 200));
     Phaser.Display.Align.In.Center(this.titletext0, this.add.zone(250, 100, 200, 200));
@@ -306,7 +261,6 @@ export default class OverworldTitle extends Phaser.Scene {
         this.leftArrow.destroy();
         this.rightArrow.destroy();
         this.head.destroy();
-
       },
     });
 
@@ -327,7 +281,20 @@ export default class OverworldTitle extends Phaser.Scene {
         this.sound.volume = (this.sound.volume -= 0.02);
       },
     });
-
+    this.time.addEvent({
+      delay: 1000,
+      repeat: 0,
+      callback: () => {
+        this.events.emit('fadeMobs')
+      },
+    });
+    this.time.addEvent({
+      delay: 3000,
+      repeat: 0,
+      callback: () => {
+        this.events.emit('removeTitleMobs')
+      },
+    });
     this.time.addEvent({
       delay: 4300,
       repeat: 0,
@@ -346,6 +313,7 @@ export default class OverworldTitle extends Phaser.Scene {
       },
     });
 
+
     this.time.addEvent({
       delay: 6200,
       repeat: 0,
@@ -361,65 +329,10 @@ export default class OverworldTitle extends Phaser.Scene {
       callback: () => {
         this.cameras.main.zoomTo(1, 3000, 'Linear', true);
         this.cameras.main.pan(this.cameras.main.centerX, this.cameras.main.centerY, 3000);
-        this.PlayerSay({ line1: "Today is a good", line2: "day to hunt down rat", line3: "scum on my islands" })
+        PlayerSay(this, { line1: "Today is a good", line2: "day to hunt down rat", line3: "scum on my islands" })
       },
     });
 
-  };
-
-  AddLeftArrow = () => {
-    this.leftArrow = this.add.sprite(130, 260, "arrows", "arrow_scrolling_34.png").setScale(6.5);
-    Phaser.Display.Align.In.Center(this.leftArrow, this.add.zone(200, 300, 200, 200), -100, 50);
-    this.leftArrow.setInteractive();
-    this.leftArrow.on("pointerdown", () => {
-      this.events.emit("changeHead", "left");
-    });
-    this.leftArrow.setDepth(3);
-  }
-
-  AddHead = (portraits) => {
-    this.head = this.add.sprite(230, 240, "playerheads", this.wrGame.playerHead).setScale(5.4);
-    Phaser.Display.Align.In.Center(this.head, this.add.zone(250, 300, 200, 200), 0, 60);
-    this.head.setDepth(3);
-    this.events.addListener("changeHead", (direction: string) => {
-      let currentIndex = portraits.indexOf(this.wrGame.playerHead);
-      switch (direction) {
-        case "left":
-          if (portraits[currentIndex - 1]) {
-            this.wrGame.playerHead = portraits[currentIndex - 1];
-            this.head.setTexture("playerheads", this.wrGame.playerHead);
-          }
-          break;
-        case "right":
-          if (portraits[currentIndex + 1]) {
-            this.wrGame.playerHead = portraits[currentIndex + 1];
-            this.head.setTexture("playerheads", this.wrGame.playerHead);
-          }
-          break;
-      }
-    });
-  }
-
-  AddRightArrow = () => {
-    this.rightArrow = this.add.sprite(230, 260, "arrows", "arrow_scrolling_35.png").setScale(6.5);
-    Phaser.Display.Align.In.Center(this.rightArrow, this.add.zone(200, 300, 200, 200), 200, 50);
-    this.rightArrow.setInteractive();
-    this.rightArrow.on("pointerdown", () => {
-      this.events.emit("changeHead", "right");
-    });
-    this.rightArrow.setDepth(3);
-  }
-
-  ShowMenu = () => {
-    let portraits: string[] = [];
-
-    for (let i = 0; i < 19; i++) {
-      portraits.push(`heads-${i}.png`);
-    }
-
-    this.AddLeftArrow();
-    this.AddRightArrow();
-    this.AddHead(portraits);
   };
 
   createTiles() {
@@ -452,6 +365,16 @@ export default class OverworldTitle extends Phaser.Scene {
         }
       },
     });
+
+    let conditionallyAddFlyingRatsEveryTenSeconds = this.time.addEvent({
+      delay: 10000,
+      repeat: -1,
+      callback: () => {
+        if (this.FlyingRatGroup.children.size < 10) {
+          this.SummonMobs(this.FlyingRatGroup, 'enemy-Flyingrat', 1);
+        }
+      },
+    });
   }
 
   preload() {
@@ -460,7 +383,7 @@ export default class OverworldTitle extends Phaser.Scene {
     this.keys = this.input.keyboard.createCursorKeys();
     this.createTiles();
     this.createStructuresAndWeather();
-    this.createAnimations();
+    createAnimations(this);
     this.createEnemyGroups()
 
     this.events.addListener("startintro", () => {
@@ -472,7 +395,7 @@ export default class OverworldTitle extends Phaser.Scene {
       repeat: 0,
       callback: () => {
         this.displayTitleText();
-        this.ShowMenu();
+        ShowMenu(this);
         this.createMenuKeyPressEvents();
       },
     });
@@ -480,18 +403,22 @@ export default class OverworldTitle extends Phaser.Scene {
 
   create() {
 
-    this.sound.play("music2", { volume: 0.3, loop: true });
-    this.createBorder();
+    this.sound.play("music2", { volume: 0.03, loop: true });
+    createBorder(this);
 
-    let conditionallyAddFlyingRatsEveryTenSeconds = this.time.addEvent({
-      delay: 10000,
-      repeat: -1,
-      callback: () => {
-        if (this.FlyingRatGroup.children.size < 10) {
-          this.SummonMobs(this.FlyingRatGroup, 'enemy-Flyingrat', 3);
-        }
-      },
-    });
+    /*     this.add.sprite(100, 480, "fullheart")
+        this.add.sprite(110, 480, "fullheart")
+        this.add.sprite(120, 480, "fullheart")
+        this.add.sprite(130, 480, "emptyheart")
+        this.add.sprite(140, 480, "emptyheart")
+     */
+    this.baseLayer.setInteractive();
+
+    this.baseLayer.on("pointerdown", (clicked) => {
+      console.log(clicked.x, clicked.y);
+      var particles = this.add.particles('blueparticle');
+      var emitter = particles.createEmitter({ maxParticles: 2, speed: 15, blendMode: 'ADD' }).setScale(.2).setPosition(clicked.x, clicked.y);
+    })
 
   }
 

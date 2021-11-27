@@ -1,179 +1,29 @@
 import Phaser from 'phaser'
+import { GetOverworldPlayerAnims } from './PlayerAnims';
+import { GetCoinAnims, GetSmokeAnims } from './WorldAnims';
 
 
 
-const GetRatAnims = (anims: Phaser.Animations.AnimationManager, rate: number) => {
-  return [
-    {
-      key: `enemy-rat-idle`,
-      frames: anims.generateFrameNames('enemy-rat', {
-        start: 192,
-        end: 195,
-        prefix: 'tower-',
-        suffix: '.png',
-      }),
-      repeat: -1,
-      frameRate: rate,
 
-    },
-    {
-      key: `enemy-rat-dead`,
-      frames: anims.generateFrameNames('enemy-rat', {
-        start: 208,
-        end: 211,
-        prefix: 'tower-',
-        suffix: '.png',
-      }),
-      repeat: -1,
-      frameRate: rate,
 
-    },
-    {
-      key: `enemy-rat-moveleft`,
-      frames: anims.generateFrameNames('enemy-rat', {
-        start: 196,
-        end: 199,
-        prefix: 'tower-',
-        suffix: '.png',
-
-      }),
-      repeat: -1,
-      frameRate: rate,
-    },
-
-    {
-      key: `enemy-rat-moveright`,
-      frames: anims.generateFrameNames('enemy-rat', {
-        start: 196,
-        end: 199,
-        prefix: 'tower-',
-        suffix: '.png',
-      }),
-      repeat: -1,
-      frameRate: rate,
-    },
-    {
-      key: `enemy-rat-moveup`,
-      frames: anims.generateFrameNames('enemy-rat', {
-        start: 196,
-        end: 199,
-        prefix: 'tower-',
-        suffix: '.png',
-      }),
-      repeat: -1,
-      frameRate: rate,
-    },
-    {
-      key: `enemy-rat-movedown`,
-      frames: anims.generateFrameNames('enemy-rat', {
-        start: 196,
-        end: 199,
-        prefix: 'tower-',
-        suffix: '.png',
-      }),
-      repeat: -1,
-      frameRate: rate,
-    },
-    {
-      key: `enemy-rat-attack`,
-      frames: anims.generateFrameNames('enemy-rat', {
-        start: 200,
-        end: 203,
-        prefix: 'tower-',
-        suffix: '.png',
-      }),
-      repeat: -1,
-      frameRate: rate,
-    }
-
-  ]
+function CreateAnimationSet(
+  scene: Phaser.Scene,
+  animations: Phaser.Types.Animations.Animation[]
+) {
+  animations.forEach((animation) => {
+    scene.anims.create(animation);
+  });
 }
+const createAnimations = (scene: Phaser.Scene) => {
 
-const GetRatOgreAnims = (anims: Phaser.Animations.AnimationManager, rate: number) => {
-  return [
-    {
-      key: `enemy-ratogre-idle`,
-      frames: anims.generateFrameNames('enemy-ratogre', {
-        start: 296,
-        end: 299,
-        prefix: 'tower-',
-        suffix: '.png',
-      }),
-      repeat: -1,
-      frameRate: rate,
+  CreateAnimationSet(scene, GetCoinAnims(scene.anims, 4));
+  CreateAnimationSet(scene, GetSmokeAnims(scene.anims, 4));
+  CreateAnimationSet(scene, GetShamanAnims(scene.anims, 4));
+  CreateAnimationSet(scene, GetFlyingRatAnims(scene.anims, 4));
+  CreateAnimationSet(scene, GetEarthGolemAnims(scene.anims, 4));
+  CreateAnimationSet(scene, GetAirElementalAnims(scene.anims, 4));
+};
 
-    },
-    {
-      key: `enemy-ratogre-moveleft`,
-      frames: anims.generateFrameNames('enemy-ratogre', {
-        start: 300,
-        end: 303,
-        prefix: 'tower-',
-        suffix: '.png',
-      }),
-      repeat: -1,
-      frameRate: rate,
-
-    },
-
-    {
-      key: `enemy-ratogre-moveright`,
-      frames: anims.generateFrameNames('enemy-ratogre', {
-        start: 300,
-        end: 303,
-        prefix: 'tower-',
-        suffix: '.png',
-      }),
-      repeat: -1,
-      frameRate: rate,
-    },
-    {
-      key: `enemy-ratogre-dead`,
-      frames: anims.generateFrameNames('enemy-ratogre', {
-        start: 311,
-        end: 315,
-        prefix: 'tower-',
-        suffix: '.png',
-      }),
-      repeat: -1,
-      frameRate: rate,
-    },
-    {
-      key: `enemy-ratogre-moveup`,
-      frames: anims.generateFrameNames('enemy-ratogre', {
-        start: 300,
-        end: 303,
-        prefix: 'tower-',
-        suffix: '.png',
-      }),
-      repeat: -1,
-      frameRate: rate,
-    },
-    {
-      key: `enemy-ratogre-movedown`,
-      frames: anims.generateFrameNames('enemy-ratogre', {
-        start: 300,
-        end: 303,
-        prefix: 'tower-',
-        suffix: '.png',
-      }),
-      repeat: -1,
-      frameRate: rate,
-    },
-    {
-      key: `enemy-ratogre-attack`,
-      frames: anims.generateFrameNames('enemy-ratogre', {
-        start: 304,
-        end: 307,
-        prefix: 'tower-',
-        suffix: '.png',
-      }),
-      repeat: -1,
-      frameRate: rate,
-    }
-
-  ]
-}
 const GetShamanAnims = (anims: Phaser.Animations.AnimationManager, rate: number) => {
   return [
     {
@@ -467,6 +317,6 @@ const GetAirElementalAnims = (anims: Phaser.Animations.AnimationManager, rate: n
 }
 export {
 
-  GetRatAnims, GetRatOgreAnims, GetShamanAnims, GetFlyingRatAnims, GetEarthGolemAnims, GetAirElementalAnims
+  GetShamanAnims, GetFlyingRatAnims, GetEarthGolemAnims, GetAirElementalAnims, createAnimations
 
 }

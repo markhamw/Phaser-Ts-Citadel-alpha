@@ -21,8 +21,8 @@ export default class EarthGolem extends Phaser.Physics.Arcade.Sprite {
     private facing = Phaser.Math.Between(0, 4)
     private speed: number;
     private moveEvent: Phaser.Time.TimerEvent
-    private DiscardCurrentTrashTalk: Phaser.Time.TimerEvent
-    private CurrentTrashTalk!: Phaser.GameObjects.Text
+
+
     private StartingXLoc: number;
     private StartingYLoc: number;
     private EntityID: Guid;
@@ -34,7 +34,7 @@ export default class EarthGolem extends Phaser.Physics.Arcade.Sprite {
         this.moveEvent = scene.time.addEvent({
             delay: Phaser.Math.Between(2000, 9000),
             callback: () => {
-                this.CurrentTrashTalk.visible = false;
+
                 let chanceForIdle = Phaser.Math.Between(0, 4);
                 let chanceForEmote = Phaser.Math.Between(0, 4);
                 this.facing = chanceForIdle == 1 ? Direction.IDLE : Phaser.Math.Between(0, 7)
@@ -42,32 +42,22 @@ export default class EarthGolem extends Phaser.Physics.Arcade.Sprite {
             },
             loop: true
         });
-        this.scene.events.addListener('player-interact-event', (player) => {
-            this.isAlive = false;
-        })
 
-
-        this.DiscardCurrentTrashTalk = scene.time.addEvent({
-            delay: 1000,
-            repeat: -1,
-            callback: () => {
-                if (this.CurrentTrashTalk.visible) {
-                    this.CurrentTrashTalk.setActive(false)
-                    this.CurrentTrashTalk.visible = false
-                }
-            }
-        })
 
         this.speed = Phaser.Math.Between(1, 3);
         this.StartingXLoc = x
         this.StartingYLoc = y
-        this.CurrentTrashTalk = scene.add.text(this.x, this.y, VocalEmotes[Phaser.Math.Between(0, 7)])
-        this.CurrentTrashTalk.visible = false;
+
 
         this.scene.physics.world.on(Phaser.Physics.Arcade.Events.TILE_COLLIDE, this.handleCollision, this.scene)
         this.scene.physics.world.on(Phaser.Physics.Arcade.Events.COLLIDE, this.handleCollisionWithSprite, this.scene)
         this.EntityID = Guid.create()
-
+        this.scene.events.addListener('removeTitleMobs', () => {
+            this.selfDestruct()
+        })
+        this.scene.events.addListener('fadeMobs', () => {
+            this.fade()
+        })
     }
 
     isNearPlayer(player: Phaser.Physics.Arcade.Sprite): boolean {
@@ -83,24 +73,30 @@ export default class EarthGolem extends Phaser.Physics.Arcade.Sprite {
 
         _go.moveEvent.callback()
 
-        console.log('Collision with tile/map detected')
-        console.log('EntityID:', _go.getEntityID)
 
     }
 
     private handleCollisionWithSprite(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile) {
         let _go = go as EarthGolem
         _go.moveEvent.callback()
-        console.log('Collision with sprite detected')
-    }
 
+    }
+    fade = () => {
+        this.scene.time.addEvent({
+            repeat: 4,
+            delay: 500,
+            callback: () => {
+                this.setAlpha(this.alpha - .3)
+            }
+        })
+    }
     distanceFromStartingLocation = (): number => {
         return Phaser.Math.FloorTo(Phaser.Math.Distance.Between(this.x, this.y, this.StartingXLoc, this.StartingYLoc))
     }
 
     selfDestruct = () => {
-
-        this.anims.play('enemy-earthgolem-dead', true)
+        this.moveEvent.destroy()
+        this.destroy()
     }
 
     preload() {
@@ -135,9 +131,12 @@ export default class EarthGolem extends Phaser.Physics.Arcade.Sprite {
             }
         } else {
             this.setVelocity(0, 0)
-            this.scene.events.emit('enemy-shaman-dead-event', this)
+            this.scene.events.emit('enemy-earthgolem-dead-event', this)
             //this.anims.play('enemy-shaman-dead', true)
         }
 
     }
+
+
+
 }

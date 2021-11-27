@@ -1,7 +1,7 @@
 import Phaser, { FacebookInstantGamesLeaderboard } from "phaser";
 
 import { Guid } from "guid-typescript"
-import { getNewRatName } from "~/game/gamelogic";
+import { CreateAnimationSet, getNewRatName } from "~/game/gamelogic";
 
 enum Direction {
     UP,
@@ -28,9 +28,8 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
 
     private facing = Phaser.Math.Between(0, 7)
     private RatSpeed = Phaser.Math.Between(0, 2)
-    private moveEvent: Phaser.Time.TimerEvent
-
-
+    private moveEvent: Phaser.Time.TimerEvent;
+    private framerate = 5;
     private RatAlpha!: number;
     private StartingXLoc: number;
     private StartingYLoc: number;
@@ -42,42 +41,114 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
         this.moveEvent = scene.time.addEvent({
             delay: Phaser.Math.Between(2000, 9000),
             callback: () => {
-
                 let chanceForIdle = Phaser.Math.Between(0, 4);
-                let chanceForEmote = Phaser.Math.Between(0, 4);
-                this.RatSpeed = chanceForIdle == 1 ? 0 : Phaser.Math.Between(0, 3)
+                this.RatSpeed = chanceForIdle == 1 ? 0 : chanceForIdle
                 this.facing = chanceForIdle == 1 ? Direction.IDLE : Phaser.Math.Between(0, 7)
-
             },
             loop: true
         });
-        this.scene.events.addListener('player-interact-event', (player) => {
-
-            console.log('heard by rat in listener')
-            console.log(`${this.ratname} is at ${this.x} ${this.y}`)
-            console.log("player is at ", player.x, player.y)
-            let xDiff = this.x - player.x
-            let yDiff = this.y - player.y
-            if (xDiff && yDiff < 10) {
-                this.selfDestruct()
-            }
-
-            //broken here
-
-        })
-
-
-
-
 
         this.StartingXLoc = x
         this.StartingYLoc = y
-
 
         this.scene.physics.world.on(Phaser.Physics.Arcade.Events.TILE_COLLIDE, this.handleCollision, this.scene)
         this.scene.physics.world.on(Phaser.Physics.Arcade.Events.COLLIDE, this.handleCollisionWithSprite, this.scene)
         this.EntityID = Guid.create()
         this.ratname = getNewRatName()
+        this.scene.events.addListener('removeTitleMobs', () => {
+            this.selfDestruct()
+        })
+        this.scene.events.addListener('fadeMobs', () => {
+            this.fade()
+        })
+        CreateAnimationSet(this.scene, this.GenerateAnims(4));
+    }
+
+    GenerateAnims = (rate: number) => {
+        return [
+            {
+                key: `enemy-rat-idle`,
+                frames: this.anims.generateFrameNames('enemy-rat', {
+                    start: 192,
+                    end: 195,
+                    prefix: 'tower-',
+                    suffix: '.png',
+                }),
+                repeat: -1,
+                frameRate: rate,
+
+            },
+            {
+                key: `enemy-rat-dead`,
+                frames: this.anims.generateFrameNames('enemy-rat', {
+                    start: 208,
+                    end: 211,
+                    prefix: 'tower-',
+                    suffix: '.png',
+                }),
+                repeat: -1,
+                frameRate: rate,
+
+            },
+            {
+                key: `enemy-rat-moveleft`,
+                frames: this.anims.generateFrameNames('enemy-rat', {
+                    start: 196,
+                    end: 199,
+                    prefix: 'tower-',
+                    suffix: '.png',
+
+                }),
+                repeat: -1,
+                frameRate: rate,
+            },
+
+            {
+                key: `enemy-rat-moveright`,
+                frames: this.anims.generateFrameNames('enemy-rat', {
+                    start: 196,
+                    end: 199,
+                    prefix: 'tower-',
+                    suffix: '.png',
+                }),
+                repeat: -1,
+                frameRate: rate,
+            },
+            {
+                key: `enemy-rat-moveup`,
+                frames: this.anims.generateFrameNames('enemy-rat', {
+                    start: 196,
+                    end: 199,
+                    prefix: 'tower-',
+                    suffix: '.png',
+                }),
+                repeat: -1,
+                frameRate: rate,
+            },
+            {
+                key: `enemy-rat-movedown`,
+                frames: this.anims.generateFrameNames('enemy-rat', {
+                    start: 196,
+                    end: 199,
+                    prefix: 'tower-',
+                    suffix: '.png',
+                }),
+                repeat: -1,
+                frameRate: rate,
+            },
+            {
+                key: `enemy-rat-attack`,
+                frames: this.anims.generateFrameNames('enemy-rat', {
+                    start: 200,
+                    end: 203,
+                    prefix: 'tower-',
+                    suffix: '.png',
+                }),
+                repeat: -1,
+                frameRate: rate,
+            }
+
+        ]
     }
 
     isNearPlayer(player: Phaser.Physics.Arcade.Sprite): boolean {
@@ -93,19 +164,15 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
 
         _go.moveEvent.callback()
 
-        console.log('Collision with tile/map detected')
-        console.log('EntityID:', _go.getEntityID)
-        console.log('Entity Name:', _go.ratname)
+
     }
 
     private handleCollisionWithSprite(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile) {
         let _go = go as Rat
         _go.moveEvent.callback()
-        console.log('Collision with sprite detected')
+        console.log(`Collision with ${_go.EntityID} detected on tile at ${tile.x}, ${tile.y}`)
     }
-    /*   Scream = () => {
-          this.scene.sound.play('ratsound',{detune: Phaser.Math.Between(150,250), volume: .1})
-      }  */
+
 
     distanceFromStartingLocation = (): number => {
         return Phaser.Math.FloorTo(Phaser.Math.Distance.Between(this.x, this.y, this.StartingXLoc, this.StartingYLoc))
@@ -113,9 +180,18 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
 
     selfDestruct = () => {
         this.moveEvent.destroy()
-
+        this.destroy()
     }
 
+    fade = () => {
+        this.scene.time.addEvent({
+            repeat: 4,
+            delay: 500,
+            callback: () => {
+                this.setAlpha(this.alpha - .3)
+            }
+        })
+    }
     preload() {
         this.scene.events.addListener('player-interact-event', () => {
             console.log("Rat heard player attack event")

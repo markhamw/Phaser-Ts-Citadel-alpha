@@ -46,7 +46,8 @@ export default class Preloader extends Phaser.Scene {
         this.load.image("border", "assets/border.png")
         this.load.image("titlegraphic", "assets/TitleGraphic.png")
 
-
+        //particles
+        this.load.image("blueparticle", "assets/blue.png")
 
 
         enemies.forEach(enemy => {

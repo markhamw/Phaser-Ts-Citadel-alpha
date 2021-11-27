@@ -1,6 +1,6 @@
 import Phaser, { FacebookInstantGamesLeaderboard } from "phaser";
 import { Guid } from "guid-typescript"
-import { getNewRatName } from "~/game/gamelogic";
+import { CreateAnimationSet, getNewRatName } from "~/game/gamelogic";
 
 enum Direction {
     UP,
@@ -35,41 +35,30 @@ export default class RatOgre extends Phaser.Physics.Arcade.Sprite {
     constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
         super(scene, x, y, texture, frame)
         this.moveEvent = scene.time.addEvent({
-            delay: Phaser.Math.Between(2000, 9000),
+            delay: Phaser.Math.Between(1000, 2000),
             callback: () => {
                 this.CurrentTrashTalk.visible = false;
                 let chanceForIdle = Phaser.Math.Between(0, 4);
                 let chanceForEmote = Phaser.Math.Between(0, 4);
-                this.RatSpeed = chanceForIdle == 1 ? 0 : Phaser.Math.Between(0, 3)
-                this.facing = chanceForIdle == 1 ? Direction.IDLE : Phaser.Math.Between(0, 7)
-                if (chanceForEmote == 1) {
-                    this.CurrentTrashTalk.visible = true;
-                    this.anims.play('enemy-ratogre-attack', true,)
-                } else if (chanceForEmote == 2) {
-                    this.anims.play('enemy-ratogre-attack', true)
+                this.RatSpeed = Phaser.Math.Between(3, 5);
+                if (chanceForIdle == 1) {
+                    this.facing == Direction.IDLE;
+                    // console.log(`${this.ratname} is idle`)
+                } else {
+                    this.facing = Phaser.Math.Between(0, 7)
                 }
+
             },
-            loop: true
+            repeat: -1
         });
-        this.scene.events.addListener('player-interact-event', (player) => {
 
-            console.log('heard by ratogre in listener')
-            console.log(`${this.ratname} is at ${this.x} ${this.y}`)
-            console.log("player is at ", player.x, player.y)
-            let xDiff = this.x - player.x
-            let yDiff = this.y - player.y
-            if (xDiff && yDiff < 10) {
-                this.scene.add.image(this.scene.cameras.main.centerX, this.scene.cameras.main.centerY, 'scrollsmall')
 
-                //this.selfDestruct()
-            }
-
-            //broken here
-
+        this.scene.events.addListener('removeTitleMobs', () => {
+            this.selfDestruct()
         })
-
-
-
+        this.scene.events.addListener('fadeMobs', () => {
+            this.fade()
+        })
         this.DiscardCurrentTrashTalk = scene.time.addEvent({
             delay: 1000,
             repeat: -1,
@@ -90,22 +79,31 @@ export default class RatOgre extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.world.on(Phaser.Physics.Arcade.Events.COLLIDE, this.handleCollisionWithSprite, this.scene)
         this.EntityID = Guid.create()
         this.ratname = getNewRatName()
+
+        CreateAnimationSet(this.scene, this.GetRatOgreAnims(4));
     }
 
     private handleCollision(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile) {
         let _go = go as unknown as RatOgre
         _go.moveEvent.callback()
-        console.log('Collision with tile/map detected')
-        console.log('Entity id:', _go.EntityID)
+
     }
 
     private handleCollisionWithSprite(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile) {
         let _go = go as RatOgre
         _go.moveEvent.callback()
-        console.log('Collision with sprite detected')
+
     }
 
-
+    fade = () => {
+        this.scene.time.addEvent({
+            repeat: 4,
+            delay: 500,
+            callback: () => {
+                this.setAlpha(this.alpha - .3)
+            }
+        })
+    }
     distanceFromStartingLocation = (): number => {
         return Phaser.Math.FloorTo(Phaser.Math.Distance.Between(this.x, this.y, this.StartingXLoc, this.StartingYLoc))
     }
@@ -114,9 +112,91 @@ export default class RatOgre extends Phaser.Physics.Arcade.Sprite {
         this.moveEvent.destroy()
         this.CurrentTrashTalk.destroy()
         this.DiscardCurrentTrashTalk.destroy()
-
-        //  this.Scream()
         this.destroy()
+    }
+    GetRatOgreAnims = (rate: number) => {
+        return [
+            {
+                key: `enemy-ratogre-idle`,
+                frames: this.anims.generateFrameNames('enemy-ratogre', {
+                    start: 296,
+                    end: 299,
+                    prefix: 'tower-',
+                    suffix: '.png',
+                }),
+                repeat: -1,
+                frameRate: rate,
+
+            },
+            {
+                key: `enemy-ratogre-moveleft`,
+                frames: this.anims.generateFrameNames('enemy-ratogre', {
+                    start: 300,
+                    end: 303,
+                    prefix: 'tower-',
+                    suffix: '.png',
+                }),
+                repeat: -1,
+                frameRate: rate,
+
+            },
+            {
+                key: `enemy-ratogre-moveright`,
+                frames: this.anims.generateFrameNames('enemy-ratogre', {
+                    start: 300,
+                    end: 303,
+                    prefix: 'tower-',
+                    suffix: '.png',
+                }),
+                repeat: -1,
+                frameRate: rate,
+            },
+            {
+                key: `enemy-ratogre-dead`,
+                frames: this.anims.generateFrameNames('enemy-ratogre', {
+                    start: 311,
+                    end: 315,
+                    prefix: 'tower-',
+                    suffix: '.png',
+                }),
+                repeat: -1,
+                frameRate: rate,
+            },
+            {
+                key: `enemy-ratogre-moveup`,
+                frames: this.anims.generateFrameNames('enemy-ratogre', {
+                    start: 300,
+                    end: 303,
+                    prefix: 'tower-',
+                    suffix: '.png',
+                }),
+                repeat: -1,
+                frameRate: rate,
+            },
+            {
+                key: `enemy-ratogre-movedown`,
+                frames: this.anims.generateFrameNames('enemy-ratogre', {
+                    start: 300,
+                    end: 303,
+                    prefix: 'tower-',
+                    suffix: '.png',
+                }),
+                repeat: -1,
+                frameRate: rate,
+            },
+            {
+                key: `enemy-ratogre-attack`,
+                frames: this.anims.generateFrameNames('enemy-ratogre', {
+                    start: 304,
+                    end: 307,
+                    prefix: 'tower-',
+                    suffix: '.png',
+                }),
+                repeat: 0,
+                frameRate: rate,
+            }
+
+        ]
     }
 
     preload() {
@@ -172,3 +252,4 @@ export default class RatOgre extends Phaser.Physics.Arcade.Sprite {
         }
     }
 }
+
