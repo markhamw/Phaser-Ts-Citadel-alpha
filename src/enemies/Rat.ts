@@ -1,20 +1,6 @@
 import Phaser, { FacebookInstantGamesLeaderboard } from "phaser";
-
 import { Guid } from "guid-typescript"
-import { CreateAnimationSet, getNewRatName } from "~/game/gamelogic";
-
-enum Direction {
-    UP,
-    DOWN,
-    LEFT,
-    RIGHT,
-    RIGHTANDUP,
-    RIGHTANDDOWN,
-    LEFTANDUP,
-    LEFTANDDOWN,
-    IDLE,
-}
-
+import { CreateAnimationSet, Direction, getNewRatName } from "~/game/gamelogic";
 
 enum VocalEmotes {
     Squee,
@@ -24,26 +10,34 @@ enum VocalEmotes {
     ReeeeeEEEttt,
     Effyou,
 }
+
 export default class Rat extends Phaser.Physics.Arcade.Sprite {
 
     private facing = Phaser.Math.Between(0, 7)
     private RatSpeed = Phaser.Math.Between(0, 2)
     private moveEvent: Phaser.Time.TimerEvent;
-    private framerate = 5;
-    private RatAlpha!: number;
     private StartingXLoc: number;
     private StartingYLoc: number;
     private EntityID: Guid;
     private ratname: string;
-
+    private stationary: boolean = false;
     constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
         super(scene, x, y, texture, frame)
+
         this.moveEvent = scene.time.addEvent({
             delay: Phaser.Math.Between(2000, 9000),
             callback: () => {
-                let chanceForIdle = Phaser.Math.Between(0, 4);
-                this.RatSpeed = chanceForIdle == 1 ? 0 : chanceForIdle
-                this.facing = chanceForIdle == 1 ? Direction.IDLE : Phaser.Math.Between(0, 7)
+                if (this.distanceFromStartingLocation() > 5) {
+                    this.stop()
+                    this.setVelocity(0, 0);
+                    this.facing = Phaser.Math.Between(0, 7)
+                }
+                if (!this.stationary) {
+                    let chanceForIdle = Phaser.Math.Between(0, 4);
+                    this.RatSpeed = chanceForIdle == 1 ? 0 : chanceForIdle
+                    this.facing = chanceForIdle == 1 ? Direction.IDLE : Phaser.Math.Between(0, 7)
+
+                }
             },
             loop: true
         });
@@ -200,7 +194,9 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
     preUpdate(t: number, dt: number) {
         this.flipX = false;
         super.preUpdate(t, dt)
-
+        if (this.stationary) {
+            this.facing = Direction.IDLE;
+        }
         switch (this.facing) {
             case Direction.UP:
                 this.setVelocity(0, -this.RatSpeed)

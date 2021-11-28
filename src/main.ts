@@ -1,10 +1,11 @@
 import Phaser, { AUTO } from 'phaser'
 import Preloader from './scenes/Preloader'
 import OverworldTitle from './scenes/OverworldTitle'
+import Chapter1 from './scenes/Chapter1'
 
 export default new Phaser.Game(
 	{
-		scene: [Preloader, OverworldTitle],
+		scene: [Preloader, OverworldTitle, Chapter1],
 		type: Phaser.WEBGL,
 		autoFocus: true,
 		//backgroundColor: '0x000000',

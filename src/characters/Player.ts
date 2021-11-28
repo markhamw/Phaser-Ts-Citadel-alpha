@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import { GetOverworldPlayerAnims, GetPlayerAnims } from "~/anims/PlayerAnims";
 import { Condition, PlayerStatus, Speech } from "~/game/game";
 import { AddWASDKeysToScene, CreateAnimationSet } from "~/game/gamelogic";
+import Chapter1 from "~/scenes/Chapter1";
 import Overworld from "~/scenes/OverworldTitle";
 
 declare global {
@@ -46,6 +47,59 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   headPngforTalkBubble!: Phaser.GameObjects.Sprite;
   textforTalkBubble!: Speech
   currentSpeech!: Speech;
+  isSpeaking: boolean = false;
+  stationary: boolean = false;
+  PlayerSay = (scene: Chapter1 | any, text: Speech) => {
+    if (!this.isSpeaking) {
+      this.isSpeaking = true;
+      let { line1, line2, line3 } = text;
+      scene.player.currentSpeech = text;
+      scene.player.talkBubble = scene.add.sprite(scene.player.x, scene.player.y - 50, "window1").setScale(.50).setDepth(5).setAlpha(0).setOrigin(0.05, 0);
+      scene.player.headPngforTalkBubble = scene.add
+        .sprite(scene.player.talkBubble.x, scene.player.talkBubble.y, "playerheads", scene.wrGame.playerHead)
+        .setScale(1.65)
+        .setOrigin(0.2, -0.07).setDepth(5).setAlpha(0)
+      scene.playerline1 = scene.add.text(scene.player.talkBubble.x + 30, scene.player.talkBubble.y, line1).setAlpha(0).setDepth(6).setFontSize(10);
+      scene.playerline2 = scene.add.text(scene.player.talkBubble.x + 30, scene.player.talkBubble.y + 8, line2).setAlpha(0).setDepth(6).setFontSize(10);
+      scene.playerline3 = scene.add.text(scene.player.talkBubble.x + 30, scene.player.talkBubble.y + 17, line3).setAlpha(0).setDepth(6).setFontSize(10);
+
+      let show = scene.time.addEvent({
+        delay: 0,
+        repeat: 0,
+        callback: () => {
+          scene.player.talkBubble.setAlpha(1);
+          scene.player.headPngforTalkBubble.setAlpha(1)
+          scene.playerline1.setAlpha(1);
+          scene.playerline2.setAlpha(1);
+          scene.playerline3.setAlpha(1);
+        },
+      });
+
+      let update = scene.time.addEvent({
+        delay: 100,
+        repeat: 50,
+        callback: () => {
+          scene.player.talkBubble.setPosition(scene.player.x, scene.player.y - 50);
+          scene.player.headPngforTalkBubble.setPosition(scene.player.talkBubble.x, scene.player.talkBubble.y);
+          scene.playerline1.setPosition(scene.player.talkBubble.x + 30, scene.player.talkBubble.y);
+          scene.playerline2.setPosition(scene.player.talkBubble.x + 30, scene.player.talkBubble.y + 8);
+          scene.playerline3.setPosition(scene.player.talkBubble.x + 30, scene.player.talkBubble.y + 17);
+        },
+      });
+
+      let hide = scene.time.addEvent({
+        delay: 5000,
+        repeat: 0,
+        callback: () => {
+          scene.HidePlayerTalkBubble();
+
+
+        },
+      });
+    }
+
+  }
+
 
   constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
     super(scene, x, y, texture, frame);
@@ -55,7 +109,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.e = scene.input.keyboard.addKey("E");
     this.keys = scene.input.keyboard.createCursorKeys();
     this.speed = 4;
-
+    this.isMoving = false;
     this.e.on('up', () => {
       this.scene.events.emit("player-interact-event");
       console.log("E");
@@ -90,6 +144,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   decideMovement = () => {
+    if (this.stationary) {
+      return
+    }
     let leftKey = this.wasd[1].isDown;
     let rightKey = this.wasd[3].isDown;
     let upKey = this.wasd[0].isDown;

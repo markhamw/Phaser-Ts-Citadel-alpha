@@ -45,6 +45,8 @@ export default class Preloader extends Phaser.Scene {
         this.load.image("tavern", "assets/Tavern.png")
         this.load.image("border", "assets/border.png")
         this.load.image("titlegraphic", "assets/TitleGraphic.png")
+        this.load.image("e_up", "assets/e_up.png")
+        this.load.image("e_down", "assets/e_down.png")
 
         //particles
         this.load.image("blueparticle", "assets/blue.png")

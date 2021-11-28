@@ -1,18 +1,7 @@
 import Phaser, { FacebookInstantGamesLeaderboard } from "phaser";
 import { Guid } from "guid-typescript"
-import { CreateAnimationSet, getNewRatName } from "~/game/gamelogic";
+import { CreateAnimationSet, getNewRatName, Direction } from "~/game/gamelogic";
 
-enum Direction {
-    UP,
-    DOWN,
-    LEFT,
-    RIGHT,
-    RIGHTANDUP,
-    RIGHTANDDOWN,
-    LEFTANDUP,
-    LEFTANDDOWN,
-    IDLE,
-}
 
 enum VocalEmotes {
     PPSSffkkk,
@@ -40,6 +29,10 @@ export default class RatOgre extends Phaser.Physics.Arcade.Sprite {
                 this.CurrentTrashTalk.visible = false;
                 let chanceForIdle = Phaser.Math.Between(0, 4);
                 let chanceForEmote = Phaser.Math.Between(0, 4);
+                if (this.distanceFromStartingLocation() > 5) {
+                    this.stop
+                    this.facing = Phaser.Math.Between(0, 7)
+                }
                 this.RatSpeed = Phaser.Math.Between(3, 5);
                 if (chanceForIdle == 1) {
                     this.facing == Direction.IDLE;

@@ -2,7 +2,7 @@ import { Physics, Scene } from "phaser";
 import { GetOverworldPlayerAnims, GetPlayerAnims } from "~/anims/PlayerAnims";
 import { Speech, WRGame } from "~/game/game";
 import { AddWASDKeysToScene, CreateAnimationSet, RandomCoord } from "~/game/gamelogic";
-import { WindDirection, GenerateBuildings, RandomCloud, createBorder, AddLeftArrow, AddRightArrow, AddHead, ShowMenu, PlayerSay } from "../game/overworldlogic";
+import { WindDirection, GenerateBuildings, RandomCloud, createBorder, AddLeftArrow, AddRightArrow, AddHead, ShowMenu } from "../game/overworldlogic";
 import "../characters/Player";
 import { GetCoinAnims, GetSmokeAnims } from "~/anims/WorldAnims";
 import Rat from "~/enemies/Rat";
@@ -14,10 +14,6 @@ import FlyingRat from "~/enemies/FlyingRat";
 import EarthGolem from "~/enemies/EarthGolem";
 import AirElemental from "~/enemies/AirElemental";
 import Player from "../characters/Player";
-import Chapter1 from "./Chapter1";
-
-
-type WRGameScene = OverworldTitle | Chapter1;
 
 const enum Layers {
   Base,
@@ -32,7 +28,8 @@ const enum Chapters {
   Five,
   Six,
 }
-export default class OverworldTitle extends Phaser.Scene {
+
+export default class Chapter1 extends Phaser.Scene {
   keys!: Phaser.Types.Input.Keyboard.CursorKeys;
   wasd!: Phaser.Input.Keyboard.Key[];
   winddirection: WindDirection = { xspeed: Math.floor(Math.random() * 3) + 1, yspeed: Math.floor(Math.random() * 3) + 1 };
@@ -76,7 +73,7 @@ export default class OverworldTitle extends Phaser.Scene {
 
 
   constructor() {
-    super("OverworldTitle");
+    super("Chapter1");
 
     this.DebugCollideColor = new Phaser.Display.Color(243, 234, 48, 255);
     this.DebugFaceColor = new Phaser.Display.Color(40, 39, 37, 255);
@@ -168,12 +165,13 @@ export default class OverworldTitle extends Phaser.Scene {
     this.playerline1.setAlpha(0);
     this.playerline2.setAlpha(0);
     this.playerline3.setAlpha(0);
+    this.player.isSpeaking = false;
   }
 
   createOverworldPlayer = (wrGame: WRGame) => {
     this.player = this.add.player(320, 325, "playeroverworld", "player-movedown-1.png");
     this.player.body.setSize(this.player.width * 0.75, this.player.height * 0.75);
-    this.player.stationary = true;
+
     this.physics.add.collider(this.player, this.baseLayer);
     this.physics.add.collider(this.player, this.decorLayer);
     this.player.setInteractive();
@@ -181,7 +179,7 @@ export default class OverworldTitle extends Phaser.Scene {
       let Hpline = `My HP is ${this.wrGame.playerHP}`;
       let Gpline = `I have ${this.wrGame.playerGold} gp`
       let Xpline = `I have ${this.wrGame.playerExperience} xp`
-      PlayerSay(this, { line1: Hpline, line2: Gpline, line3: Xpline })
+      this.player.PlayerSay(this, { line1: Hpline, line2: Gpline, line3: Xpline })
     });
     this.player.on("pointerup", () => {
       this.HidePlayerTalkBubble();
@@ -189,7 +187,7 @@ export default class OverworldTitle extends Phaser.Scene {
 
     this.buildingsGroup.children.iterate((child) => {
       child.on("pointerup", () => {
-        PlayerSay(this, { line1: "I can't go there", line2: `Its the ${child.name}`, line3: "" })
+        this.player.PlayerSay(this, { line1: "I can't go there", line2: `Its the ${child.name}`, line3: "" })
       });
     })
     this.createGoldOverlay();
@@ -337,8 +335,7 @@ export default class OverworldTitle extends Phaser.Scene {
       callback: () => {
         this.createOverworldPlayer(this.wrGame);
         this.player.setDepth(2);
-        this.player.speed = 0;
-
+        this.events.emit('spawnChapter1');
       },
     });
 
@@ -352,13 +349,6 @@ export default class OverworldTitle extends Phaser.Scene {
       },
     });
 
-    this.time.addEvent({
-      delay: 10000,
-      repeat: 0,
-      callback: () => {
-        this.events.emit('spawnChapter1');
-      },
-    });
   };
 
   createTiles() {
@@ -379,14 +369,12 @@ export default class OverworldTitle extends Phaser.Scene {
     GenerateBuildings(this);
     RandomCloud(this);
     RandomCloud(this);
-    RandomCloud(this);
-    RandomCloud(this);
 
     let conditionallyAddCloudsEveryTenSeconds = this.time.addEvent({
       delay: 10000,
       repeat: -1,
       callback: () => {
-        if (this.numberofclouds < 4) {
+        if (this.numberofclouds < 2) {
           RandomCloud(this);
         }
       },
@@ -396,8 +384,8 @@ export default class OverworldTitle extends Phaser.Scene {
       delay: 10000,
       repeat: -1,
       callback: () => {
-        if (this.FlyingRatGroup.children.size < 10) {
-          this.SummonMobs(this.FlyingRatGroup, 'enemy-Flyingrat', 1);
+        if (this.FlyingRatGroup.children.size < 5) {
+          this.SummonMobs(this.FlyingRatGroup, 'enemy-Flyingrat', 1).setDepth(10);
         }
       },
     });
@@ -405,51 +393,62 @@ export default class OverworldTitle extends Phaser.Scene {
 
   preload() {
 
-    this.wasd = AddWASDKeysToScene(this);
-    this.keys = this.input.keyboard.createCursorKeys();
     this.createTiles();
     this.createStructuresAndWeather();
     createAnimations(this);
-    this.createEnemyGroups()
+    //  this.createEnemyGroups()
 
-    this.events.addListener("startintro", () => {
+    /* this.events.addListener("startintro", () => {
       this.startIntro();
-    });
+    }); */
 
-    this.events.addListener('spawnChapter1', () => {
-      this.scene.start('Chapter1', this.wrGame);
-    });
+    /*  this.events.addListener('spawnChapter1', () => {
+       this.spawnChapter1();
+     }); */
 
-    let initialTitleTextEvent = this.time.addEvent({
-      delay: 500,
-      repeat: 0,
-      callback: () => {
-        this.displayTitleText();
-        ShowMenu(this);
-        this.createMenuKeyPressEvents();
-      },
-    });
   }
 
+  spawnChapter1() {
+    this.chapter1Group = newEnemyGroup(this, Rat, true, true);
+    this.FlyingRatGroup = newEnemyGroup(this, FlyingRat, true, true);
 
+    let rat1 = this.SummonMobs(this.chapter1Group, "enemy-rat", 1, 329, 361);
+    rat1.ratSpeed = 0;
+    rat1.stationary = true;
+    let e_up = this.add.image(329, 345, 'e_up').setAlpha(0).setDepth(4);
+    let e_down = this.add.image(329, 345, 'e_down').setAlpha(1).setDepth(4);
+    this.time.addEvent({
+      delay: 1000,
+      repeat: 10,
+      callback: () => {
+        e_up.setAlpha(e_up.alpha == 1 ? 0 : 1);
+        e_down.setAlpha(e_up.alpha == 1 ? 0 : 1);
+      }
+    })
+    this.time.addEvent({
+      delay: 10000,
+      repeat: 10,
+      callback: () => {
+        e_up.destroy();
+        e_down.destroy();
+      }
+    })
+    /*   let ogre1 = this.SummonMobs(this.chapter1Group, "enemy-ratogre", 1, 200, 409);
+      ogre1.ratSpeed = 0;
+      ogre1.stationaryenemy = true; */
+  }
 
   create() {
-    this.info = this.add.sprite(0, 0, "info");
+
+    this.info = this.add.sprite(0, 0, "info").setAlpha(0);
     this.info.setOrigin(0, 0);
     this.info.setScale(0.97);
-    this.info.alpha = 0;
+    this.spawnChapter1();
 
-    this.sound.play("music2", { volume: 0.03, loop: true });
-    createBorder(this);
+    this.createOverworldPlayer(this.wrGame)
+    this.player.setDepth(2);
 
-    /*     this.add.sprite(100, 480, "fullheart")
-        this.add.sprite(110, 480, "fullheart")
-        this.add.sprite(120, 480, "fullheart")
-        this.add.sprite(130, 480, "emptyheart")
-        this.add.sprite(140, 480, "emptyheart")
-     */
     this.baseLayer.setInteractive();
-
     this.baseLayer.on("pointerdown", (clicked) => {
       console.log(clicked.x, clicked.y);
       var particles = this.add.particles('blueparticle');
@@ -459,9 +458,7 @@ export default class OverworldTitle extends Phaser.Scene {
   }
 
   update() {
-    if (this.player && this.player.isMoving) {
-      this.player.speed = 0;
-    }
+
 
   }
 }

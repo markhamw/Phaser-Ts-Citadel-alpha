@@ -19,11 +19,12 @@ export default class FlyingRat extends Phaser.Physics.Arcade.Sprite {
     constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
         super(scene, x, y, texture, frame)
         this.moveEvent = scene.time.addEvent({
-            delay: Phaser.Math.Between(7000, 29000),
+            delay: Phaser.Math.Between(2000, 4000),
             callback: () => {
-                let chancemove = Phaser.Math.Between(0, 4);
+                let chancemove = Phaser.Math.Between(0, 2);
                 this.facing = chancemove == 2 ? Direction.LEFTANDDOWN : Direction.RIGHTANDDOWN
-                if (this.distanceFromStartingLocation() > 150) {
+                this.setScale(chancemove == 2 ? this.scale + .4 : this.scale - .4)
+                if (this.distanceFromStartingLocation() > 250) {
                     this.destroyFlyingRat();
                 }
             },

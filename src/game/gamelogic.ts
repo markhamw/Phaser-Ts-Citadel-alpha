@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 
-enum RatNameStart{
+enum RatNameStart {
   Do,
   Ra,
   Ba,
@@ -14,8 +14,18 @@ enum RatNameStart{
   Va,
   Ri
 }
-
-enum RatNameEnd{
+enum Direction {
+  UP,
+  DOWN,
+  LEFT,
+  RIGHT,
+  RIGHTANDUP,
+  RIGHTANDDOWN,
+  LEFTANDUP,
+  LEFTANDDOWN,
+  IDLE,
+}
+enum RatNameEnd {
   brik,
   dok,
   kil,
@@ -26,7 +36,7 @@ enum RatNameEnd{
   duus,
   ruus,
 }
-enum RatRoyalty{
+enum RatRoyalty {
   'the Stank',
   'the Foul',
   'el Rancid',
@@ -37,12 +47,12 @@ enum RatRoyalty{
 }
 
 
-function getNewKingRatName(){
-  return RatNameStart[Phaser.Math.Between(0,11)] + RatNameEnd[Phaser.Math.Between(0,8)] +' '+ RatRoyalty[Phaser.Math.Between(0,6)]
+function getNewKingRatName() {
+  return RatNameStart[Phaser.Math.Between(0, 11)] + RatNameEnd[Phaser.Math.Between(0, 8)] + ' ' + RatRoyalty[Phaser.Math.Between(0, 6)]
 }
 
-function getNewRatName(){
-  return RatNameStart[Phaser.Math.Between(0,11)] + RatNameEnd[Phaser.Math.Between(0,8)]
+function getNewRatName() {
+  return RatNameStart[Phaser.Math.Between(0, 11)] + RatNameEnd[Phaser.Math.Between(0, 8)]
 }
 
 function AddWASDKeysToScene(scene: Phaser.Scene): Phaser.Input.Keyboard.Key[] {
@@ -70,4 +80,4 @@ function RandomCoord(max: number): number {
   } else return num + 30;
 };
 
-export { AddWASDKeysToScene, CreateAnimationSet, getNewKingRatName, getNewRatName, RandomCoord,  };
+export { AddWASDKeysToScene, CreateAnimationSet, getNewKingRatName, getNewRatName, RandomCoord, Direction };
