@@ -1,3 +1,4 @@
+import Chapter1 from "~/scenes/Chapter1";
 import OverworldTitle from "~/scenes/OverworldTitle";
 import Overworld from "~/scenes/OverworldTitle";
 import Building from "~/structures/Building";
@@ -20,7 +21,22 @@ export type Location = {
   y: number;
 };
 
+export const enum Layers {
+  Base,
+  Decor,
+}
+export type WRGameScene = OverworldTitle | Chapter1;
 
+export const createOverworldTileMap = (scene: OverworldTitle | Chapter1) => {
+  let map2 = scene.make.tilemap({ key: "allbiomes" });
+  let tileset3 = map2.addTilesetImage("allbiomes", "tiles3");
+  scene.baseLayer = map2.createLayer(Layers.Base, tileset3);
+  scene.decorLayer = map2.createLayer(Layers.Decor, tileset3);
+  scene.baseLayer.setDepth(0);
+  scene.decorLayer.setDepth(0);
+  scene.baseLayer.setCollisionByProperty({ collides: true });
+  scene.decorLayer.setCollisionByProperty({ collides: true });
+}
 
 export const AddLeftArrow = (scene: OverworldTitle) => {
   scene.leftArrow = scene.add.sprite(130, 260, "arrows", "arrow_scrolling_34.png").setScale(6.5);
@@ -107,7 +123,7 @@ const newBuildingGroup = (scene: Phaser.Scene, type: any) => {
   });
 }
 
-export const GenerateBuildings = (scene: OverworldTitle) => {
+export const GenerateBuildings = (scene: OverworldTitle | Chapter1) => {
   scene.buildingsGroup = newBuildingGroup(scene, Building);
   buildingsforWorldMap.forEach((building) => {
     let bldg = scene.buildingsGroup.get(building.location.x, building.location.y, building.collection, building.tag).setScale(1.45).setDepth(1);
@@ -116,53 +132,7 @@ export const GenerateBuildings = (scene: OverworldTitle) => {
   });
 };
 
-export const PlayerSay = (scene: OverworldTitle, text: Speech) => {
 
-  let { line1, line2, line3 } = text;
-  scene.player.currentSpeech = text;
-  scene.player.talkBubble = scene.add.sprite(scene.player.x, scene.player.y - 50, "window1").setScale(.50).setDepth(5).setAlpha(0).setOrigin(0.05, 0);
-  scene.player.headPngforTalkBubble = scene.add
-    .sprite(scene.player.talkBubble.x, scene.player.talkBubble.y, "playerheads", scene.wrGame.playerHead)
-    .setScale(1.65)
-    .setOrigin(0.2, -0.07).setDepth(5).setAlpha(0)
-  scene.playerline1 = scene.add.text(scene.player.talkBubble.x + 30, scene.player.talkBubble.y, line1).setAlpha(0).setDepth(6).setFontSize(10);
-  scene.playerline2 = scene.add.text(scene.player.talkBubble.x + 30, scene.player.talkBubble.y + 8, line2).setAlpha(0).setDepth(6).setFontSize(10);
-  scene.playerline3 = scene.add.text(scene.player.talkBubble.x + 30, scene.player.talkBubble.y + 17, line3).setAlpha(0).setDepth(6).setFontSize(10);
-
-  let show = scene.time.addEvent({
-    delay: 0,
-    repeat: 0,
-    callback: () => {
-      scene.player.talkBubble.setAlpha(1);
-      scene.player.headPngforTalkBubble.setAlpha(1)
-      scene.playerline1.setAlpha(1);
-      scene.playerline2.setAlpha(1);
-      scene.playerline3.setAlpha(1);
-    },
-  });
-
-  let update = scene.time.addEvent({
-    delay: 100,
-    repeat: 50,
-    callback: () => {
-      scene.player.talkBubble.setPosition(scene.player.x, scene.player.y - 50);
-      scene.player.headPngforTalkBubble.setPosition(scene.player.talkBubble.x, scene.player.talkBubble.y);
-      scene.playerline1.setPosition(scene.player.talkBubble.x + 30, scene.player.talkBubble.y);
-      scene.playerline2.setPosition(scene.player.talkBubble.x + 30, scene.player.talkBubble.y + 8);
-      scene.playerline3.setPosition(scene.player.talkBubble.x + 30, scene.player.talkBubble.y + 17);
-    },
-  });
-
-  let hide = scene.time.addEvent({
-    delay: 5000,
-    repeat: 0,
-    callback: () => {
-      scene.HidePlayerTalkBubble();
-
-
-    },
-  });
-}
 export const ShowMenu = (scene: OverworldTitle) => {
   let portraits: string[] = [];
 
@@ -175,7 +145,7 @@ export const ShowMenu = (scene: OverworldTitle) => {
   AddHead(scene, portraits);
 };
 
-export const RandomCloud = (scene: OverworldTitle) => {
+export const RandomCloud = (scene: OverworldTitle | Chapter1) => {
   scene.numberofclouds++;
   let maxXorY = 400;
   let cloudNum = Math.floor(Math.random() * 6) + 1;

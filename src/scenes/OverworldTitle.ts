@@ -2,7 +2,17 @@ import { Physics, Scene } from "phaser";
 import { GetOverworldPlayerAnims, GetPlayerAnims } from "~/anims/PlayerAnims";
 import { Speech, WRGame } from "~/game/game";
 import { AddWASDKeysToScene, CreateAnimationSet, RandomCoord } from "~/game/gamelogic";
-import { WindDirection, GenerateBuildings, RandomCloud, createBorder, AddLeftArrow, AddRightArrow, AddHead, ShowMenu, PlayerSay } from "../game/overworldlogic";
+import {
+  WindDirection,
+  GenerateBuildings,
+  RandomCloud,
+  createBorder,
+  AddLeftArrow,
+  AddRightArrow,
+  AddHead,
+  ShowMenu,
+  createOverworldTileMap,
+} from "../game/overworldlogic";
 import "../characters/Player";
 import { GetCoinAnims, GetSmokeAnims } from "~/anims/WorldAnims";
 import Rat from "~/enemies/Rat";
@@ -17,13 +27,6 @@ import Player from "../characters/Player";
 import Chapter1 from "./Chapter1";
 
 
-type WRGameScene = OverworldTitle | Chapter1;
-
-const enum Layers {
-  Base,
-  Decor,
-}
-
 const enum Chapters {
   One,
   Two,
@@ -32,6 +35,7 @@ const enum Chapters {
   Five,
   Six,
 }
+
 export default class OverworldTitle extends Phaser.Scene {
   keys!: Phaser.Types.Input.Keyboard.CursorKeys;
   wasd!: Phaser.Input.Keyboard.Key[];
@@ -74,14 +78,12 @@ export default class OverworldTitle extends Phaser.Scene {
   baseLayer!: Phaser.Tilemaps.TilemapLayer;
   decorLayer!: Phaser.Tilemaps.TilemapLayer;
 
-
   constructor() {
     super("OverworldTitle");
 
     this.DebugCollideColor = new Phaser.Display.Color(243, 234, 48, 255);
     this.DebugFaceColor = new Phaser.Display.Color(40, 39, 37, 255);
     this.debug = false;
-
   }
 
   init(data) {
@@ -89,9 +91,7 @@ export default class OverworldTitle extends Phaser.Scene {
     this.wrGame.playerCurrentScene = "OverWorld";
   }
 
-
   createEnemyGroups = () => {
-
     this.RatGroup = newEnemyGroup(this, Rat, true, true);
     this.RatOgreGroup = newEnemyGroup(this, RatOgre, true, true);
     this.ShamanGroup = newEnemyGroup(this, Shaman, true, true);
@@ -99,12 +99,12 @@ export default class OverworldTitle extends Phaser.Scene {
     this.EarthGolemGroup = newEnemyGroup(this, EarthGolem, true, true);
     this.AirElementalGroup = newEnemyGroup(this, AirElemental, true, true);
 
-    this.SummonMobs(this.ShamanGroup, 'enemy-shaman', 5, 287, 425);
-    this.SummonMobs(this.RatOgreGroup, 'enemy-ratogre', 5, 156, 284);
-    this.SummonMobs(this.RatGroup, 'enemy-rat', 8, 199, 409);
-    this.SummonMobs(this.FlyingRatGroup, 'enemy-flyingrat', 15);
-    this.SummonMobs(this.EarthGolemGroup, 'enemy-earthgolem', 3, 444, 262);
-    this.SummonMobs(this.AirElementalGroup, 'enemy-airelemental', 1, 374, 392);
+    this.SummonMobs(this.ShamanGroup, "enemy-shaman", 5, 287, 425);
+    this.SummonMobs(this.RatOgreGroup, "enemy-ratogre", 5, 156, 284);
+    this.SummonMobs(this.RatGroup, "enemy-rat", 8, 199, 409);
+    this.SummonMobs(this.FlyingRatGroup, "enemy-flyingrat", 15);
+    this.SummonMobs(this.EarthGolemGroup, "enemy-earthgolem", 3, 444, 262);
+    this.SummonMobs(this.AirElementalGroup, "enemy-airelemental", 1, 374, 392);
 
     this.physics.add.collider(this.RatOgreGroup, this.baseLayer);
     this.physics.add.collider(this.RatOgreGroup, this.decorLayer);
@@ -120,8 +120,6 @@ export default class OverworldTitle extends Phaser.Scene {
 
     this.physics.add.collider(this.AirElementalGroup, this.baseLayer);
     this.physics.add.collider(this.AirElementalGroup, this.decorLayer);
-
-
   };
 
   createMenuKeyPressEvents = () => {
@@ -129,34 +127,24 @@ export default class OverworldTitle extends Phaser.Scene {
       if (!this.wrGame.hasIntroStarted) {
         this.events.emit("changeHead", "left");
       }
-
     });
     this.wasd[3].on("up", () => {
       if (!this.wrGame.hasIntroStarted) {
         this.events.emit("changeHead", "right");
       }
-
     });
     this.keys.space.on("up", () => {
       if (!this.wrGame.hasIntroStarted) {
         this.wrGame.hasIntroStarted = true;
         this.events.emit("startintro");
       }
-
     });
-  };
-
-  createGoldOverlay = () => {
-    this.goldDisplay = this.add.text(60, 470, "x" + this.wrGame.playerGold, { fontSize: "12px", fontFamily: "breathfire", color: "#ffffff" });
-    this.goldCoin = this.add.sprite(50, 480, "coin", "coin_1.png");
-    this.goldCoin.anims.play("coinrotate");
-    this.goldCoin.setScale(2);
   };
 
   SummonMobs = (group: Phaser.Physics.Arcade.Group, enemyid: string, numberOfMobsToCreate: number, x?: number, y?: number) => {
     for (let countmade = 0; countmade < numberOfMobsToCreate; countmade++) {
       let mobX = x ?? RandomCoord(450) + 10;
-      let mobY = y ?? RandomCoord(450) + 10
+      let mobY = y ?? RandomCoord(450) + 10;
       let mob = group.get(mobX, mobY, enemyid);
       return mob;
     }
@@ -168,7 +156,7 @@ export default class OverworldTitle extends Phaser.Scene {
     this.playerline1.setAlpha(0);
     this.playerline2.setAlpha(0);
     this.playerline3.setAlpha(0);
-  }
+  };
 
   createOverworldPlayer = (wrGame: WRGame) => {
     this.player = this.add.player(320, 325, "playeroverworld", "player-movedown-1.png");
@@ -177,39 +165,43 @@ export default class OverworldTitle extends Phaser.Scene {
     this.physics.add.collider(this.player, this.baseLayer);
     this.physics.add.collider(this.player, this.decorLayer);
     this.player.setInteractive();
-    this.player.on("pointerdown", () => {
-      let Hpline = `My HP is ${this.wrGame.playerHP}`;
-      let Gpline = `I have ${this.wrGame.playerGold} gp`
-      let Xpline = `I have ${this.wrGame.playerExperience} xp`
-      PlayerSay(this, { line1: Hpline, line2: Gpline, line3: Xpline })
-    });
+
     this.player.on("pointerup", () => {
       this.HidePlayerTalkBubble();
     });
 
     this.buildingsGroup.children.iterate((child) => {
       child.on("pointerup", () => {
-        PlayerSay(this, { line1: "I can't go there", line2: `Its the ${child.name}`, line3: "" })
+        this.player.Say(this, { line1: "I can't go there", line2: `Its the ${child.name}`, line3: "" });
       });
-    })
-    this.createGoldOverlay();
+    });
 
   };
 
-  addTitleTextToScene = (text: string, x: number, y: number, fontSize: number, fontFamily: string, color: string, depth: number): Phaser.GameObjects.Text => {
+  addTitleTextToScene = (
+    text: string,
+    x: number,
+    y: number,
+    fontSize: number,
+    fontFamily: string,
+    color: string,
+    depth: number
+  ): Phaser.GameObjects.Text => {
     let textObject = this.add.text(x, y, text, { fontSize: `${fontSize}px`, fontFamily: fontFamily, color: color });
     textObject.setAlpha(0);
     textObject.setDepth(depth);
     textObject.setOrigin(0.5, 0.5);
     textObject.setShadow(4, 4, "#000000", 8, true, true);
-    textObject.setInteractive();
-    textObject.on("pointerover", () => {
-      textObject.setScale(textObject.scale + .5);
-    }).on("pointerout", () => {
-      textObject.setScale(textObject.scale - .5);
-    });
+    /*     textObject.setInteractive();
+        textObject
+          .on("pointerover", () => {
+            textObject.setScale(textObject.scale + 0.5);
+          })
+          .on("pointerout", () => {
+            textObject.setScale(textObject.scale - 0.5);
+          }); */
     return textObject;
-  }
+  };
 
   displayTitleText = () => {
     let fontFamily = "breathfire";
@@ -217,12 +209,16 @@ export default class OverworldTitle extends Phaser.Scene {
     this.titletext0 = this.addTitleTextToScene("The Ranger Of", 100, 100, 32, fontFamily, "#ffffff", 3);
     this.titletext1 = this.addTitleTextToScene("Ratticus", 0, 100, 48, fontFamily, "#BE620C", 3).setScale(1.5);
     this.titletext2 = this.addTitleTextToScene("Island", 0, 100, 48, fontFamily, "#000055", 3).setScale(1.5);
-    this.titletext4 = this.addTitleTextToScene("Choose your avatar", 250, 230, 20, fontFamily, "#000000", 3).setScale(1.25);
-
-    this.titletext4.on("pointerover", () => {
-      this.titletext4.setText("Use A & D or arrows. Space to start. ");
-      this.titletext4.updateText();
-    }).on("pointerout", () => { this.titletext4.setText("Choose your avatar") })
+    this.titletext4 = this.addTitleTextToScene("Choose your avatar", 250, 230, 20, fontFamily, "#000000", 3);
+    this.titletext4.setInteractive();
+    this.titletext4
+      .on("pointerover", () => {
+        this.titletext4.setText("Use A & D or arrows. Space to start. ").setScale(1.5);
+        this.titletext4.updateText();
+      })
+      .on("pointerout", () => {
+        this.titletext4.setText("Choose your avatar").setScale(1.25);
+      });
 
     Phaser.Display.Align.In.Center(this.titletext4, this.add.zone(250, 300, 200, 200));
     Phaser.Display.Align.In.Center(this.titletext0, this.add.zone(250, 100, 200, 200));
@@ -251,8 +247,6 @@ export default class OverworldTitle extends Phaser.Scene {
   };
 
   startIntro = () => {
-
-
     this.time.addEvent({
       delay: 100,
       repeat: 10,
@@ -285,9 +279,8 @@ export default class OverworldTitle extends Phaser.Scene {
       delay: 1200,
       repeat: 0,
       callback: () => {
-        this.cameras.main.zoomTo(2, 3000, 'Linear', true);
+        this.cameras.main.zoomTo(2, 3000, "Linear", true);
         this.cameras.main.pan(320, 310, 3000);
-
       },
     });
 
@@ -295,21 +288,21 @@ export default class OverworldTitle extends Phaser.Scene {
       delay: 25,
       repeat: 50,
       callback: () => {
-        this.sound.volume = (this.sound.volume -= 0.02);
+        this.sound.volume = this.sound.volume -= 0.02;
       },
     });
     this.time.addEvent({
       delay: 1000,
       repeat: 0,
       callback: () => {
-        this.events.emit('fadeMobs')
+        this.events.emit("fadeMobs");
       },
     });
     this.time.addEvent({
       delay: 3000,
       repeat: 0,
       callback: () => {
-        this.events.emit('removeTitleMobs')
+        this.events.emit("removeTitleMobs");
       },
     });
     this.time.addEvent({
@@ -317,8 +310,8 @@ export default class OverworldTitle extends Phaser.Scene {
       repeat: 0,
       callback: () => {
         this.sound.stopAll();
-        this.sound.volume = .3;
-        this.sound.play('doorOpen', { volume: .2 });
+        this.sound.volume = 0.3;
+        this.sound.play("doorOpen", { volume: 0.2 });
       },
     });
 
@@ -326,10 +319,9 @@ export default class OverworldTitle extends Phaser.Scene {
       delay: 5900,
       repeat: 0,
       callback: () => {
-        this.sound.play('doorClose', { volume: .4 });
+        this.sound.play("doorClose", { volume: 0.4 });
       },
     });
-
 
     this.time.addEvent({
       delay: 6200,
@@ -338,7 +330,6 @@ export default class OverworldTitle extends Phaser.Scene {
         this.createOverworldPlayer(this.wrGame);
         this.player.setDepth(2);
         this.player.speed = 0;
-
       },
     });
 
@@ -346,9 +337,9 @@ export default class OverworldTitle extends Phaser.Scene {
       delay: 6500,
       repeat: 0,
       callback: () => {
-        this.cameras.main.zoomTo(1, 3000, 'Linear', true);
+        this.cameras.main.zoomTo(1, 3000, "Linear", true);
         this.cameras.main.pan(this.cameras.main.centerX, this.cameras.main.centerY, 3000);
-        PlayerSay(this, { line1: "Today is a good", line2: "day to hunt down rat", line3: "scum on my islands" })
+        this.player.Say(this, { line1: "Today is a good", line2: "day to hunt down rat", line3: "scum on my islands" });
       },
     });
 
@@ -356,12 +347,12 @@ export default class OverworldTitle extends Phaser.Scene {
       delay: 10000,
       repeat: 0,
       callback: () => {
-        this.events.emit('spawnChapter1');
+        this.events.emit("spawnChapter1");
       },
     });
   };
 
-  createTiles() {
+  /* createTiles() {
     let map2 = this.make.tilemap({ key: "allbiomes" });
     const tileset3 = map2.addTilesetImage("allbiomes", "tiles3");
 
@@ -372,8 +363,7 @@ export default class OverworldTitle extends Phaser.Scene {
     this.decorLayer.setDepth(0);
     this.baseLayer.setCollisionByProperty({ collides: true });
     this.decorLayer.setCollisionByProperty({ collides: true });
-
-  }
+  } */
 
   createStructuresAndWeather() {
     GenerateBuildings(this);
@@ -397,27 +387,26 @@ export default class OverworldTitle extends Phaser.Scene {
       repeat: -1,
       callback: () => {
         if (this.FlyingRatGroup.children.size < 10) {
-          this.SummonMobs(this.FlyingRatGroup, 'enemy-Flyingrat', 1);
+          this.SummonMobs(this.FlyingRatGroup, "enemy-Flyingrat", 1);
         }
       },
     });
   }
 
   preload() {
-
     this.wasd = AddWASDKeysToScene(this);
     this.keys = this.input.keyboard.createCursorKeys();
-    this.createTiles();
+    createOverworldTileMap(this);
     this.createStructuresAndWeather();
     createAnimations(this);
-    this.createEnemyGroups()
+    this.createEnemyGroups();
 
     this.events.addListener("startintro", () => {
       this.startIntro();
     });
 
-    this.events.addListener('spawnChapter1', () => {
-      this.scene.start('Chapter1', this.wrGame);
+    this.events.addListener("spawnChapter1", () => {
+      this.scene.start("Chapter1", this.wrGame);
     });
 
     let initialTitleTextEvent = this.time.addEvent({
@@ -430,8 +419,6 @@ export default class OverworldTitle extends Phaser.Scene {
       },
     });
   }
-
-
 
   create() {
     this.info = this.add.sprite(0, 0, "info");
@@ -452,16 +439,17 @@ export default class OverworldTitle extends Phaser.Scene {
 
     this.baseLayer.on("pointerdown", (clicked) => {
       console.log(clicked.x, clicked.y);
-      var particles = this.add.particles('blueparticle');
-      var emitter = particles.createEmitter({ maxParticles: 2, speed: 15, blendMode: 'ADD' }).setScale(.2).setPosition(clicked.x, clicked.y);
-    })
-
+      var particles = this.add.particles("blueparticle");
+      var emitter = particles
+        .createEmitter({ maxParticles: 2, speed: 15, blendMode: "ADD" })
+        .setScale(0.2)
+        .setPosition(clicked.x, clicked.y);
+    });
   }
 
   update() {
     if (this.player && this.player.isMoving) {
       this.player.speed = 0;
     }
-
   }
 }

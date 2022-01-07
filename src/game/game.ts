@@ -4,10 +4,8 @@ export type WRGame = {
   isStarted: boolean;
   playerName: string;
   playerHead: string;
-  playerHP: number;
   playerGold: number;
   playerCurrentScene?: WRScene;
-  playerExperience: number;
   sceneFade: number;
   kingRat: string;
   taskRate: number;
@@ -22,10 +20,17 @@ export enum Condition {
   Dead,
 }
 
+export type CombatCapability = {
+  offensiveMultiplier: number;
+  defense: number;
+}
+
 export type PlayerStatus = {
   MaxHP: number;
   CurrentHP: number;
   Condition: Condition | null | undefined;
+  XP: number;
+  Level: number;
 };
 
 export type Speech = {

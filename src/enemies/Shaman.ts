@@ -1,18 +1,8 @@
 import Phaser, { FacebookInstantGamesLeaderboard } from "phaser";
 import { Guid } from "guid-typescript"
-import { getNewRatName } from "~/game/gamelogic";
+import { getNewRatName, Direction } from "~/game/gamelogic";
 
-enum Direction {
-    UP,
-    DOWN,
-    LEFT,
-    RIGHT,
-    RIGHTANDUP,
-    RIGHTANDDOWN,
-    LEFTANDUP,
-    LEFTANDDOWN,
-    IDLE,
-}
+
 
 enum VocalEmotes {
     PPSSffkkk,

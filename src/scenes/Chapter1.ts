@@ -144,7 +144,7 @@ export default class Chapter1 extends Phaser.Scene {
   };
 
   createGoldOverlay = () => {
-    this.goldDisplay = this.add.text(60, 470, "x" + this.wrGame.playerGold, { fontSize: "12px", fontFamily: "breathfire", color: "#ffffff" });
+    this.goldDisplay = this.add.text(60, 470, "x" + this.wrGame.playerGold, { fontSize: "20px", fontFamily: "breathfire", color: "#ffffff" });
     this.goldCoin = this.add.sprite(50, 480, "coin", "coin_1.png");
     this.goldCoin.anims.play("coinrotate");
     this.goldCoin.setScale(2);
@@ -168,6 +168,10 @@ export default class Chapter1 extends Phaser.Scene {
     this.player.isSpeaking = false;
   }
 
+  isCloseEnoughToInteract = (obj: Phaser.GameObjects.GameObject) => {
+    return this.player.distanceFrom(obj as Phaser.GameObjects.Sprite, this) > 40;
+  }
+
   createOverworldPlayer = (wrGame: WRGame) => {
     this.player = this.add.player(320, 325, "playeroverworld", "player-movedown-1.png");
     this.player.body.setSize(this.player.width * 0.75, this.player.height * 0.75);
@@ -176,180 +180,42 @@ export default class Chapter1 extends Phaser.Scene {
     this.physics.add.collider(this.player, this.decorLayer);
     this.player.setInteractive();
     this.player.on("pointerdown", () => {
-      let Hpline = `My HP is ${this.wrGame.playerHP}`;
-      let Gpline = `I have ${this.wrGame.playerGold} gp`
-      let Xpline = `I have ${this.wrGame.playerExperience} xp`
-      this.player.PlayerSay(this, { line1: Hpline, line2: Gpline, line3: Xpline })
+      let Hpline = `My HP is ${this.player.status.CurrentHP}`;
+      let Gpline = `I have ${this.wrGame.playerGold} gp`;
+      let Xpline = `I have ${this.player.status.XP}xp in lvl ${this.player.status.Level}`;
+      this.player.Say(this, { line1: Hpline, line2: Gpline, line3: Xpline })
     });
+
     this.player.on("pointerup", () => {
       this.HidePlayerTalkBubble();
     });
 
+    this.spawnChapter1();
+
     this.buildingsGroup.children.iterate((child) => {
       child.on("pointerup", () => {
-        this.player.PlayerSay(this, { line1: "I can't go there", line2: `Its the ${child.name}`, line3: "" })
+        let dist = this.player.distanceFrom(child as Phaser.GameObjects.Sprite, this);
+        let moveline = this.isCloseEnoughToInteract(child) ? "I can't go there" : "I can go here";
+        let identline = this.isCloseEnoughToInteract(child) ? "Its too far" : `Its ${child.name}`;
+        this.player.Say(this, { line1: moveline, line2: identline, line3: `Its ${dist} meters away` })
       });
     })
-    this.createGoldOverlay();
+
+    this.chapter1Group.children.iterate((child) => {
+      child.on("pointerup", () => {
+        let dist = this.player.distanceFrom(child as Phaser.GameObjects.Sprite, this);
+        let moveline = this.isCloseEnoughToInteract(child) ? "I can't see it" : "I can see it ";
+        let name = (child as any).ratname;
+        let identline = this.isCloseEnoughToInteract(child) ? "Its too far" : `Its ${name}`;
+        this.player.Say(this, { line1: moveline, line2: identline, line3: `about ${dist}m away` })
+      });
+    })
+
+
+    //this.createGoldOverlay();
 
   };
 
-  addTitleTextToScene = (text: string, x: number, y: number, fontSize: number, fontFamily: string, color: string, depth: number): Phaser.GameObjects.Text => {
-    let textObject = this.add.text(x, y, text, { fontSize: `${fontSize}px`, fontFamily: fontFamily, color: color });
-    textObject.setAlpha(0);
-    textObject.setDepth(depth);
-    textObject.setOrigin(0.5, 0.5);
-    textObject.setShadow(4, 4, "#000000", 8, true, true);
-    textObject.setInteractive();
-    textObject.on("pointerover", () => {
-      textObject.setScale(textObject.scale + .5);
-    }).on("pointerout", () => {
-      textObject.setScale(textObject.scale - .5);
-    });
-    return textObject;
-  }
-
-  displayTitleText = () => {
-    let fontFamily = "breathfire";
-
-    this.titletext0 = this.addTitleTextToScene("The Ranger Of", 100, 100, 32, fontFamily, "#ffffff", 3);
-    this.titletext1 = this.addTitleTextToScene("Ratticus", 0, 100, 48, fontFamily, "#BE620C", 3).setScale(1.5);
-    this.titletext2 = this.addTitleTextToScene("Island", 0, 100, 48, fontFamily, "#000055", 3).setScale(1.5);
-    this.titletext4 = this.addTitleTextToScene("Choose your avatar", 250, 230, 20, fontFamily, "#000000", 3).setScale(1.25);
-
-    this.titletext4.on("pointerover", () => {
-      this.titletext4.setText("Use A & D or arrows. Space to start. ");
-      this.titletext4.updateText();
-    }).on("pointerout", () => { this.titletext4.setText("Choose your avatar") })
-
-    Phaser.Display.Align.In.Center(this.titletext4, this.add.zone(250, 300, 200, 200));
-    Phaser.Display.Align.In.Center(this.titletext0, this.add.zone(250, 100, 200, 200));
-    Phaser.Display.Align.In.Center(this.titletext1, this.add.zone(250, 130, 200, 200));
-    Phaser.Display.Align.In.Center(this.titletext2, this.add.zone(250, 175, 200, 200));
-
-    let fadeTextIn = this.time.addEvent({
-      delay: 50,
-      repeat: 10,
-      callback: () => {
-        this.titletext0.setAlpha((this.titletext0.alpha += 0.1));
-        this.titletext1.setAlpha((this.titletext1.alpha += 0.1));
-        this.titletext2.setAlpha((this.titletext2.alpha += 0.1));
-        this.titletext4.setAlpha((this.titletext2.alpha += 0.1));
-      },
-    });
-
-    let startingTextAnim = this.time.addEvent({
-      delay: 50,
-      repeat: 10,
-      callback: () => {
-        this.titletext4.setScale((this.titletext4.scaleX -= 0.025));
-        this.titletext4.setScale((this.titletext4.scaleY -= 0.025));
-      },
-    });
-  };
-
-  startIntro = () => {
-
-
-    this.time.addEvent({
-      delay: 100,
-      repeat: 10,
-      callback: () => {
-        this.titletext0.setAlpha((this.titletext0.alpha -= 0.1));
-        this.titletext1.setAlpha((this.titletext1.alpha -= 0.1));
-        this.titletext2.setAlpha((this.titletext2.alpha -= 0.1));
-        this.titletext4.setAlpha((this.titletext4.alpha -= 0.1));
-        this.leftArrow.setAlpha((this.leftArrow.alpha -= 0.1));
-        this.rightArrow.setAlpha((this.rightArrow.alpha -= 0.1));
-        this.head.setAlpha((this.head.alpha -= 0.1));
-      },
-    });
-
-    this.time.addEvent({
-      delay: 1100,
-      repeat: 0,
-      callback: () => {
-        this.titletext0.destroy();
-        this.titletext1.destroy();
-        this.titletext2.destroy();
-        this.titletext4.destroy();
-        this.leftArrow.destroy();
-        this.rightArrow.destroy();
-        this.head.destroy();
-      },
-    });
-
-    this.time.addEvent({
-      delay: 1200,
-      repeat: 0,
-      callback: () => {
-        this.cameras.main.zoomTo(2, 3000, 'Linear', true);
-        this.cameras.main.pan(320, 310, 3000);
-
-      },
-    });
-
-    this.time.addEvent({
-      delay: 25,
-      repeat: 50,
-      callback: () => {
-        this.sound.volume = (this.sound.volume -= 0.02);
-      },
-    });
-    this.time.addEvent({
-      delay: 1000,
-      repeat: 0,
-      callback: () => {
-        this.events.emit('fadeMobs')
-      },
-    });
-    this.time.addEvent({
-      delay: 3000,
-      repeat: 0,
-      callback: () => {
-        this.events.emit('removeTitleMobs')
-      },
-    });
-    this.time.addEvent({
-      delay: 4300,
-      repeat: 0,
-      callback: () => {
-        this.sound.stopAll();
-        this.sound.volume = .3;
-        this.sound.play('doorOpen', { volume: .2 });
-      },
-    });
-
-    this.time.addEvent({
-      delay: 5900,
-      repeat: 0,
-      callback: () => {
-        this.sound.play('doorClose', { volume: .4 });
-      },
-    });
-
-
-    this.time.addEvent({
-      delay: 6200,
-      repeat: 0,
-      callback: () => {
-        this.createOverworldPlayer(this.wrGame);
-        this.player.setDepth(2);
-        this.events.emit('spawnChapter1');
-      },
-    });
-
-    this.time.addEvent({
-      delay: 6500,
-      repeat: 0,
-      callback: () => {
-        this.cameras.main.zoomTo(1, 3000, 'Linear', true);
-        this.cameras.main.pan(this.cameras.main.centerX, this.cameras.main.centerY, 3000);
-        PlayerSay(this, { line1: "Today is a good", line2: "day to hunt down rat", line3: "scum on my islands" })
-      },
-    });
-
-  };
 
   createTiles() {
     let map2 = this.make.tilemap({ key: "allbiomes" });
@@ -370,7 +236,7 @@ export default class Chapter1 extends Phaser.Scene {
     RandomCloud(this);
     RandomCloud(this);
 
-    let conditionallyAddCloudsEveryTenSeconds = this.time.addEvent({
+    /* let conditionallyAddCloudsEveryTenSeconds = this.time.addEvent({
       delay: 10000,
       repeat: -1,
       callback: () => {
@@ -385,10 +251,15 @@ export default class Chapter1 extends Phaser.Scene {
       repeat: -1,
       callback: () => {
         if (this.FlyingRatGroup.children.size < 5) {
-          this.SummonMobs(this.FlyingRatGroup, 'enemy-Flyingrat', 1).setDepth(10);
+          let flyingrat = this.SummonMobs(this.FlyingRatGroup, 'enemy-Flyingrat', 1).setDepth(20);
+          flyingrat.setInteractive();
+          flyingrat.on('pointerdown', () => {
+            flyingrat.destroyFlyingRat();
+            this.events.emit('kill-flyingrat', flyingrat)
+          })
         }
       },
-    });
+    }); */
   }
 
   preload() {
@@ -396,23 +267,25 @@ export default class Chapter1 extends Phaser.Scene {
     this.createTiles();
     this.createStructuresAndWeather();
     createAnimations(this);
-    //  this.createEnemyGroups()
+    // this.createEnemyGroups()
 
     /* this.events.addListener("startintro", () => {
       this.startIntro();
     }); */
 
-    /*  this.events.addListener('spawnChapter1', () => {
-       this.spawnChapter1();
-     }); */
+    this.events.addListener('spawnChapter1', () => {
+      this.spawnChapter1();
+    });
 
   }
 
   spawnChapter1() {
     this.chapter1Group = newEnemyGroup(this, Rat, true, true);
-    this.FlyingRatGroup = newEnemyGroup(this, FlyingRat, true, true);
+    this.FlyingRatGroup = newEnemyGroup(this, FlyingRat, true, false);
 
     let rat1 = this.SummonMobs(this.chapter1Group, "enemy-rat", 1, 329, 361);
+    rat1.setInteractive();
+
     rat1.ratSpeed = 0;
     rat1.stationary = true;
     let e_up = this.add.image(329, 345, 'e_up').setAlpha(0).setDepth(4);
@@ -443,7 +316,6 @@ export default class Chapter1 extends Phaser.Scene {
     this.info = this.add.sprite(0, 0, "info").setAlpha(0);
     this.info.setOrigin(0, 0);
     this.info.setScale(0.97);
-    this.spawnChapter1();
 
     this.createOverworldPlayer(this.wrGame)
     this.player.setDepth(2);
@@ -462,3 +334,5 @@ export default class Chapter1 extends Phaser.Scene {
 
   }
 }
+
+

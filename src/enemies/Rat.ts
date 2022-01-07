@@ -1,6 +1,9 @@
 import Phaser, { FacebookInstantGamesLeaderboard } from "phaser";
 import { Guid } from "guid-typescript"
 import { CreateAnimationSet, Direction, getNewRatName } from "~/game/gamelogic";
+import OverworldTitle from "~/scenes/OverworldTitle";
+import Chapter1 from "~/scenes/Chapter1";
+import Player from "~/characters/Player";
 
 enum VocalEmotes {
     Squee,
@@ -10,6 +13,7 @@ enum VocalEmotes {
     ReeeeeEEEttt,
     Effyou,
 }
+type WRGameScene = OverworldTitle | Chapter1;
 
 export default class Rat extends Phaser.Physics.Arcade.Sprite {
 
@@ -19,7 +23,7 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
     private StartingXLoc: number;
     private StartingYLoc: number;
     private EntityID: Guid;
-    private ratname: string;
+    public ratname: string;
     private stationary: boolean = false;
     constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
         super(scene, x, y, texture, frame)
@@ -187,10 +191,15 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
         })
     }
     preload() {
-        this.scene.events.addListener('player-interact-event', () => {
-            console.log("Rat heard player attack event")
+        this.scene.events.addListener('player-interact-event', (player) => {
+            console.log(player)
         })
     }
+
+    distanceFrom(obj: Player, scene: WRGameScene): number {
+        return Phaser.Math.FloorTo(Phaser.Math.Distance.Between(this.x, this.y, scene.player.x, scene.player.y))
+    }
+
     preUpdate(t: number, dt: number) {
         this.flipX = false;
         super.preUpdate(t, dt)
