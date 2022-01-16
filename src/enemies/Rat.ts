@@ -2,8 +2,8 @@ import Phaser, { FacebookInstantGamesLeaderboard } from "phaser";
 import { Guid } from "guid-typescript"
 import { CreateAnimationSet, Direction, getNewRatName } from "~/game/gamelogic";
 import OverworldTitle from "~/scenes/OverworldTitle";
-import Chapter1 from "~/scenes/Chapter1";
 import Player from "~/characters/Player";
+import Overworld from "~/scenes/Overworld";
 
 enum VocalEmotes {
     Squee,
@@ -13,52 +13,57 @@ enum VocalEmotes {
     ReeeeeEEEttt,
     Effyou,
 }
-type WRGameScene = OverworldTitle | Chapter1;
+type WRGameScene = OverworldTitle | Overworld;
+
 
 export default class Rat extends Phaser.Physics.Arcade.Sprite {
 
     private facing = Phaser.Math.Between(0, 7)
-    private RatSpeed = Phaser.Math.Between(0, 2)
+    private RatSpeed: number;
     private moveEvent: Phaser.Time.TimerEvent;
     private StartingXLoc: number;
     private StartingYLoc: number;
     private EntityID: Guid;
+    public isAlive: boolean = true;
     public ratname: string;
     private stationary: boolean = false;
-    constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
+    PlayerInteractEvent: Phaser.Events.EventEmitter;
+
+    constructor(scene: WRGameScene, x: number, y: number, texture: string, frame?: string | number) {
         super(scene, x, y, texture, frame)
 
         this.moveEvent = scene.time.addEvent({
             delay: Phaser.Math.Between(2000, 9000),
             callback: () => {
-                if (this.distanceFromStartingLocation() > 5) {
-                    this.stop()
-                    this.setVelocity(0, 0);
-                    this.facing = Phaser.Math.Between(0, 7)
-                }
-                if (!this.stationary) {
-                    let chanceForIdle = Phaser.Math.Between(0, 4);
-                    this.RatSpeed = chanceForIdle == 1 ? 0 : chanceForIdle
-                    this.facing = chanceForIdle == 1 ? Direction.IDLE : Phaser.Math.Between(0, 7)
 
-                }
             },
             loop: true
         });
 
         this.StartingXLoc = x
         this.StartingYLoc = y
-
         this.scene.physics.world.on(Phaser.Physics.Arcade.Events.TILE_COLLIDE, this.handleCollision, this.scene)
         this.scene.physics.world.on(Phaser.Physics.Arcade.Events.COLLIDE, this.handleCollisionWithSprite, this.scene)
         this.EntityID = Guid.create()
         this.ratname = getNewRatName()
+        this.RatSpeed = 0;
+        this.PlayerInteractEvent = this.scene.events.addListener('player-interact-event', (player: Player) => {
+            if (this.isAlive && this.distanceFrom(player, this.scene as Overworld) < 10) {
+                console.log(player.x, player.y)
+                console.log(`close to ${this.ratname}`)
+                this.scene.events.emit('player-killed-rat', this)
+                this.scene.sound.add('ratsound', { volume: 0.1 }).play()
+                this.selfDestruct()
+            }
+
+        })
         this.scene.events.addListener('removeTitleMobs', () => {
             this.selfDestruct()
         })
         this.scene.events.addListener('fadeMobs', () => {
             this.fade()
         })
+
         CreateAnimationSet(this.scene, this.GenerateAnims(4));
     }
 
@@ -100,7 +105,6 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
                 repeat: -1,
                 frameRate: rate,
             },
-
             {
                 key: `enemy-rat-moveright`,
                 frames: this.anims.generateFrameNames('enemy-rat', {
@@ -159,16 +163,11 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
 
     private handleCollision(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile) {
         let _go = go as unknown as Rat
-
         _go.moveEvent.callback()
-
-
     }
 
     private handleCollisionWithSprite(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile) {
-        let _go = go as Rat
-        _go.moveEvent.callback()
-        console.log(`Collision with ${_go.EntityID} detected on tile at ${tile.x}, ${tile.y}`)
+
     }
 
 
@@ -178,6 +177,7 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
 
     selfDestruct = () => {
         this.moveEvent.destroy()
+        this.isAlive = false;
         this.destroy()
     }
 
@@ -191,12 +191,12 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
         })
     }
     preload() {
-        this.scene.events.addListener('player-interact-event', (player) => {
+        /* this.scene.events.addListener('player-interact-event', (player) => {
             console.log(player)
-        })
+        }) */
     }
 
-    distanceFrom(obj: Player, scene: WRGameScene): number {
+    distanceFrom(obj: Player, scene: any): number {
         return Phaser.Math.FloorTo(Phaser.Math.Distance.Between(this.x, this.y, scene.player.x, scene.player.y))
     }
 
@@ -247,3 +247,4 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
         }
     }
 }
+

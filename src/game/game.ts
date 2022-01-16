@@ -1,23 +1,24 @@
+import Player from "~/characters/Player";
+import Overworld from "~/scenes/Overworld";
+import OverworldTitle from "~/scenes/OverworldTitle";
+import { WRGameScene } from "./overworldlogic";
+
 export const TimesOfDay = [0x555555, 0x666666, 0x777777, 0x888888, 0x999999, 0xaaaaaa, 0xbbbbbb, 0xcccccc, 0xdddddd];
 
 export type WRGame = {
   isStarted: boolean;
   playerName: string;
   playerHead: string;
-  playerGold: number;
-  playerCurrentScene?: WRScene;
-  sceneFade: number;
-  kingRat: string;
-  taskRate: number;
   hasIntroStarted: boolean;
 };
+
 export enum Condition {
-  Healthy,
-  Dusty,
-  Tired,
-  Wounded,
-  Eviscerated,
   Dead,
+  Eviscerated,
+  Hurt,
+  Scuffed,
+  Dusty,
+  Healthy,
 }
 
 export type CombatCapability = {
@@ -31,6 +32,7 @@ export type PlayerStatus = {
   Condition: Condition | null | undefined;
   XP: number;
   Level: number;
+  Gold: number;
 };
 
 export type Speech = {
@@ -39,4 +41,8 @@ export type Speech = {
   line3: string;
 
 };
-export type WRScene = "Title" | "OverWorld" | "Battle" | "Explore";
+
+export function AddCollidersForPlayer(scene: Overworld, player: Player) {
+
+  //scene.collider.collider(player, scene.baseLayer);
+}

@@ -1,22 +1,21 @@
 import Phaser, { AUTO } from 'phaser'
 import Preloader from './scenes/Preloader'
 import OverworldTitle from './scenes/OverworldTitle'
-import Chapter1 from './scenes/Chapter1'
+import Overworld from './scenes/Overworld'
 
 export default new Phaser.Game(
 	{
-		scene: [Preloader, OverworldTitle, Chapter1],
+		scene: [Preloader, OverworldTitle, Overworld],
 		type: Phaser.WEBGL,
 		autoFocus: true,
 		//backgroundColor: '0x000000',
-		backgroundAlpha: .5,
 		antialias: false,
 		scale: {
 			parent: 'app',
 			mode: Phaser.Scale.FIT,
 			width: 500,
 			height: 500,
-			autoCenter: Phaser.Scale.Center,
+			autoCenter: Phaser.Scale.Center.CENTER_HORIZONTALLY,
 		},
 		physics: {
 			default: 'arcade',

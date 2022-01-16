@@ -3,8 +3,9 @@ import { GetOverworldPlayerAnims, GetPlayerAnims } from "~/anims/PlayerAnims";
 import { CombatCapability, Condition, PlayerStatus, Speech } from "~/game/game";
 import { AddWASDKeysToScene, CreateAnimationSet } from "~/game/gamelogic";
 import { WRGameScene } from "~/game/overworldlogic";
-import Chapter1 from "~/scenes/Chapter1";
-import Overworld from "~/scenes/OverworldTitle";
+import { hidePlayerTalkBubble, showPlayerTalkBubble, updatePlayerTalkBubblePosition, updatePlayerTalkBubbleText } from "~/game/playerlogic";
+import Overworld from "~/scenes/Overworld";
+import OverworldTitle from "~/scenes/OverworldTitle";
 
 declare global {
   namespace Phaser.GameObjects {
@@ -37,71 +38,134 @@ const animationsForPlayerByDirection = [
   { key: `player-moveleftanddown`, repeat: 0 },
 ];
 
+interface TalkBubble {
+  frame: Phaser.GameObjects.Sprite;
+  headPngforTalkBubble: Phaser.GameObjects.Sprite;
+  line1: Phaser.GameObjects.Text;
+  line2: Phaser.GameObjects.Text;
+  line3: Phaser.GameObjects.Text;
+}
+
+
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   status!: PlayerStatus;
   wasd!: Phaser.Input.Keyboard.Key[];
-  e!: Phaser.Input.Keyboard.Key;
   keys: Phaser.Types.Input.Keyboard.CursorKeys = this.scene.input.keyboard.createCursorKeys();
   speed!: number;
   walkspeed: number = 7;
   sprintspeed: number = 21;
   isMoving!: boolean;
-  talkBubble!: Phaser.GameObjects.Sprite;
-  headPngforTalkBubble!: Phaser.GameObjects.Sprite;
-  textforTalkBubble!: Speech;
-  currentSpeech!: Speech;
-  isSpeaking: boolean = false;
+  tb!: TalkBubble;
+  playerHead: string;
   stationary: boolean = false;
   combatCapability!: CombatCapability;
+  updateTalkBubblePositionConstantly: Phaser.Time.TimerEvent;
 
-  constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frame?: string | number) {
+  constructor(scene: Overworld, x: number, y: number, texture: string, frame?: string | number) {
     super(scene, x, y, texture, frame);
-
-    this.status = { MaxHP: 100, CurrentHP: 100, Condition: Condition.Healthy, XP: 0, Level: 1 };
-    this.combatCapability = { offensiveMultiplier: 1, defense: 0 };
-
+    this.status = { MaxHP: 10, CurrentHP: 10, Condition: Condition.Healthy, XP: 0, Level: 1, Gold: Phaser.Math.Between(0, 100) };
+    this.combatCapability = { offensiveMultiplier: 1, defense: 1 };
     this.wasd = AddWASDKeysToScene(scene);
-    this.e = scene.input.keyboard.addKey("E");
-    this.isMoving = false;
-    this.e.on("up", () => {
-      this.scene.events.emit("player-interact-event", this);
-      console.log("E");
-      //  this.scene.swipesound.play({ loop: false, volume: 0.2, rate: 0.8 });
-      this.setVelocity(0);
+    this.playerHead = scene.wrGame.playerHead;
+
+    this.updateTalkBubblePositionConstantly = scene.time.addEvent({
+      delay: 100,
+      callback: () => {
+        updatePlayerTalkBubblePosition(scene, this);
+      },
+      loop: true
     });
 
+
+    this.tb = {
+      frame: scene.add
+        .sprite(0, 0, "window1")
+        .setScale(0.5)
+        .setDepth(5)
+        .setAlpha(0)
+        .setOrigin(0.05, 0),
+
+      headPngforTalkBubble: scene.add
+        .sprite(0, 0, "playerheads", scene.wrGame.playerHead)
+        .setScale(1.65)
+        .setOrigin(0.2, -0.07)
+        .setDepth(5)
+        .setAlpha(0),
+
+      line1: scene.add
+        .text(0, 0, "")
+        .setAlpha(0)
+        .setDepth(6)
+        .setFontSize(10),
+
+      line2: scene.add
+        .text(0, 0, "")
+        .setAlpha(0)
+        .setDepth(6)
+        .setFontSize(10),
+
+      line3: scene.add
+        .text(0, 0, "")
+        .setAlpha(0)
+        .setDepth(6)
+        .setFontSize(10)
+
+
+    }
+
+    /*     this.e.on("up", () => {
+          this.scene.events.emit("player-interact-event", this);
+          console.log("Event: player-interact-event");
+          //this.scene.swipesound.play({ loop: false, volume: 0.2, rate: 0.8 });
+        }); */
+
     this.scene.events.addListener(
-      "kill-flyingrat",
+      "player-killed-flyingrat",
       () => {
         this.addExperience(100);
-        this.Say(this.scene, { line1: "Got em!", line2: "", line3: "" });
+        let flyingRatKillSpeech: Speech = { line1: "Flyer down", line2: "", line3: "" }
+        this.Say(scene, flyingRatKillSpeech, false);
       },
       this
     );
 
+    this.scene.events.addListener(
+      "player-killed-rat",
+      (rat) => {
+        this.addExperience(100);
+        let goldreceived = Phaser.Math.Between(10, 20);
+        this.addGold(goldreceived);
+        let ratkillSpeech: Speech = { line1: `${rat.ratname} down`, line2: `+100 xp`, line3: `+${goldreceived} gold` }
+        this.Say(scene, ratkillSpeech, false);
+      },
+      this
+    );
+
+
     let updateCondition = scene.time.addEvent({
-      delay: 1000,
+      delay: 500,
       repeat: -1,
       callback: () => {
         if (this.status.CurrentHP <= 0) {
           this.status.Condition = Condition.Dead;
-        }
-        if (this.status.CurrentHP > 74 && this.status.CurrentHP < 100) {
-          this.status.Condition = Condition.Dusty;
-        }
-        if (this.status.CurrentHP >= 50 && this.status.CurrentHP < 75) {
-          this.status.Condition = Condition.Wounded;
-        }
-        if (this.status.CurrentHP >= 10 && this.status.CurrentHP < 25) {
+        } else if (this.status.CurrentHP > 0 && this.status.CurrentHP < 20) {
           this.status.Condition = Condition.Eviscerated;
-        }
-        if (this.status.CurrentHP <= 0) {
-          this.status.Condition = Condition.Dead;
+        } else if (this.status.CurrentHP >= 20 && this.status.CurrentHP < 40) {
+          this.status.Condition = Condition.Hurt;
+        } else if (this.status.CurrentHP >= 40 && this.status.CurrentHP < 60) {
+          this.status.Condition = Condition.Scuffed;
+        } else if (this.status.CurrentHP >= 60 && this.status.CurrentHP < 80) {
+          this.status.Condition = Condition.Dusty;
+        } else if (this.status.CurrentHP >= 80 && this.status.CurrentHP <= 100) {
+          this.status.Condition = Condition.Healthy;
         }
       },
     });
 
     CreateAnimationSet(this.scene, GetOverworldPlayerAnims(this.scene.anims, 5, "playeroverworld"));
+  }
+  addGold(goldreceived: number) {
+    this.status.Gold += goldreceived;
   }
 
   levelUp = () => {
@@ -109,7 +173,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.status.Level += 1;
     this.status.CurrentHP += 10;
     this.status.MaxHP += 10;
-    this.Say(this.scene, { line1: "Leveled Up!", line2: "", line3: "" });
+    let levelUpSpeech: Speech = { line1: "Leveled Up!", line2: "", line3: "" }
+    this.Say(this.scene, levelUpSpeech, false);
   };
 
   addExperience = (xp: number) => {
@@ -119,71 +184,22 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
   };
 
-  Say = (scene: Chapter1 | any, text: Speech) => {
-    if (!this.isSpeaking) {
-      this.isSpeaking = true;
-      let { line1, line2, line3 } = text;
-      scene.player.currentSpeech = text;
-      scene.player.talkBubble = scene.add
-        .sprite(scene.player.x, scene.player.y - 50, "window1")
-        .setScale(0.5)
-        .setDepth(5)
-        .setAlpha(0)
-        .setOrigin(0.05, 0);
-      scene.player.headPngforTalkBubble = scene.add
-        .sprite(scene.player.talkBubble.x, scene.player.talkBubble.y, "playerheads", scene.wrGame.playerHead)
-        .setScale(1.65)
-        .setOrigin(0.2, -0.07)
-        .setDepth(5)
-        .setAlpha(0);
-      scene.playerline1 = scene.add
-        .text(scene.player.talkBubble.x + 30, scene.player.talkBubble.y, line1)
-        .setAlpha(0)
-        .setDepth(6)
-        .setFontSize(10);
-      scene.playerline2 = scene.add
-        .text(scene.player.talkBubble.x + 30, scene.player.talkBubble.y + 8, line2)
-        .setAlpha(0)
-        .setDepth(6)
-        .setFontSize(10);
-      scene.playerline3 = scene.add
-        .text(scene.player.talkBubble.x + 30, scene.player.talkBubble.y + 17, line3)
-        .setAlpha(0)
-        .setDepth(6)
-        .setFontSize(10);
 
-      let show = scene.time.addEvent({
-        delay: 0,
-        repeat: 0,
-        callback: () => {
-          scene.player.talkBubble.setAlpha(1);
-          scene.player.headPngforTalkBubble.setAlpha(1);
-          scene.playerline1.setAlpha(1);
-          scene.playerline2.setAlpha(1);
-          scene.playerline3.setAlpha(1);
-        },
-      });
-
-      let update = scene.time.addEvent({
-        delay: 100,
-        repeat: 50,
-        callback: () => {
-          scene.player.talkBubble.setPosition(scene.player.x, scene.player.y - 50);
-          scene.player.headPngforTalkBubble.setPosition(scene.player.talkBubble.x, scene.player.talkBubble.y);
-          scene.playerline1.setPosition(scene.player.talkBubble.x + 30, scene.player.talkBubble.y);
-          scene.playerline2.setPosition(scene.player.talkBubble.x + 30, scene.player.talkBubble.y + 8);
-          scene.playerline3.setPosition(scene.player.talkBubble.x + 30, scene.player.talkBubble.y + 17);
-        },
-      });
-
+  Say = (scene: any, text: Speech, canInteract: boolean) => {
+    if (!scene.player.isSpeaking) {
+      scene.player.isSpeaking = true;
+      showPlayerTalkBubble(this.scene);
+      updatePlayerTalkBubbleText(this.scene, text, this)
       let hide = scene.time.addEvent({
-        delay: 5000,
+        delay: 3000,
         repeat: 0,
         callback: () => {
-          scene.HidePlayerTalkBubble();
+          hidePlayerTalkBubble(scene)
         },
       });
     }
+
+
   };
 
   decideMoveSpeed = () => {
@@ -266,7 +282,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   setTextForTalkBubble() {
-    this.scene.events.emit("playerSay", this.currentSpeech);
+    this.scene.events.emit("playerSay");
   }
 
   preUpdate(t: number, dt: number) {
@@ -275,10 +291,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 }
 
+
 Phaser.GameObjects.GameObjectFactory.register(
   "player",
   function (this: Phaser.GameObjects.GameObjectFactory, x: number, y: number, texture: string, frame?: string | number) {
-    var sprite = new Player(this.scene, x, y, texture, frame);
+    var sprite = new Player(this.scene as any, x, y, texture, frame);
 
     this.displayList.add(sprite);
     this.updateList.add(sprite);

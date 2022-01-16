@@ -1,6 +1,6 @@
-import Chapter1 from "~/scenes/Chapter1";
+import { BlendModes } from "phaser";
+import Overworld from "~/scenes/Overworld";
 import OverworldTitle from "~/scenes/OverworldTitle";
-import Overworld from "~/scenes/OverworldTitle";
 import Building from "~/structures/Building";
 import { Speech } from "./game";
 
@@ -25,9 +25,10 @@ export const enum Layers {
   Base,
   Decor,
 }
-export type WRGameScene = OverworldTitle | Chapter1;
 
-export const createOverworldTileMap = (scene: OverworldTitle | Chapter1) => {
+export type WRGameScene = OverworldTitle | Overworld;
+
+export const createOverworldTileMap = (scene: WRGameScene) => {
   let map2 = scene.make.tilemap({ key: "allbiomes" });
   let tileset3 = map2.addTilesetImage("allbiomes", "tiles3");
   scene.baseLayer = map2.createLayer(Layers.Base, tileset3);
@@ -48,8 +49,15 @@ export const AddLeftArrow = (scene: OverworldTitle) => {
   scene.leftArrow.setDepth(3);
 }
 
+export function AddHiddenInfoToScene(scene: Overworld) {
+  scene.info = scene.add.sprite(0, 0, "info").setAlpha(1);
+  scene.info.setOrigin(0, 0);
+  scene.info.setScale(0.97);
+  scene.info.setDepth(40);
+}
+
 export const AddHead = (scene: OverworldTitle, portraits) => {
-  scene.head = scene.add.sprite(230, 240, "playerheads", scene.wrGame.playerHead).setScale(5.4);
+  scene.head = scene.add.sprite(230, 240, "playerheads", "heads-1.png").setScale(5.4);
   Phaser.Display.Align.In.Center(scene.head, scene.add.zone(250, 300, 200, 200), 0, 60);
   scene.head.setDepth(3);
   scene.events.addListener("changeHead", (direction: string) => {
@@ -115,19 +123,22 @@ export const createBorder = (scene: Phaser.Scene) => {
 const newBuildingGroup = (scene: Phaser.Scene, type: any) => {
   return scene.physics.add.group({
     classType: type,
-    createCallback: (go) => {
-      const ratObj = go as typeof type;
-      ratObj.body.onCollide = true;
+    createCallback: (gameObject) => {
+      const obj = gameObject as typeof type;
+      obj.body.onCollide = true;
     },
     collideWorldBounds: true,
+    immovable: true,
+
   });
 }
 
-export const GenerateBuildings = (scene: OverworldTitle | Chapter1) => {
+export const GenerateBuildings = (scene: any) => {
   scene.buildingsGroup = newBuildingGroup(scene, Building);
   buildingsforWorldMap.forEach((building) => {
     let bldg = scene.buildingsGroup.get(building.location.x, building.location.y, building.collection, building.tag).setScale(1.45).setDepth(1);
     bldg.name = building.name;
+    bldg.collides = true;
     bldg.setInteractive();
   });
 };
@@ -145,7 +156,7 @@ export const ShowMenu = (scene: OverworldTitle) => {
   AddHead(scene, portraits);
 };
 
-export const RandomCloud = (scene: OverworldTitle | Chapter1) => {
+export const RandomCloud = (scene: any) => {
   scene.numberofclouds++;
   let maxXorY = 400;
   let cloudNum = Math.floor(Math.random() * 6) + 1;

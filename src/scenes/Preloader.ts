@@ -1,8 +1,6 @@
 import Phaser, { Physics } from "phaser";
-import Player from "~/characters/Player";
 import { enemies } from "~/enemies/enemies";
 import { WRGame } from "../game/game"
-import { getNewKingRatName } from "../game/gamelogic"
 
 export default class Preloader extends Phaser.Scene {
     constructor() {
@@ -47,16 +45,18 @@ export default class Preloader extends Phaser.Scene {
         this.load.image("titlegraphic", "assets/TitleGraphic.png")
         this.load.image("e_up", "assets/e_up.png")
         this.load.image("e_down", "assets/e_down.png")
+        //ui-enterbutton
+        this.load.image("enter_up", "assets/enter-up.png")
+        this.load.image("enter_down", "assets/enter-down.png")
 
         //particles
         this.load.image("blueparticle", "assets/blue.png")
-
 
         enemies.forEach(enemy => {
             this.load.atlas(enemy.name, enemy.PathToPNG, enemy.PathToJSON)
         })
 
-        this.load.audio('ratsound', ["assets/ratscream.mp3"])
+        this.load.audio('ratsound', ["assets/sounds/rat/ratscream.mp3"])
         this.load.audio('knifeswipe', ["assets/knifeSwipe2.mp3"])
 
 
@@ -70,8 +70,6 @@ export default class Preloader extends Phaser.Scene {
         this.load.audio('doorOpen', ["assets/doorOpen_2.ogg"])
         this.load.audio('doorClose', ["assets/doorClose_4.ogg"])
 
-        //zsthis.load.audio('rainyfeelsbyDonnieOzone',["assets/music.mp3"])
-
         this.load.audio('music2', ["assets/music2.mp3"])
 
 
@@ -83,14 +81,7 @@ export default class Preloader extends Phaser.Scene {
             isStarted: true,
             playerName: "Player",
             playerHead: "heads-1.png",
-            playerHP: 100,
-            playerGold: Math.floor(Math.random() * 1000) + 175,
-            playerExperience: 0,
-            sceneFade: 2000,
-            kingRat: getNewKingRatName(),
-            taskRate: Math.floor(Math.random() * 250) + 175,
             hasIntroStarted: false
-
         }
 
         this.scene.start("OverworldTitle", wrGame);
