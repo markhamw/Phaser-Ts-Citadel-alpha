@@ -14,6 +14,8 @@ import EarthGolem from "~/enemies/EarthGolem";
 import AirElemental from "~/enemies/AirElemental";
 import Player from "../characters/Player";
 import Overworld from "./Overworld";
+import { playerIntroSpeech } from "~/game/playerspeech";
+import TalkBubbleContext from "~/characters/Player";
 
 const enum Chapters {
   One,
@@ -37,8 +39,7 @@ export default class OverworldTitle extends Phaser.Scene {
   AirElementalGroup!: Physics.Arcade.Group;
   buildingsGroup!: Physics.Arcade.Group;
   player!: Player;
-  DebugCollideColor: Phaser.Display.Color;
-  DebugFaceColor: Phaser.Display.Color;
+
   wrGame!: WRGame;
   debug!: boolean;
   titletext1!: Phaser.GameObjects.Text;
@@ -57,10 +58,6 @@ export default class OverworldTitle extends Phaser.Scene {
 
   constructor() {
     super("OverworldTitle");
-
-    this.DebugCollideColor = new Phaser.Display.Color(243, 234, 48, 255);
-    this.DebugFaceColor = new Phaser.Display.Color(40, 39, 37, 255);
-    this.debug = false;
   }
 
   init(data) {
@@ -296,7 +293,8 @@ export default class OverworldTitle extends Phaser.Scene {
       callback: () => {
         this.cameras.main.zoomTo(1, 3000, "Linear", true);
         this.cameras.main.pan(this.cameras.main.centerX, this.cameras.main.centerY, 3000);
-        this.player.Say(this, { line1: "Today is a good", line2: "day to go hunting", line3: "on my island" }, false);
+        let playerIntroTalkBubbleContext = { scene: this, speech: playerIntroSpeech, canInteract: false }
+        this.player.handleInteraction(playerIntroTalkBubbleContext);
       },
     });
 
@@ -349,16 +347,6 @@ export default class OverworldTitle extends Phaser.Scene {
     this.sound.play("music2", { volume: 0.03, loop: true });
     createBorder(this);
 
-    this.baseLayer.setInteractive();
-
-    this.baseLayer.on("pointerdown", (clicked) => {
-      console.log(clicked.x, clicked.y);
-      var particles = this.add.particles("blueparticle");
-      var emitter = particles
-        .createEmitter({ maxParticles: 2, speed: 15, blendMode: "ADD" })
-        .setScale(0.2)
-        .setPosition(clicked.x, clicked.y);
-    });
   }
 
   update() {

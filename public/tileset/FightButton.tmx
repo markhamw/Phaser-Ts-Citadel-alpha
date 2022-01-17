@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.0" orientation="orthogonal" renderorder="right-down" width="5" height="1" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
+ <tileset firstgid="1" name="UI_atlas" tilewidth="16" tileheight="16" tilecount="3264" columns="68">
+  <image source="../../../../AssetsWorkspaces/HAS UI/UI_atlas.png" width="1088" height="768"/>
+ </tileset>
+ <layer id="1" name="Tile Layer 1" width="5" height="1">
+  <data encoding="csv">
+128,128,128,128,128
+</data>
+ </layer>
+ <layer id="2" name="Tile Layer 2" width="5" height="1">
+  <data encoding="csv">
+143,83,145,147,77
+</data>
+ </layer>
+</map>

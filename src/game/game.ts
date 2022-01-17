@@ -10,6 +10,7 @@ export type WRGame = {
   playerName: string;
   playerHead: string;
   hasIntroStarted: boolean;
+
 };
 
 export enum Condition {
@@ -39,7 +40,6 @@ export type Speech = {
   line1: string;
   line2: string;
   line3: string;
-
 };
 
 export function AddCollidersForPlayer(scene: Overworld, player: Player) {

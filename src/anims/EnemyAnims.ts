@@ -14,6 +14,28 @@ const createAnimations = (scene: Phaser.Scene) => {
   CreateAnimationSet(scene, GetFlyingRatAnims(scene.anims, 4));
   CreateAnimationSet(scene, GetEarthGolemAnims(scene.anims, 4));
   CreateAnimationSet(scene, GetAirElementalAnims(scene.anims, 4));
+
+  scene.anims.create({
+    key: `enter-btn-action`,
+    frames: [
+      { key: `enter-btn-up` },
+      { key: `enter-btn-down` }
+    ],
+    repeat: 0,
+    frameRate: 4,
+  })
+
+  scene.anims.create({
+    key: `fight-btn-action`,
+    frames: [
+      { key: `fight-btn-up` },
+      { key: `fight-btn-down` }
+    ],
+    repeat: 0,
+    frameRate: 4,
+  })
+
+
 };
 
 const GetShamanAnims = (anims: Phaser.Animations.AnimationManager, rate: number) => {

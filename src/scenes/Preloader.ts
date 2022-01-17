@@ -43,11 +43,14 @@ export default class Preloader extends Phaser.Scene {
         this.load.image("tavern", "assets/Tavern.png")
         this.load.image("border", "assets/border.png")
         this.load.image("titlegraphic", "assets/TitleGraphic.png")
-        this.load.image("e_up", "assets/e_up.png")
-        this.load.image("e_down", "assets/e_down.png")
+
         //ui-enterbutton
-        this.load.image("enter_up", "assets/enter-up.png")
-        this.load.image("enter_down", "assets/enter-down.png")
+        this.load.image("enter-btn-up", "assets/enter-1.png")
+        this.load.image("enter-btn-down", "assets/enter-0.png")
+
+        //ui-fightbutton
+        this.load.image("fight-btn-up", "assets/fight-1.png")
+        this.load.image("fight-btn-down", "assets/fight-0.png")
 
         //particles
         this.load.image("blueparticle", "assets/blue.png")
@@ -81,7 +84,7 @@ export default class Preloader extends Phaser.Scene {
             isStarted: true,
             playerName: "Player",
             playerHead: "heads-1.png",
-            hasIntroStarted: false
+            hasIntroStarted: false,
         }
 
         this.scene.start("OverworldTitle", wrGame);

@@ -15,13 +15,12 @@ export default new Phaser.Game(
 			mode: Phaser.Scale.FIT,
 			width: 500,
 			height: 500,
-			autoCenter: Phaser.Scale.Center.CENTER_HORIZONTALLY,
+			autoCenter: Phaser.Scale.Center.CENTER_BOTH,
 		},
 		physics: {
 			default: 'arcade',
 			arcade: {
 				gravity: { y: 0 },
-
 				debug: false,
 			}
 		},

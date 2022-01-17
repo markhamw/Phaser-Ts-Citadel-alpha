@@ -24,6 +24,9 @@ import EarthGolem from "~/enemies/EarthGolem";
 import AirElemental from "~/enemies/AirElemental";
 import Player from "../characters/Player";
 import { hidePlayerTalkBubble } from "~/game/playerlogic";
+import { enterQuery } from "bitecs";
+import TalkBubbleContext from "~/characters/Player";
+import { GetRandomExploreText } from "~/game/playerspeech";
 
 const enum Layers {
   Base,
@@ -62,10 +65,6 @@ export default class Overworld extends Phaser.Scene {
   playerline2!: Phaser.GameObjects.Text;
   playerline3!: Phaser.GameObjects.Text;
   wrGame!: WRGame;
-  titletext1!: Phaser.GameObjects.Text;
-  titletext2!: Phaser.GameObjects.Text;
-  titletext4!: Phaser.GameObjects.Text;
-  titletext0!: Phaser.GameObjects.Text;
   iSpeaking: boolean = false;
   leftArrow!: Phaser.GameObjects.Sprite;
   rightArrow!: Phaser.GameObjects.Sprite;
@@ -106,7 +105,7 @@ export default class Overworld extends Phaser.Scene {
   };
 
   isCloseEnoughToInteract = (obj: Phaser.GameObjects.GameObject) => {
-    return this.player.distanceFrom(obj as Phaser.GameObjects.Sprite, this) > 40;
+    return this.player.distanceFrom(obj as Phaser.GameObjects.Sprite) > 40;
   };
 
   createOverworldPlayer = (): Player => {
@@ -115,22 +114,10 @@ export default class Overworld extends Phaser.Scene {
     this.physics.add.collider(this.player, this.baseLayer);
     this.physics.add.collider(this.player, this.decorLayer);
     this.player.setInteractive();
-    this.player.on("pointerdown", () => {
-      let playerCondition = Condition[`${this.player.status.Condition}`];
-      let Hpline = `I'm ${playerCondition}`;
-      let Gpline = `with ${this.player.status.Gold} gp`;
-      let Xpline = ` (lvl ${this.player.status.Level})`;
-      let playerStatus: Speech = { line1: Hpline, line2: Gpline, line3: Xpline }
-      this.player.Say(this, playerStatus, true);
-    });
 
     this.player.on("pointerup", () => {
       hidePlayerTalkBubble(this);
     });
-
-
-
-
     return this.player
   };
 
@@ -182,11 +169,6 @@ export default class Overworld extends Phaser.Scene {
     this.createTiles();
     this.createStructuresAndWeather();
     createAnimations(this);
-    // this.createEnemyGroups()
-
-    /* this.events.addListener("startintro", () => {
-      this.startIntro();
-    }); */
 
     this.events.addListener("spawnChapter1", () => {
       this.spawnChapter1();
@@ -207,16 +189,9 @@ export default class Overworld extends Phaser.Scene {
       },
     });
 
-    this.time.addEvent({
-
-      delay: 1000,
-      repeat: -1,
-      callback: () => {
-
-      },
-    });
-
   }
+
+
 
   spawnChapter1() {
 
@@ -224,7 +199,6 @@ export default class Overworld extends Phaser.Scene {
     this.FlyingRatGroup = newEnemyGroup(this, FlyingRat, true, false);
     RandomCloud(this);
     RandomCloud(this);
-    //let rat1 = this.add.rat(329, 361, "enemy-rat", "rat-1.png");
     let rat1: Rat = this.SummonMobs(this.chapter1Group, "enemy-rat", 1, 329, 361);
     rat1.setImmovable();
     this.physics.add.collider(this.chapter1Group, this.player);
@@ -233,28 +207,21 @@ export default class Overworld extends Phaser.Scene {
     rat1.setInteractive();
 
     this.buildingsGroup.children.iterate((child) => {
-
       child.on("pointerup", () => {
-        let dist = this.player.distanceFrom(child as Phaser.GameObjects.Sprite, this);
-        let moveline = this.isCloseEnoughToInteract(child) ? "I can't go there" : "I can go here";
-        let identline = this.isCloseEnoughToInteract(child) ? "Its too far" : `Its ${child.name}`;
-        let buildingInteractSpeech: Speech = { line1: moveline, line2: identline, line3: `Its ${dist} meters away` }
-        this.player.Say(this, buildingInteractSpeech, true);
-        /* if (dist < 40) {
-          this.add.sprite(this.player.x, this.player.y, "enter_up");
-        } */
-
+        this.events.emit("player-interact-building", child);
       });
     });
 
     this.chapter1Group.children.iterate((child) => {
       child.on("pointerup", () => {
-        let dist = this.player.distanceFrom(child as Phaser.GameObjects.Sprite, this);
-        let moveline = this.isCloseEnoughToInteract(child) ? "I can't see it" : "I can see it ";
-        let name = (child as any).ratname;
-        let identline = this.isCloseEnoughToInteract(child) ? "Its too far" : `Its ${name}`;
-        let unitInteractSpeech: Speech = { line1: moveline, line2: identline, line3: `about ${dist}m away` }
-        this.player.Say(this, unitInteractSpeech, false);
+        this.events.emit("player-interact-enemy", child);
+        /*   let dist = this.player.distanceFrom(child as Phaser.GameObjects.Sprite, this);
+          let moveline = this.isCloseEnoughToInteract(child) ? "I can't see it" : "I can see it ";
+          let name = (child as any).ratname;
+          let identline = this.isCloseEnoughToInteract(child) ? "Its too far" : `Its ${name}`;
+          let unitInteractSpeech: Speech = { line1: moveline, line2: identline, line3: `about ${dist}m away` }
+          let unitInteractTalkBubbleContext = { scene: this, speech: unitInteractSpeech, canInteract: true, child: child }
+          this.player.handleBuildingInteraction(unitInteractTalkBubbleContext); */
       });
     });
 
@@ -280,7 +247,9 @@ export default class Overworld extends Phaser.Scene {
     this.createOverworldPlayer();
     this.spawnChapter1();
     this.createGoldOverlay();
+
     this.player.setDepth(2);
+    this.player.Say(GetRandomExploreText())
 
     this.baseLayer.setInteractive();
     this.baseLayer.on("pointerdown", (clicked) => {

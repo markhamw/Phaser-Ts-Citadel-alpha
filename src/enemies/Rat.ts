@@ -25,7 +25,6 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
     private StartingYLoc: number;
     private EntityID: Guid;
     public isAlive: boolean = true;
-    public ratname: string;
     private stationary: boolean = false;
     PlayerInteractEvent: Phaser.Events.EventEmitter;
 
@@ -45,12 +44,12 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
         this.scene.physics.world.on(Phaser.Physics.Arcade.Events.TILE_COLLIDE, this.handleCollision, this.scene)
         this.scene.physics.world.on(Phaser.Physics.Arcade.Events.COLLIDE, this.handleCollisionWithSprite, this.scene)
         this.EntityID = Guid.create()
-        this.ratname = getNewRatName()
+        this.name = getNewRatName()
         this.RatSpeed = 0;
         this.PlayerInteractEvent = this.scene.events.addListener('player-interact-event', (player: Player) => {
             if (this.isAlive && this.distanceFrom(player, this.scene as Overworld) < 10) {
                 console.log(player.x, player.y)
-                console.log(`close to ${this.ratname}`)
+                console.log(`close to ${this.name}`)
                 this.scene.events.emit('player-killed-rat', this)
                 this.scene.sound.add('ratsound', { volume: 0.1 }).play()
                 this.selfDestruct()

@@ -1,7 +1,6 @@
 import Phaser, { FacebookInstantGamesLeaderboard } from "phaser";
 import { Guid } from "guid-typescript"
 
-
 export default class Building extends Phaser.Physics.Arcade.Sprite {
 
     private bldgname!: string;
@@ -16,13 +15,11 @@ export default class Building extends Phaser.Physics.Arcade.Sprite {
         });
     }
 
-
     preload() {
 
     }
     preUpdate(t: number, dt: number) {
         super.preUpdate(t, dt)
-
 
     }
 }
