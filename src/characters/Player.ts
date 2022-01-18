@@ -3,8 +3,8 @@ import { GetOverworldPlayerAnims, GetPlayerAnims } from "~/anims/PlayerAnims";
 import { CombatCapability, Condition, PlayerStatus, Speech } from "~/game/game";
 import { AddWASDKeysToScene, CreateAnimationSet } from "~/game/gamelogic";
 import { WRGameScene } from "~/game/overworldlogic";
-import { eventForButton, hidePlayerTalkBubble, showPlayerTalkBubble, showPlayerTalkBubbleWithConditionalEnter, showPlayerTalkBubbleWithConditionalFight } from "~/game/playerlogic";
-import { GetRandomNegativeIdentAction, GetRandomNegativeIdentLine, GetRandomPositiveEnemyIdentLine } from "~/game/playerspeech";
+import { hidePlayerTalkBubble, showPlayerTalkBubble, showPlayerTalkBubbleWithConditionalEnter, showPlayerTalkBubbleWithConditionalFight } from "~/game/playerlogic";
+import { GetRandomNegativeIdentAction, GetRandomNegativeIdentLine, GetRandomPositiveBuildingIdentLine, GetRandomPositiveEnemyIdentLine } from "~/game/playerspeech";
 import Overworld from "~/scenes/Overworld";
 import OverworldTitle from "~/scenes/OverworldTitle";
 import Building from "~/structures/Building";
@@ -49,9 +49,7 @@ const animationsForPlayerByDirection = [
 interface TalkBubble {
   frame: Phaser.GameObjects.Sprite;
   headPngforTalkBubble: Phaser.GameObjects.Sprite;
-  line1: Phaser.GameObjects.Text;
-  line2: Phaser.GameObjects.Text;
-  line3: Phaser.GameObjects.Text;
+  lines: Phaser.GameObjects.Text;
   enterBtn?: Phaser.GameObjects.Sprite;
   fightBtn?: Phaser.GameObjects.Sprite;
 }
@@ -81,7 +79,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   constructor(scene: Overworld, x: number, y: number, texture: string, frame?: string | number) {
     super(scene, x, y, texture, frame);
-    this.status = { MaxHP: 10, CurrentHP: 10, Condition: Condition.Healthy, XP: 0, Level: 1, Gold: Phaser.Math.Between(0, 100) };
+    this.status = { MaxHP: 5, CurrentHP: 2, Condition: null, XP: 0, Level: 1, Gold: Phaser.Math.Between(0, 100) };
     this.combatCapability = { offensiveMultiplier: 1, defense: 1 };
     this.wasd = AddWASDKeysToScene(scene);
     this.playerHead = scene.wrGame.playerHead;
@@ -89,18 +87,40 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     scene.time.addEvent({
       delay: 100,
       callback: () => {
-        this.updateTalkBubblePosition(this);
+        this.updateTalkBubblePosition();
       },
       loop: true
     });
+
+    scene.time.addEvent({
+      delay: 1000,
+      callback: () => {
+        this.updateHealthIndicators(this.scene);
+      },
+      loop: true
+    });
+
+
 
     this.scene.events.addListener(
       "player-killed-flyingrat",
       () => {
         this.addExperience(100);
-        let flyingRatKillSpeech: Speech = { line1: "Flyer down", line2: "", line3: "" }
-        let flyingRatKillTalkBubbleContext: TalkBubbleContext = { scene: this.scene, canInteract: false, speech: flyingRatKillSpeech };
-        this.handleInteraction(flyingRatKillTalkBubbleContext);
+        this.scene.time.addEvent({
+          delay: 1000,
+          callback: () => {
+            this.addExperience(100);
+            let goldreceived = Phaser.Math.Between(10, 20);
+            this.addGold(goldreceived);
+            let flyingRatKillSpeech: Speech = { lines: `Flyer down +100 xp. +${goldreceived} gold` }
+            this.Say(flyingRatKillSpeech);
+          },
+          loop: false
+        });
+        this.scene.sound.play("knifeswipe", { volume: 0.1, detune: -1200, rate: 1, delay: .1 });
+        this.scene.sound.play("knifeswipe", { volume: 0.1, detune: -1300, rate: .8, delay: .3 });
+        this.scene.sound.play("knifeswipe", { volume: 0.1, detune: -1400, rate: 1, delay: .6 });
+        this.scene.sound.play("ratsound", { volume: 0.1, detune: 700, rate: 1.25, delay: .8 });
       },
       this
     );
@@ -113,7 +133,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       },
       this
     );
-
     this.scene.events.addListener(
       "player-clicked-fight",
       (enemy) => {
@@ -123,7 +142,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       },
       this
     );
-
     this.scene.events.addListener(
       "player-clear-interactionIndicators",
       () => {
@@ -132,8 +150,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       },
       this
     );
-
-
     this.scene.events.addListener(
       "player-interact-building",
       (building) => {
@@ -141,40 +157,41 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.scene.events.emit("player-clear-interactionIndicators");
         this.canInteractType = EntityType.Building;
         let context = this.generateContext(building);
-
-
         this.handleInteraction(context);
       },
       this
     );
-
-
-
     this.scene.events.addListener(
       "player-interact-enemy",
       (enemy) => {
         console.log("Event: player-interact-enemy", enemy);
         this.scene.events.emit("player-clear-interactionIndicators");
         this.canInteractType = EntityType.Enemy;
-
         let context = this.generateContext(enemy);
-
         this.handleInteraction(context);
       },
       this
     );
-
-
-
     this.scene.events.addListener(
       "player-killed-rat",
       (rat) => {
-        this.addExperience(100);
-        let goldreceived = Phaser.Math.Between(10, 20);
-        this.addGold(goldreceived);
-        let ratkillSpeech: Speech = { line1: `${rat.ratname} down`, line2: `+100 xp`, line3: `+${goldreceived} gold` }
-        let ratkillSpeechContext = { scene: this.scene, canInteract: false, speech: ratkillSpeech };
-        //this.handleBuildingInteraction(ratkillSpeechContext);
+
+        this.scene.time.addEvent({
+          delay: 1000,
+          callback: () => {
+            this.addExperience(100);
+            let goldreceived = Phaser.Math.Between(10, 20);
+            this.addGold(goldreceived);
+            let ratkillSpeech: Speech = { lines: `${rat.name} down. +100 xp.  +${goldreceived} gold` }
+            this.Say(ratkillSpeech);
+          },
+          loop: false
+        });
+        this.scene.sound.play("knifeswipe", { volume: 0.1, detune: -2200, rate: .7, delay: .2 });
+        this.scene.sound.play("knifeswipe", { volume: 0.1, detune: -2300, rate: .8, delay: .5 });
+        this.scene.sound.play("knifeswipe", { volume: 0.1, detune: -2400, rate: 1, delay: .9 });
+
+
       },
       this
     );
@@ -220,24 +237,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         .setDepth(5)
         .setAlpha(0),
 
-      line1: scene.add
-        .text(0, 0, "")
-        .setAlpha(0)
-        .setFontFamily(font)
-        .setDepth(6)
-        .setShadow(2, 2, "#000000", 2, true, true)
-        .setFontSize(fontSize),
-
-      line2: scene.add
-        .text(0, 0, "")
-        .setAlpha(0)
-        .setFontFamily(font)
-        .setDepth(6)
-        .setShadow(2, 2, "#000000", 2, true, true)
-        .setFontSize(fontSize),
-
-      line3: scene.add
-        .text(0, 0, "")
+      lines: scene.add
+        .text(0, 0, "", { wordWrap: { width: 225, useAdvancedWrap: true }, fontFamily: font, fontSize: fontSize.toString(), color: "#FFFFFF", align: "left" })
         .setAlpha(0)
         .setFontFamily(font)
         .setDepth(6)
@@ -263,8 +264,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.tb.enterBtn?.on("pointerup", () => {
       this.tb.enterBtn?.setTexture("enter-btn-down");
       this.scene.events.emit("player-clicked-enter", this.canEnterBuilding ?? "");
-      this.canEnterBuilding = null;
-      this.tb.enterBtn?.setAlpha(0);
     })
 
     //Fight button events
@@ -273,10 +272,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     })
     this.tb.fightBtn?.on("pointerup", () => {
       this.tb.fightBtn?.setTexture("fight-btn-down");
-      this.scene.events.emit("player-clicked-fight", this.canInteractType ?? "");
-      this.canEnterBuilding = null;
-      this.tb.fightBtn?.setAlpha(0);
+      this.scene.events.emit("player-clicked-fight");
+
     })
+  }
+
+
+  updateHealthIndicators(scene: any) {
+
   }
 
 
@@ -289,7 +292,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     switch (this.canInteractType) {
       case EntityType.Building:
-        identLine = isitTooFar ? GetRandomNegativeIdentLine() : GetRandomPositiveIdentLine(entity)
+        identLine = isitTooFar ? GetRandomNegativeIdentLine() : GetRandomPositiveBuildingIdentLine(entity)
         actionLine = isitTooFar ? GetRandomNegativeIdentAction() : `I can go in`
         break
       case EntityType.Enemy:
@@ -301,47 +304,36 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     let context: TalkBubbleContext = {
       scene: this.scene,
       canInteract: this.distanceFrom(entity) < 40,
-      speech: { line1: identLine, line2: actionLine, line3: `` },
+      speech: { lines: identLine },
       child: this.distanceFrom(entity) < 40 ? entity : null,
     }
     return context;
   }
 
-  updateTalkBubblePosition(player: Player) {
+  updateTalkBubblePosition() {
 
-    const frameYOffset = player.y - 25
-    const frameZone = this.scene.add.zone(player.x, frameYOffset, player.x, frameYOffset)
+    const frameYOffset = this.y - 25
+    const frameZone = this.scene.add.zone(this.x, frameYOffset, this.x, frameYOffset)
 
-    const headPngXOffset = player.x - 127;
+    const headPngXOffset = this.x - 127;
     const headPngZone = this.scene.add.zone(headPngXOffset, frameYOffset, headPngXOffset, frameYOffset)
 
-    const lineXOffset = player.x - 90;
-    const lineYOffset = player.y - 55;
+    const lineXOffset = this.x - 90;
+    const lineYOffset = this.y - 55;
 
-    const lineZone = this.scene.add.zone(lineXOffset, frameYOffset, lineXOffset, frameYOffset)
-
-    Phaser.Display.Align.In.Center(player.tb.frame, frameZone);
-    Phaser.Display.Align.In.Center(player.tb.headPngforTalkBubble, headPngZone);
-
-    // Phaser.Display.Align.In.Center(player.tb.line2, lineZone);
-    //  Phaser.Display.Align.In.Center(player.tb.line3, lineZone);
-
-    player.tb.line1.setPosition(lineXOffset, lineYOffset);
-    player.tb.line2.setPosition(lineXOffset, lineYOffset + 15);
-    player.tb.line3.setPosition(lineXOffset, lineYOffset + 30);
-
-    // player.tb.enterBtn?.setPosition(player.x + 20, FrameYOffset - 7);
-
-    // player.tb.fightBtn?.setPosition(player.x + 40, FrameYOffset - 7);
+    Phaser.Display.Align.In.Center(this.tb.frame, frameZone);
+    Phaser.Display.Align.In.Center(this.tb.headPngforTalkBubble, headPngZone);
+    this.tb.lines.setPosition(lineXOffset, lineYOffset);
+    this.tb.enterBtn?.setPosition(lineXOffset, lineYOffset - 7);
+    this.tb.fightBtn?.setPosition(lineXOffset + 140, lineYOffset - 7);
   }
 
   updateTalkBubbleText(speech: Speech) {
-    this.tb.line1.setText(speech.line1);
-    this.tb.line2.setText(speech.line2);
-    this.tb.line3.setText(speech.line3);
+    this.tb.lines.setText(speech.lines);
   }
 
   queueHideTalkBubble(delay: number) {
+
     this.scene.time.addEvent({
       delay: delay,
       repeat: 0,
@@ -375,7 +367,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   levelUp = () => {
     this.addLevelStats();
-    let levelUpSpeech: Speech = { line1: "Leveled Up!", line2: "", line3: "" }
+    let levelUpSpeech: Speech = { lines: "Leveled Up!" }
     let levelUpTalkBubbleContext: TalkBubbleContext = { scene: this.scene, canInteract: false, speech: levelUpSpeech };
     //this.handleBuildingInteraction(levelUpTalkBubbleContext);
   };
@@ -446,12 +438,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   Say = (text: Speech) => {
     this.updateTalkBubbleText(text);
     showPlayerTalkBubble(this.scene);
-    this.queueHideTalkBubble(2000);
+    this.queueHideTalkBubble(5000);
   };
 
   handleInteraction = (context: TalkBubbleContext) => {
     this.interact(context);
-    this.queueHideTalkBubble(3500);
+    this.queueHideTalkBubble(5000);
   };
 
   decideMoveSpeed = () => {
@@ -474,18 +466,16 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   };
 
   preload() {
-    //this.scene.events.addListener('battle', (data) => { console.log(data) });
+    this.scene.events.addListener('battle', (data) => { console.log(data) });
   }
 
   create() {
     this.on("pointerdown", () => {
       let playerCondition = Condition[`${this.status.Condition}`];
-      let Hpline = `I'm ${playerCondition}`;
-      let Gpline = `with ${this.status.Gold} gp`;
-      let Xpline = ` (lvl ${this.status.Level})`;
-      let playerStatus: Speech = { line1: Hpline, line2: Gpline, line3: Xpline }
+      let statusLine = `I'm ${playerCondition} with ${this.status.Gold} gp (lvl ${this.status.Level})`;
+      let playerStatus: Speech = { lines: statusLine }
       let interactTalkBubbleContext: TalkBubbleContext = { scene: this, speech: playerStatus, canInteract: false };
-      this.handleInteraction(interactTalkBubbleContext);
+      this.Say(playerStatus);
     });
   }
 

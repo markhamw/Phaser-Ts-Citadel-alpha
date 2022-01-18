@@ -1,6 +1,6 @@
 import { Physics, Scene } from "phaser";
 import { GetOverworldPlayerAnims, GetPlayerAnims } from "~/anims/PlayerAnims";
-import { Condition, Speech, WRGame } from "~/game/game";
+import { Condition, PlayerStatus, Speech, WRGame } from "~/game/game";
 import { AddWASDKeysToScene, CreateAnimationSet, RandomCoord } from "~/game/gamelogic";
 import {
   WindDirection,
@@ -61,9 +61,7 @@ export default class Overworld extends Phaser.Scene {
   chapter1Group!: Phaser.Physics.Arcade.Group;
   player!: Player;
   info!: Phaser.GameObjects.Sprite;
-  playerline1!: Phaser.GameObjects.Text;
-  playerline2!: Phaser.GameObjects.Text;
-  playerline3!: Phaser.GameObjects.Text;
+
   wrGame!: WRGame;
   iSpeaking: boolean = false;
   leftArrow!: Phaser.GameObjects.Sprite;
@@ -72,6 +70,7 @@ export default class Overworld extends Phaser.Scene {
 
   baseLayer!: Phaser.Tilemaps.TilemapLayer;
   decorLayer!: Phaser.Tilemaps.TilemapLayer;
+  clearBubbleEvent!: Phaser.Time.TimerEvent;
 
   constructor() {
     super("Overworld");
@@ -114,6 +113,9 @@ export default class Overworld extends Phaser.Scene {
     this.physics.add.collider(this.player, this.baseLayer);
     this.physics.add.collider(this.player, this.decorLayer);
     this.player.setInteractive();
+    this.player.on("pointerdown", () => {
+      this.player.Say(GetRandomExploreText(), 5000);
+    });
 
     this.player.on("pointerup", () => {
       hidePlayerTalkBubble(this);
@@ -182,16 +184,18 @@ export default class Overworld extends Phaser.Scene {
         if (this.player.isMoving && this.player != null) {
           let step1 = this.game.sound.add("Forest1");
           let step2 = this.game.sound.add("Forest2");
+          let step3 = this.game.sound.add("Forest1");
 
-          step1.play({ delay: 0.6, volume: 0.15, detune: 200 });
-          step2.play({ delay: 0.2, volume: 0.15, detune: 200 });
+
+          step1.play({ delay: 0.5, volume: 0.09, rate: 1.2, detune: Phaser.Math.Between(600, 200) });
+          step2.play({ delay: 0.1, volume: 0.09, rate: 1.2, detune: Phaser.Math.Between(200, 200) });
+          step3.play({ delay: 0.8, volume: 0.09, rate: 1.0, detune: Phaser.Math.Between(-1200, 200) });
+
         }
       },
     });
 
   }
-
-
 
   spawnChapter1() {
 
@@ -215,22 +219,15 @@ export default class Overworld extends Phaser.Scene {
     this.chapter1Group.children.iterate((child) => {
       child.on("pointerup", () => {
         this.events.emit("player-interact-enemy", child);
-        /*   let dist = this.player.distanceFrom(child as Phaser.GameObjects.Sprite, this);
-          let moveline = this.isCloseEnoughToInteract(child) ? "I can't see it" : "I can see it ";
-          let name = (child as any).ratname;
-          let identline = this.isCloseEnoughToInteract(child) ? "Its too far" : `Its ${name}`;
-          let unitInteractSpeech: Speech = { line1: moveline, line2: identline, line3: `about ${dist}m away` }
-          let unitInteractTalkBubbleContext = { scene: this, speech: unitInteractSpeech, canInteract: true, child: child }
-          this.player.handleBuildingInteraction(unitInteractTalkBubbleContext); */
       });
     });
 
   }
 
-  drawHealthBar(numberOfHearts) {
-    let Empties = 5 - numberOfHearts
+  drawHealthBar(player: Player) {
+    let Empties = 5 - player.status.Condition!
     let x = 100;
-    for (let i = 0; i < numberOfHearts; i++) {
+    for (let i = 0; i < player.status.Condition!; i++) {
       this.add.sprite(x, 480, "fullheart");
       x += 10;
     }
@@ -247,7 +244,7 @@ export default class Overworld extends Phaser.Scene {
     this.createOverworldPlayer();
     this.spawnChapter1();
     this.createGoldOverlay();
-
+    this.drawHealthBar(this.player);
     this.player.setDepth(2);
     this.player.Say(GetRandomExploreText())
 
@@ -259,6 +256,13 @@ export default class Overworld extends Phaser.Scene {
         .createEmitter({ maxParticles: 2, speed: 15, blendMode: "ADD" })
         .setScale(0.2)
         .setPosition(clicked.x, clicked.y);
+      let chanceForBanter = Phaser.Math.Between(0, 8);
+      if (chanceForBanter == 0) {
+        this.player.Say(GetRandomExploreText())
+      } else if (chanceForBanter == 1 || 2 || 3) {
+        this.player.Say({ lines: "Its nothing.." }, 1600)
+      }
+
     });
   }
 

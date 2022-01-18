@@ -14,7 +14,7 @@ import EarthGolem from "~/enemies/EarthGolem";
 import AirElemental from "~/enemies/AirElemental";
 import Player from "../characters/Player";
 import Overworld from "./Overworld";
-import { playerIntroSpeech } from "~/game/playerspeech";
+import { GetRandomExploreText } from "~/game/playerspeech";
 import TalkBubbleContext from "~/characters/Player";
 
 const enum Chapters {
@@ -293,8 +293,7 @@ export default class OverworldTitle extends Phaser.Scene {
       callback: () => {
         this.cameras.main.zoomTo(1, 3000, "Linear", true);
         this.cameras.main.pan(this.cameras.main.centerX, this.cameras.main.centerY, 3000);
-        let playerIntroTalkBubbleContext = { scene: this, speech: playerIntroSpeech, canInteract: false }
-        this.player.handleInteraction(playerIntroTalkBubbleContext);
+        this.player.Say(GetRandomExploreText());
       },
     });
 

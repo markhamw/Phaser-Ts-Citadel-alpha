@@ -26,9 +26,8 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
     private EntityID: Guid;
     public isAlive: boolean = true;
     private stationary: boolean = false;
-    PlayerInteractEvent: Phaser.Events.EventEmitter;
 
-    constructor(scene: WRGameScene, x: number, y: number, texture: string, frame?: string | number) {
+    constructor(scene: Overworld | OverworldTitle, x: number, y: number, texture: string, frame?: string | number) {
         super(scene, x, y, texture, frame)
 
         this.moveEvent = scene.time.addEvent({
@@ -46,21 +45,17 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
         this.EntityID = Guid.create()
         this.name = getNewRatName()
         this.RatSpeed = 0;
-        this.PlayerInteractEvent = this.scene.events.addListener('player-interact-event', (player: Player) => {
-            if (this.isAlive && this.distanceFrom(player, this.scene as Overworld) < 10) {
-                console.log(player.x, player.y)
-                console.log(`close to ${this.name}`)
-                this.scene.events.emit('player-killed-rat', this)
-                this.scene.sound.add('ratsound', { volume: 0.1 }).play()
-                this.selfDestruct()
-            }
-
-        })
         this.scene.events.addListener('removeTitleMobs', () => {
             this.selfDestruct()
         })
         this.scene.events.addListener('fadeMobs', () => {
             this.fade()
+        })
+
+        this.scene.events.addListener('player-clicked-fight', () => {
+            this.scene.events.emit('player-killed-rat', this)
+            this.scene.sound.add('ratsound', { volume: 0.1, detune: Phaser.Math.Between(-500, -1200) }).play()
+            this.selfDestruct()
         })
 
         CreateAnimationSet(this.scene, this.GenerateAnims(4));
@@ -152,7 +147,8 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
         ]
     }
 
-    isNearPlayer(player: Phaser.Physics.Arcade.Sprite): boolean {
+    isNearPlayer(player: Player): boolean {
+        let distance = this.distanceFrom(player, this.scene)
         return true
     }
 

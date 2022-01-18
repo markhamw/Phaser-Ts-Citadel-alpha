@@ -1,18 +1,14 @@
 import Building from "~/structures/Building";
 import { Speech } from "./game";
 
-
-export const playerIntroSpeech = { line1: "Today is a good", line2: "day to go hunting", line3: "on my island" }
-
 export const ExploreTextLines: Speech[] = [
-    { line1: "Today is day I fulfill my contract as Ranger", line2: "Ill silence all Ratbeasts and other beasties.", line3: "Let the killin begin. I dont have all cycle." },
-    { line1: "Ah, the great outdoors..only..with Ratmen", line2: "afoot...", line3: "" },
-    { line1: "Gods willing..it is time to silence the", line2: "invading Ratmen", line3: "" }
+    { lines: "I work my contract as Ranger. Ill silence all Ratbeasts and other beasties. Let the killin begin. I dont have all cycle." },
+    { lines: "Today is a good day to go hunting on my island. For Ratticus!" },
+    { lines: "Ah, the great outdoors..only..with Ratmen afoot. Im sure every Ranger from here to....there will be defending Ratticus." },
+    { lines: "Gods willing..it is time to silence the invading armies. Rat armies and elementals from across the wastes are moving in." },
+    { lines: "I'm a Ranger and I call this island my home! Rat Men and Rat armies from the wastes have invaded. Its my duty to stop them." },
+    { lines: "I'm the Ranger damnit. These Ratmen invade our home! Rat armies from the wastes have invaded. Its my duty to stop them." }
 ]
-
-/* export const SelfPonderLines: Speech[] = [
-    { line1: "I call this island my home. I think I can", line2: "", line3: "" }
-] */
 
 export const LineNegativeIdents = [
     "Its too far to call without a map or wand",
