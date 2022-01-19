@@ -1,0 +1,461 @@
+{
+	"textures": [
+		{
+			"image": "skeleton.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 252,
+				"h": 16
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "IconSkeleton.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 16,
+						"h": 14
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 16,
+						"h": 14
+					}
+				},
+				{
+					"filename": "SkeletonAttack(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 15,
+						"h": 14
+					},
+					"frame": {
+						"x": 19,
+						"y": 1,
+						"w": 15,
+						"h": 14
+					}
+				},
+				{
+					"filename": "SkeletonHit(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 15,
+						"h": 14
+					},
+					"frame": {
+						"x": 36,
+						"y": 1,
+						"w": 15,
+						"h": 14
+					}
+				},
+				{
+					"filename": "SkeletonHit(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 15,
+						"h": 14
+					},
+					"frame": {
+						"x": 53,
+						"y": 1,
+						"w": 15,
+						"h": 14
+					}
+				},
+				{
+					"filename": "SkeletonAttack(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 14,
+						"h": 14
+					},
+					"frame": {
+						"x": 70,
+						"y": 1,
+						"w": 14,
+						"h": 14
+					}
+				},
+				{
+					"filename": "SkeletonWalk(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 14,
+						"h": 14
+					},
+					"frame": {
+						"x": 86,
+						"y": 1,
+						"w": 14,
+						"h": 14
+					}
+				},
+				{
+					"filename": "SkeletonWalk(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 14,
+						"h": 14
+					},
+					"frame": {
+						"x": 102,
+						"y": 1,
+						"w": 14,
+						"h": 14
+					}
+				},
+				{
+					"filename": "SkeletonDeath(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 16,
+						"h": 13
+					},
+					"frame": {
+						"x": 118,
+						"y": 1,
+						"w": 16,
+						"h": 13
+					}
+				},
+				{
+					"filename": "SkeletonHit(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 15,
+						"h": 13
+					},
+					"frame": {
+						"x": 136,
+						"y": 1,
+						"w": 15,
+						"h": 13
+					}
+				},
+				{
+					"filename": "SkeletonAttack(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 14,
+						"h": 13
+					},
+					"frame": {
+						"x": 153,
+						"y": 1,
+						"w": 14,
+						"h": 13
+					}
+				},
+				{
+					"filename": "SkeletonAttack(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 14,
+						"h": 13
+					},
+					"frame": {
+						"x": 153,
+						"y": 1,
+						"w": 14,
+						"h": 13
+					}
+				},
+				{
+					"filename": "SkeletonDeath(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 14,
+						"h": 13
+					},
+					"frame": {
+						"x": 153,
+						"y": 1,
+						"w": 14,
+						"h": 13
+					}
+				},
+				{
+					"filename": "SkeletonHit(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 14,
+						"h": 13
+					},
+					"frame": {
+						"x": 153,
+						"y": 1,
+						"w": 14,
+						"h": 13
+					}
+				},
+				{
+					"filename": "SkeletonIdle(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 14,
+						"h": 13
+					},
+					"frame": {
+						"x": 153,
+						"y": 1,
+						"w": 14,
+						"h": 13
+					}
+				},
+				{
+					"filename": "SkeletonWalk(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 14,
+						"h": 13
+					},
+					"frame": {
+						"x": 153,
+						"y": 1,
+						"w": 14,
+						"h": 13
+					}
+				},
+				{
+					"filename": "SkeletonWalk(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 14,
+						"h": 13
+					},
+					"frame": {
+						"x": 153,
+						"y": 1,
+						"w": 14,
+						"h": 13
+					}
+				},
+				{
+					"filename": "SkeletonIdle(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 14,
+						"h": 13
+					},
+					"frame": {
+						"x": 169,
+						"y": 1,
+						"w": 14,
+						"h": 13
+					}
+				},
+				{
+					"filename": "SkeletonIdle(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 14,
+						"h": 13
+					},
+					"frame": {
+						"x": 185,
+						"y": 1,
+						"w": 14,
+						"h": 13
+					}
+				},
+				{
+					"filename": "SkeletonIdle(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 14,
+						"h": 13
+					},
+					"frame": {
+						"x": 201,
+						"y": 1,
+						"w": 14,
+						"h": 13
+					}
+				},
+				{
+					"filename": "SkeletonDeath(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 5,
+						"w": 16,
+						"h": 11
+					},
+					"frame": {
+						"x": 217,
+						"y": 1,
+						"w": 16,
+						"h": 11
+					}
+				},
+				{
+					"filename": "SkeletonDeath(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 10,
+						"w": 16,
+						"h": 6
+					},
+					"frame": {
+						"x": 235,
+						"y": 1,
+						"w": 16,
+						"h": 6
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:278e4e2fc50ed4b27f41fc81c8b74851:6251badae263dc6cdb314ecdbc814ff6:d250a93a37aebe3125719817b45d8e4d$"
+	}
+}

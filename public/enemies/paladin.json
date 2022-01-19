@@ -1,0 +1,461 @@
+{
+	"textures": [
+		{
+			"image": "paladin.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 250,
+				"h": 18
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "PaladinDeath(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 6,
+						"w": 16,
+						"h": 10
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 16,
+						"h": 10
+					}
+				},
+				{
+					"filename": "PaladinAttack(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 16,
+						"h": 13
+					},
+					"frame": {
+						"x": 19,
+						"y": 1,
+						"w": 16,
+						"h": 13
+					}
+				},
+				{
+					"filename": "PaladinDeath(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 14,
+						"h": 13
+					},
+					"frame": {
+						"x": 37,
+						"y": 1,
+						"w": 14,
+						"h": 13
+					}
+				},
+				{
+					"filename": "PaladinDeath(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 13,
+						"h": 15
+					},
+					"frame": {
+						"x": 53,
+						"y": 1,
+						"w": 13,
+						"h": 15
+					}
+				},
+				{
+					"filename": "PaladinHit(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 12,
+						"h": 15
+					},
+					"frame": {
+						"x": 68,
+						"y": 1,
+						"w": 12,
+						"h": 15
+					}
+				},
+				{
+					"filename": "IconPaladin.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 82,
+						"y": 1,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "PaladinAttack(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 13,
+						"h": 16
+					},
+					"frame": {
+						"x": 100,
+						"y": 1,
+						"w": 13,
+						"h": 16
+					}
+				},
+				{
+					"filename": "PaladinWalk(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 13,
+						"h": 16
+					},
+					"frame": {
+						"x": 100,
+						"y": 1,
+						"w": 13,
+						"h": 16
+					}
+				},
+				{
+					"filename": "PaladinAttack(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 14,
+						"h": 16
+					},
+					"frame": {
+						"x": 115,
+						"y": 1,
+						"w": 14,
+						"h": 16
+					}
+				},
+				{
+					"filename": "PaladinAttack(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 14,
+						"h": 16
+					},
+					"frame": {
+						"x": 131,
+						"y": 1,
+						"w": 14,
+						"h": 16
+					}
+				},
+				{
+					"filename": "PaladinDeath(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 13,
+						"h": 16
+					},
+					"frame": {
+						"x": 147,
+						"y": 1,
+						"w": 13,
+						"h": 16
+					}
+				},
+				{
+					"filename": "PaladinIdle(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 13,
+						"h": 16
+					},
+					"frame": {
+						"x": 147,
+						"y": 1,
+						"w": 13,
+						"h": 16
+					}
+				},
+				{
+					"filename": "PaladinHit(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 13,
+						"h": 16
+					},
+					"frame": {
+						"x": 162,
+						"y": 1,
+						"w": 13,
+						"h": 16
+					}
+				},
+				{
+					"filename": "PaladinIdle(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 13,
+						"h": 16
+					},
+					"frame": {
+						"x": 162,
+						"y": 1,
+						"w": 13,
+						"h": 16
+					}
+				},
+				{
+					"filename": "PaladinIdle(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 13,
+						"h": 16
+					},
+					"frame": {
+						"x": 162,
+						"y": 1,
+						"w": 13,
+						"h": 16
+					}
+				},
+				{
+					"filename": "PaladinIdle(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 13,
+						"h": 16
+					},
+					"frame": {
+						"x": 162,
+						"y": 1,
+						"w": 13,
+						"h": 16
+					}
+				},
+				{
+					"filename": "PaladinHit(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 13,
+						"h": 16
+					},
+					"frame": {
+						"x": 177,
+						"y": 1,
+						"w": 13,
+						"h": 16
+					}
+				},
+				{
+					"filename": "PaladinHit(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 12,
+						"h": 16
+					},
+					"frame": {
+						"x": 192,
+						"y": 1,
+						"w": 12,
+						"h": 16
+					}
+				},
+				{
+					"filename": "PaladinWalk(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 13,
+						"h": 16
+					},
+					"frame": {
+						"x": 206,
+						"y": 1,
+						"w": 13,
+						"h": 16
+					}
+				},
+				{
+					"filename": "PaladinWalk(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 13,
+						"h": 16
+					},
+					"frame": {
+						"x": 221,
+						"y": 1,
+						"w": 13,
+						"h": 16
+					}
+				},
+				{
+					"filename": "PaladinWalk(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 13,
+						"h": 16
+					},
+					"frame": {
+						"x": 236,
+						"y": 1,
+						"w": 13,
+						"h": 16
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:c46c469b37f1f28f245ca1c5ca845511:afb74fb60fda3b4aa694634fb9146bc8:2a4d23d6e2f8e15346227f21dc2a49bf$"
+	}
+}

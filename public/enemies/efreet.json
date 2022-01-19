@@ -1,0 +1,461 @@
+{
+	"textures": [
+		{
+			"image": "efreet.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 32,
+				"h": 162
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "EfreetAttack(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 15,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 15,
+						"h": 16
+					}
+				},
+				{
+					"filename": "EfreetAttack(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 13,
+						"h": 16
+					},
+					"frame": {
+						"x": 18,
+						"y": 1,
+						"w": 13,
+						"h": 16
+					}
+				},
+				{
+					"filename": "EfreetHit(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 13,
+						"h": 16
+					},
+					"frame": {
+						"x": 18,
+						"y": 1,
+						"w": 13,
+						"h": 16
+					}
+				},
+				{
+					"filename": "EfreetIdle(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 13,
+						"h": 16
+					},
+					"frame": {
+						"x": 18,
+						"y": 1,
+						"w": 13,
+						"h": 16
+					}
+				},
+				{
+					"filename": "EfreetAttack(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 15,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 19,
+						"w": 15,
+						"h": 16
+					}
+				},
+				{
+					"filename": "EfreetDeath(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 13,
+						"h": 16
+					},
+					"frame": {
+						"x": 18,
+						"y": 19,
+						"w": 13,
+						"h": 16
+					}
+				},
+				{
+					"filename": "EfreetIdle(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 15,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 37,
+						"w": 15,
+						"h": 16
+					}
+				},
+				{
+					"filename": "EfreetDeath(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 12,
+						"h": 15
+					},
+					"frame": {
+						"x": 18,
+						"y": 37,
+						"w": 12,
+						"h": 15
+					}
+				},
+				{
+					"filename": "EfreetDeath(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 11,
+						"w": 10,
+						"h": 5
+					},
+					"frame": {
+						"x": 18,
+						"y": 54,
+						"w": 10,
+						"h": 5
+					}
+				},
+				{
+					"filename": "EfreetIdle(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 15,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 55,
+						"w": 15,
+						"h": 16
+					}
+				},
+				{
+					"filename": "EfreetDeath(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 3,
+						"w": 9,
+						"h": 13
+					},
+					"frame": {
+						"x": 18,
+						"y": 61,
+						"w": 9,
+						"h": 13
+					}
+				},
+				{
+					"filename": "EfreetIdle(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 15,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 73,
+						"w": 15,
+						"h": 16
+					}
+				},
+				{
+					"filename": "IconEfreet.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 15,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 91,
+						"w": 15,
+						"h": 16
+					}
+				},
+				{
+					"filename": "EfreetAttack(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 14,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 109,
+						"w": 14,
+						"h": 16
+					}
+				},
+				{
+					"filename": "EfreetHit(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 14,
+						"h": 16
+					},
+					"frame": {
+						"x": 17,
+						"y": 109,
+						"w": 14,
+						"h": 16
+					}
+				},
+				{
+					"filename": "EfreetHit(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 14,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 127,
+						"w": 14,
+						"h": 16
+					}
+				},
+				{
+					"filename": "EfreetHit(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 14,
+						"h": 16
+					},
+					"frame": {
+						"x": 17,
+						"y": 127,
+						"w": 14,
+						"h": 16
+					}
+				},
+				{
+					"filename": "EfreetWalk(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 14,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 145,
+						"w": 14,
+						"h": 16
+					}
+				},
+				{
+					"filename": "EfreetWalk(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 14,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 145,
+						"w": 14,
+						"h": 16
+					}
+				},
+				{
+					"filename": "EfreetWalk(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 14,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 145,
+						"w": 14,
+						"h": 16
+					}
+				},
+				{
+					"filename": "EfreetWalk(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 14,
+						"h": 16
+					},
+					"frame": {
+						"x": 17,
+						"y": 145,
+						"w": 14,
+						"h": 16
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:990c5f76ec2dfcf4b3401133d5fba9e8:59ded1db4a2b0e55b33d245d9010b6b2:40e761b5cf428a255e5a9a18fba30478$"
+	}
+}

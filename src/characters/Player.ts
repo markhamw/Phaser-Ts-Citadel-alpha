@@ -301,7 +301,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   }
 
-
   generateContext(entity: Phaser.GameObjects.Sprite, speech?: Speech): TalkBubbleContext {
 
     var distanceFromIt = this.distanceFrom(entity);

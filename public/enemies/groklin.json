@@ -1,0 +1,461 @@
+{
+	"textures": [
+		{
+			"image": "groklin.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 32,
+				"h": 116
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "IconGremlin.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "GremlinAttack(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 12,
+						"h": 14
+					},
+					"frame": {
+						"x": 19,
+						"y": 1,
+						"w": 12,
+						"h": 14
+					}
+				},
+				{
+					"filename": "GremlinDeath(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 9,
+						"w": 15,
+						"h": 7
+					},
+					"frame": {
+						"x": 1,
+						"y": 19,
+						"w": 15,
+						"h": 7
+					}
+				},
+				{
+					"filename": "GremlinAttack(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 4,
+						"w": 13,
+						"h": 12
+					},
+					"frame": {
+						"x": 18,
+						"y": 19,
+						"w": 13,
+						"h": 12
+					}
+				},
+				{
+					"filename": "GremlinIdle(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 14,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 28,
+						"w": 14,
+						"h": 16
+					}
+				},
+				{
+					"filename": "GremlinIdle(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 14,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 28,
+						"w": 14,
+						"h": 16
+					}
+				},
+				{
+					"filename": "GremlinIdle(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 1,
+						"w": 14,
+						"h": 15
+					},
+					"frame": {
+						"x": 17,
+						"y": 33,
+						"w": 14,
+						"h": 15
+					}
+				},
+				{
+					"filename": "GremlinIdle(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 1,
+						"w": 14,
+						"h": 15
+					},
+					"frame": {
+						"x": 17,
+						"y": 33,
+						"w": 14,
+						"h": 15
+					}
+				},
+				{
+					"filename": "GremlinWalk(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 14,
+						"h": 13
+					},
+					"frame": {
+						"x": 1,
+						"y": 46,
+						"w": 14,
+						"h": 13
+					}
+				},
+				{
+					"filename": "GremlinWalk(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 3,
+						"w": 14,
+						"h": 13
+					},
+					"frame": {
+						"x": 17,
+						"y": 50,
+						"w": 14,
+						"h": 13
+					}
+				},
+				{
+					"filename": "GremlinAttack(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 4,
+						"w": 14,
+						"h": 12
+					},
+					"frame": {
+						"x": 1,
+						"y": 61,
+						"w": 14,
+						"h": 12
+					}
+				},
+				{
+					"filename": "GremlinDeath(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 4,
+						"w": 14,
+						"h": 12
+					},
+					"frame": {
+						"x": 1,
+						"y": 61,
+						"w": 14,
+						"h": 12
+					}
+				},
+				{
+					"filename": "GremlinHit(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 4,
+						"w": 14,
+						"h": 12
+					},
+					"frame": {
+						"x": 17,
+						"y": 65,
+						"w": 14,
+						"h": 12
+					}
+				},
+				{
+					"filename": "GremlinWalk(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 4,
+						"w": 14,
+						"h": 12
+					},
+					"frame": {
+						"x": 17,
+						"y": 65,
+						"w": 14,
+						"h": 12
+					}
+				},
+				{
+					"filename": "GremlinWalk(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 4,
+						"w": 14,
+						"h": 12
+					},
+					"frame": {
+						"x": 17,
+						"y": 65,
+						"w": 14,
+						"h": 12
+					}
+				},
+				{
+					"filename": "GremlinHit(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 4,
+						"w": 14,
+						"h": 12
+					},
+					"frame": {
+						"x": 1,
+						"y": 75,
+						"w": 14,
+						"h": 12
+					}
+				},
+				{
+					"filename": "GremlinAttack(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 6,
+						"w": 14,
+						"h": 10
+					},
+					"frame": {
+						"x": 17,
+						"y": 79,
+						"w": 14,
+						"h": 10
+					}
+				},
+				{
+					"filename": "GremlinDeath(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 4,
+						"w": 13,
+						"h": 12
+					},
+					"frame": {
+						"x": 1,
+						"y": 89,
+						"w": 13,
+						"h": 12
+					}
+				},
+				{
+					"filename": "GremlinHit(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 4,
+						"w": 13,
+						"h": 12
+					},
+					"frame": {
+						"x": 1,
+						"y": 103,
+						"w": 13,
+						"h": 12
+					}
+				},
+				{
+					"filename": "GremlinDeath(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 5,
+						"w": 13,
+						"h": 11
+					},
+					"frame": {
+						"x": 16,
+						"y": 91,
+						"w": 13,
+						"h": 11
+					}
+				},
+				{
+					"filename": "GremlinHit(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 5,
+						"w": 13,
+						"h": 11
+					},
+					"frame": {
+						"x": 16,
+						"y": 104,
+						"w": 13,
+						"h": 11
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:f19265cd4643412771a64d7370365a9d:42123f2b9129277e442e555d9f66eca0:e899939869c67ae33d34583a14a183f7$"
+	}
+}

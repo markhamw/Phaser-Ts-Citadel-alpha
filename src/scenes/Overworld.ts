@@ -27,6 +27,7 @@ import { hidePlayerTalkBubble } from "~/game/playerlogic";
 import { enterQuery } from "bitecs";
 import TalkBubbleContext from "~/characters/Player";
 import { GetRandomExploreText } from "~/game/playerspeech";
+import Deer from "~/enemies/Deer";
 
 const enum Layers {
   Base,
@@ -71,6 +72,7 @@ export default class Overworld extends Phaser.Scene {
   baseLayer!: Phaser.Tilemaps.TilemapLayer;
   decorLayer!: Phaser.Tilemaps.TilemapLayer;
   clearBubbleEvent!: Phaser.Time.TimerEvent;
+  deerGroup!: Physics.Arcade.Group;
 
   constructor() {
     super("Overworld");
@@ -145,13 +147,10 @@ export default class Overworld extends Phaser.Scene {
       delay: 20000,
       repeat: -1,
       callback: () => {
-        if (this.numberofclouds < 2) {
-          RandomCloud(this);
-        }
       },
     });
 
-    let AddFlyingRats = this.time.addEvent({
+    let AddFlyingRatsAndClouds = this.time.addEvent({
       delay: 20000,
       repeat: -1,
       callback: () => {
@@ -163,6 +162,11 @@ export default class Overworld extends Phaser.Scene {
             this.events.emit('player-killed-flyingrat')
           })
         }
+
+        if (this.numberofclouds < 2) {
+          RandomCloud(this);
+        }
+
       },
     });
   }
@@ -200,14 +204,25 @@ export default class Overworld extends Phaser.Scene {
   spawnChapter1() {
 
     this.chapter1Group = newEnemyGroup(this, Shaman, true, true);
+    this.deerGroup = newEnemyGroup(this, Deer, true, true);
+
     this.FlyingRatGroup = newEnemyGroup(this, FlyingRat, true, false);
     RandomCloud(this);
     RandomCloud(this);
     let shaman: Shaman = this.SummonMobs(this.chapter1Group, "enemy-rat", 1, 329, 361);
+
+    let deer1: Deer = this.SummonMobs(this.deerGroup, "enemy-deer", 1, 309, 381).setScale(Phaser.Math.Between(0.5, 1.5));
+    let deer2: Deer = this.SummonMobs(this.deerGroup, "enemy-deer", 1, 129, 161).setScale(Phaser.Math.Between(0.5, 1.5));
+
     shaman.setImmovable();
     this.physics.add.collider(this.chapter1Group, this.player);
     this.physics.add.collider(shaman, this.baseLayer);
     this.physics.add.collider(shaman, this.decorLayer);
+    this.physics.add.collider(deer1, this.baseLayer);
+    this.physics.add.collider(deer1, this.decorLayer);
+    this.physics.add.collider(deer2, this.baseLayer);
+    this.physics.add.collider(deer2, this.decorLayer);
+
     shaman.setInteractive();
 
     this.buildingsGroup.children.iterate((child) => {

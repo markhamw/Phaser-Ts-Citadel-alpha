@@ -1,0 +1,104 @@
+{
+	"textures": [
+		{
+			"image": "ammo.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 10,
+				"h": 32
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "rock.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 8
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 8,
+						"h": 8
+					}
+				},
+				{
+					"filename": "arrow.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 8,
+						"h": 5
+					},
+					"frame": {
+						"x": 1,
+						"y": 11,
+						"w": 8,
+						"h": 5
+					}
+				},
+				{
+					"filename": "bolt.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 8,
+						"h": 5
+					},
+					"frame": {
+						"x": 1,
+						"y": 18,
+						"w": 8,
+						"h": 5
+					}
+				},
+				{
+					"filename": "fireball.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 8,
+						"h": 8
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 6,
+						"h": 6
+					},
+					"frame": {
+						"x": 1,
+						"y": 25,
+						"w": 6,
+						"h": 6
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:db8e655ecc229f69d03c1d0fd2135510:719fa78ee543e8ea7dc996425de7631a:44f78856c3a5a773e22da6e1d5c5e0f8$"
+	}
+}

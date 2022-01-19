@@ -16,6 +16,7 @@ import Player from "../characters/Player";
 import Overworld from "./Overworld";
 import { GetRandomExploreText } from "~/game/playerspeech";
 import TalkBubbleContext from "~/characters/Player";
+import Deer from "~/enemies/Deer";
 
 const enum Chapters {
   One,
@@ -37,6 +38,7 @@ export default class OverworldTitle extends Phaser.Scene {
   FlyingRatGroup!: Physics.Arcade.Group;
   EarthGolemGroup!: Physics.Arcade.Group;
   AirElementalGroup!: Physics.Arcade.Group;
+  DeerGroup!: Phaser.Physics.Arcade.Group;
   buildingsGroup!: Physics.Arcade.Group;
   player!: Player;
 
@@ -71,13 +73,15 @@ export default class OverworldTitle extends Phaser.Scene {
     this.FlyingRatGroup = newEnemyGroup(this, FlyingRat, false, false);
     this.EarthGolemGroup = newEnemyGroup(this, EarthGolem, true, true);
     this.AirElementalGroup = newEnemyGroup(this, AirElemental, true, true);
-
+    /*  this.DeerGroup = newEnemyGroup(this, Deer, true, true);
+  */
     this.SummonMobs(this.ShamanGroup, "enemy-shaman", 5, 287, 425);
     this.SummonMobs(this.RatOgreGroup, "enemy-ratogre", 5, 156, 284);
     this.SummonMobs(this.RatGroup, "enemy-rat", 8, 199, 409);
     this.SummonMobs(this.FlyingRatGroup, "enemy-flyingrat", 15);
     this.SummonMobs(this.EarthGolemGroup, "enemy-earthgolem", 3, 444, 262);
     this.SummonMobs(this.AirElementalGroup, "enemy-airelemental", 1, 374, 392);
+    /*   this.SummonMobs(this.DeerGroup, "enemy-deer", 1, 174, 342); */
 
     this.physics.add.collider(this.RatOgreGroup, this.baseLayer);
     this.physics.add.collider(this.RatOgreGroup, this.decorLayer);
@@ -93,6 +97,9 @@ export default class OverworldTitle extends Phaser.Scene {
 
     this.physics.add.collider(this.AirElementalGroup, this.baseLayer);
     this.physics.add.collider(this.AirElementalGroup, this.decorLayer);
+
+    /*  this.physics.add.collider(this.DeerGroup, this.baseLayer);
+     this.physics.add.collider(this.DeerGroup, this.decorLayer); */
   };
 
   createMenuKeyPressEvents = () => {
@@ -283,7 +290,6 @@ export default class OverworldTitle extends Phaser.Scene {
       callback: () => {
         this.createOverworldPlayerStationary();
         this.player.setDepth(2);
-        this.player.speed = 0;
       },
     });
 
@@ -291,9 +297,10 @@ export default class OverworldTitle extends Phaser.Scene {
       delay: 6500,
       repeat: 0,
       callback: () => {
+
         this.cameras.main.zoomTo(1, 3000, "Linear", true);
         this.cameras.main.pan(this.cameras.main.centerX, this.cameras.main.centerY, 3000);
-        this.player.Say(GetRandomExploreText(), this);
+
       },
     });
 
@@ -306,6 +313,7 @@ export default class OverworldTitle extends Phaser.Scene {
     });
   };
 
+
   createStructuresAndWeather() {
     GenerateBuildings(this);
     RandomCloud(this);
@@ -315,8 +323,12 @@ export default class OverworldTitle extends Phaser.Scene {
   }
 
   preload() {
+
     this.wasd = AddWASDKeysToScene(this);
+
+    //Add Spacebar and Shift and arrow keys to scene
     this.keys = this.input.keyboard.createCursorKeys();
+
     createOverworldTileMap(this);
     this.createStructuresAndWeather();
     createAnimations(this);

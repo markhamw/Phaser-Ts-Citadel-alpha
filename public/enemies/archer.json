@@ -1,0 +1,461 @@
+{
+	"textures": [
+		{
+			"image": "archer.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 108,
+				"h": 30
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "IconArcher.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "ArcherDeath(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 6,
+						"w": 15,
+						"h": 10
+					},
+					"frame": {
+						"x": 1,
+						"y": 19,
+						"w": 15,
+						"h": 10
+					}
+				},
+				{
+					"filename": "ArcherWalk(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 13,
+						"h": 14
+					},
+					"frame": {
+						"x": 19,
+						"y": 1,
+						"w": 13,
+						"h": 14
+					}
+				},
+				{
+					"filename": "ArcherDeath(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 5,
+						"w": 15,
+						"h": 11
+					},
+					"frame": {
+						"x": 19,
+						"y": 17,
+						"w": 15,
+						"h": 11
+					}
+				},
+				{
+					"filename": "ArcherWalk(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 13,
+						"h": 14
+					},
+					"frame": {
+						"x": 34,
+						"y": 1,
+						"w": 13,
+						"h": 14
+					}
+				},
+				{
+					"filename": "ArcherAttack(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 49,
+						"y": 1,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "ArcherDeath(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 49,
+						"y": 1,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "ArcherHit(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 49,
+						"y": 1,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "ArcherIdle(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 49,
+						"y": 1,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "ArcherIdle(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 49,
+						"y": 1,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "ArcherWalk(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 49,
+						"y": 1,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "ArcherWalk(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 49,
+						"y": 1,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "ArcherAttack(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 49,
+						"y": 16,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "ArcherAttack(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 64,
+						"y": 1,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "ArcherAttack(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 64,
+						"y": 16,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "ArcherDeath(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 79,
+						"y": 1,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "ArcherHit(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 79,
+						"y": 16,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "ArcherHit(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 79,
+						"y": 16,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "ArcherHit(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 94,
+						"y": 1,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "ArcherIdle(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 94,
+						"y": 16,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "ArcherIdle(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 94,
+						"y": 16,
+						"w": 13,
+						"h": 13
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:9ae8cc15313fd4d1fbc3f8d28a7cb94a:390e403620e47eb7ff4d01ad69da68e7:bbed60d0c37d7d583029ac290d33128a$"
+	}
+}

@@ -1,0 +1,461 @@
+{
+	"textures": [
+		{
+			"image": "pixie.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 59,
+				"h": 73
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "PixieDeath(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 10,
+						"w": 15,
+						"h": 6
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 15,
+						"h": 6
+					}
+				},
+				{
+					"filename": "PixieDeath(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 6,
+						"w": 11,
+						"h": 10
+					},
+					"frame": {
+						"x": 18,
+						"y": 1,
+						"w": 11,
+						"h": 10
+					}
+				},
+				{
+					"filename": "PixieAttack(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 5,
+						"w": 12,
+						"h": 11
+					},
+					"frame": {
+						"x": 31,
+						"y": 1,
+						"w": 12,
+						"h": 11
+					}
+				},
+				{
+					"filename": "PixieAttack(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 5,
+						"w": 10,
+						"h": 11
+					},
+					"frame": {
+						"x": 45,
+						"y": 1,
+						"w": 10,
+						"h": 11
+					}
+				},
+				{
+					"filename": "PixieDeath(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 5,
+						"w": 12,
+						"h": 11
+					},
+					"frame": {
+						"x": 1,
+						"y": 9,
+						"w": 12,
+						"h": 11
+					}
+				},
+				{
+					"filename": "PixieWalk(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 5,
+						"w": 13,
+						"h": 11
+					},
+					"frame": {
+						"x": 15,
+						"y": 13,
+						"w": 13,
+						"h": 11
+					}
+				},
+				{
+					"filename": "PixieWalk(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 5,
+						"w": 13,
+						"h": 11
+					},
+					"frame": {
+						"x": 15,
+						"y": 13,
+						"w": 13,
+						"h": 11
+					}
+				},
+				{
+					"filename": "PixieAttack(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 4,
+						"w": 13,
+						"h": 12
+					},
+					"frame": {
+						"x": 30,
+						"y": 14,
+						"w": 13,
+						"h": 12
+					}
+				},
+				{
+					"filename": "PixieWalk(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 4,
+						"w": 13,
+						"h": 12
+					},
+					"frame": {
+						"x": 30,
+						"y": 14,
+						"w": 13,
+						"h": 12
+					}
+				},
+				{
+					"filename": "PixieHit(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 4,
+						"w": 13,
+						"h": 12
+					},
+					"frame": {
+						"x": 45,
+						"y": 14,
+						"w": 13,
+						"h": 12
+					}
+				},
+				{
+					"filename": "PixieIdle(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 4,
+						"w": 12,
+						"h": 12
+					},
+					"frame": {
+						"x": 1,
+						"y": 22,
+						"w": 12,
+						"h": 12
+					}
+				},
+				{
+					"filename": "PixieWalk(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 4,
+						"w": 11,
+						"h": 12
+					},
+					"frame": {
+						"x": 15,
+						"y": 26,
+						"w": 11,
+						"h": 12
+					}
+				},
+				{
+					"filename": "PixieIdle(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 4,
+						"w": 14,
+						"h": 12
+					},
+					"frame": {
+						"x": 28,
+						"y": 28,
+						"w": 14,
+						"h": 12
+					}
+				},
+				{
+					"filename": "PixieIdle(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 4,
+						"w": 14,
+						"h": 12
+					},
+					"frame": {
+						"x": 44,
+						"y": 28,
+						"w": 14,
+						"h": 12
+					}
+				},
+				{
+					"filename": "PixieAttack(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 12,
+						"h": 13
+					},
+					"frame": {
+						"x": 1,
+						"y": 36,
+						"w": 12,
+						"h": 13
+					}
+				},
+				{
+					"filename": "PixieDeath(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 15,
+						"y": 42,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "PixieHit(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 12,
+						"h": 13
+					},
+					"frame": {
+						"x": 30,
+						"y": 42,
+						"w": 12,
+						"h": 13
+					}
+				},
+				{
+					"filename": "PixieIdle(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 14,
+						"h": 13
+					},
+					"frame": {
+						"x": 44,
+						"y": 42,
+						"w": 14,
+						"h": 13
+					}
+				},
+				{
+					"filename": "PixieHit(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 12,
+						"h": 14
+					},
+					"frame": {
+						"x": 1,
+						"y": 51,
+						"w": 12,
+						"h": 14
+					}
+				},
+				{
+					"filename": "PixieHit(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 12,
+						"h": 14
+					},
+					"frame": {
+						"x": 15,
+						"y": 57,
+						"w": 12,
+						"h": 14
+					}
+				},
+				{
+					"filename": "IconPixie.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 16,
+						"h": 15
+					},
+					"frame": {
+						"x": 29,
+						"y": 57,
+						"w": 16,
+						"h": 15
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:67e45866444d4d1d2666c72f007b5ab4:8222203049fd9f8cf486647d83d6d2a9:86dbaa3b33a5f9cdab03819ec2c08ee6$"
+	}
+}

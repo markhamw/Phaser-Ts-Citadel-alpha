@@ -1,0 +1,461 @@
+{
+	"textures": [
+		{
+			"image": "monk.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 253,
+				"h": 16
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "IconMonk.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 16,
+						"h": 14
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 16,
+						"h": 14
+					}
+				},
+				{
+					"filename": "MonkAttack(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 2,
+						"w": 14,
+						"h": 14
+					},
+					"frame": {
+						"x": 19,
+						"y": 1,
+						"w": 14,
+						"h": 14
+					}
+				},
+				{
+					"filename": "MonkIdle(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 13,
+						"h": 14
+					},
+					"frame": {
+						"x": 35,
+						"y": 1,
+						"w": 13,
+						"h": 14
+					}
+				},
+				{
+					"filename": "MonkIdle(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 13,
+						"h": 14
+					},
+					"frame": {
+						"x": 35,
+						"y": 1,
+						"w": 13,
+						"h": 14
+					}
+				},
+				{
+					"filename": "MonkIdle(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 13,
+						"h": 14
+					},
+					"frame": {
+						"x": 50,
+						"y": 1,
+						"w": 13,
+						"h": 14
+					}
+				},
+				{
+					"filename": "MonkIdle(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 13,
+						"h": 14
+					},
+					"frame": {
+						"x": 50,
+						"y": 1,
+						"w": 13,
+						"h": 14
+					}
+				},
+				{
+					"filename": "MonkAttack(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 2,
+						"w": 12,
+						"h": 14
+					},
+					"frame": {
+						"x": 65,
+						"y": 1,
+						"w": 12,
+						"h": 14
+					}
+				},
+				{
+					"filename": "MonkDeath(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 2,
+						"w": 12,
+						"h": 14
+					},
+					"frame": {
+						"x": 65,
+						"y": 1,
+						"w": 12,
+						"h": 14
+					}
+				},
+				{
+					"filename": "MonkAttack(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 2,
+						"w": 12,
+						"h": 14
+					},
+					"frame": {
+						"x": 79,
+						"y": 1,
+						"w": 12,
+						"h": 14
+					}
+				},
+				{
+					"filename": "MonkAttack(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 12,
+						"h": 14
+					},
+					"frame": {
+						"x": 93,
+						"y": 1,
+						"w": 12,
+						"h": 14
+					}
+				},
+				{
+					"filename": "MonkWalk(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 12,
+						"h": 14
+					},
+					"frame": {
+						"x": 107,
+						"y": 1,
+						"w": 12,
+						"h": 14
+					}
+				},
+				{
+					"filename": "MonkWalk(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 12,
+						"h": 14
+					},
+					"frame": {
+						"x": 107,
+						"y": 1,
+						"w": 12,
+						"h": 14
+					}
+				},
+				{
+					"filename": "MonkDeath(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 121,
+						"y": 1,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "MonkHit(Frame 1).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 136,
+						"y": 1,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "MonkHit(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 151,
+						"y": 1,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "MonkHit(Frame 3).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 13,
+						"h": 13
+					},
+					"frame": {
+						"x": 166,
+						"y": 1,
+						"w": 13,
+						"h": 13
+					}
+				},
+				{
+					"filename": "MonkDeath(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 12,
+						"h": 13
+					},
+					"frame": {
+						"x": 181,
+						"y": 1,
+						"w": 12,
+						"h": 13
+					}
+				},
+				{
+					"filename": "MonkWalk(Frame 2).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 12,
+						"h": 13
+					},
+					"frame": {
+						"x": 195,
+						"y": 1,
+						"w": 12,
+						"h": 13
+					}
+				},
+				{
+					"filename": "MonkWalk(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 3,
+						"w": 12,
+						"h": 13
+					},
+					"frame": {
+						"x": 209,
+						"y": 1,
+						"w": 12,
+						"h": 13
+					}
+				},
+				{
+					"filename": "MonkHit(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 4,
+						"w": 13,
+						"h": 12
+					},
+					"frame": {
+						"x": 223,
+						"y": 1,
+						"w": 13,
+						"h": 12
+					}
+				},
+				{
+					"filename": "MonkDeath(Frame 4).png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 14,
+						"h": 9
+					},
+					"frame": {
+						"x": 238,
+						"y": 1,
+						"w": 14,
+						"h": 9
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:198031574873ca61d33e6443c9b7044f:5ef62f19bbd0738fa023398bdcb1ce29:1f6589f2c1d464e02153a39e9f3c21bf$"
+	}
+}

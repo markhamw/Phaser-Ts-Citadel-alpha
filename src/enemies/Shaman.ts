@@ -100,11 +100,18 @@ export default class Shaman extends Phaser.Physics.Arcade.Sprite {
 
         })
 
-
+        this.scene.physics.world.on(Phaser.Physics.Arcade.Events.TILE_COLLIDE, this.handleCollision, this.scene)
+        this.scene.physics.world.on(Phaser.Physics.Arcade.Events.COLLIDE, this.handleCollisionWithSprite, this.scene)
     }
+
     private handleCollisionWithSprite(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile) {
 
     }
+    private handleCollision(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile) {
+
+    }
+
+
     selfDestruct = () => {
         this.anims.play('enemy-shaman-dead', true)
         this.moveEvent.destroy()
@@ -129,17 +136,12 @@ export default class Shaman extends Phaser.Physics.Arcade.Sprite {
         return this.EntityID
     }
 
-    private handleCollision(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile) {
-        let _go = go as unknown as Shaman
-        _go.moveEvent.callback()
 
-    }
 
 
     distanceFromStartingLocation = (): number => {
         return Phaser.Math.FloorTo(Phaser.Math.Distance.Between(this.x, this.y, this.StartingXLoc, this.StartingYLoc))
     }
-
 
 
     preload() {

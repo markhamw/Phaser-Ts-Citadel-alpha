@@ -1,4 +1,6 @@
 import Phaser from "phaser";
+import Deer from "~/enemies/Deer";
+import Overworld from "~/scenes/Overworld";
 import { GetOverworldPlayerAnims } from "./PlayerAnims";
 import { GetCoinAnims, GetSmokeAnims } from "./WorldAnims";
 
@@ -8,8 +10,8 @@ function CreateAnimationSet(scene: Phaser.Scene, animations: Phaser.Types.Animat
   });
 }
 const createAnimations = (scene: Phaser.Scene) => {
+  CreateAnimationSet(scene, GetDeerAnims(scene.anims, 4));
   CreateAnimationSet(scene, GetCoinAnims(scene.anims, 4));
-  CreateAnimationSet(scene, GetSmokeAnims(scene.anims, 4));
   CreateAnimationSet(scene, GetShamanAnims(scene.anims, 4));
   CreateAnimationSet(scene, GetFlyingRatAnims(scene.anims, 4));
   CreateAnimationSet(scene, GetEarthGolemAnims(scene.anims, 4));
@@ -37,6 +39,59 @@ const createAnimations = (scene: Phaser.Scene) => {
 
 
 };
+
+
+
+const GetDeerAnims = (anims: Phaser.Animations.AnimationManager, rate: number) => {
+  return [
+    {
+      key: `enemy-deer-idle`,
+      frames: anims.generateFrameNames('enemy-deer', {
+        start: 1,
+        end: 4,
+        prefix: 'DeerIdle',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-deer-walk`,
+      frames: anims.generateFrameNames('enemy-deer', {
+        start: 1,
+        end: 4,
+        prefix: 'DeerWalk',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-deer-dead`,
+      frames: anims.generateFrameNames('enemy-deer', {
+        start: 1,
+        end: 4,
+        prefix: 'DeerDeath',
+        suffix: '.png',
+      }),
+      repeat: -1,
+      frameRate: rate,
+    },
+    {
+      key: `enemy-deer-attack`,
+      frames: anims.generateFrameNames('enemy-deer', {
+        start: 1,
+        end: 4,
+        prefix: 'DeerHit',
+        suffix: '.png',
+      }),
+      repeat: 0,
+      frameRate: rate,
+    }
+
+  ]
+}
+
 
 const GetShamanAnims = (anims: Phaser.Animations.AnimationManager, rate: number) => {
   return [
