@@ -113,7 +113,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             let goldreceived = Phaser.Math.Between(10, 20);
             this.addGold(goldreceived);
             let flyingRatKillSpeech: Speech = { lines: `Flyer down +100 xp. +${goldreceived} gold` }
-            this.Say(flyingRatKillSpeech);
+            this.Say(flyingRatKillSpeech, this.scene);
           },
           loop: false
         });
@@ -157,7 +157,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.scene.events.emit("player-clear-interactionIndicators");
         this.canInteractType = EntityType.Building;
         let context = this.generateContext(building);
-        this.handleInteraction(context);
+        this.handleInteraction(context, this.scene);
       },
       this
     );
@@ -168,7 +168,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.scene.events.emit("player-clear-interactionIndicators");
         this.canInteractType = EntityType.Enemy;
         let context = this.generateContext(enemy);
-        this.handleInteraction(context);
+        this.handleInteraction(context, this.scene);
       },
       this
     );
@@ -183,7 +183,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             let goldreceived = Phaser.Math.Between(10, 20);
             this.addGold(goldreceived);
             let ratkillSpeech: Speech = { lines: `${rat.name} down. +100 xp.  +${goldreceived} gold` }
-            this.Say(ratkillSpeech);
+            this.Say(ratkillSpeech, this.scene);
           },
           loop: false
         });
@@ -191,11 +191,30 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.scene.sound.play("knifeswipe", { volume: 0.1, detune: -2300, rate: .8, delay: .5 });
         this.scene.sound.play("knifeswipe", { volume: 0.1, detune: -2400, rate: 1, delay: .9 });
 
+      },
+      this
+    );
+    this.scene.events.addListener(
+      "player-killed-shaman",
+      (shaman) => {
+        this.scene.time.addEvent({
+          delay: 1000,
+          callback: () => {
+            this.addExperience(100);
+            let goldreceived = Phaser.Math.Between(10, 20);
+            this.addGold(goldreceived);
+            let shamankillSpeech: Speech = { lines: `${shaman.name} down. +100 xp.  +${goldreceived} gold` }
+            this.Say(shamankillSpeech, this.scene);
+          },
+          loop: false
+        });
+        this.scene.sound.play("knifeswipe", { volume: 0.1, detune: -2200, rate: .7, delay: .2 });
+        this.scene.sound.play("knifeswipe", { volume: 0.1, detune: -2300, rate: .8, delay: .5 });
+        this.scene.sound.play("knifeswipe", { volume: 0.1, detune: -2400, rate: 1, delay: .9 });
 
       },
       this
     );
-
 
     let updateCondition = scene.time.addEvent({
       delay: 500,
@@ -238,7 +257,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         .setAlpha(0),
 
       lines: scene.add
-        .text(0, 0, "", { wordWrap: { width: 225, useAdvancedWrap: true }, fontFamily: font, fontSize: fontSize.toString(), color: "#FFFFFF", align: "left" })
+        .text(0, 0, "", { wordWrap: { width: 225, useAdvancedWrap: true }, color: "#FFFFFF", align: "left" })
         .setAlpha(0)
         .setFontFamily(font)
         .setDepth(6)
@@ -312,7 +331,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   updateTalkBubblePosition() {
 
-    const frameYOffset = this.y - 25
+    const frameYOffset = this.y - 45
     const frameZone = this.scene.add.zone(this.x, frameYOffset, this.x, frameYOffset)
 
     const headPngXOffset = this.x - 127;
@@ -321,9 +340,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     const lineXOffset = this.x - 90;
     const lineYOffset = this.y - 55;
 
+    const linesZone = this.scene.add.zone(this.x + 20, frameYOffset, this.x + 240, frameYOffset + 100)
+
     Phaser.Display.Align.In.Center(this.tb.frame, frameZone);
     Phaser.Display.Align.In.Center(this.tb.headPngforTalkBubble, headPngZone);
-    this.tb.lines.setPosition(lineXOffset, lineYOffset);
+    Phaser.Display.Align.In.Center(this.tb.lines, linesZone);
+
+    //this.tb.lines.setPosition(lineXOffset, lineYOffset);
     this.tb.enterBtn?.setPosition(lineXOffset, lineYOffset - 7);
     this.tb.fightBtn?.setPosition(lineXOffset + 140, lineYOffset - 7);
   }
@@ -334,13 +357,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   queueHideTalkBubble(delay: number) {
 
-    this.scene.time.addEvent({
-      delay: delay,
-      repeat: 0,
-      callback: () => {
-        hidePlayerTalkBubble(this.scene)
-      },
-    });
+
   }
 
   interact(context: TalkBubbleContext) {
@@ -435,15 +452,29 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
   };
 
-  Say = (text: Speech) => {
+  Say = (text: Speech, scene: any, delay?: number) => {
     this.updateTalkBubbleText(text);
     showPlayerTalkBubble(this.scene);
-    this.queueHideTalkBubble(5000);
+    this.QueueClearTalkBubble(scene, delay);
   };
 
-  handleInteraction = (context: TalkBubbleContext) => {
+  QueueClearTalkBubble(scene: any, _delay?: number) {
+    if (scene.clearBubbleEvent) {
+      scene.clearBubbleEvent.destroy();
+    }
+    scene.clearBubbleEvent = this.scene.time.addEvent({
+      delay: _delay ?? 5000,
+      repeat: 0,
+      callback: () => {
+        hidePlayerTalkBubble(this.scene)
+      },
+    });
+  }
+
+
+  handleInteraction = (context: TalkBubbleContext, scene: any, delay?: number) => {
     this.interact(context);
-    this.queueHideTalkBubble(5000);
+    this.QueueClearTalkBubble(scene, delay);
   };
 
   decideMoveSpeed = () => {
@@ -475,7 +506,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       let statusLine = `I'm ${playerCondition} with ${this.status.Gold} gp (lvl ${this.status.Level})`;
       let playerStatus: Speech = { lines: statusLine }
       let interactTalkBubbleContext: TalkBubbleContext = { scene: this, speech: playerStatus, canInteract: false };
-      this.Say(playerStatus);
+      this.Say(playerStatus, this.scene);
     });
   }
 

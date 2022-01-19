@@ -293,7 +293,7 @@ export default class OverworldTitle extends Phaser.Scene {
       callback: () => {
         this.cameras.main.zoomTo(1, 3000, "Linear", true);
         this.cameras.main.pan(this.cameras.main.centerX, this.cameras.main.centerY, 3000);
-        this.player.Say(GetRandomExploreText());
+        this.player.Say(GetRandomExploreText(), this);
       },
     });
 

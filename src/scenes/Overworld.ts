@@ -114,7 +114,7 @@ export default class Overworld extends Phaser.Scene {
     this.physics.add.collider(this.player, this.decorLayer);
     this.player.setInteractive();
     this.player.on("pointerdown", () => {
-      this.player.Say(GetRandomExploreText(), 5000);
+      this.player.Say(GetRandomExploreText(), this);
     });
 
     this.player.on("pointerup", () => {
@@ -199,16 +199,16 @@ export default class Overworld extends Phaser.Scene {
 
   spawnChapter1() {
 
-    this.chapter1Group = newEnemyGroup(this, Rat, true, true);
+    this.chapter1Group = newEnemyGroup(this, Shaman, true, true);
     this.FlyingRatGroup = newEnemyGroup(this, FlyingRat, true, false);
     RandomCloud(this);
     RandomCloud(this);
-    let rat1: Rat = this.SummonMobs(this.chapter1Group, "enemy-rat", 1, 329, 361);
-    rat1.setImmovable();
+    let shaman: Shaman = this.SummonMobs(this.chapter1Group, "enemy-rat", 1, 329, 361);
+    shaman.setImmovable();
     this.physics.add.collider(this.chapter1Group, this.player);
-    this.physics.add.collider(rat1, this.baseLayer);
-    this.physics.add.collider(rat1, this.decorLayer);
-    rat1.setInteractive();
+    this.physics.add.collider(shaman, this.baseLayer);
+    this.physics.add.collider(shaman, this.decorLayer);
+    shaman.setInteractive();
 
     this.buildingsGroup.children.iterate((child) => {
       child.on("pointerup", () => {
@@ -246,7 +246,7 @@ export default class Overworld extends Phaser.Scene {
     this.createGoldOverlay();
     this.drawHealthBar(this.player);
     this.player.setDepth(2);
-    this.player.Say(GetRandomExploreText())
+    this.player.Say(GetRandomExploreText(), this)
 
     this.baseLayer.setInteractive();
     this.baseLayer.on("pointerdown", (clicked) => {
@@ -258,9 +258,9 @@ export default class Overworld extends Phaser.Scene {
         .setPosition(clicked.x, clicked.y);
       let chanceForBanter = Phaser.Math.Between(0, 8);
       if (chanceForBanter == 0) {
-        this.player.Say(GetRandomExploreText())
+        this.player.Say(GetRandomExploreText(), this)
       } else if (chanceForBanter == 1 || 2 || 3) {
-        this.player.Say({ lines: "Its nothing.." }, 1600)
+        this.player.Say({ lines: "Its nothing.." }, this, 1000)
       }
 
     });

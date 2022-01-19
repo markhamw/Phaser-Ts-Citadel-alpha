@@ -4,6 +4,7 @@ import { CreateAnimationSet, Direction, getNewRatName } from "~/game/gamelogic";
 import OverworldTitle from "~/scenes/OverworldTitle";
 import Player from "~/characters/Player";
 import Overworld from "~/scenes/Overworld";
+import { hidePlayerTalkBubble } from "~/game/playerlogic";
 
 enum VocalEmotes {
     Squee,
@@ -18,14 +19,13 @@ type WRGameScene = OverworldTitle | Overworld;
 
 export default class Rat extends Phaser.Physics.Arcade.Sprite {
 
-    private facing = Phaser.Math.Between(0, 7)
+    private facing?: number | null;
     private RatSpeed: number;
     private moveEvent: Phaser.Time.TimerEvent;
     private StartingXLoc: number;
     private StartingYLoc: number;
     private EntityID: Guid;
     public isAlive: boolean = true;
-    private stationary: boolean = false;
 
     constructor(scene: Overworld | OverworldTitle, x: number, y: number, texture: string, frame?: string | number) {
         super(scene, x, y, texture, frame)
@@ -55,10 +55,12 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
         this.scene.events.addListener('player-clicked-fight', () => {
             this.scene.events.emit('player-killed-rat', this)
             this.scene.sound.add('ratsound', { volume: 0.1, detune: Phaser.Math.Between(-500, -1200) }).play()
-            this.selfDestruct()
+            this.isAlive = false;
+            this.anims.play({ key: 'enemy-rat-dead', frameRate: 3, repeat: 0, delay: 1 })
         })
 
         CreateAnimationSet(this.scene, this.GenerateAnims(4));
+        this.anims.play('enemy-rat-idle', true);
     }
 
     GenerateAnims = (rate: number) => {
@@ -71,7 +73,7 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
                     prefix: 'tower-',
                     suffix: '.png',
                 }),
-                repeat: -1,
+                repeat: 0,
                 frameRate: rate,
 
             },
@@ -83,7 +85,7 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
                     prefix: 'tower-',
                     suffix: '.png',
                 }),
-                repeat: -1,
+                repeat: 0,
                 frameRate: rate,
 
             },
@@ -96,7 +98,7 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
                     suffix: '.png',
 
                 }),
-                repeat: -1,
+                repeat: 0,
                 frameRate: rate,
             },
             {
@@ -107,7 +109,7 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
                     prefix: 'tower-',
                     suffix: '.png',
                 }),
-                repeat: -1,
+                repeat: 0,
                 frameRate: rate,
             },
             {
@@ -118,7 +120,7 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
                     prefix: 'tower-',
                     suffix: '.png',
                 }),
-                repeat: -1,
+                repeat: 0,
                 frameRate: rate,
             },
             {
@@ -129,7 +131,7 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
                     prefix: 'tower-',
                     suffix: '.png',
                 }),
-                repeat: -1,
+                repeat: 0,
                 frameRate: rate,
             },
             {
@@ -140,7 +142,7 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
                     prefix: 'tower-',
                     suffix: '.png',
                 }),
-                repeat: -1,
+                repeat: 0,
                 frameRate: rate,
             }
 
@@ -198,48 +200,53 @@ export default class Rat extends Phaser.Physics.Arcade.Sprite {
     preUpdate(t: number, dt: number) {
         this.flipX = false;
         super.preUpdate(t, dt)
-        if (this.stationary) {
-            this.facing = Direction.IDLE;
+        if (this.isAlive) {
+            switch (this.facing) {
+                case Direction.UP:
+                    this.setVelocity(0, -this.RatSpeed)
+                    this.anims.play('enemy-rat-moveup', true)
+                case Direction.DOWN:
+                    this.setVelocity(0, this.RatSpeed)
+                    this.anims.play('enemy-rat-movedown', true)
+                    break
+                case Direction.LEFT:
+                    this.setVelocity(-this.RatSpeed, 0)
+                    this.anims.play('enemy-rat-moveleft', true)
+                    this.flipX = true;
+                    break
+                case Direction.RIGHT:
+                    this.setVelocity(this.RatSpeed, 0)
+                    this.anims.play('enemy-rat-moveright', true)
+                    break
+                case Direction.LEFTANDUP:
+                    this.setVelocity(-this.RatSpeed, -this.RatSpeed)
+                    this.anims.play('enemy-rat-moveleft', true)
+                    this.flipX = true;
+                    break
+                case Direction.LEFTANDDOWN:
+                    this.setVelocity(-this.RatSpeed, this.RatSpeed)
+                    this.anims.play('enemy-rat-moveleft', true)
+                    this.flipX = true;
+                    break
+                case Direction.RIGHTANDUP:
+                    this.setVelocity(this.RatSpeed, -this.RatSpeed)
+                    this.anims.play('enemy-rat-moveright', true)
+                    break
+                case Direction.RIGHTANDDOWN:
+                    this.setVelocity(this.RatSpeed, this.RatSpeed)
+                    this.anims.play('enemy-rat-moveright', true)
+                    break
+                case Direction.IDLE:
+                    this.setVelocity(0, 0)
+                    this.anims.play('enemy-rat-idle', true)
+            }
+        } else {
+            this.setVelocity(0, 0)
+            this.anims.play('enemy-rat-dead')
+
+
         }
-        switch (this.facing) {
-            case Direction.UP:
-                this.setVelocity(0, -this.RatSpeed)
-                this.anims.play('enemy-rat-moveup', true)
-            case Direction.DOWN:
-                this.setVelocity(0, this.RatSpeed)
-                this.anims.play('enemy-rat-movedown', true)
-                break
-            case Direction.LEFT:
-                this.setVelocity(-this.RatSpeed, 0)
-                this.anims.play('enemy-rat-moveleft', true)
-                this.flipX = true;
-                break
-            case Direction.RIGHT:
-                this.setVelocity(this.RatSpeed, 0)
-                this.anims.play('enemy-rat-moveright', true)
-                break
-            case Direction.LEFTANDUP:
-                this.setVelocity(-this.RatSpeed, -this.RatSpeed)
-                this.anims.play('enemy-rat-moveleft', true)
-                this.flipX = true;
-                break
-            case Direction.LEFTANDDOWN:
-                this.setVelocity(-this.RatSpeed, this.RatSpeed)
-                this.anims.play('enemy-rat-moveleft', true)
-                this.flipX = true;
-                break
-            case Direction.RIGHTANDUP:
-                this.setVelocity(this.RatSpeed, -this.RatSpeed)
-                this.anims.play('enemy-rat-moveright', true)
-                break
-            case Direction.RIGHTANDDOWN:
-                this.setVelocity(this.RatSpeed, this.RatSpeed)
-                this.anims.play('enemy-rat-moveright', true)
-                break
-            case Direction.IDLE:
-                this.setVelocity(0, 0)
-                this.anims.play('enemy-rat-idle', true)
-        }
+
     }
 }
 

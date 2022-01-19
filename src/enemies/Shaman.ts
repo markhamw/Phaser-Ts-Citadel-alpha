@@ -57,7 +57,7 @@ export default class Shaman extends Phaser.Physics.Arcade.Sprite {
                 this.DiscardCurrentTrashTalk.remove();
                 this.isAlive = false;
 
-                this.destroy();
+                this.setActive(false).setVisible(false);
 
             })
         })
@@ -84,8 +84,27 @@ export default class Shaman extends Phaser.Physics.Arcade.Sprite {
         this.scene.events.addListener('removeTitleMobs', () => {
             this.selfDestruct()
         })
-    }
 
+        this.scene.events.addListener('player-clicked-fight', () => {
+            this.scene.events.emit('player-killed-shaman', this)
+            this.scene.sound.add('ratsound', { volume: 0.1, detune: Phaser.Math.Between(-2000, -3000) }).play()
+            this.isAlive = false;
+            this.setVelocity(0, 0);
+            this.anims.play({ key: 'enemy-shaman-dead', frameRate: 4, repeat: 0 }).on('animationcomplete', () => {
+                this.moveEvent.destroy();
+                this.DiscardCurrentTrashTalk.destroy();
+                this.CurrentTrashTalk.destroy();
+                this.isAlive = false;
+                this.anims.stop();
+            })
+
+        })
+
+
+    }
+    private handleCollisionWithSprite(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile) {
+
+    }
     selfDestruct = () => {
         this.anims.play('enemy-shaman-dead', true)
         this.moveEvent.destroy()
@@ -116,12 +135,6 @@ export default class Shaman extends Phaser.Physics.Arcade.Sprite {
 
     }
 
-    private handleCollisionWithSprite(go: Phaser.GameObjects.GameObject, tile: Phaser.Tilemaps.Tile) {
-        let _go = go as Shaman
-        _go.moveEvent.callback()
-
-    }
-
 
     distanceFromStartingLocation = (): number => {
         return Phaser.Math.FloorTo(Phaser.Math.Distance.Between(this.x, this.y, this.StartingXLoc, this.StartingYLoc))
@@ -134,9 +147,9 @@ export default class Shaman extends Phaser.Physics.Arcade.Sprite {
     }
     preUpdate(t: number, dt: number) {
         this.flipX = false;
-
         super.preUpdate(t, dt)
         if (this.isAlive) {
+
             switch (this.facing) {
                 case Direction.UP:
                     this.setVelocity(0, -this.RatSpeed)
@@ -179,9 +192,7 @@ export default class Shaman extends Phaser.Physics.Arcade.Sprite {
                     break
             }
         } else {
-            //  this.setVelocity(0, 0)
-            //    this.scene.events.emit('enemy-shaman-dead-event', this)
-
+            this.setVelocity(0, 0)
         }
 
     }
