@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "GhostAttack(Frame 4).png",
+					"filename": "GhostAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "GhostWalk(Frame 3).png",
+					"filename": "GhostWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "GhostWalk(Frame 4).png",
+					"filename": "GhostWalk4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "GhostAttack(Frame 1).png",
+					"filename": "GhostAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "GhostDeath(Frame 1).png",
+					"filename": "GhostDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "GhostHit(Frame 1).png",
+					"filename": "GhostHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "GhostIdle(Frame 1).png",
+					"filename": "GhostIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "GhostIdle(Frame 4).png",
+					"filename": "GhostIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "GhostAttack(Frame 2).png",
+					"filename": "GhostAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "GhostAttack(Frame 3).png",
+					"filename": "GhostAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "GhostDeath(Frame 4).png",
+					"filename": "GhostDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "GhostHit(Frame 2).png",
+					"filename": "GhostHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "GhostHit(Frame 3).png",
+					"filename": "GhostHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "GhostIdle(Frame 2).png",
+					"filename": "GhostIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "GhostIdle(Frame 3).png",
+					"filename": "GhostIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "GhostWalk(Frame 1).png",
+					"filename": "GhostWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "GhostWalk(Frame 2).png",
+					"filename": "GhostWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "GhostHit(Frame 4).png",
+					"filename": "GhostHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "GhostDeath(Frame 2).png",
+					"filename": "GhostDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "GhostDeath(Frame 3).png",
+					"filename": "GhostDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

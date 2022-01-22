@@ -30,7 +30,7 @@ export type CombatCapability = {
 export type PlayerStatus = {
   MaxHP: number;
   CurrentHP: number;
-  Condition: Condition | null | undefined;
+  Condition: Condition;
   XP: number;
   Level: number;
   Gold: number;

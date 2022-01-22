@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanAttack(Frame 1).png",
+					"filename": "SwordsmanAttack1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanAttack(Frame 3).png",
+					"filename": "SwordsmanAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanDeath(Frame 1).png",
+					"filename": "SwordsmanDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanAttack(Frame 2).png",
+					"filename": "SwordsmanAttack2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanHit(Frame 1).png",
+					"filename": "SwordsmanHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanIdle(Frame 1).png",
+					"filename": "SwordsmanIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanWalk(Frame 1).png",
+					"filename": "SwordsmanWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanWalk(Frame 3).png",
+					"filename": "SwordsmanWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanHit(Frame 2).png",
+					"filename": "SwordsmanHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanHit(Frame 3).png",
+					"filename": "SwordsmanHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanHit(Frame 4).png",
+					"filename": "SwordsmanHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanDeath(Frame 4).png",
+					"filename": "SwordsmanDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanWalk(Frame 2).png",
+					"filename": "SwordsmanWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanWalk(Frame 4).png",
+					"filename": "SwordsmanWalk4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanIdle(Frame 2).png",
+					"filename": "SwordsmanIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanIdle(Frame 3).png",
+					"filename": "SwordsmanIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanIdle(Frame 4).png",
+					"filename": "SwordsmanIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanDeath(Frame 3).png",
+					"filename": "SwordsmanDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanAttack(Frame 4).png",
+					"filename": "SwordsmanAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "SwordsmanDeath(Frame 2).png",
+					"filename": "SwordsmanDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "TrollWalk(Frame 2).png",
+					"filename": "TrollWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "TrollAttack(Frame 2).png",
+					"filename": "TrollAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "TrollAttack(Frame 1).png",
+					"filename": "TrollAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "TrollDeath(Frame 3).png",
+					"filename": "TrollDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "TrollDeath(Frame 4).png",
+					"filename": "TrollDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "TrollAttack(Frame 4).png",
+					"filename": "TrollAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "TrollAttack(Frame 3).png",
+					"filename": "TrollAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "TrollIdle(Frame 1).png",
+					"filename": "TrollIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "TrollWalk(Frame 1).png",
+					"filename": "TrollWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "TrollWalk(Frame 3).png",
+					"filename": "TrollWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "TrollIdle(Frame 4).png",
+					"filename": "TrollIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "TrollDeath(Frame 1).png",
+					"filename": "TrollDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "TrollHit(Frame 1).png",
+					"filename": "TrollHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "TrollHit(Frame 2).png",
+					"filename": "TrollHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "TrollIdle(Frame 2).png",
+					"filename": "TrollIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "TrollIdle(Frame 3).png",
+					"filename": "TrollIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "TrollDeath(Frame 2).png",
+					"filename": "TrollDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "TrollWalk(Frame 4).png",
+					"filename": "TrollWalk4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "TrollHit(Frame 3).png",
+					"filename": "TrollHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "TrollHit(Frame 4).png",
+					"filename": "TrollHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

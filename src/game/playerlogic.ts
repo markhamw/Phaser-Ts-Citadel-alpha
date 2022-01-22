@@ -30,8 +30,9 @@ export function hidePlayerTalkBubble(scene: any) {
     scene.player.tb.fightBtn?.setInteractive(false);
 }
 
-
 export function eventForButton(childNode: Phaser.GameObjects.GameObject) {
     console.log("eventForButton");
     console.log(childNode.name)
 }
+
+

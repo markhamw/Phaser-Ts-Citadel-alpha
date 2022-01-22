@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundAttack(Frame 3).png",
+					"filename": "HellHoundAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundWalk(Frame 2).png",
+					"filename": "HellHoundWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundAttack(Frame 2).png",
+					"filename": "HellHoundAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundDeath(Frame 2).png",
+					"filename": "HellHoundDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundHit(Frame 2).png",
+					"filename": "HellHoundHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundHit(Frame 3).png",
+					"filename": "HellHoundHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundHit(Frame 4).png",
+					"filename": "HellHoundHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundDeath(Frame 4).png",
+					"filename": "HellHoundDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundWalk(Frame 3).png",
+					"filename": "HellHoundWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundAttack(Frame 1).png",
+					"filename": "HellHoundAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundAttack(Frame 4).png",
+					"filename": "HellHoundAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundDeath(Frame 1).png",
+					"filename": "HellHoundDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundHit(Frame 1).png",
+					"filename": "HellHoundHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundIdle(Frame 1).png",
+					"filename": "HellHoundIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundIdle(Frame 3).png",
+					"filename": "HellHoundIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundIdle(Frame 4).png",
+					"filename": "HellHoundIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundWalk(Frame 1).png",
+					"filename": "HellHoundWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundWalk(Frame 4).png",
+					"filename": "HellHoundWalk4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundDeath(Frame 3).png",
+					"filename": "HellHoundDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "HellHoundIdle(Frame 2).png",
+					"filename": "HellHoundIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

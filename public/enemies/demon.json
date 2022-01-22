@@ -10,7 +10,7 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "DemonDeath(Frame 4).png",
+					"filename": "DemonDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "DemonAttack(Frame 3).png",
+					"filename": "DemonAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "DemonAttack(Frame 2).png",
+					"filename": "DemonAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "DemonAttack(Frame 1).png",
+					"filename": "DemonAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "DemonDeath(Frame 1).png",
+					"filename": "DemonDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "DemonHit(Frame 1).png",
+					"filename": "DemonHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "DemonHit(Frame 4).png",
+					"filename": "DemonHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "DemonIdle(Frame 1).png",
+					"filename": "DemonIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "DemonIdle(Frame 3).png",
+					"filename": "DemonIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "DemonIdle(Frame 4).png",
+					"filename": "DemonIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "DemonWalk(Frame 1).png",
+					"filename": "DemonWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "DemonWalk(Frame 3).png",
+					"filename": "DemonWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "DemonAttack(Frame 4).png",
+					"filename": "DemonAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "DemonDeath(Frame 2).png",
+					"filename": "DemonDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "DemonHit(Frame 3).png",
+					"filename": "DemonHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "DemonDeath(Frame 3).png",
+					"filename": "DemonDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "DemonHit(Frame 2).png",
+					"filename": "DemonHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "DemonIdle(Frame 2).png",
+					"filename": "DemonIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "DemonWalk(Frame 2).png",
+					"filename": "DemonWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "DemonWalk(Frame 4).png",
+					"filename": "DemonWalk4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

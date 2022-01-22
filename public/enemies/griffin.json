@@ -10,7 +10,7 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "GriffinAttack(Frame 3).png",
+					"filename": "GriffinAttack3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "GriffinWalk(Frame 1).png",
+					"filename": "GriffinWalk1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "GriffinAttack(Frame 1).png",
+					"filename": "GriffinAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "GriffinHit(Frame 1).png",
+					"filename": "GriffinHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "GriffinIdle(Frame 1).png",
+					"filename": "GriffinIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "GriffinIdle(Frame 4).png",
+					"filename": "GriffinIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "GriffinWalk(Frame 2).png",
+					"filename": "GriffinWalk2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "GriffinWalk(Frame 3).png",
+					"filename": "GriffinWalk3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "GriffinAttack(Frame 2).png",
+					"filename": "GriffinAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "GriffinWalk(Frame 4).png",
+					"filename": "GriffinWalk4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "GriffinAttack(Frame 4).png",
+					"filename": "GriffinAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "GriffinDeath(Frame 1).png",
+					"filename": "GriffinDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "GriffinDeath(Frame 2).png",
+					"filename": "GriffinDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "GriffinDeath(Frame 4).png",
+					"filename": "GriffinDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "GriffinHit(Frame 2).png",
+					"filename": "GriffinHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "GriffinHit(Frame 3).png",
+					"filename": "GriffinHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "GriffinHit(Frame 4).png",
+					"filename": "GriffinHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "GriffinIdle(Frame 2).png",
+					"filename": "GriffinIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "GriffinIdle(Frame 3).png",
+					"filename": "GriffinIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "GriffinDeath(Frame 3).png",
+					"filename": "GriffinDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

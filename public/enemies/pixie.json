@@ -10,7 +10,7 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "PixieDeath(Frame 4).png",
+					"filename": "PixieDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "PixieDeath(Frame 3).png",
+					"filename": "PixieDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "PixieAttack(Frame 3).png",
+					"filename": "PixieAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "PixieAttack(Frame 4).png",
+					"filename": "PixieAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "PixieDeath(Frame 2).png",
+					"filename": "PixieDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "PixieWalk(Frame 2).png",
+					"filename": "PixieWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "PixieWalk(Frame 4).png",
+					"filename": "PixieWalk4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "PixieAttack(Frame 1).png",
+					"filename": "PixieAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "PixieWalk(Frame 1).png",
+					"filename": "PixieWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "PixieHit(Frame 1).png",
+					"filename": "PixieHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "PixieIdle(Frame 4).png",
+					"filename": "PixieIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "PixieWalk(Frame 3).png",
+					"filename": "PixieWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "PixieIdle(Frame 1).png",
+					"filename": "PixieIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "PixieIdle(Frame 2).png",
+					"filename": "PixieIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "PixieAttack(Frame 2).png",
+					"filename": "PixieAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "PixieDeath(Frame 1).png",
+					"filename": "PixieDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "PixieHit(Frame 2).png",
+					"filename": "PixieHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "PixieIdle(Frame 3).png",
+					"filename": "PixieIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "PixieHit(Frame 3).png",
+					"filename": "PixieHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "PixieHit(Frame 4).png",
+					"filename": "PixieHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

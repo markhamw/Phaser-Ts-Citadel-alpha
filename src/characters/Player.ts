@@ -1,5 +1,6 @@
-import Phaser, { Scene } from "phaser";
+import Phaser, { BlendModes, Scene } from "phaser";
 import { GetOverworldPlayerAnims, GetPlayerAnims } from "~/anims/PlayerAnims";
+import Groklin from "~/enemies/Groklin";
 import { CombatCapability, Condition, PlayerStatus, Speech } from "~/game/game";
 import { AddWASDKeysToScene, CreateAnimationSet } from "~/game/gamelogic";
 import { WRGameScene } from "~/game/overworldlogic";
@@ -79,7 +80,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   constructor(scene: Overworld, x: number, y: number, texture: string, frame?: string | number) {
     super(scene, x, y, texture, frame);
-    this.status = { MaxHP: 5, CurrentHP: 2, Condition: null, XP: 0, Level: 1, Gold: Phaser.Math.Between(0, 100) };
+    this.status = { MaxHP: 5, CurrentHP: 2, Condition: Condition.Scuffed, XP: 0, Level: 1, Gold: Phaser.Math.Between(0, 100) };
     this.combatCapability = { offensiveMultiplier: 1, defense: 1 };
     this.wasd = AddWASDKeysToScene(scene);
     this.playerHead = scene.wrGame.playerHead;
@@ -299,6 +300,17 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   updateHealthIndicators(scene: any) {
 
+    let Empties = 5 - this.status.Condition;
+    let x = 100;
+    for (let i = 0; i < scene.player.status.Condition; i++) {
+      scene.add.sprite(x, 480, "fullheart");
+      x += 10;
+    }
+    for (let i = 0; i < Empties; i++) {
+      scene.add.sprite(x, 480, "emptyheart");
+      x += 10;
+    }
+
   }
 
   generateContext(entity: Phaser.GameObjects.Sprite, speech?: Speech): TalkBubbleContext {
@@ -322,7 +334,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     let context: TalkBubbleContext = {
       scene: this.scene,
       canInteract: this.distanceFrom(entity) < 40,
-      speech: { lines: identLine },
+      speech: { lines: identLine + ' ' + actionLine },
       child: this.distanceFrom(entity) < 40 ? entity : null,
     }
     return context;
@@ -354,10 +366,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.tb.lines.setText(speech.lines);
   }
 
-  queueHideTalkBubble(delay: number) {
-
-
-  }
 
   interact(context: TalkBubbleContext) {
     context.scene.isSpeaking = true;
@@ -447,7 +455,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       this.playAnimByDirection(Direction.DOWN);
     } else {
       this.setVelocity(0);
-      this.anims.stop();
+
     }
   };
 
@@ -469,7 +477,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       },
     });
   }
-
 
   handleInteraction = (context: TalkBubbleContext, scene: any, delay?: number) => {
     this.interact(context);
@@ -507,6 +514,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       let interactTalkBubbleContext: TalkBubbleContext = { scene: this, speech: playerStatus, canInteract: false };
       this.Say(playerStatus, this.scene);
     });
+
   }
 
   update() {

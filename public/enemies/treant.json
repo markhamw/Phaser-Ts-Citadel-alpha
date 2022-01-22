@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "TreantDeath(Frame 1).png",
+					"filename": "TreantDeath1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "TreantPreAttack(Frame 1).png",
+					"filename": "TreantPreAttack1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "TreantWalk(Frame 1).png",
+					"filename": "TreantWalk1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "TreantDeath(Frame 2).png",
+					"filename": "TreantDeath2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "TreantHit(Frame 1).png",
+					"filename": "TreantHit1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "TreantHit(Frame 2).png",
+					"filename": "TreantHit2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "TreantHit(Frame 3).png",
+					"filename": "TreantHit3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "TreantIdle(Frame 1).png",
+					"filename": "TreantIdle1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "TreantIdle(Frame 4).png",
+					"filename": "TreantIdle4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "TreantWalk(Frame 3).png",
+					"filename": "TreantWalk3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "TreantIdle(Frame 2).png",
+					"filename": "TreantIdle2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "TreantIdle(Frame 3).png",
+					"filename": "TreantIdle3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "TreantPreAttack(Frame 2).png",
+					"filename": "TreantPreAttack2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "TreantWalk(Frame 2).png",
+					"filename": "TreantWalk2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "TreantWalk(Frame 4).png",
+					"filename": "TreantWalk4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "TreantAttack(Frame 1).png",
+					"filename": "TreantAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "TreantAttack(Frame 4).png",
+					"filename": "TreantAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "TreantPreAttack(Frame 3).png",
+					"filename": "TreantPreAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "TreantDeath(Frame 3).png",
+					"filename": "TreantDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "TreantHit(Frame 4).png",
+					"filename": "TreantHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -451,7 +451,7 @@
 					}
 				},
 				{
-					"filename": "TreantVine(Frame 1).png",
+					"filename": "TreantVine1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -472,7 +472,7 @@
 					}
 				},
 				{
-					"filename": "TreantVine(Frame 4).png",
+					"filename": "TreantVine4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -493,7 +493,7 @@
 					}
 				},
 				{
-					"filename": "TreantAttack(Frame 2).png",
+					"filename": "TreantAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -514,7 +514,7 @@
 					}
 				},
 				{
-					"filename": "TreantAttack(Frame 3).png",
+					"filename": "TreantAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -535,7 +535,7 @@
 					}
 				},
 				{
-					"filename": "TreantPreAttack(Frame 4).png",
+					"filename": "TreantPreAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -556,7 +556,7 @@
 					}
 				},
 				{
-					"filename": "TreantVine(Frame 3).png",
+					"filename": "TreantVine3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -577,7 +577,7 @@
 					}
 				},
 				{
-					"filename": "TreantDeath(Frame 4).png",
+					"filename": "TreantDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -598,7 +598,7 @@
 					}
 				},
 				{
-					"filename": "TreantVine(Frame 2).png",
+					"filename": "TreantVine2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

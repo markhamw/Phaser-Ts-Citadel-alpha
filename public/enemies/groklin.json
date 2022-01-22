@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "GremlinAttack(Frame 3).png",
+					"filename": "GremlinAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "GremlinDeath(Frame 4).png",
+					"filename": "GremlinDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "GremlinAttack(Frame 4).png",
+					"filename": "GremlinAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "GremlinIdle(Frame 2).png",
+					"filename": "GremlinIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "GremlinIdle(Frame 3).png",
+					"filename": "GremlinIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "GremlinIdle(Frame 1).png",
+					"filename": "GremlinIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "GremlinIdle(Frame 4).png",
+					"filename": "GremlinIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "GremlinWalk(Frame 2).png",
+					"filename": "GremlinWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "GremlinWalk(Frame 4).png",
+					"filename": "GremlinWalk4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "GremlinAttack(Frame 1).png",
+					"filename": "GremlinAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "GremlinDeath(Frame 1).png",
+					"filename": "GremlinDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "GremlinHit(Frame 1).png",
+					"filename": "GremlinHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "GremlinWalk(Frame 1).png",
+					"filename": "GremlinWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "GremlinWalk(Frame 3).png",
+					"filename": "GremlinWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "GremlinHit(Frame 2).png",
+					"filename": "GremlinHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "GremlinAttack(Frame 2).png",
+					"filename": "GremlinAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "GremlinDeath(Frame 2).png",
+					"filename": "GremlinDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "GremlinHit(Frame 3).png",
+					"filename": "GremlinHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "GremlinDeath(Frame 3).png",
+					"filename": "GremlinDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "GremlinHit(Frame 4).png",
+					"filename": "GremlinHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

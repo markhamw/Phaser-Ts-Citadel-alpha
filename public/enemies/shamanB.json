@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "ShamanCast(Frame 1).png",
+					"filename": "ShamanCast1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "ShamanCast(Frame 3).png",
+					"filename": "ShamanCast3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "ShamanCast(Frame 4).png",
+					"filename": "ShamanCast4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "ShamanDeath(Frame 1).png",
+					"filename": "ShamanDeath1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "ShamanHit(Frame 1).png",
+					"filename": "ShamanHit1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "ShamanHit(Frame 4).png",
+					"filename": "ShamanHit4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "ShamanIdle(Frame 1).png",
+					"filename": "ShamanIdle1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "ShamanIdle(Frame 4).png",
+					"filename": "ShamanIdle4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "ShamanIdle(Frame 2).png",
+					"filename": "ShamanIdle2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "ShamanIdle(Frame 3).png",
+					"filename": "ShamanIdle3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "ShamanPreCast(Frame 1).png",
+					"filename": "ShamanPreCast1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "ShamanPreCast(Frame 2).png",
+					"filename": "ShamanPreCast2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "ShamanPreCast(Frame 3).png",
+					"filename": "ShamanPreCast3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "ShamanPreCast(Frame 4).png",
+					"filename": "ShamanPreCast4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "ShamanWalk(Frame 1).png",
+					"filename": "ShamanWalk1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "ShamanWalk(Frame 3).png",
+					"filename": "ShamanWalk3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "ShamanWalk(Frame 2).png",
+					"filename": "ShamanWalk2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "ShamanWalk(Frame 4).png",
+					"filename": "ShamanWalk4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "ShamanCast(Frame 2).png",
+					"filename": "ShamanCast2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "ShamanDeath(Frame 2).png",
+					"filename": "ShamanDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -451,7 +451,7 @@
 					}
 				},
 				{
-					"filename": "ShamanDeath(Frame 3).png",
+					"filename": "ShamanDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -472,7 +472,7 @@
 					}
 				},
 				{
-					"filename": "ShamanDeath(Frame 4).png",
+					"filename": "ShamanDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -493,7 +493,7 @@
 					}
 				},
 				{
-					"filename": "ShamanHit(Frame 2).png",
+					"filename": "ShamanHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -514,7 +514,7 @@
 					}
 				},
 				{
-					"filename": "ShamanHit(Frame 3).png",
+					"filename": "ShamanHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

@@ -10,7 +10,7 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "PikemanAttack(Frame 1).png",
+					"filename": "PikemanAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "PikemanAttack(Frame 2).png",
+					"filename": "PikemanAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "PikemanDeath(Frame 1).png",
+					"filename": "PikemanDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "PikemanIdle(Frame 1).png",
+					"filename": "PikemanIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "PikemanIdle(Frame 2).png",
+					"filename": "PikemanIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "PikemanIdle(Frame 3).png",
+					"filename": "PikemanIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "PikemanAttack(Frame 4).png",
+					"filename": "PikemanAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "PikemanHit(Frame 1).png",
+					"filename": "PikemanHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "PikemanWalk(Frame 1).png",
+					"filename": "PikemanWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "PikemanWalk(Frame 3).png",
+					"filename": "PikemanWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "PikemanAttack(Frame 3).png",
+					"filename": "PikemanAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "PikemanHit(Frame 2).png",
+					"filename": "PikemanHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "PikemanHit(Frame 4).png",
+					"filename": "PikemanHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "PikemanDeath(Frame 2).png",
+					"filename": "PikemanDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "PikemanHit(Frame 3).png",
+					"filename": "PikemanHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "PikemanWalk(Frame 2).png",
+					"filename": "PikemanWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "PikemanWalk(Frame 4).png",
+					"filename": "PikemanWalk4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "PikemanDeath(Frame 3).png",
+					"filename": "PikemanDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "PikemanDeath(Frame 4).png",
+					"filename": "PikemanDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "PikemanIdle(Frame 4).png",
+					"filename": "PikemanIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

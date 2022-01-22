@@ -3,6 +3,7 @@ import Overworld from "~/scenes/Overworld";
 import OverworldTitle from "~/scenes/OverworldTitle";
 import Building from "~/structures/Building";
 import { Speech } from "./game";
+import { RandomCoord } from "./gamelogic";
 
 export type WindDirection = {
   xspeed: number;
@@ -31,8 +32,8 @@ export type WRGameScene = OverworldTitle | Overworld;
 export const createOverworldTileMap = (scene: WRGameScene) => {
   let map2 = scene.make.tilemap({ key: "allbiomes" });
   let tileset3 = map2.addTilesetImage("allbiomes", "tiles3");
-  scene.baseLayer = map2.createLayer(Layers.Base, tileset3);
-  scene.decorLayer = map2.createLayer(Layers.Decor, tileset3);
+  scene.baseLayer = map2.createLayer(Layers.Base, tileset3).setPipeline("Light2D");
+  scene.decorLayer = map2.createLayer(Layers.Decor, tileset3).setPipeline("Light2D");
   scene.baseLayer.setDepth(0);
   scene.decorLayer.setDepth(0);
   scene.baseLayer.setCollisionByProperty({ collides: true });
@@ -88,8 +89,20 @@ export const AddRightArrow = (scene: OverworldTitle) => {
   });
   scene.rightArrow.setDepth(3);
 }
-
-
+export const SummonMobs = (
+  group: Phaser.Physics.Arcade.Group,
+  enemyid: string,
+  numberOfMobsToCreate: number,
+  x?: number,
+  y?: number
+) => {
+  for (let countmade = 0; countmade < numberOfMobsToCreate; countmade++) {
+    let mobX = x ?? RandomCoord(450) + 10;
+    let mobY = y ?? RandomCoord(450) + 10;
+    let mob = group.get(mobX, mobY, enemyid);
+    return mob;
+  }
+};
 export const buildingsforWorldMap: Placement[] = [
   { name: "Tavern", collection: "buildings32", tag: "Tavern.png", location: { x: 320, y: 310 } },
   { name: "Trading Post", collection: "buildings32", tag: "TradingPost.png", location: { x: 250, y: 130 } },
@@ -136,7 +149,7 @@ const newBuildingGroup = (scene: Phaser.Scene, type: any) => {
 export const GenerateBuildings = (scene: any) => {
   scene.buildingsGroup = newBuildingGroup(scene, Building);
   buildingsforWorldMap.forEach((building) => {
-    let bldg = scene.buildingsGroup.get(building.location.x, building.location.y, building.collection, building.tag).setScale(1.45).setDepth(1);
+    let bldg = scene.buildingsGroup.get(building.location.x, building.location.y, building.collection, building.tag).setScale(1.45).setDepth(1).setPipeline("Light2D");
     bldg.name = building.name;
     bldg.collides = true;
     bldg.setInteractive();
@@ -162,9 +175,9 @@ export const RandomCloud = (scene: any) => {
   let cloudNum = Math.floor(Math.random() * 6) + 1;
   let cloudx = Math.floor(Math.random() * maxXorY);
   let cloudy = Math.floor(Math.random() * maxXorY);
-  let cloudshadow = scene.physics.add.sprite(cloudx + 40, cloudy + 50, "cloudsshadows", `Clouds${cloudNum}.png`).setAlpha(0.1).setDepth(2);
-  let cloud = scene.physics.add.sprite(cloudx, cloudy, "clouds", `Clouds${cloudNum}.png`).setAlpha(0.2).setDepth(2);
-  let cloudSize = Math.floor(Math.random() * 6) + 2;
+  let cloudshadow = scene.physics.add.sprite(cloudx + 40, cloudy + 50, "cloudsshadows", `Clouds${cloudNum}.png`).setAlpha(0.1).setDepth(2).setPipeline("Light2D");
+  let cloud = scene.physics.add.sprite(cloudx, cloudy, "clouds", `Clouds${cloudNum}.png`).setAlpha(0.2).setDepth(2).setPipeline("Light2D");
+  let cloudSize = Phaser.Math.Between(2, 10)
   cloud.setScale(cloudSize);
   cloudshadow.setScale(cloudSize);
   cloudshadow.setVelocity(scene.winddirection.xspeed, scene.winddirection.yspeed);

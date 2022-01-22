@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "ZombieDeath(Frame 3).png",
+					"filename": "ZombieDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "ZombieAttack(Frame 4).png",
+					"filename": "ZombieAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "ZombieAttack(Frame 1).png",
+					"filename": "ZombieAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "ZombieHit(Frame 1).png",
+					"filename": "ZombieHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "ZombieIdle(Frame 1).png",
+					"filename": "ZombieIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "ZombieIdle(Frame 4).png",
+					"filename": "ZombieIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "ZombieWalk(Frame 4).png",
+					"filename": "ZombieWalk4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "ZombieAttack(Frame 2).png",
+					"filename": "ZombieAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "ZombieDeath(Frame 1).png",
+					"filename": "ZombieDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "ZombieHit(Frame 2).png",
+					"filename": "ZombieHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "ZombieHit(Frame 3).png",
+					"filename": "ZombieHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "ZombieHit(Frame 4).png",
+					"filename": "ZombieHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "ZombieIdle(Frame 2).png",
+					"filename": "ZombieIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "ZombieIdle(Frame 3).png",
+					"filename": "ZombieIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "ZombieWalk(Frame 1).png",
+					"filename": "ZombieWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "ZombieWalk(Frame 2).png",
+					"filename": "ZombieWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "ZombieWalk(Frame 3).png",
+					"filename": "ZombieWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "ZombieDeath(Frame 2).png",
+					"filename": "ZombieDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "ZombieAttack(Frame 3).png",
+					"filename": "ZombieAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "ZombieDeath(Frame 4).png",
+					"filename": "ZombieDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

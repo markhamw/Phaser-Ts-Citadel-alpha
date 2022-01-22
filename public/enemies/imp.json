@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "ImpDeath(Frame 4).png",
+					"filename": "ImpDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "ImpDeath(Frame 1).png",
+					"filename": "ImpDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "ImpHit(Frame 1).png",
+					"filename": "ImpHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "ImpHit(Frame 4).png",
+					"filename": "ImpHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "ImpIdle(Frame 1).png",
+					"filename": "ImpIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "ImpIdle(Frame 3).png",
+					"filename": "ImpIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "ImpDeath(Frame 2).png",
+					"filename": "ImpDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "ImpHit(Frame 2).png",
+					"filename": "ImpHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "ImpHit(Frame 3).png",
+					"filename": "ImpHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "ImpDeath(Frame 3).png",
+					"filename": "ImpDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "ImpIdle(Frame 2).png",
+					"filename": "ImpIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "ImpIdle(Frame 4).png",
+					"filename": "ImpIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "ImpWalk(Frame 2).png",
+					"filename": "ImpWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "ImpWalk(Frame 4).png",
+					"filename": "ImpWalk4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "ImpAttack(Frame 2).png",
+					"filename": "ImpAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "ImpAttack(Frame 1).png",
+					"filename": "ImpAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "ImpAttack(Frame 3).png",
+					"filename": "ImpAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "ImpWalk(Frame 1).png",
+					"filename": "ImpWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "ImpWalk(Frame 3).png",
+					"filename": "ImpWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "ImpAttack(Frame 4).png",
+					"filename": "ImpAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

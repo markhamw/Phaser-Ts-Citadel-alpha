@@ -10,7 +10,7 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "CavalierAttack(Frame 1).png",
+					"filename": "CavalierAttack1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "CavalierAttack(Frame 2).png",
+					"filename": "CavalierAttack2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "CavalierAttack(Frame 3).png",
+					"filename": "CavalierAttack3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "CavalierDeath(Frame 1).png",
+					"filename": "CavalierDeath1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "CavalierDeath(Frame 2).png",
+					"filename": "CavalierDeath2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "CavalierHit(Frame 2).png",
+					"filename": "CavalierHit2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "CavalierHit(Frame 3).png",
+					"filename": "CavalierHit3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "CavalierHit(Frame 4).png",
+					"filename": "CavalierHit4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "CavalierWalk(Frame 2).png",
+					"filename": "CavalierWalk2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "CavalierWalk(Frame 4).png",
+					"filename": "CavalierWalk4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "CavalierDeath(Frame 3).png",
+					"filename": "CavalierDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "CavalierDeath(Frame 4).png",
+					"filename": "CavalierDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "CavalierAttack(Frame 4).png",
+					"filename": "CavalierAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "CavalierHit(Frame 1).png",
+					"filename": "CavalierHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "CavalierIdle(Frame 1).png",
+					"filename": "CavalierIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "CavalierIdle(Frame 3).png",
+					"filename": "CavalierIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "CavalierWalk(Frame 1).png",
+					"filename": "CavalierWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "CavalierWalk(Frame 3).png",
+					"filename": "CavalierWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "CavalierIdle(Frame 2).png",
+					"filename": "CavalierIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "CavalierIdle(Frame 4).png",
+					"filename": "CavalierIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

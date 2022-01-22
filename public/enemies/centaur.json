@@ -10,7 +10,7 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "CentaurAttack(Frame 1).png",
+					"filename": "CentaurAttack1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "CentaurAttack(Frame 2).png",
+					"filename": "CentaurAttack2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "CentaurAttack(Frame 3).png",
+					"filename": "CentaurAttack3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "CentaurAttack(Frame 4).png",
+					"filename": "CentaurAttack4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "CentaurDeath(Frame 2).png",
+					"filename": "CentaurDeath2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "CentaurHit(Frame 1).png",
+					"filename": "CentaurHit1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "CentaurIdle(Frame 1).png",
+					"filename": "CentaurIdle1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "CentaurWalk(Frame 1).png",
+					"filename": "CentaurWalk1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "CentaurIdle(Frame 2).png",
+					"filename": "CentaurIdle2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "CentaurIdle(Frame 3).png",
+					"filename": "CentaurIdle3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "CentaurIdle(Frame 4).png",
+					"filename": "CentaurIdle4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "CentaurWalk(Frame 3).png",
+					"filename": "CentaurWalk3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "CentaurWalk(Frame 4).png",
+					"filename": "CentaurWalk4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "CentaurDeath(Frame 1).png",
+					"filename": "CentaurDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "CentaurHit(Frame 3).png",
+					"filename": "CentaurHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "CentaurHit(Frame 2).png",
+					"filename": "CentaurHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "CentaurHit(Frame 4).png",
+					"filename": "CentaurHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "CentaurWalk(Frame 2).png",
+					"filename": "CentaurWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "CentaurDeath(Frame 3).png",
+					"filename": "CentaurDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "CentaurDeath(Frame 4).png",
+					"filename": "CentaurDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "GogWalk(Frame 2).png",
+					"filename": "GogWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "GogAttack(Frame 2).png",
+					"filename": "GogAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "GogWalk(Frame 4).png",
+					"filename": "GogWalk4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "GogAttack(Frame 1).png",
+					"filename": "GogAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "GogAttack(Frame 3).png",
+					"filename": "GogAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "GogHit(Frame 2).png",
+					"filename": "GogHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "GogHit(Frame 4).png",
+					"filename": "GogHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "GogAttack(Frame 4).png",
+					"filename": "GogAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "GogDeath(Frame 2).png",
+					"filename": "GogDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "GogIdle(Frame 1).png",
+					"filename": "GogIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "GogHit(Frame 3).png",
+					"filename": "GogHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "GogIdle(Frame 2).png",
+					"filename": "GogIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "GogIdle(Frame 3).png",
+					"filename": "GogIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "GogIdle(Frame 4).png",
+					"filename": "GogIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "GogDeath(Frame 3).png",
+					"filename": "GogDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "GogDeath(Frame 1).png",
+					"filename": "GogDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "GogHit(Frame 1).png",
+					"filename": "GogHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "GogWalk(Frame 1).png",
+					"filename": "GogWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "GogWalk(Frame 3).png",
+					"filename": "GogWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "GogDeath(Frame 4).png",
+					"filename": "GogDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

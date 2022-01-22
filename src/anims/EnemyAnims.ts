@@ -9,13 +9,7 @@ function CreateAnimationSet(scene: Phaser.Scene, animations: Phaser.Types.Animat
     scene.anims.create(animation);
   });
 }
-const createAnimations = (scene: Phaser.Scene) => {
-  CreateAnimationSet(scene, GetDeerAnims(scene.anims, 4));
-  CreateAnimationSet(scene, GetCoinAnims(scene.anims, 4));
-  CreateAnimationSet(scene, GetShamanAnims(scene.anims, 4));
-  CreateAnimationSet(scene, GetFlyingRatAnims(scene.anims, 4));
-  CreateAnimationSet(scene, GetEarthGolemAnims(scene.anims, 4));
-  CreateAnimationSet(scene, GetAirElementalAnims(scene.anims, 4));
+const createUIAnimations = (scene: Phaser.Scene) => {
 
   scene.anims.create({
     key: `enter-btn-action`,
@@ -375,4 +369,4 @@ const GetAirElementalAnims = (anims: Phaser.Animations.AnimationManager, rate: n
     },
   ];
 };
-export { GetShamanAnims, GetFlyingRatAnims, GetEarthGolemAnims, GetAirElementalAnims, createAnimations };
+export { GetShamanAnims, GetFlyingRatAnims, GetEarthGolemAnims, GetAirElementalAnims, createUIAnimations };

@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "VampireFly(Frame 3).png",
+					"filename": "VampireFly3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "VampireAttack(Frame 2).png",
+					"filename": "VampireAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "VampireAttack(Frame 1).png",
+					"filename": "VampireAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "VampireHit(Frame 1).png",
+					"filename": "VampireHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "VampireIdle(Frame 1).png",
+					"filename": "VampireIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "VampireIdle(Frame 4).png",
+					"filename": "VampireIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "VampireTransform(Frame 1).png",
+					"filename": "VampireTransform1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "VampireAttack(Frame 3).png",
+					"filename": "VampireAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "VampireDeath(Frame 1).png",
+					"filename": "VampireDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "VampireAttack(Frame 4).png",
+					"filename": "VampireAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "VampireHit(Frame 2).png",
+					"filename": "VampireHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "VampireFly(Frame 1).png",
+					"filename": "VampireFly1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "VampireHit(Frame 3).png",
+					"filename": "VampireHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "VampireTransform(Frame 3).png",
+					"filename": "VampireTransform3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "VampireIdle(Frame 2).png",
+					"filename": "VampireIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "VampireTransform(Frame 4).png",
+					"filename": "VampireTransform4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "VampireIdle(Frame 3).png",
+					"filename": "VampireIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "VampireHit(Frame 4).png",
+					"filename": "VampireHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "VampireFly(Frame 2).png",
+					"filename": "VampireFly2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "VampireFly(Frame 4).png",
+					"filename": "VampireFly4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -451,7 +451,7 @@
 					}
 				},
 				{
-					"filename": "VampireTransform(Frame 2).png",
+					"filename": "VampireTransform2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -472,7 +472,7 @@
 					}
 				},
 				{
-					"filename": "VampireDeath(Frame 3).png",
+					"filename": "VampireDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -493,7 +493,7 @@
 					}
 				},
 				{
-					"filename": "VampireDeath(Frame 4).png",
+					"filename": "VampireDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -514,7 +514,7 @@
 					}
 				},
 				{
-					"filename": "VampireDeath(Frame 2).png",
+					"filename": "VampireDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

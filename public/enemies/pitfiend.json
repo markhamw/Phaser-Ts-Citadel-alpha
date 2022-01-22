@@ -10,7 +10,7 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "PitFiendAttack(Frame 2).png",
+					"filename": "PitFiendAttack2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendAttack(Frame 4).png",
+					"filename": "PitFiendAttack4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendAttack(Frame 1).png",
+					"filename": "PitFiendAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendDeath(Frame 1).png",
+					"filename": "PitFiendDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendHit(Frame 1).png",
+					"filename": "PitFiendHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendHit(Frame 4).png",
+					"filename": "PitFiendHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendIdle(Frame 1).png",
+					"filename": "PitFiendIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendWalk(Frame 1).png",
+					"filename": "PitFiendWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendWalk(Frame 3).png",
+					"filename": "PitFiendWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendHit(Frame 3).png",
+					"filename": "PitFiendHit3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendIdle(Frame 2).png",
+					"filename": "PitFiendIdle2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendHit(Frame 2).png",
+					"filename": "PitFiendHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendIdle(Frame 3).png",
+					"filename": "PitFiendIdle3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendIdle(Frame 4).png",
+					"filename": "PitFiendIdle4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendWalk(Frame 4).png",
+					"filename": "PitFiendWalk4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendDeath(Frame 2).png",
+					"filename": "PitFiendDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendAttack(Frame 3).png",
+					"filename": "PitFiendAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendDeath(Frame 3).png",
+					"filename": "PitFiendDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendDeath(Frame 4).png",
+					"filename": "PitFiendDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "PitFiendWalk(Frame 2).png",
+					"filename": "PitFiendWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

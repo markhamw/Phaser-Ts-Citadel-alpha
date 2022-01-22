@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "DjinnAttack(Frame 3).png",
+					"filename": "DjinnAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "DjinnAttack(Frame 4).png",
+					"filename": "DjinnAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "DjinnHit(Frame 3).png",
+					"filename": "DjinnHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "DjinnIdle(Frame 3).png",
+					"filename": "DjinnIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "DjinnWalk(Frame 3).png",
+					"filename": "DjinnWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "DjinnHit(Frame 4).png",
+					"filename": "DjinnHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "DjinnWalk(Frame 4).png",
+					"filename": "DjinnWalk4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "DjinnAttack(Frame 1).png",
+					"filename": "DjinnAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "DjinnDeath(Frame 1).png",
+					"filename": "DjinnDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "DjinnHit(Frame 1).png",
+					"filename": "DjinnHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "DjinnHit(Frame 2).png",
+					"filename": "DjinnHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "DjinnIdle(Frame 1).png",
+					"filename": "DjinnIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "DjinnDeath(Frame 2).png",
+					"filename": "DjinnDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "DjinnDeath(Frame 3).png",
+					"filename": "DjinnDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "DjinnIdle(Frame 2).png",
+					"filename": "DjinnIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "DjinnIdle(Frame 4).png",
+					"filename": "DjinnIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "DjinnWalk(Frame 1).png",
+					"filename": "DjinnWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "DjinnWalk(Frame 2).png",
+					"filename": "DjinnWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "DjinnAttack(Frame 2).png",
+					"filename": "DjinnAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "DjinnDeath(Frame 4).png",
+					"filename": "DjinnDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

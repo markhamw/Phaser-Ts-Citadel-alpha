@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "SatyrDeath(Frame 1).png",
+					"filename": "SatyrDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "SatyrHit(Frame 2).png",
+					"filename": "SatyrHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "SatyrWalk(Frame 2).png",
+					"filename": "SatyrWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "SatyrDeath(Frame 2).png",
+					"filename": "SatyrDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "SatyrAttack(Frame 3).png",
+					"filename": "SatyrAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "SatyrHit(Frame 3).png",
+					"filename": "SatyrHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "SatyrIdle(Frame 2).png",
+					"filename": "SatyrIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "SatyrIdle(Frame 3).png",
+					"filename": "SatyrIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "SatyrWalk(Frame 4).png",
+					"filename": "SatyrWalk4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "SatyrAttack(Frame 1).png",
+					"filename": "SatyrAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "SatyrAttack(Frame 4).png",
+					"filename": "SatyrAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "SatyrHit(Frame 4).png",
+					"filename": "SatyrHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "SatyrDeath(Frame 3).png",
+					"filename": "SatyrDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "SatyrHit(Frame 1).png",
+					"filename": "SatyrHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "SatyrDeath(Frame 4).png",
+					"filename": "SatyrDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "SatyrAttack(Frame 2).png",
+					"filename": "SatyrAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "SatyrIdle(Frame 1).png",
+					"filename": "SatyrIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "SatyrIdle(Frame 4).png",
+					"filename": "SatyrIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "SatyrWalk(Frame 1).png",
+					"filename": "SatyrWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "SatyrWalk(Frame 3).png",
+					"filename": "SatyrWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

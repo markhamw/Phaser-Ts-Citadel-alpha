@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "NagaAttack(Frame 2).png",
+					"filename": "NagaAttack2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "NagaIdle(Frame 1).png",
+					"filename": "NagaIdle1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "NagaIdle(Frame 3).png",
+					"filename": "NagaIdle3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "NagaIdle(Frame 4).png",
+					"filename": "NagaIdle4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "NagaWalk(Frame 1).png",
+					"filename": "NagaWalk1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "NagaWalk(Frame 2).png",
+					"filename": "NagaWalk2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "NagaWalk(Frame 3).png",
+					"filename": "NagaWalk3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "NagaWalk(Frame 4).png",
+					"filename": "NagaWalk4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "NagaAttack(Frame 1).png",
+					"filename": "NagaAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "NagaAttack(Frame 4).png",
+					"filename": "NagaAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "NagaAttack(Frame 3).png",
+					"filename": "NagaAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "NagaDeath(Frame 1).png",
+					"filename": "NagaDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "NagaDeath(Frame 4).png",
+					"filename": "NagaDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "NagaHit(Frame 1).png",
+					"filename": "NagaHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "NagaHit(Frame 2).png",
+					"filename": "NagaHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "NagaHit(Frame 4).png",
+					"filename": "NagaHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "NagaIdle(Frame 2).png",
+					"filename": "NagaIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "NagaDeath(Frame 2).png",
+					"filename": "NagaDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "NagaHit(Frame 3).png",
+					"filename": "NagaHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "NagaDeath(Frame 3).png",
+					"filename": "NagaDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

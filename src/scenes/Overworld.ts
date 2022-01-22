@@ -1,4 +1,4 @@
-import { Physics, Scene } from "phaser";
+import { BlendModes, Physics, Scene } from "phaser";
 import { GetOverworldPlayerAnims, GetPlayerAnims } from "~/anims/PlayerAnims";
 import { Condition, PlayerStatus, Speech, WRGame } from "~/game/game";
 import { AddWASDKeysToScene, CreateAnimationSet, RandomCoord } from "~/game/gamelogic";
@@ -6,47 +6,32 @@ import {
   WindDirection,
   GenerateBuildings,
   RandomCloud,
-  createBorder,
-  AddLeftArrow,
-  AddRightArrow,
-  AddHead,
-  ShowMenu,
+  SummonMobs,
 } from "../game/overworldlogic";
 import "../characters/Player";
 import { GetCoinAnims, GetSmokeAnims } from "~/anims/WorldAnims";
-import Rat from "~/enemies/Rat";
-import { GetShamanAnims, GetFlyingRatAnims, GetEarthGolemAnims, GetAirElementalAnims, createAnimations } from "~/anims/EnemyAnims";
-import RatOgre from "~/enemies/RatOgre";
-import Shaman from "~/enemies/Shaman";
 import { enemies, newEnemyGroup } from "~/enemies/enemies";
-import FlyingRat from "~/enemies/FlyingRat";
-import EarthGolem from "~/enemies/EarthGolem";
-import AirElemental from "~/enemies/AirElemental";
 import Player from "../characters/Player";
 import { hidePlayerTalkBubble } from "~/game/playerlogic";
 import { enterQuery } from "bitecs";
 import TalkBubbleContext from "~/characters/Player";
 import { GetRandomExploreText } from "~/game/playerspeech";
 import Deer from "~/enemies/Deer";
+import Groklin from "~/enemies/Groklin";
+import { createUIAnimations } from "~/anims/EnemyAnims";
 
 const enum Layers {
   Base,
   Decor,
 }
 
-const enum Chapters {
-  One,
-  Two,
-  Three,
-  Four,
-  Five,
-  Six,
-}
-
 export default class Overworld extends Phaser.Scene {
   keys!: Phaser.Types.Input.Keyboard.CursorKeys;
   wasd!: Phaser.Input.Keyboard.Key[];
-  winddirection: WindDirection = { xspeed: Math.floor(Math.random() * 3) + 1, yspeed: Math.floor(Math.random() * 3) + 1 };
+  winddirection: WindDirection = {
+    xspeed: Math.floor(Math.random() * 3) + 1,
+    yspeed: Math.floor(Math.random() * 3) + 1,
+  };
   numberofclouds: number = 0;
   //playerisWalking:boolean;
   goldDisplay!: Phaser.GameObjects.Text;
@@ -58,6 +43,7 @@ export default class Overworld extends Phaser.Scene {
   FlyingRatGroup!: Physics.Arcade.Group;
   EarthGolemGroup!: Physics.Arcade.Group;
   AirElementalGroup!: Physics.Arcade.Group;
+  GroklinGroup!: Physics.Arcade.Group;
   buildingsGroup!: Physics.Arcade.Group;
   chapter1Group!: Phaser.Physics.Arcade.Group;
   player!: Player;
@@ -76,12 +62,10 @@ export default class Overworld extends Phaser.Scene {
 
   constructor() {
     super("Overworld");
-
   }
 
   init(data) {
     this.wrGame = data;
-
   }
 
   createGoldOverlay = () => {
@@ -96,14 +80,6 @@ export default class Overworld extends Phaser.Scene {
     this.goldCoin.setAlpha(0.6);
   };
 
-  SummonMobs = (group: Phaser.Physics.Arcade.Group, enemyid: string, numberOfMobsToCreate: number, x?: number, y?: number) => {
-    for (let countmade = 0; countmade < numberOfMobsToCreate; countmade++) {
-      let mobX = x ?? RandomCoord(450) + 10;
-      let mobY = y ?? RandomCoord(450) + 10;
-      let mob = group.get(mobX, mobY, enemyid);
-      return mob;
-    }
-  };
 
   isCloseEnoughToInteract = (obj: Phaser.GameObjects.GameObject) => {
     return this.player.distanceFrom(obj as Phaser.GameObjects.Sprite) > 40;
@@ -122,7 +98,7 @@ export default class Overworld extends Phaser.Scene {
     this.player.on("pointerup", () => {
       hidePlayerTalkBubble(this);
     });
-    return this.player
+    return this.player;
   };
 
   createTiles() {
@@ -146,84 +122,101 @@ export default class Overworld extends Phaser.Scene {
     let AddClouds = this.time.addEvent({
       delay: 20000,
       repeat: -1,
-      callback: () => {
-      },
+      callback: () => { },
     });
 
     let AddFlyingRatsAndClouds = this.time.addEvent({
       delay: 20000,
       repeat: -1,
       callback: () => {
-        if (this.FlyingRatGroup.children.size < 5) {
-          let flyingrat = this.SummonMobs(this.FlyingRatGroup, 'enemy-flyingrat', 1).setDepth(20);
-          flyingrat.setInteractive();
-          flyingrat.on('pointerdown', () => {
-            flyingrat.destroyFlyingRat();
-            this.events.emit('player-killed-flyingrat')
-          })
-        }
+        /*       if (this.FlyingRatGroup.children.size < 5) {
+                let flyingrat = this.SummonMobs(
+                  this.FlyingRatGroup,
+                  "enemy-flyingrat",
+                  1
+                ).setDepth(20);
+                flyingrat.setInteractive();
+                flyingrat.on("pointerdown", () => {
+                  flyingrat.destroyFlyingRat();
+                  this.events.emit("player-killed-flyingrat");
+                });
+              } */
 
         if (this.numberofclouds < 2) {
           RandomCloud(this);
         }
-
       },
     });
+
+
   }
+
+
 
   preload() {
     this.createTiles();
     this.createStructuresAndWeather();
-    createAnimations(this);
+    createUIAnimations(this);
 
     this.events.addListener("spawnChapter1", () => {
       this.spawnChapter1();
     });
+    this.time.addEvent({
+      delay: 500,
+      repeat: -1,
+      callback: () => {
+        var particles = this.add.particles("smoke");
+        var emitter = particles
+          .createEmitter({ maxParticles: 2, speed: 3, blendMode: BlendModes.NORMAL, follow: this.player, followOffset: { x: 0, y: 0 }, scale: { start: 0.8, end: 0.2 } })
+          .setPosition(this.player.x, this.player.y + 5).setAlpha(0.4);
 
+      }
+    })
     this.time.addEvent({
       //Make noise if player is moving
       delay: 1000,
       repeat: -1,
       callback: () => {
         if (this.player.isMoving && this.player != null) {
+
           let step1 = this.game.sound.add("Forest1");
           let step2 = this.game.sound.add("Forest2");
           let step3 = this.game.sound.add("Forest1");
 
-
-          step1.play({ delay: 0.5, volume: 0.09, rate: 1.2, detune: Phaser.Math.Between(600, 200) });
-          step2.play({ delay: 0.1, volume: 0.09, rate: 1.2, detune: Phaser.Math.Between(200, 200) });
-          step3.play({ delay: 0.8, volume: 0.09, rate: 1.0, detune: Phaser.Math.Between(-1200, 200) });
-
+          step1.play({
+            delay: 0.5,
+            volume: 0.09,
+            rate: 1.2,
+            detune: Phaser.Math.Between(600, 200),
+          });
+          step2.play({
+            delay: 0.1,
+            volume: 0.09,
+            rate: 1.2,
+            detune: Phaser.Math.Between(200, 200),
+          });
+          step3.play({
+            delay: 0.8,
+            volume: 0.09,
+            rate: 1.0,
+            detune: Phaser.Math.Between(-1200, 200),
+          });
         }
       },
     });
-
   }
 
   spawnChapter1() {
 
-    this.chapter1Group = newEnemyGroup(this, Shaman, true, true);
     this.deerGroup = newEnemyGroup(this, Deer, true, true);
+    this.GroklinGroup = newEnemyGroup(this, Groklin, true, true);
 
-    this.FlyingRatGroup = newEnemyGroup(this, FlyingRat, true, false);
     RandomCloud(this);
     RandomCloud(this);
-    let shaman: Shaman = this.SummonMobs(this.chapter1Group, "enemy-rat", 1, 329, 361);
 
-    let deer1: Deer = this.SummonMobs(this.deerGroup, "enemy-deer", 1, 309, 381).setScale(Phaser.Math.Between(0.5, 1.5));
-    let deer2: Deer = this.SummonMobs(this.deerGroup, "enemy-deer", 1, 129, 161).setScale(Phaser.Math.Between(0.5, 1.5));
-
-    shaman.setImmovable();
-    this.physics.add.collider(this.chapter1Group, this.player);
-    this.physics.add.collider(shaman, this.baseLayer);
-    this.physics.add.collider(shaman, this.decorLayer);
-    this.physics.add.collider(deer1, this.baseLayer);
-    this.physics.add.collider(deer1, this.decorLayer);
-    this.physics.add.collider(deer2, this.baseLayer);
-    this.physics.add.collider(deer2, this.decorLayer);
-
-    shaman.setInteractive();
+    let groklin: Groklin = SummonMobs(this.GroklinGroup, "enemy-groklin", 1, 282, 362).setScale(
+      Phaser.Math.Between(0.6, 0.8)
+    );
 
     this.buildingsGroup.children.iterate((child) => {
       child.on("pointerup", () => {
@@ -231,27 +224,11 @@ export default class Overworld extends Phaser.Scene {
       });
     });
 
-    this.chapter1Group.children.iterate((child) => {
+    this.GroklinGroup.children.iterate((child) => {
       child.on("pointerup", () => {
         this.events.emit("player-interact-enemy", child);
       });
     });
-
-  }
-
-  drawHealthBar(player: Player) {
-    let Empties = 5 - player.status.Condition!
-    let x = 100;
-    for (let i = 0; i < player.status.Condition!; i++) {
-      this.add.sprite(x, 480, "fullheart");
-      x += 10;
-    }
-    for (let i = 0; i < Empties; i++) {
-      this.add.sprite(x, 480, "emptyheart");
-      x += 10;
-    }
-
-
   }
 
   create() {
@@ -259,25 +236,27 @@ export default class Overworld extends Phaser.Scene {
     this.createOverworldPlayer();
     this.spawnChapter1();
     this.createGoldOverlay();
-    this.drawHealthBar(this.player);
+    this.player.updateHealthIndicators(this);
     this.player.setDepth(2);
-    this.player.Say(GetRandomExploreText(), this)
-
+    this.player.Say(GetRandomExploreText(), this);
     this.baseLayer.setInteractive();
+
+
     this.baseLayer.on("pointerdown", (clicked) => {
       console.log(clicked.x, clicked.y);
+
       var particles = this.add.particles("blueparticle");
       var emitter = particles
-        .createEmitter({ maxParticles: 2, speed: 15, blendMode: "ADD" })
-        .setScale(0.2)
-        .setPosition(clicked.x, clicked.y);
+        .createEmitter({ maxParticles: 5, speed: 15, blendMode: BlendModes.ADD })
+        .setScale(0.1)
+        .setPosition(clicked.x, clicked.y).setAlpha(0.5);
+
       let chanceForBanter = Phaser.Math.Between(0, 8);
       if (chanceForBanter == 0) {
-        this.player.Say(GetRandomExploreText(), this)
+        this.player.Say(GetRandomExploreText(), this);
       } else if (chanceForBanter == 1 || 2 || 3) {
-        this.player.Say({ lines: "Its nothing.." }, this, 1000)
+        this.player.Say({ lines: "Its nothing.." }, this, 1000);
       }
-
     });
   }
 
@@ -297,10 +276,10 @@ export default class Overworld extends Phaser.Scene {
     }
 
     if (this.input.keyboard.addKey("SPACE").isDown) {
-      this.cameras.main.zoomTo(2, 60, "Linear", true);
+      this.cameras.main.zoomTo(1.65, 60, Phaser.Math.Easing.Bounce.In, true);
       this.cameras.main.startFollow(this.player);
     } else {
-      this.cameras.main.zoomTo(1, 60, "Linear", true);
+      this.cameras.main.zoomTo(1, 60, Phaser.Math.Easing.Bounce.Out, true);
       this.cameras.main.stopFollow();
       this.cameras.main.centerOn(this.cameras.main.centerX, this.cameras.main.centerY);
     }

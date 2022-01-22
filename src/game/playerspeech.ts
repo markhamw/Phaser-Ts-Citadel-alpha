@@ -36,7 +36,7 @@ export function GetRandomPositiveBuildingIdentLine(sprite: Phaser.GameObjects.Sp
     let LinePositiveIdents = [
         `Its the ${sprite.name}`,
         `Looks like a ${sprite.name}`,
-        `I think its the ${sprite.name}`,
+        `I think its a ${sprite.name}`,
     ]
     let randomIndex = Phaser.Math.Between(0, LinePositiveIdents.length - 1);
     return LinePositiveIdents[randomIndex];
@@ -44,9 +44,9 @@ export function GetRandomPositiveBuildingIdentLine(sprite: Phaser.GameObjects.Sp
 
 export function GetRandomPositiveEnemyIdentLine(sprite: Phaser.GameObjects.Sprite): string {
     let LinePositiveIdents = [
-        `Its ${sprite.name} the ${sprite.constructor.name}, guilty of loitering `,
-        `Looks like ${sprite.name} the ${sprite.constructor.name} - just standing around`,
-        `I believe its ${sprite.name} the ${sprite.constructor.name} standing before me`,
+        `Its a ${sprite.name}, guilty of loitering`,
+        `Looks like a ${sprite.name} - just standing around`,
+        `I believe its a ${sprite.name} standing before me`,
     ]
     let randomIndex = Phaser.Math.Between(0, LinePositiveIdents.length - 1);
     return LinePositiveIdents[randomIndex];

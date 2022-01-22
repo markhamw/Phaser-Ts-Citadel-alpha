@@ -10,7 +10,7 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "DevilAttack(Frame 2).png",
+					"filename": "DevilAttack2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "DevilDeath(Frame 2).png",
+					"filename": "DevilDeath2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "DevilAttack(Frame 1).png",
+					"filename": "DevilAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "DevilHit(Frame 1).png",
+					"filename": "DevilHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "DevilHit(Frame 4).png",
+					"filename": "DevilHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "DevilIdle(Frame 1).png",
+					"filename": "DevilIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "DevilIdle(Frame 4).png",
+					"filename": "DevilIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "DevilWalk(Frame 1).png",
+					"filename": "DevilWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "DevilWalk(Frame 2).png",
+					"filename": "DevilWalk2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "DevilWalk(Frame 3).png",
+					"filename": "DevilWalk3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "DevilAttack(Frame 3).png",
+					"filename": "DevilAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "DevilWalk(Frame 4).png",
+					"filename": "DevilWalk4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "DevilAttack(Frame 4).png",
+					"filename": "DevilAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "DevilDeath(Frame 1).png",
+					"filename": "DevilDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "DevilHit(Frame 2).png",
+					"filename": "DevilHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "DevilDeath(Frame 3).png",
+					"filename": "DevilDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "DevilIdle(Frame 2).png",
+					"filename": "DevilIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "DevilIdle(Frame 3).png",
+					"filename": "DevilIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "DevilDeath(Frame 4).png",
+					"filename": "DevilDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "DevilHit(Frame 3).png",
+					"filename": "DevilHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

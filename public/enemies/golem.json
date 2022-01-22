@@ -10,7 +10,7 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "GolemHit(Frame 3).png",
+					"filename": "GolemHit3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "GolemHit(Frame 4).png",
+					"filename": "GolemHit4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "GolemWalk(Frame 2).png",
+					"filename": "GolemWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "GolemDeath(Frame 1).png",
+					"filename": "GolemDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "GolemIdle(Frame 1).png",
+					"filename": "GolemIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "GolemWalk(Frame 1).png",
+					"filename": "GolemWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "GolemWalk(Frame 3).png",
+					"filename": "GolemWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "GolemIdle(Frame 3).png",
+					"filename": "GolemIdle3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "GolemIdle(Frame 4).png",
+					"filename": "GolemIdle4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "GolemHit(Frame 1).png",
+					"filename": "GolemHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "GolemHit(Frame 2).png",
+					"filename": "GolemHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "GolemAttack(Frame 3).png",
+					"filename": "GolemAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "GolemAttack(Frame 1).png",
+					"filename": "GolemAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "GolemDeath(Frame 2).png",
+					"filename": "GolemDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "GolemAttack(Frame 2).png",
+					"filename": "GolemAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "GolemIdle(Frame 2).png",
+					"filename": "GolemIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "GolemDeath(Frame 3).png",
+					"filename": "GolemDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "GolemAttack(Frame 4).png",
+					"filename": "GolemAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "GolemWalk(Frame 4).png",
+					"filename": "GolemWalk4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "GolemDeath(Frame 4).png",
+					"filename": "GolemDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

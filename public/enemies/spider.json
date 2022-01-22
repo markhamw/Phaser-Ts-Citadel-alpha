@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "SpiderAttack(Frame 2).png",
+					"filename": "SpiderAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "SpiderDeath(Frame 3).png",
+					"filename": "SpiderDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "SpiderAttack(Frame 3).png",
+					"filename": "SpiderAttack3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "SpiderDeath(Frame 2).png",
+					"filename": "SpiderDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "SpiderHit(Frame 3).png",
+					"filename": "SpiderHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "SpiderDeath(Frame 1).png",
+					"filename": "SpiderDeath1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "SpiderHit(Frame 2).png",
+					"filename": "SpiderHit2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "SpiderHit(Frame 4).png",
+					"filename": "SpiderHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "SpiderAttack(Frame 4).png",
+					"filename": "SpiderAttack4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "SpiderHit(Frame 1).png",
+					"filename": "SpiderHit1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "SpiderIdle(Frame 1).png",
+					"filename": "SpiderIdle1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "SpiderIdle(Frame 4).png",
+					"filename": "SpiderIdle4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "SpiderWalk(Frame 1).png",
+					"filename": "SpiderWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "SpiderWalk(Frame 2).png",
+					"filename": "SpiderWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "SpiderWalk(Frame 3).png",
+					"filename": "SpiderWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "SpiderWalk(Frame 4).png",
+					"filename": "SpiderWalk4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "SpiderIdle(Frame 2).png",
+					"filename": "SpiderIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "SpiderIdle(Frame 3).png",
+					"filename": "SpiderIdle3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "SpiderAttack(Frame 1).png",
+					"filename": "SpiderAttack1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "SpiderDeath(Frame 4).png",
+					"filename": "SpiderDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

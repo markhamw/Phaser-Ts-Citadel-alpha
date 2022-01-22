@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "MageAttack(Frame 1).png",
+					"filename": "MageAttack1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "MageAttack(Frame 3).png",
+					"filename": "MageAttack3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "MageAttack(Frame 4).png",
+					"filename": "MageAttack4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "MageDeath(Frame 1).png",
+					"filename": "MageDeath1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "MageHit(Frame 1).png",
+					"filename": "MageHit1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "MageIdle(Frame 1).png",
+					"filename": "MageIdle1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "MageAttack(Frame 2).png",
+					"filename": "MageAttack2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "MageHit(Frame 2).png",
+					"filename": "MageHit2.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "MageIdle(Frame 3).png",
+					"filename": "MageIdle3.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "MageIdle(Frame 4).png",
+					"filename": "MageIdle4.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "MageHit(Frame 3).png",
+					"filename": "MageHit3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "MageHit(Frame 4).png",
+					"filename": "MageHit4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "MageIdle(Frame 2).png",
+					"filename": "MageIdle2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "MageWalk(Frame 4).png",
+					"filename": "MageWalk4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "MageWalk(Frame 1).png",
+					"filename": "MageWalk1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "MageWalk(Frame 3).png",
+					"filename": "MageWalk3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "MageDeath(Frame 2).png",
+					"filename": "MageDeath2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "MageWalk(Frame 2).png",
+					"filename": "MageWalk2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "MageDeath(Frame 3).png",
+					"filename": "MageDeath3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "MageDeath(Frame 4).png",
+					"filename": "MageDeath4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
