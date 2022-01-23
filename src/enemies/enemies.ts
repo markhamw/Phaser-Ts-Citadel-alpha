@@ -1,9 +1,9 @@
 import Player from "~/characters/Player";
 import { CreateAnimationSet } from "~/game/gamelogic";
 import Overworld from "~/scenes/Overworld";
-import { UnitData } from "./Groklin";
+import Unit, { EnemyData, GetEnemyDataByName } from "./Unit";
 
-const enemies: UnitData[] = [
+const enemies: EnemyData[] = [
   {
     name: "enemy-titan",
     PathToPNG: "enemies/titan.png",
@@ -256,6 +256,16 @@ const enemies: UnitData[] = [
   }, */
 
 
+export function CreateEnemy(scene: any, enemy: string, x: number, y: number, scale?: number) {
+  if (!scene.unitgroup) {
+    scene.unitgroup = newEnemyGroup(scene, Unit, true, true);
+  }
+  let unit = scene.add.unit(x, y, enemy, GetEnemyDataByName(enemies, enemy));
+  scene.unitgroup.add(unit)
+  unit.setDepth(3);
+  return unit;
+}
+
 export interface AnimatedEnemy extends Phaser.Physics.Arcade.Sprite {
   IdleAnim(): void;
   WalkAnim(): void;
@@ -270,28 +280,22 @@ export interface Collides extends Phaser.Physics.Arcade.Sprite {
   handleCollisionWithSprite(sprite: Phaser.Physics.Arcade.Sprite): void;
 }
 
-export const CollideWithOverWorldAndPlayer = (sprite: any, overworld: Overworld) => {
-  sprite.scene.physics.add.collider(sprite, overworld.baseLayer);
-  sprite.scene.physics.add.collider(sprite, overworld.decorLayer);
-  if (overworld.player != null && overworld.player.active) {
-    sprite.scene.physics.add.collider(sprite, overworld.player);
+export const CollideWithOverWorldAndPlayer = (sprite: any, scene: any) => {
+  sprite.scene.physics.add.collider(sprite, scene.baseLayer);
+  sprite.scene.physics.add.collider(sprite, scene.decorLayer);
+  if (scene.player != null && scene.player.active) {
+    sprite.scene.physics.add.collider(sprite, scene.player);
   }
 }
 
-export interface Behavior extends Phaser.Physics.Arcade.Sprite {
-  MoveEvent: Phaser.Time.TimerEvent;
-  MoveEventDelayMinimum: number;
-  MoveEventDelayMaximum: number;
-  Move(): void;
-}
 
 export const IdleAnim = (sprite: any) => {
   sprite.scene.anims.create({
-    key: sprite.UnitData.IdleAnimKey,
-    frames: sprite.anims.generateFrameNames(sprite.UnitData.SpriteAtlasKey, {
+    key: sprite.enemydata.IdleAnimKey,
+    frames: sprite.anims.generateFrameNames(sprite.enemydata.SpriteAtlasKey, {
       start: 1,
       end: 4,
-      prefix: sprite.UnitData.JsonPrefixIdle,
+      prefix: sprite.enemydata.JsonPrefixIdle,
       suffix: ".png",
     }),
     repeat: -1,
@@ -301,11 +305,11 @@ export const IdleAnim = (sprite: any) => {
 
 export const WalkAnim = (sprite: any) => {
   sprite.scene.anims.create({
-    key: sprite.UnitData.WalkAnimKey,
-    frames: sprite.anims.generateFrameNames(sprite.UnitData.SpriteAtlasKey, {
+    key: sprite.enemydata.WalkAnimKey,
+    frames: sprite.anims.generateFrameNames(sprite.enemydata.SpriteAtlasKey, {
       start: 1,
       end: 4,
-      prefix: sprite.UnitData.JsonPrefixWalk,
+      prefix: sprite.enemydata.JsonPrefixWalk,
       suffix: ".png",
     }),
     repeat: -1,
@@ -315,11 +319,11 @@ export const WalkAnim = (sprite: any) => {
 
 export const AttackAnim = (sprite: any) => {
   sprite.scene.anims.create({
-    key: sprite.UnitData.AttackAnimKey,
-    frames: sprite.anims.generateFrameNames(sprite.UnitData.SpriteAtlasKey, {
+    key: sprite.enemydata.AttackAnimKey,
+    frames: sprite.anims.generateFrameNames(sprite.enemydata.SpriteAtlasKey, {
       start: 1,
       end: 4,
-      prefix: sprite.UnitData.JsonPrefixAttack,
+      prefix: sprite.enemydata.JsonPrefixAttack,
       suffix: ".png",
     }),
     repeat: -1,
@@ -329,11 +333,11 @@ export const AttackAnim = (sprite: any) => {
 
 export const HitAnim = (sprite: any) => {
   sprite.scene.anims.create({
-    key: sprite.UnitData.HitAnimKey,
-    frames: sprite.anims.generateFrameNames(sprite.UnitData.SpriteAtlasKey, {
+    key: sprite.enemydata.HitAnimKey,
+    frames: sprite.anims.generateFrameNames(sprite.enemydata.SpriteAtlasKey, {
       start: 1,
       end: 4,
-      prefix: sprite.UnitData.JsonPrefixHit,
+      prefix: sprite.enemydata.JsonPrefixHit,
       suffix: ".png",
     }),
     repeat: -1,
@@ -343,11 +347,11 @@ export const HitAnim = (sprite: any) => {
 
 export const DeathAnim = (sprite: any) => {
   sprite.scene.anims.create({
-    key: sprite.UnitData.DeathAnimKey,
-    frames: sprite.anims.generateFrameNames(sprite.UnitData.SpriteAtlasKey, {
+    key: sprite.enemydata.DeathAnimKey,
+    frames: sprite.anims.generateFrameNames(sprite.enemydata.SpriteAtlasKey, {
       start: 1,
       end: 4,
-      prefix: sprite.UnitData.JsonPrefixDeath,
+      prefix: sprite.enemydata.JsonPrefixDeath,
       suffix: ".png",
     }),
     repeat: -1,
@@ -357,19 +361,19 @@ export const DeathAnim = (sprite: any) => {
 
 
 export function AnimatedEnemyIdle(sprite: any) {
-  sprite.anims.play(sprite.UnitData.IdleAnimKey, true);
+  sprite.anims.play(sprite.enemydata.IdleAnimKey, true);
 }
 export function AnimatedEnemyWalk(sprite: any) {
-  sprite.anims.play(sprite.UnitData.WalkAnimKey, true);
+  sprite.anims.play(sprite.enemydata.WalkAnimKey, true);
 }
 export function AnimatedEnemyAttack(sprite: any) {
-  sprite.anims.play(sprite.UnitData.AttackAnimKey, true);
+  sprite.anims.play(sprite.enemydata.AttackAnimKey, true);
 }
 export function AnimatedEnemyHit(sprite: any) {
-  sprite.anims.play(sprite.UnitData.HitAnimKey, true);
+  sprite.anims.play(sprite.enemydata.HitAnimKey, true);
 }
 export function AnimatedEnemyDeath(sprite: any) {
-  sprite.anims.play(sprite.UnitData.DeathAnimKey, true);
+  sprite.anims.play(sprite.enemydata.DeathAnimKey, true);
 }
 
 export function InitAnims(sprite: any): void {

@@ -1,28 +1,20 @@
 import { Physics } from "phaser";
 import { WRGame } from "~/game/game";
-import { AddWASDKeysToScene, CreateAnimationSet, RandomCoord } from "~/game/gamelogic";
+import { AddWASDKeysToScene } from "~/game/gamelogic";
 import {
   WindDirection,
   GenerateBuildings,
   RandomCloud,
   createBorder,
-  ShowMenu,
   createOverworldTileMap,
+  newGroup,
+  createGoldOverlay,
 } from "../game/overworldlogic";
 import "../characters/Player";
-import { GetCoinAnims, GetSmokeAnims } from "~/anims/WorldAnims";
-import {
-  createUIAnimations,
-} from "~/anims/EnemyAnims";
-
-import { enemies, newEnemyGroup } from "~/enemies/enemies";
-
 import Player from "../characters/Player";
-import Overworld from "./Overworld";
-import { GetRandomExploreText } from "~/game/playerspeech";
-import TalkBubbleContext from "~/characters/Player";
-import Deer from "~/enemies/Deer";
-import { displayTitleText, startIntro } from "~/game/overworldtitlelogic";
+import { displayTitleTextAndEnableInputs, startIntro } from "~/game/overworldtitlelogic";
+import { newEnemyGroup } from "~/enemies/enemies";
+import { GetWaterfallAnims } from "~/anims/WorldAnims";
 
 
 interface Title extends Phaser.Scene {
@@ -31,8 +23,6 @@ interface Title extends Phaser.Scene {
   titletext2: Phaser.GameObjects.Text;
   titletext4: Phaser.GameObjects.Text;
   titletext5: Phaser.GameObjects.Text;
-  titletext6: Phaser.GameObjects.Text;
-
 }
 
 export default class OverworldTitle extends Phaser.Scene implements Title {
@@ -55,10 +45,14 @@ export default class OverworldTitle extends Phaser.Scene implements Title {
 
   wrGame!: WRGame;
   debug!: boolean;
+
+  titletext0!: Phaser.GameObjects.Text;
   titletext1!: Phaser.GameObjects.Text;
   titletext2!: Phaser.GameObjects.Text;
   titletext4!: Phaser.GameObjects.Text;
-  titletext0!: Phaser.GameObjects.Text;
+  titletext5!: Phaser.GameObjects.Text;
+
+  titleAvatarSelect!: Phaser.GameObjects.Image;
 
   leftArrow!: Phaser.GameObjects.Sprite;
   rightArrow!: Phaser.GameObjects.Sprite;
@@ -66,8 +60,8 @@ export default class OverworldTitle extends Phaser.Scene implements Title {
 
   baseLayer!: Phaser.Tilemaps.TilemapLayer;
   decorLayer!: Phaser.Tilemaps.TilemapLayer;
-  titletext5!: Phaser.GameObjects.Text;
-  titletext6!: Phaser.GameObjects.Text;
+  topLayer!: Phaser.Tilemaps.TilemapLayer;
+
 
   constructor() {
     super("OverworldTitle");
@@ -76,24 +70,6 @@ export default class OverworldTitle extends Phaser.Scene implements Title {
   init(data) {
     this.wrGame = data;
   }
-
-  /* createEnemyGroups = () => {
-    this.RatGroup = newEnemyGroup(this, Rat, true, true);
-    this.RatOgreGroup = newEnemyGroup(this, RatOgre, true, true);
-    this.ShamanGroup = newEnemyGroup(this, Shaman, true, true);
-    this.FlyingRatGroup = newEnemyGroup(this, FlyingRat, false, false);
-    this.EarthGolemGroup = newEnemyGroup(this, EarthGolem, true, true);
-    this.AirElementalGroup = newEnemyGroup(this, AirElemental, true, true);
- 
-    this.SummonMobs(this.ShamanGroup, "enemy-shaman", 5, 287, 425);
-    this.SummonMobs(this.RatOgreGroup, "enemy-ratogre", 5, 156, 284);
-    this.SummonMobs(this.RatGroup, "enemy-rat", 8, 199, 409);
-    this.SummonMobs(this.FlyingRatGroup, "enemy-flyingrat", 15);
-    this.SummonMobs(this.EarthGolemGroup, "enemy-earthgolem", 3, 444, 262);
-    this.SummonMobs(this.AirElementalGroup, "enemy-airelemental", 1, 374, 392);
- 
-
-  }; */
 
   createMenuKeyPressEvents = () => {
     this.wasd[1].on("up", () => {
@@ -106,55 +82,37 @@ export default class OverworldTitle extends Phaser.Scene implements Title {
         this.events.emit("changeHead", "right");
       }
     });
-    this.keys.space.on("up", () => {
-      if (!this.wrGame.hasIntroStarted) {
-        this.wrGame.hasIntroStarted = true;
-        this.events.emit("startintro");
-      }
-    });
+
   };
-
-
 
   createOverworldPlayerStationary = () => {
     this.player = this.add.player(320, 325, "playeroverworld", "player-movedown-1.png");
     this.player.body.setSize(this.player.width * 0.75, this.player.height * 0.75);
     this.player.stationary = true;
-
   };
 
 
   preload() {
-    this.wasd = AddWASDKeysToScene(this);
-    //Add Spacebar and Shift and arrow keys to scene
-    this.keys = this.input.keyboard.createCursorKeys();
+
     createOverworldTileMap(this);
+    createGoldOverlay(this);
     GenerateBuildings(this);
-    RandomCloud(this);
-    RandomCloud(this);
+    GetWaterfallAnims(this.anims, 4);
 
+    let w1 = this.add.sprite(300, 200, "waterfall", "waterfall-2.png").setOrigin(0, 0).setDepth(0);
+    w1.anims.play("waterfall-action", true);
 
-    /* this.scene.events.addListener("removeTitleMobs", () => {
-      DestroySprite(this);
-  }); */
-
-    //this.createEnemyGroups();
-    // this.SummonMobs(this.FlyingRatGroup, "enemy-Flyingrat", 1);
-    //  this.SummonMobs(this.FlyingRatGroup, "enemy-Flyingrat", 1);
     this.events.addListener("startintro", () => {
       startIntro(this);
     });
-
     this.events.addListener("spawnChapter1", () => {
       this.scene.start("Overworld", this.wrGame);
     });
-
     let initialTitleTextEvent = this.time.addEvent({
       delay: 500,
       repeat: 0,
       callback: () => {
-        displayTitleText(this);
-        ShowMenu(this);
+        displayTitleTextAndEnableInputs(this);
         this.createMenuKeyPressEvents();
       },
     });
@@ -164,6 +122,22 @@ export default class OverworldTitle extends Phaser.Scene implements Title {
     this.sound.play("music2", { volume: 0.03, loop: true });
     createBorder(this);
     this.lights.enable();
+    let mainlights = this.lights.setAmbientColor(0xCEE8FE);
+    //this.lights.addPointLight(10, 240, 0x333333, 500).setAlpha(0.5);
+    let light = this.lights.addLight(0, 0, 0, 0xDCE2DA, 2)
+
+    this.tweens.add({
+      targets: light,
+      x: { from: 50, to: 500 },
+      y: { from: 60, to: 450 },
+      intensity: { from: .3, to: .8 },
+      duration: 200000,
+      radius: { from: 200000, to: 200300 },
+      ease: "linear",
+      yoyo: false,
+      repeat: -1,
+    })
+
 
   }
 
@@ -173,3 +147,5 @@ export default class OverworldTitle extends Phaser.Scene implements Title {
     }
   }
 }
+
+

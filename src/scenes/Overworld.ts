@@ -7,23 +7,25 @@ import {
   GenerateBuildings,
   RandomCloud,
   SummonMobs,
+  Layers,
+  createOverworldTileMap,
+  createBorder,
+  createGoldOverlay,
 } from "../game/overworldlogic";
 import "../characters/Player";
 import { GetCoinAnims, GetSmokeAnims } from "~/anims/WorldAnims";
-import { enemies, newEnemyGroup } from "~/enemies/enemies";
+import { CreateEnemy, enemies, newEnemyGroup } from "~/enemies/enemies";
 import Player from "../characters/Player";
 import { hidePlayerTalkBubble } from "~/game/playerlogic";
 import { enterQuery } from "bitecs";
 import TalkBubbleContext from "~/characters/Player";
 import { GetRandomExploreText } from "~/game/playerspeech";
-import Deer from "~/enemies/Deer";
-import Groklin from "~/enemies/Groklin";
+
+import Unit, { GetEnemyDataByName } from "~/enemies/Unit";
 import { createUIAnimations } from "~/anims/EnemyAnims";
 
-const enum Layers {
-  Base,
-  Decor,
-}
+
+
 
 export default class Overworld extends Phaser.Scene {
   keys!: Phaser.Types.Input.Keyboard.CursorKeys;
@@ -36,16 +38,7 @@ export default class Overworld extends Phaser.Scene {
   //playerisWalking:boolean;
   goldDisplay!: Phaser.GameObjects.Text;
   goldCoin!: Phaser.GameObjects.Sprite;
-
-  RatGroup!: Phaser.Physics.Arcade.Group;
-  RatOgreGroup!: Phaser.Physics.Arcade.Group;
-  ShamanGroup!: Physics.Arcade.Group;
-  FlyingRatGroup!: Physics.Arcade.Group;
-  EarthGolemGroup!: Physics.Arcade.Group;
-  AirElementalGroup!: Physics.Arcade.Group;
-  GroklinGroup!: Physics.Arcade.Group;
   buildingsGroup!: Physics.Arcade.Group;
-  chapter1Group!: Phaser.Physics.Arcade.Group;
   player!: Player;
   info!: Phaser.GameObjects.Sprite;
 
@@ -54,11 +47,11 @@ export default class Overworld extends Phaser.Scene {
   leftArrow!: Phaser.GameObjects.Sprite;
   rightArrow!: Phaser.GameObjects.Sprite;
   head!: Phaser.GameObjects.Sprite;
-
   baseLayer!: Phaser.Tilemaps.TilemapLayer;
   decorLayer!: Phaser.Tilemaps.TilemapLayer;
   clearBubbleEvent!: Phaser.Time.TimerEvent;
-  deerGroup!: Physics.Arcade.Group;
+  unitgroup!: Physics.Arcade.Group;
+  topLayer!: Phaser.Tilemaps.TilemapLayer;
 
   constructor() {
     super("Overworld");
@@ -68,28 +61,18 @@ export default class Overworld extends Phaser.Scene {
     this.wrGame = data;
   }
 
-  createGoldOverlay = () => {
-    this.goldDisplay = this.add.text(32, 470, "x" + this.player.status.Gold, {
-      fontSize: "20px",
-      fontFamily: "breathfire",
-      color: "#ffffff",
-    });
-    this.goldCoin = this.add.sprite(25, 480, "coin", "coin_1.png");
-    this.goldCoin.anims.play("coinrotate");
-    this.goldCoin.setScale(2.5);
-    this.goldCoin.setAlpha(0.6);
-  };
-
 
   isCloseEnoughToInteract = (obj: Phaser.GameObjects.GameObject) => {
     return this.player.distanceFrom(obj as Phaser.GameObjects.Sprite) > 40;
   };
 
   createOverworldPlayer = (): Player => {
-    this.player = this.add.player(320, 325, "playeroverworld", "player-movedown-1.png");
+    this.player = this.add.player(320, 325, "playeroverworld", "player-movedown-1.png").setPipeline("Light2D").setDepth(10);
     this.player.body.setSize(this.player.width * 0.75, this.player.height * 0.75);
     this.physics.add.collider(this.player, this.baseLayer);
     this.physics.add.collider(this.player, this.decorLayer);
+    this.physics.add.collider(this.player, this.topLayer);
+
     this.player.setInteractive();
     this.player.on("pointerdown", () => {
       this.player.Say(GetRandomExploreText(), this);
@@ -105,59 +88,27 @@ export default class Overworld extends Phaser.Scene {
     let map2 = this.make.tilemap({ key: "allbiomes" });
     const tileset3 = map2.addTilesetImage("allbiomes", "tiles3");
 
+    this.topLayer = map2.createLayer(Layers.Top, tileset3);
     this.baseLayer = map2.createLayer(Layers.Base, tileset3);
     this.decorLayer = map2.createLayer(Layers.Decor, tileset3);
 
-    this.baseLayer.setDepth(0);
-    this.decorLayer.setDepth(0);
     this.baseLayer.setCollisionByProperty({ collides: true });
     this.decorLayer.setCollisionByProperty({ collides: true });
-  }
-
-  createStructuresAndWeather() {
-    GenerateBuildings(this);
-    RandomCloud(this);
-    RandomCloud(this);
-
-    let AddClouds = this.time.addEvent({
-      delay: 20000,
-      repeat: -1,
-      callback: () => { },
-    });
-
-    let AddFlyingRatsAndClouds = this.time.addEvent({
-      delay: 20000,
-      repeat: -1,
-      callback: () => {
-        /*       if (this.FlyingRatGroup.children.size < 5) {
-                let flyingrat = this.SummonMobs(
-                  this.FlyingRatGroup,
-                  "enemy-flyingrat",
-                  1
-                ).setDepth(20);
-                flyingrat.setInteractive();
-                flyingrat.on("pointerdown", () => {
-                  flyingrat.destroyFlyingRat();
-                  this.events.emit("player-killed-flyingrat");
-                });
-              } */
-
-        if (this.numberofclouds < 2) {
-          RandomCloud(this);
-        }
-      },
-    });
-
+    this.topLayer.setCollisionByProperty({ collides: true });
 
   }
+
 
 
 
   preload() {
-    this.createTiles();
-    this.createStructuresAndWeather();
+    createOverworldTileMap(this);
+    GenerateBuildings(this);
     createUIAnimations(this);
-
+    createBorder(this);
+    this.lights.enable();
+    this.lights.addLight(0, 0, 1000, 0xffffff);
+    let mainlights = this.lights.setAmbientColor(0xCEE8FE);
     this.events.addListener("spawnChapter1", () => {
       this.spawnChapter1();
     });
@@ -208,40 +159,39 @@ export default class Overworld extends Phaser.Scene {
 
   spawnChapter1() {
 
-    this.deerGroup = newEnemyGroup(this, Deer, true, true);
-    this.GroklinGroup = newEnemyGroup(this, Groklin, true, true);
-
+    let unit = CreateEnemy(this, "enemy-groklin", 282, 362).
+      setPipeline("Light2D");
+    unit.inBattle = true;
     RandomCloud(this);
     RandomCloud(this);
 
-    let groklin: Groklin = SummonMobs(this.GroklinGroup, "enemy-groklin", 1, 282, 362).setScale(
-      Phaser.Math.Between(0.6, 0.8)
-    );
+    /*     let groklin: Groklin = SummonMobs(this.GroklinGroup, "enemy-groklin", 1, 282, 362).setScale(
+          Phaser.Math.Between(0.6, 0.8)
+        ); */
 
-    this.buildingsGroup.children.iterate((child) => {
-      child.on("pointerup", () => {
-        this.events.emit("player-interact-building", child);
-      });
-    });
+    /*   this.buildingsGroup.children.iterate((child) => {
+        child.on("pointerup", () => {
+          this.events.emit("player-interact-building", child);
+        });
+      }); */
 
-    this.GroklinGroup.children.iterate((child) => {
-      child.on("pointerup", () => {
-        this.events.emit("player-interact-enemy", child);
-      });
-    });
+    /*   this.unitgroup.children.iterate((child) => {
+        child.on("pointerup", () => {
+          this.events.emit("player-interact-enemy", child);
+        });
+      }); */
+
+
   }
 
   create() {
     this.addHiddenInfoGraphic();
     this.createOverworldPlayer();
     this.spawnChapter1();
-    this.createGoldOverlay();
+    createGoldOverlay(this);
     this.player.updateHealthIndicators(this);
-    this.player.setDepth(2);
     this.player.Say(GetRandomExploreText(), this);
-    this.baseLayer.setInteractive();
-
-
+    this.baseLayer.setInteractive().setDepth(3)
     this.baseLayer.on("pointerdown", (clicked) => {
       console.log(clicked.x, clicked.y);
 
@@ -285,3 +235,5 @@ export default class Overworld extends Phaser.Scene {
     }
   }
 }
+
+

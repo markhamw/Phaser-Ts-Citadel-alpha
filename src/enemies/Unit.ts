@@ -1,14 +1,18 @@
 import Phaser, { FacebookInstantGamesLeaderboard } from "phaser";
 import { Guid } from "guid-typescript";
 import { CreateAnimationSet, getNewRatName, Direction } from "~/game/gamelogic";
-import { AnimatedEnemy, AnimatedEnemyHit, AnimatedEnemyIdle, AnimatedEnemyWalk, Behavior, CollideWithOverWorldAndPlayer, InitAnims } from "./enemies";
+import { AnimatedEnemy, AnimatedEnemyHit, AnimatedEnemyIdle, AnimatedEnemyWalk, CollideWithOverWorldAndPlayer, InitAnims } from "./enemies";
 import { DestroySprite } from "~/game/enemylogic";
 import Overworld from "~/scenes/Overworld";
 import Player from "~/characters/Player";
 import { IdleAnim, } from "./enemies";
 import { enemies } from "./enemies";
 
-export type UnitData = {
+export interface EnemyType {
+    enemydata: EnemyData;
+}
+
+export type EnemyData = {
     name: string;
     descriptiveName: string;
     speed: number;
@@ -26,32 +30,96 @@ export type UnitData = {
     HitAnimKey: string;
     AttackAnimKey: string;
     DeathAnimKey: string;
+
+}
+export function GetEnemyDataByName(enemies: EnemyData[], name: string): EnemyData {
+    let data = enemies.find(e => e.name === name);
+    return data ?? {} as EnemyData;
+}
+
+export function GetEnemyType(key: string): EnemyType {
+    return enemies[key];
+}
+
+export function GetEnemyData(key: string): EnemyData {
+    return GetEnemyType(key).enemydata;
+}
+
+export function GetEnemyName(key: string): string {
+    return GetEnemyData(key).name;
+}
+
+export function GetEnemyDescriptiveName(key: string): string {
+    return GetEnemyData(key).descriptiveName;
+}
+
+export function GetEnemySpeed(key: string): number {
+    return GetEnemyData(key).speed;
+}
+
+export function GetEnemySpriteAtlasKey(key: string): string {
+    return GetEnemyData(key).SpriteAtlasKey;
+}
+
+export function GetEnemyIconPng(key: string): string {
+    return GetEnemyData(key).IconPng;
+}
+
+export function GetEnemyPathToPNG(key: string): string {
+    return GetEnemyData(key).PathToPNG;
+}
+
+export function GetEnemyPathToJSON(key: string): string {
+    return GetEnemyData(key).PathToJSON;
+}
+
+export function GetEnemyJsonPrefixIdle(key: string): string {
+    return GetEnemyData(key).JsonPrefixIdle;
+}
+
+export function GetEnemyJsonPrefixWalk(key: string): string {
+    return GetEnemyData(key).JsonPrefixWalk;
+}
+
+export function GetEnemyJsonPrefixAttack(key: string): string {
+    return GetEnemyData(key).JsonPrefixAttack;
+}
+
+export function GetEnemyJsonPrefixHit(key: string): string {
+    return GetEnemyData(key).JsonPrefixHit;
+}
+
+export function GetEnemyJsonPrefixDeath(key: string): string {
+    return GetEnemyData(key).JsonPrefixDeath;
 }
 
 
-export class MakeUnit {
-    constructor(byAtlasName_unitToCreate: UnitData, scene: Phaser.Scene) {
-        let enemyToCreate = enemies.find(enemy => enemy.name == byAtlasName_unitToCreate.SpriteAtlasKey);
+declare global {
+    namespace Phaser.GameObjects {
+        interface GameObjectFactory {
+            unit(x: number, y: number, texture: string, enemydata: EnemyData, frame?: string | number): Unit;
+        }
     }
-
 }
 
 
-export default class Groklin
-    extends Phaser.Physics.Arcade.Sprite {
+export default class Unit
+    extends Phaser.Physics.Arcade.Sprite implements EnemyType {
     private facing = 0;
-    UnitData?: UnitData
-    hit: number = 1;
+    enemydata: EnemyData;
+    hit: number = 0;
     inBattle: boolean = false;
+
     constructor(
         scene: Phaser.Scene,
         x: number,
         y: number,
         texture: string,
+        data: EnemyData,
         frame?: string | number,
     ) {
         super(scene, x, y, texture, frame);
-        this.UnitData = enemies.find(enemy => enemy.name == "enemy-groklin");
+        this.enemydata = data
         this.scene.physics.world.on(
             Phaser.Physics.Arcade.Events.TILE_COLLIDE,
             this.handleCollision
@@ -61,14 +129,13 @@ export default class Groklin
             this.handleCollisionWithSprite
         );
         InitAnims(this)
-        CollideWithOverWorldAndPlayer(this, this.scene as Overworld);
+        CollideWithOverWorldAndPlayer(this, this.scene);
         this.setInteractive();
-        this.hit = 0;
     }
     Move() {
         let chanceForIdle = Phaser.Math.Between(0, 4);
 
-        this.UnitData!.speed = Phaser.Math.Between(1, 8);
+        this.enemydata!.speed = Phaser.Math.Between(1, 8);
         if (chanceForIdle == 1 || 2) {
             this.facing = 0;
         } else {
@@ -76,7 +143,7 @@ export default class Groklin
         }
     }
     Stop() {
-        this.UnitData!.speed = 0;
+        this.enemydata!.speed = 0;
         this.facing = 0;
     }
 
@@ -88,25 +155,16 @@ export default class Groklin
     }
 
     handleCollisionWithSprite(
-        groklin: Phaser.GameObjects.GameObject,
+        unit: Phaser.GameObjects.GameObject,
         obj2: Phaser.GameObjects.GameObject
     ) {
-        if (this.inBattle) {
-            console.log("Collision with sprite", groklin);
-            console.log("tile data", obj2);
-            let player = obj2 as Player;
-            let grok = groklin as Groklin;
-            const diffX = grok.x - player.x;
-            const diffY = grok.y - player.y;
-            const vector = new Phaser.Math.Vector2(diffX, diffY).normalize().scale(200)
-            grok.setVelocity(vector.x, vector.y);
-            grok.hit = 1;
-        }
-
+        console.log("emitting hit event")
+        this.scene.events.emit('enemy-collision', this, obj2);
+        console.log(this, obj2)
     }
 
     preload() {
-        this.scene.load.atlas(this.UnitData!.name, this.UnitData!.PathToPNG, this.UnitData!.PathToJSON)
+        this.scene.load.atlas(this.enemydata!.name, this.enemydata!.PathToPNG, this.enemydata!.PathToJSON)
     }
 
     create() {
@@ -120,7 +178,7 @@ export default class Groklin
     }
 
     decideMovement() {
-        let { speed } = this.UnitData!;
+        let { speed } = this.enemydata!;
         switch (this.facing) {
             case Direction.UP:
                 this.setVelocity(0, -speed)
@@ -185,6 +243,19 @@ export default class Groklin
     }
 }
 
+
+Phaser.GameObjects.GameObjectFactory.register(
+    "unit",
+    function (this: Phaser.GameObjects.GameObjectFactory, x: number, y: number, texture: string, enemydata: EnemyData, frame?: string | number) {
+        var sprite = new Unit(this.scene as any, x, y, texture, enemydata, frame);
+
+        this.displayList.add(sprite);
+        this.updateList.add(sprite);
+        this.scene.physics.world.enableBody(sprite, Phaser.Physics.Arcade.DYNAMIC_BODY);
+
+        return sprite;
+    }
+);
 
 /* this.scene.events.addListener('player-clicked-fight', () => {
     this.scene.events.emit('player-killed-rat', this)

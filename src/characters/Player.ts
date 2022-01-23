@@ -1,6 +1,6 @@
 import Phaser, { BlendModes, Scene } from "phaser";
 import { GetOverworldPlayerAnims, GetPlayerAnims } from "~/anims/PlayerAnims";
-import Groklin from "~/enemies/Groklin";
+import Groklin from "~/enemies/Unit";
 import { CombatCapability, Condition, PlayerStatus, Speech } from "~/game/game";
 import { AddWASDKeysToScene, CreateAnimationSet } from "~/game/gamelogic";
 import { WRGameScene } from "~/game/overworldlogic";

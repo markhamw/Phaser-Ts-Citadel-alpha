@@ -18,6 +18,7 @@ export default class Preloader extends Phaser.Scene {
         this.load.image('window1', "assets/window1.png")
 
         this.load.atlas('buildings32', "assets/buildings32.png", "assets/buildings32.json")
+        this.load.atlas('waterfall', "assets/waterfall.png", "assets/waterfall.json")
 
         this.load.atlas('buildings16', "assets/buildings16.png", "assets/buildings16.json")
         this.load.atlas('treasures', "assets/treasures.png", "assets/treasures.json")
@@ -43,6 +44,7 @@ export default class Preloader extends Phaser.Scene {
         this.load.image("tavern", "assets/Tavern.png")
         this.load.image("border", "assets/border.png")
         this.load.image("titlegraphic", "assets/TitleGraphic.png")
+        this.load.image("chooseavatarbg", "assets/chooseavatarbg.png")
 
         //ui-enterbutton
         this.load.image("enter-btn-up", "assets/enter-1.png")
