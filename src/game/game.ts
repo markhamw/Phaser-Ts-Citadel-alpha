@@ -22,10 +22,7 @@ export enum Condition {
   Healthy,
 }
 
-export type CombatCapability = {
-  offensiveMultiplier: number;
-  defense: number;
-}
+
 
 export type PlayerStatus = {
   MaxHP: number;
@@ -40,7 +37,3 @@ export type Speech = {
   lines: string;
 };
 
-export function AddCollidersForPlayer(scene: Overworld, player: Player) {
-
-  //scene.collider.collider(player, scene.baseLayer);
-}

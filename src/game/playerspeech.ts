@@ -2,25 +2,23 @@ import Building from "~/structures/Building";
 import { Speech } from "./game";
 
 export const ExploreTextLines: Speech[] = [
-    { lines: "I work my contract as Ranger. Ill silence all Ratbeasts and other beasties. Let the killin begin. I dont have all cycle." },
-    { lines: "Today is a good day to go hunting on my island. For Ratticus!" },
-    { lines: "Ah, the great outdoors..only..with Ratmen afoot. Im sure every Ranger from here to....there will be defending Ratticus." },
-    { lines: "Gods willing..it is time to silence the invading armies. Rat armies and elementals from across the wastes are moving in." },
-    { lines: "I'm a Ranger and I call this island my home! Rat Men and Rat armies from the wastes have invaded. Its my duty to stop them." },
-    { lines: "I'm the Ranger damnit. These Ratmen invade our home! Rat armies from the wastes have invaded. Its my duty to stop them." }
+    { lines: "" },
+    { lines: "Looks like the wastes have yet again provided us company for the night. Eff these Groklins.!" },
+    { lines: "Gods help me find the courage to get out of this one alive." },
+    { lines: "Gods willing..I need to get to the Tavern. Groklin armies and elementals from across the wastes are moving in. Ill head for the tavern" },
+    { lines: "I'm a Ranger. Blah Blah. Its my duty to stop them...and protect the wildlife blah blah" },
+    { lines: "I'm the Ranger damnit. These shit-for-brain Groklins are going to pay! Its my duty to protect the deer." }
 ]
 
 export const LineNegativeIdents = [
-    "Its too far to call without a map or wand",
+    "Its too far off",
     "I can't see that from here",
     "I can't see that from this distance",
-    "That's too far away to identify",
     "My eyes are not that good at this distance",
-    "Cant see what the hell that is!",
-    "Not sure .. what that is",
+    "I dont know what the hell it is",
+    "Not sure .. what IS that?",
     "Its too far off to tell what it is",
     "Is that a mirage?",
-    "Self, remind me to go to the ocular medicus"
 ]
 
 

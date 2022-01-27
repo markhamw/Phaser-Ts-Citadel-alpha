@@ -3,11 +3,14 @@ import Overworld from "~/scenes/Overworld";
 import { GetOverworldPlayerAnims } from "./PlayerAnims";
 import { GetCoinAnims, GetSmokeAnims } from "./WorldAnims";
 
-function CreateAnimationSet(scene: Phaser.Scene, animations: Phaser.Types.Animations.Animation[]) {
+/* function CreateAnimationSet(scene: Phaser.Scene, animations: Phaser.Types.Animations.Animation[]) {
   animations.forEach((animation) => {
     scene.anims.create(animation);
   });
-}
+} */
+
+
+
 const createUIAnimations = (scene: Phaser.Scene) => {
 
   scene.anims.create({

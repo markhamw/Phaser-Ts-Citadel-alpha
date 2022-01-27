@@ -1,10 +1,10 @@
 import Phaser, { FacebookInstantGamesLeaderboard } from "phaser";
 import { Guid } from "guid-typescript";
 import { CreateAnimationSet, getNewRatName, Direction } from "~/game/gamelogic";
-import { AnimatedEnemy, AnimatedEnemyHit, AnimatedEnemyIdle, AnimatedEnemyWalk, CollideWithOverWorldAndPlayer, InitAnims } from "./enemies";
-import { DestroySprite } from "~/game/enemylogic";
+import { AnimatedEnemy, AnimatedEnemyAttack, AnimatedEnemyHit, AnimatedEnemyIdle, AnimatedEnemyWalk, CollideWithOverWorldAndPlayer, InitAnims } from "./enemies";
+import { DestroySprite, Stop } from "~/game/enemylogic";
 import Overworld from "~/scenes/Overworld";
-import Player from "~/characters/Player";
+import Player, { TalkBubble } from "~/characters/Player";
 import { IdleAnim, } from "./enemies";
 import { enemies } from "./enemies";
 
@@ -30,67 +30,8 @@ export type EnemyData = {
     HitAnimKey: string;
     AttackAnimKey: string;
     DeathAnimKey: string;
-
-}
-export function GetEnemyDataByName(enemies: EnemyData[], name: string): EnemyData {
-    let data = enemies.find(e => e.name === name);
-    return data ?? {} as EnemyData;
-}
-
-export function GetEnemyType(key: string): EnemyType {
-    return enemies[key];
-}
-
-export function GetEnemyData(key: string): EnemyData {
-    return GetEnemyType(key).enemydata;
-}
-
-export function GetEnemyName(key: string): string {
-    return GetEnemyData(key).name;
-}
-
-export function GetEnemyDescriptiveName(key: string): string {
-    return GetEnemyData(key).descriptiveName;
-}
-
-export function GetEnemySpeed(key: string): number {
-    return GetEnemyData(key).speed;
-}
-
-export function GetEnemySpriteAtlasKey(key: string): string {
-    return GetEnemyData(key).SpriteAtlasKey;
-}
-
-export function GetEnemyIconPng(key: string): string {
-    return GetEnemyData(key).IconPng;
-}
-
-export function GetEnemyPathToPNG(key: string): string {
-    return GetEnemyData(key).PathToPNG;
-}
-
-export function GetEnemyPathToJSON(key: string): string {
-    return GetEnemyData(key).PathToJSON;
-}
-
-export function GetEnemyJsonPrefixIdle(key: string): string {
-    return GetEnemyData(key).JsonPrefixIdle;
-}
-
-export function GetEnemyJsonPrefixWalk(key: string): string {
-    return GetEnemyData(key).JsonPrefixWalk;
-}
-
-export function GetEnemyJsonPrefixAttack(key: string): string {
-    return GetEnemyData(key).JsonPrefixAttack;
-}
-
-export function GetEnemyJsonPrefixHit(key: string): string {
-    return GetEnemyData(key).JsonPrefixHit;
-}
-
-export function GetEnemyJsonPrefixDeath(key: string): string {
-    return GetEnemyData(key).JsonPrefixDeath;
+    PlayerInteractionLines?: string[];
+    ResponseToPlayerLines?: string[];
 }
 
 
@@ -105,10 +46,12 @@ declare global {
 
 export default class Unit
     extends Phaser.Physics.Arcade.Sprite implements EnemyType {
-    private facing = 0;
+    facing = 8;
     enemydata: EnemyData;
     hit: number = 0;
     inBattle: boolean = false;
+    tb!: TalkBubble;
+    roam?: boolean;
 
     constructor(
         scene: Phaser.Scene,
@@ -131,26 +74,26 @@ export default class Unit
         InitAnims(this)
         CollideWithOverWorldAndPlayer(this, this.scene);
         this.setInteractive();
+        this.play(this.enemydata!.IdleAnimKey);
     }
     Move() {
         let chanceForIdle = Phaser.Math.Between(0, 4);
-
-        this.enemydata!.speed = Phaser.Math.Between(1, 8);
-        if (chanceForIdle == 1 || 2) {
-            this.facing = 0;
+        if (chanceForIdle == 1 || 2 || 3) {
+            this.facing = 8;
+            Stop(this.scene, this)
+            this.play(this.enemydata!.IdleAnimKey);
         } else {
-            this.facing = Phaser.Math.Between(1, 7);
+            this.facing = Phaser.Math.Between(0, 7);
+            this.enemydata!.speed = Phaser.Math.Between(1, 3);
         }
     }
-    Stop() {
-        this.enemydata!.speed = 0;
-        this.facing = 0;
-    }
+
 
     handleCollision(
         go: Phaser.GameObjects.GameObject,
         tile: Phaser.Tilemaps.Tile
     ) {
+        Stop(this, go)
 
     }
 
@@ -178,46 +121,55 @@ export default class Unit
     }
 
     decideMovement() {
-        let { speed } = this.enemydata!;
+
         switch (this.facing) {
             case Direction.UP:
-                this.setVelocity(0, -speed)
+                this.setVelocity(0, -this.enemydata!.speed)
                 AnimatedEnemyWalk(this)
                 break
             case Direction.DOWN:
-                this.setVelocity(0, speed)
+                this.setVelocity(0, this.enemydata!.speed)
                 AnimatedEnemyWalk(this)
                 break
             case Direction.LEFT:
-                this.setVelocity(-speed, 0)
+                this.setVelocity(-this.enemydata!.speed, 0)
                 AnimatedEnemyWalk(this)
                 this.flipX = true;
                 break
             case Direction.RIGHT:
-                this.setVelocity(speed, 0)
+                this.setVelocity(this.enemydata!.speed, 0)
                 AnimatedEnemyWalk(this)
                 break
             case Direction.LEFTANDUP:
-                this.setVelocity(-speed, -speed)
+                this.setVelocity(-this.enemydata!.speed, -this.enemydata!.speed)
                 AnimatedEnemyWalk(this)
                 this.flipX = true;
                 break
             case Direction.LEFTANDDOWN:
-                this.setVelocity(-speed, speed)
+                this.setVelocity(-this.enemydata!.speed, this.enemydata!.speed)
                 AnimatedEnemyWalk(this)
                 this.flipX = true;
                 break
             case Direction.RIGHTANDUP:
-                this.setVelocity(speed, -speed)
+                this.setVelocity(this.enemydata!.speed, -this.enemydata!.speed)
                 AnimatedEnemyWalk(this)
                 break
             case Direction.RIGHTANDDOWN:
-                this.setVelocity(speed, speed)
+                this.setVelocity(this.enemydata!.speed, this.enemydata!.speed)
                 AnimatedEnemyWalk(this)
                 break
             case Direction.IDLE:
                 this.setVelocity(0, 0)
-                AnimatedEnemyIdle(this);
+                let chancenum = Phaser.Math.Between(0, 4);
+                //1 to 50 because its using delta time
+                let chanceforIdleAnim = Phaser.Math.Between(0, 75);
+                if (chanceforIdleAnim == 1) {
+                    AnimatedEnemyIdle(this);
+                }
+                let chanceforAttackAir = Phaser.Math.Between(0, 175);
+                if (chanceforAttackAir == 2) {
+                    AnimatedEnemyAttack(this);
+                }
                 break
         }
     }
@@ -235,7 +187,10 @@ export default class Unit
             return
         } else {
             if (this.active) {
-                this.decideMovement();
+                if (this.roam) {
+                    this.decideMovement();
+                }
+
             }
         }
 

@@ -1,4 +1,5 @@
-import { AnimatedEnemy, Behavior } from "~/enemies/enemies";
+import { AnimatedEnemy, enemies } from "~/enemies/enemies";
+import { EnemyData, EnemyType } from "~/enemies/Unit";
 
 export const DestroySprite = (sprite: any) => {
     try {
@@ -36,8 +37,71 @@ isNearPlayer(player: Player): boolean {
 /* this.scene.events.addListener("fadeMobs", () => {
     this.fade();
 }); */
+export function GetEnemyDataByName(enemies: EnemyData[], name: string): EnemyData {
+    let data = enemies.find(e => e.name === name);
+    return data ?? {} as EnemyData;
+}
 
+export function GetEnemyType(key: string): EnemyType {
+    return enemies[key];
+}
 
+export function GetEnemyData(key: string): EnemyData {
+    return GetEnemyType(key).enemydata;
+}
+
+export function GetEnemyName(key: string): string {
+    return GetEnemyData(key).name;
+}
+
+export function GetEnemyDescriptiveName(key: string): string {
+    return GetEnemyData(key).descriptiveName;
+}
+
+export function GetEnemySpeed(key: string): number {
+    return GetEnemyData(key).speed;
+}
+
+export function GetEnemySpriteAtlasKey(key: string): string {
+    return GetEnemyData(key).SpriteAtlasKey;
+}
+
+export function GetEnemyIconPng(key: string): string {
+    return GetEnemyData(key).IconPng;
+}
+
+export function GetEnemyPathToPNG(key: string): string {
+    return GetEnemyData(key).PathToPNG;
+}
+
+export function GetEnemyPathToJSON(key: string): string {
+    return GetEnemyData(key).PathToJSON;
+}
+
+export function GetEnemyJsonPrefixIdle(key: string): string {
+    return GetEnemyData(key).JsonPrefixIdle;
+}
+
+export function GetEnemyJsonPrefixWalk(key: string): string {
+    return GetEnemyData(key).JsonPrefixWalk;
+}
+
+export function GetEnemyJsonPrefixAttack(key: string): string {
+    return GetEnemyData(key).JsonPrefixAttack;
+}
+
+export function GetEnemyJsonPrefixHit(key: string): string {
+    return GetEnemyData(key).JsonPrefixHit;
+}
+
+export function GetEnemyJsonPrefixDeath(key: string): string {
+    return GetEnemyData(key).JsonPrefixDeath;
+}
+export function Stop(scene?: any, sprite?: any) {
+    sprite.enemydata!.speed = 0;
+    sprite.facing = 0;
+    sprite.play(sprite.enemydata!.IdleAnimKey);
+}
 
 //1-21-22
 export function IdleAnim(sprite: any) {

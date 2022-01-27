@@ -8,24 +8,20 @@ import {
   RandomCloud,
   SummonMobs,
   Layers,
-  createOverworldTileMap,
+  CreateAllLayersAndSetCollisions,
   createBorder,
   createGoldOverlay,
+  GetAnimsForOverworld,
 } from "../game/overworldlogic";
 import "../characters/Player";
-import { GetCoinAnims, GetSmokeAnims } from "~/anims/WorldAnims";
 import { CreateEnemy, enemies, newEnemyGroup } from "~/enemies/enemies";
 import Player from "../characters/Player";
 import { hidePlayerTalkBubble } from "~/game/playerlogic";
 import { enterQuery } from "bitecs";
 import TalkBubbleContext from "~/characters/Player";
 import { GetRandomExploreText } from "~/game/playerspeech";
-
-import Unit, { GetEnemyDataByName } from "~/enemies/Unit";
+import Unit from "~/enemies/Unit";
 import { createUIAnimations } from "~/anims/EnemyAnims";
-
-
-
 
 export default class Overworld extends Phaser.Scene {
   keys!: Phaser.Types.Input.Keyboard.CursorKeys;
@@ -40,8 +36,9 @@ export default class Overworld extends Phaser.Scene {
   goldCoin!: Phaser.GameObjects.Sprite;
   buildingsGroup!: Physics.Arcade.Group;
   player!: Player;
+  playerTorch!: Phaser.GameObjects.Light;
   info!: Phaser.GameObjects.Sprite;
-
+  cloudGroup!: Phaser.GameObjects.Group;
   wrGame!: WRGame;
   iSpeaking: boolean = false;
   leftArrow!: Phaser.GameObjects.Sprite;
@@ -52,7 +49,7 @@ export default class Overworld extends Phaser.Scene {
   clearBubbleEvent!: Phaser.Time.TimerEvent;
   unitgroup!: Physics.Arcade.Group;
   topLayer!: Phaser.Tilemaps.TilemapLayer;
-
+  islightused!: boolean;
   constructor() {
     super("Overworld");
   }
@@ -60,7 +57,6 @@ export default class Overworld extends Phaser.Scene {
   init(data) {
     this.wrGame = data;
   }
-
 
   isCloseEnoughToInteract = (obj: Phaser.GameObjects.GameObject) => {
     return this.player.distanceFrom(obj as Phaser.GameObjects.Sprite) > 40;
@@ -84,31 +80,68 @@ export default class Overworld extends Phaser.Scene {
     return this.player;
   };
 
-  createTiles() {
-    let map2 = this.make.tilemap({ key: "allbiomes" });
-    const tileset3 = map2.addTilesetImage("allbiomes", "tiles3");
+  /*   createTiles() {
+      let map2 = this.make.tilemap({ key: "allbiomes" });
+      const tileset3 = map2.addTilesetImage("allbiomes", "tiles3");
+  
+      this.topLayer = map2.createLayer(Layers.Top, tileset3);
+      this.baseLayer = map2.createLayer(Layers.Base, tileset3);
+      this.decorLayer = map2.createLayer(Layers.Decor, tileset3);
+  
+       this.baseLayer.setCollisionByProperty({ collides: true });
+     // this.decorLayer.setCollisionByProperty({ collides: true });
+      // this.topLayer.setCollisionByProperty({ collides: true });
+  
+    } */
 
-    this.topLayer = map2.createLayer(Layers.Top, tileset3);
-    this.baseLayer = map2.createLayer(Layers.Base, tileset3);
-    this.decorLayer = map2.createLayer(Layers.Decor, tileset3);
+  showDebugWalls(): void {
+    const debugGraphics = this.add.graphics().setAlpha(0.7);
+    const grap1 = this.add.graphics().setAlpha(0.7);
+    const grap2 = this.add.graphics().setAlpha(0.7);
 
-    this.baseLayer.setCollisionByProperty({ collides: true });
-    this.decorLayer.setCollisionByProperty({ collides: true });
-    this.topLayer.setCollisionByProperty({ collides: true });
+    this.baseLayer.renderDebug(debugGraphics, {
+      tileColor: null,
+      collidingTileColor: new Phaser.Display.Color(143, 234, 48, 255),
+    });
 
+    this.decorLayer.renderDebug(grap1, {
+      tileColor: null,
+      collidingTileColor: new Phaser.Display.Color(143, 234, 48, 255),
+    });
+
+    this.topLayer.renderDebug(grap2, {
+      tileColor: null,
+      collidingTileColor: new Phaser.Display.Color(143, 234, 48, 255),
+    });
   }
 
-
-
-
   preload() {
-    createOverworldTileMap(this);
+    this.sound.play("ruinedworld", { volume: 0.03, loop: true });
+    CreateAllLayersAndSetCollisions(this);
+    GetAnimsForOverworld(this, 4);
     GenerateBuildings(this);
     createUIAnimations(this);
-    createBorder(this);
+    // createBorder(this);
+
+    // this.showDebugWalls()
     this.lights.enable();
-    this.lights.addLight(0, 0, 1000, 0xffffff);
-    let mainlights = this.lights.setAmbientColor(0xCEE8FE);
+    let mainlights = this.lights.setAmbientColor(0x000000);
+    this.playerTorch = this.lights.addLight(0, 0, 100, 0xe25822, 2)
+
+    /*     this.tweens.add({
+          targets: this.playerTorch,
+          radius: { value: { from: 100, to: 115 }, duration: 2000, ease: 'Power1' },
+          repeat: -1,
+          yoyo: true
+        }
+        
+        this.tweens.add({
+          targets: this.playerTorch,
+          radius: { value: { from: 104, to: 100 }, duration: 300, ease: 'Power1' },
+          repeat: -1,
+          yoyo: true
+        }) */
+
     this.events.addListener("spawnChapter1", () => {
       this.spawnChapter1();
     });
@@ -155,31 +188,109 @@ export default class Overworld extends Phaser.Scene {
         }
       },
     });
+    this.time.addEvent({
+      delay: 100,
+      repeat: -1,
+      callback: () => {
+        if (this.playerTorch && this.player.isMoving) {
+          this.playerTorch.setPosition(this.player.x, this.player.y);
+        }
+      }
+    })
   }
 
   spawnChapter1() {
 
-    let unit = CreateEnemy(this, "enemy-groklin", 282, 362).
+
+    let groklin = CreateEnemy(this, "enemy-groklin", 278, 352).
       setPipeline("Light2D");
-    unit.inBattle = true;
+    groklin.setImmovable(true);
+    groklin.roam = true;
+    this.lights.addLight(groklin.x, groklin.y, 30, 0x888866, .8)
+
+
+    let skel1 = CreateEnemy(this, "enemy-skeleton", 112, 250).
+      setPipeline("Light2D");
+    skel1.roam = true;
+    let skel2 = CreateEnemy(this, "enemy-skeleton", 110, 251).
+      setPipeline("Light2D");
+    skel2.roam = true;
+    let skel3 = CreateEnemy(this, "enemy-skeleton", 110, 251).
+      setPipeline("Light2D");
+    skel2.roam = true;
+    let skel4 = CreateEnemy(this, "enemy-skeleton", 110, 251).
+      setPipeline("Light2D");
+    skel2.roam = true;
+    let skel5 = CreateEnemy(this, "enemy-skeleton", 110, 251).
+      setPipeline("Light2D");
+    skel2.roam = true;
+    this.lights.addLight(100, 240, 50, 0x006600, .3)
+
+
+    let efreet1 = CreateEnemy(this, "enemy-efreet", 286, 296).
+      setPipeline("Light2D");
+    efreet1.roam = true
+    let efreet1light = this.lights.addLight(efreet1.x, efreet1.y, 30, 0x770000, .8)
+    this.time.addEvent({
+      delay: 1000,
+      callback: () => {
+        efreet1light.setPosition(efreet1.x, efreet1.y);
+      },
+      repeat: -1
+    })
+
+
+    let centaur1 = CreateEnemy(this, "enemy-centaur", 420, 121).
+      setPipeline("Light2D");
+    centaur1.roam = false
+    this.lights.addLight(centaur1.x, centaur1.y, 60, 0x888888, .2)
+
+    //seers fire
+    this.lights.addLight(350, 330, 90, 0xe25822, .5)
+
+    let gatemonk = CreateEnemy(this, "enemy-monk", 182, 279).
+      setPipeline("Light2D");
+    gatemonk.roam = false
+    gatemonk.setImmovable(true);
+    let gatemonklight = this.lights.addLight(gatemonk.x, gatemonk.y, 30, 0xfFFF42, .8)
+    this.time.addEvent({
+      delay: 1000,
+      callback: () => {
+        gatemonklight.setPosition(gatemonk.x, gatemonk.y);
+      },
+      repeat: -1
+    })
+
+    let pitfiend = CreateEnemy(this, "enemy-pitfiend", 485, 249).
+      setPipeline("Light2D");
+    pitfiend.roam = true
+    let pitfiendlight = this.lights.addLight(pitfiend.x, pitfiend.y, 160, 0x888888, .42)
+    this.time.addEvent({
+      delay: 1000,
+      callback: () => {
+        pitfiendlight.setPosition(pitfiend.x, pitfiend.y);
+      },
+      repeat: -1
+    })
+
     RandomCloud(this);
     RandomCloud(this);
 
-    /*     let groklin: Groklin = SummonMobs(this.GroklinGroup, "enemy-groklin", 1, 282, 362).setScale(
-          Phaser.Math.Between(0.6, 0.8)
-        ); */
+    /*  let groklin: Groklin = SummonMobs(this.GroklinGroup, "enemy-groklin", 1, 282, 362).setScale(
+       Phaser.Math.Between(0.6, 0.8)
+     ); */
 
-    /*   this.buildingsGroup.children.iterate((child) => {
-        child.on("pointerup", () => {
-          this.events.emit("player-interact-building", child);
-        });
-      }); */
+    this.buildingsGroup.children.iterate((child) => {
+      child.on("pointerup", () => {
+        this.events.emit("player-interact-building", child);
+      });
+    });
 
-    /*   this.unitgroup.children.iterate((child) => {
-        child.on("pointerup", () => {
-          this.events.emit("player-interact-enemy", child);
-        });
-      }); */
+    this.unitgroup.children.iterate((child) => {
+      child.on("pointerup", () => {
+        this.events.emit("player-interact-enemy", child);
+      });
+    });
 
 
   }
@@ -191,8 +302,10 @@ export default class Overworld extends Phaser.Scene {
     createGoldOverlay(this);
     this.player.updateHealthIndicators(this);
     this.player.Say(GetRandomExploreText(), this);
-    this.baseLayer.setInteractive().setDepth(3)
+    this.baseLayer.setInteractive();
     this.baseLayer.on("pointerdown", (clicked) => {
+
+      //nice to have leave it here for now
       console.log(clicked.x, clicked.y);
 
       var particles = this.add.particles("blueparticle");
@@ -202,6 +315,7 @@ export default class Overworld extends Phaser.Scene {
         .setPosition(clicked.x, clicked.y).setAlpha(0.5);
 
       let chanceForBanter = Phaser.Math.Between(0, 8);
+
       if (chanceForBanter == 0) {
         this.player.Say(GetRandomExploreText(), this);
       } else if (chanceForBanter == 1 || 2 || 3) {
@@ -218,6 +332,7 @@ export default class Overworld extends Phaser.Scene {
   }
 
   update() {
+
     if (this.input.keyboard.addKey("F2").isDown) {
       this.info.setAlpha(1);
     }
@@ -229,7 +344,7 @@ export default class Overworld extends Phaser.Scene {
       this.cameras.main.zoomTo(1.65, 60, Phaser.Math.Easing.Bounce.In, true);
       this.cameras.main.startFollow(this.player);
     } else {
-      this.cameras.main.zoomTo(1, 60, Phaser.Math.Easing.Bounce.Out, true);
+      this.cameras.main.zoomTo(1, 60, Phaser.Math.Easing.Linear, true);
       this.cameras.main.stopFollow();
       this.cameras.main.centerOn(this.cameras.main.centerX, this.cameras.main.centerY);
     }

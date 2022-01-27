@@ -1,20 +1,22 @@
-import { Physics } from "phaser";
+import { Animations, BlendModes, Physics } from "phaser";
 import { WRGame } from "~/game/game";
 import { AddWASDKeysToScene } from "~/game/gamelogic";
 import {
   WindDirection,
   GenerateBuildings,
-  RandomCloud,
   createBorder,
-  createOverworldTileMap,
+  CreateAllLayersAndSetCollisions,
   newGroup,
   createGoldOverlay,
+  GetAnimsForOverworld,
+  createStructuresAndWeather,
+  AddCloudWithShadow,
 } from "../game/overworldlogic";
 import "../characters/Player";
 import Player from "../characters/Player";
-import { displayTitleTextAndEnableInputs, startIntro } from "~/game/overworldtitlelogic";
+import { addTitleTextToScene, displayTitleTextAndEnableInputs, startIntro } from "~/game/overworldtitlelogic";
 import { newEnemyGroup } from "~/enemies/enemies";
-import { GetWaterfallAnims } from "~/anims/WorldAnims";
+
 
 
 interface Title extends Phaser.Scene {
@@ -26,45 +28,39 @@ interface Title extends Phaser.Scene {
 }
 
 export default class OverworldTitle extends Phaser.Scene implements Title {
-  numberofclouds: number = 0;
+  [x: string]: any;
   keys!: Phaser.Types.Input.Keyboard.CursorKeys;
   wasd!: Phaser.Input.Keyboard.Key[];
   winddirection: WindDirection = {
     xspeed: Phaser.Math.Between(1, 10),
     yspeed: Phaser.Math.Between(1, 10),
   };
-  /*   RatGroup!: Phaser.Physics.Arcade.Group;
-    RatOgreGroup!: Phaser.Physics.Arcade.Group;
-    ShamanGroup!: Physics.Arcade.Group;
-    FlyingRatGroup!: Physics.Arcade.Group;
-    EarthGolemGroup!: Physics.Arcade.Group;
-    AirElementalGroup!: Physics.Arcade.Group;
-    DeerGroup!: Phaser.Physics.Arcade.Group; */
   buildingsGroup!: Physics.Arcade.Group;
   player!: Player;
-
   wrGame!: WRGame;
   debug!: boolean;
-
   titletext0!: Phaser.GameObjects.Text;
   titletext1!: Phaser.GameObjects.Text;
   titletext2!: Phaser.GameObjects.Text;
   titletext4!: Phaser.GameObjects.Text;
   titletext5!: Phaser.GameObjects.Text;
-
   titleAvatarSelect!: Phaser.GameObjects.Image;
-
   leftArrow!: Phaser.GameObjects.Sprite;
   rightArrow!: Phaser.GameObjects.Sprite;
   head!: Phaser.GameObjects.Sprite;
+  goldtext!: Phaser.GameObjects.Text;
+  numberofclouds!: number;
 
   baseLayer!: Phaser.Tilemaps.TilemapLayer;
   decorLayer!: Phaser.Tilemaps.TilemapLayer;
   topLayer!: Phaser.Tilemaps.TilemapLayer;
 
-
+  cloudGroup!: Phaser.Physics.Arcade.Group;
+  islightused!: boolean;
   constructor() {
     super("OverworldTitle");
+    this.numberofclouds = Phaser.Math.Between(1, 7);
+    this.isLightused = true;
   }
 
   init(data) {
@@ -85,22 +81,11 @@ export default class OverworldTitle extends Phaser.Scene implements Title {
 
   };
 
-  createOverworldPlayerStationary = () => {
-    this.player = this.add.player(320, 325, "playeroverworld", "player-movedown-1.png");
-    this.player.body.setSize(this.player.width * 0.75, this.player.height * 0.75);
-    this.player.stationary = true;
-  };
-
 
   preload() {
 
-    createOverworldTileMap(this);
-    createGoldOverlay(this);
-    GenerateBuildings(this);
-    GetWaterfallAnims(this.anims, 4);
-
-    let w1 = this.add.sprite(300, 200, "waterfall", "waterfall-2.png").setOrigin(0, 0).setDepth(0);
-    w1.anims.play("waterfall-action", true);
+    this.load.scenePlugin('AnimatedTiles', 'https://raw.githubusercontent.com/nkholski/phaser-animated-tiles/master/dist/AnimatedTiles.js', 'animatedTiles', 'animatedTiles');
+    this.sound.play("ruinedworld", { volume: 0.03, loop: true });
 
     this.events.addListener("startintro", () => {
       startIntro(this);
@@ -116,36 +101,50 @@ export default class OverworldTitle extends Phaser.Scene implements Title {
         this.createMenuKeyPressEvents();
       },
     });
+
   }
+
 
   create() {
-    this.sound.play("music2", { volume: 0.03, loop: true });
-    createBorder(this);
+
+
+
+    let allmappedtiles = CreateAllLayersAndSetCollisions(this);
+    this.animatedTiles.init(allmappedtiles);
+    GetAnimsForOverworld(this, 4);
+    createStructuresAndWeather(this);
+    AddCloudWithShadow(this)
     this.lights.enable();
-    let mainlights = this.lights.setAmbientColor(0xCEE8FE);
-    //this.lights.addPointLight(10, 240, 0x333333, 500).setAlpha(0.5);
-    let light = this.lights.addLight(0, 0, 0, 0xDCE2DA, 2)
+    let mainlights = this.lights.setAmbientColor(0x555555);
+    let light = this.lights.addLight(0, 0, 300)
+    let light2 = this.lights.addLight(500, 0, 300);
+    let intensity = Phaser.Math.Between(400, 800);
+    let speed = Phaser.Math.Between(100, 600);
+    var particles = this.add.particles("rain").setDepth(4).setPipeline(this.isLightused ? 'Light2D' : "");
 
-    this.tweens.add({
-      targets: light,
-      x: { from: 50, to: 500 },
-      y: { from: 60, to: 450 },
-      intensity: { from: .3, to: .8 },
-      duration: 200000,
-      radius: { from: 200000, to: 200300 },
-      ease: "linear",
-      yoyo: false,
-      repeat: -1,
-    })
+
+    var emitter = particles
+      .createEmitter({
+        x: { min: 0, max: 500 }, y: { min: 0, max: 500 }, speed: intensity,
+        maxParticles: 800, speedY: 500, speedX: { min: 120, max: 300 }, lifespan: { min: 200, max: 1000 },
+        blendMode: BlendModes.DARKEN, gravityY: 200,
+        scale: { start: .5, end: .1 }
+      },
+      ).setAlpha(1)
+    var emitter2 = particles
+      .createEmitter({
+        x: { min: 300, max: 500 }, y: { min: 0, max: 500 },
+        maxParticles: 800, speedY: speed, speedX: intensity, lifespan: { min: 300, max: 1100 },
+        blendMode: BlendModes.DARKEN,
+        scale: { min: .3, max: .9 }
+      },
+      ).setAlpha(1)
 
 
   }
 
-  update() {
-    if (this.player && this.player.isMoving) {
-      this.player.speed = 0;
-    }
-  }
+
+
 }
 
 

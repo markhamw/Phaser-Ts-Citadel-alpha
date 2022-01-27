@@ -8,13 +8,12 @@ export default new Phaser.Game(
 		scene: [Preloader, OverworldTitle, Overworld],
 		type: Phaser.WEBGL,
 		autoFocus: true,
-		//backgroundColor: '0x000000',
 		antialias: false,
 		scale: {
 			parent: 'app',
 			mode: Phaser.Scale.FIT,
-			width: 500,
-			height: 500,
+			width: 512,
+			height: 512,
 			autoCenter: Phaser.Scale.Center.CENTER_BOTH,
 		},
 		physics: {
@@ -24,8 +23,5 @@ export default new Phaser.Game(
 				debug: false,
 			}
 		},
-
 		disableContextMenu: true,
-
-
 	})

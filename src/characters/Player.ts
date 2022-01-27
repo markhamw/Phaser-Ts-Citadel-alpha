@@ -1,7 +1,7 @@
 import Phaser, { BlendModes, Scene } from "phaser";
 import { GetOverworldPlayerAnims, GetPlayerAnims } from "~/anims/PlayerAnims";
 import Groklin from "~/enemies/Unit";
-import { CombatCapability, Condition, PlayerStatus, Speech } from "~/game/game";
+import { Condition, PlayerStatus, Speech } from "~/game/game";
 import { AddWASDKeysToScene, CreateAnimationSet } from "~/game/gamelogic";
 import { WRGameScene } from "~/game/overworldlogic";
 import { hidePlayerTalkBubble, showPlayerTalkBubble, showPlayerTalkBubbleWithConditionalEnter, showPlayerTalkBubbleWithConditionalFight } from "~/game/playerlogic";
@@ -22,7 +22,6 @@ enum EntityType {
   Enemy,
   Building,
 }
-
 
 enum Direction {
   UP,
@@ -47,7 +46,7 @@ const animationsForPlayerByDirection = [
   { key: `player-moveleftanddown`, repeat: 0 },
 ];
 
-interface TalkBubble {
+export interface TalkBubble {
   frame: Phaser.GameObjects.Sprite;
   headPngforTalkBubble: Phaser.GameObjects.Sprite;
   lines: Phaser.GameObjects.Text;
@@ -71,9 +70,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   sprintspeed: number = 21;
   isMoving!: boolean;
   tb!: TalkBubble;
+  hit: number = 0;
+  inBattle: boolean = false;
   playerHead: string;
   stationary: boolean = false;
-  combatCapability!: CombatCapability;
   canEnterBuilding!: string | null;
   canAttackEnemy!: string | null;
   canInteractType!: EntityType | null;
@@ -81,7 +81,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   constructor(scene: Overworld, x: number, y: number, texture: string, frame?: string | number) {
     super(scene, x, y, texture, frame);
     this.status = { MaxHP: 5, CurrentHP: 2, Condition: Condition.Scuffed, XP: 0, Level: 1, Gold: Phaser.Math.Between(0, 100) };
-    this.combatCapability = { offensiveMultiplier: 1, defense: 1 };
     this.wasd = AddWASDKeysToScene(scene);
     this.playerHead = scene.wrGame.playerHead;
 
@@ -102,8 +101,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     });
 
 
-
-    this.scene.events.addListener(
+    let killedflyingrat = this.scene.events.addListener(
       "player-killed-flyingrat",
       () => {
         this.addExperience(100);
@@ -126,20 +124,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       this
     );
 
-    this.scene.events.addListener(
+    let playerclickedenterbutton = this.scene.events.addListener(
       "player-clicked-enter",
       (buildingName) => {
         console.log("Interact type: " + this.canInteractType);
         console.log("canEnterBuildin: " + this.canEnterBuilding);
-      },
-      this
-    );
-    this.scene.events.addListener(
-      "player-clicked-fight",
-      (enemy) => {
-        console.log("Interact type: " + this.canInteractType);
-        console.log("canAttackEnemy: " + this.canAttackEnemy);
-        this.scene.events.emit("player-interact-event", enemy);
       },
       this
     );

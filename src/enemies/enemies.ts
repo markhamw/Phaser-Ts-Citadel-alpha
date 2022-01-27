@@ -1,7 +1,10 @@
 import Player from "~/characters/Player";
+import { GetEnemyDataByName } from "~/game/enemylogic";
 import { CreateAnimationSet } from "~/game/gamelogic";
 import Overworld from "~/scenes/Overworld";
-import Unit, { EnemyData, GetEnemyDataByName } from "./Unit";
+import Unit, { EnemyData } from "./Unit";
+
+
 
 const enemies: EnemyData[] = [
   {
@@ -22,6 +25,8 @@ const enemies: EnemyData[] = [
     HitAnimKey: "enemy-titan-hit",
     AttackAnimKey: "enemy-titan-attack",
     DeathAnimKey: "enemy-titan-death",
+    PlayerInteractionLines: ["It's a Titan-like. Theyre descendants of the first ones", "Thats a Titan. Bad at titaning blah blah"],
+    ResponseToPlayerLines: ["Hmmrrrff", "Urrnkk", "Dink"]
   },
   {
     name: "enemy-golem",
@@ -40,7 +45,10 @@ const enemies: EnemyData[] = [
     WalkAnimKey: "enemy-golem-walk",
     HitAnimKey: "enemy-golem-hit",
     AttackAnimKey: "enemy-golem-attack",
-    DeathAnimKey: "enemy-golem-death"
+    DeathAnimKey: "enemy-golem-death",
+    PlayerInteractionLines: ["Golems are the best", "Golems are the worst", "Golems are the bestest"],
+    ResponseToPlayerLines: ["*stern look*", "*rock eyebrow raises*", "I dont want to fight you fleshling"]
+
   },
   {
     name: "enemy-groklin",
@@ -59,8 +67,118 @@ const enemies: EnemyData[] = [
     WalkAnimKey: "enemy-groklin-walk",
     HitAnimKey: "enemy-groklin-hit",
     AttackAnimKey: "enemy-groklin-attack",
-    DeathAnimKey: "enemy-groklin-death"
-  }];
+    DeathAnimKey: "enemy-groklin-death",
+    PlayerInteractionLines: ["Groklins are not my fave", "Groklins are the worst", "Its a Groklin", "A typical Groklin"],
+    ResponseToPlayerLines: ["Gods damn you!", "Be damned to the wastes", "I dont even like you a little bit"]
+  },
+  {
+    name: "enemy-skeleton",
+    descriptiveName: "Skeleton",
+    speed: Phaser.Math.Between(1, 1),
+    IconPng: "IconSkeleton.png",
+    PathToPNG: "enemies/skeleton.png",
+    PathToJSON: "enemies/skeleton.json",
+    JsonPrefixIdle: "SkeletonIdle",
+    JsonPrefixWalk: "SkeletonWalk",
+    JsonPrefixAttack: "SkeletonAttack",
+    JsonPrefixHit: "SkeletonHit",
+    JsonPrefixDeath: "SkeletonDeath",
+    SpriteAtlasKey: "enemy-skeleton",
+    IdleAnimKey: "enemy-skeleton-idle",
+    WalkAnimKey: "enemy-skeleton-walk",
+    HitAnimKey: "enemy-skeleton-hit",
+    AttackAnimKey: "enemy-skeleton-attack",
+    DeathAnimKey: "enemy-skeleton-death",
+    PlayerInteractionLines: ["Mr skellington I presume", "Living Bones", "Its a Skeleton"],
+    ResponseToPlayerLines: ["*no eye stare*", "*bones rattle*", "*clattering teeth*"]
+
+  },
+  {
+    name: "enemy-efreet",
+    descriptiveName: "Efreet",
+    speed: Phaser.Math.Between(1, 1),
+    IconPng: "IconEfreet.png",
+    PathToPNG: "enemies/efreet.png",
+    PathToJSON: "enemies/efreet.json",
+    JsonPrefixIdle: "EfreetIdle",
+    JsonPrefixWalk: "EfreetWalk",
+    JsonPrefixAttack: "EfreetAttack",
+    JsonPrefixHit: "EfreetHit",
+    JsonPrefixDeath: "EfreetDeath",
+    SpriteAtlasKey: "enemy-efreet",
+    IdleAnimKey: "enemy-efreet-idle",
+    WalkAnimKey: "enemy-efreet-walk",
+    HitAnimKey: "enemy-efreet-hit",
+    AttackAnimKey: "enemy-efreet-attack",
+    DeathAnimKey: "enemy-efreet-death",
+    PlayerInteractionLines: ["Efreet are the best", "Efreet are the worst", "Its a Efreet", "A typical Efreet"],
+    ResponseToPlayerLines: ["*red eye stare*", "Im burning a short wick, buddy", "The only furniture I can use is stone or obsidian. How dare you insinuate that"]
+
+  },
+  {
+    name: "enemy-centaur",
+    descriptiveName: "Centaur",
+    speed: Phaser.Math.Between(1, 1),
+    IconPng: "IconCentaur.png",
+    PathToPNG: "enemies/centaur.png",
+    PathToJSON: "enemies/centaur.json",
+    JsonPrefixIdle: "CentaurIdle",
+    JsonPrefixWalk: "CentaurWalk",
+    JsonPrefixAttack: "CentaurAttack",
+    JsonPrefixHit: "CentaurHit",
+    JsonPrefixDeath: "CentaurDeath",
+    SpriteAtlasKey: "enemy-centaur",
+    IdleAnimKey: "enemy-centaur-idle",
+    WalkAnimKey: "enemy-centaur-walk",
+    HitAnimKey: "enemy-centaur-hit",
+    AttackAnimKey: "enemy-centaur-attack",
+    DeathAnimKey: "enemy-centaur-death",
+    PlayerInteractionLines: ["Thats a four legged humanoid", "Centaurs are four legged assholes", "Its a Centaur", "A typical Centaur. Smug and goes clop clop"],
+    ResponseToPlayerLines: ["*clop clop clop* Hahaha", "Youre two legs arent as good as one of mine, human. Hmf.", "Get behind me and see what happens. Youll be eating hoof"]
+  },
+  {
+    name: "enemy-monk",
+    descriptiveName: "Monk",
+    speed: Phaser.Math.Between(2, 3),
+    IconPng: "IconMonk.png",
+    PathToPNG: "enemies/monk.png",
+    PathToJSON: "enemies/monk.json",
+    JsonPrefixIdle: "MonkIdle",
+    JsonPrefixWalk: "MonkWalk",
+    JsonPrefixAttack: "MonkAttack",
+    JsonPrefixHit: "MonkHit",
+    JsonPrefixDeath: "MonkDeath",
+    SpriteAtlasKey: "enemy-monk",
+    IdleAnimKey: "enemy-monk-idle",
+    WalkAnimKey: "enemy-monk-walk",
+    HitAnimKey: "enemy-monk-hit",
+    AttackAnimKey: "enemy-monk-attack",
+    DeathAnimKey: "enemy-monk-death",
+    PlayerInteractionLines: ["Monks are the best", "Monks are the worst", "Its a Monk", "A typical Monk"],
+    ResponseToPlayerLines: ["I agree", "Yes, yes, yes....", "I dont know what to say"]
+  },
+  {
+    name: "enemy-pitfiend",
+    descriptiveName: "PitFiend",
+    speed: Phaser.Math.Between(2, 3),
+    IconPng: "IconPitFiend.png",
+    PathToPNG: "enemies/pitfiend.png",
+    PathToJSON: "enemies/pitfiend.json",
+    JsonPrefixIdle: "PitFiendIdle",
+    JsonPrefixWalk: "PitFiendWalk",
+    JsonPrefixAttack: "PitFiendAttack",
+    JsonPrefixHit: "PitFiendHit",
+    JsonPrefixDeath: "PitFiendDeath",
+    SpriteAtlasKey: "enemy-pitfiend",
+    IdleAnimKey: "enemy-pitfiend-idle",
+    WalkAnimKey: "enemy-pitfiend-walk",
+    HitAnimKey: "enemy-pitfiend-hit",
+    AttackAnimKey: "enemy-pitfiend-attack",
+    DeathAnimKey: "enemy-pitfiend-death",
+    PlayerInteractionLines: ["Pitfiends are the best", "Pitfiends are the worst", "Its a Pitfiend", "A typical Pitfiend"],
+    ResponseToPlayerLines: ["You will not pass by", "I look very scary but I think I could try to make friends. Be my friend and you can pass", "I dont know what to say except turn back, turn back now"]
+  }
+];
 /* {
    name: "enemy-djinn",
    PathToPNG: "enemies/djinn.png",
@@ -77,8 +195,6 @@ const enemies: EnemyData[] = [
   PathToPNG: "enemies/mage.png",
   PathToJSON: "enemies/mage.json"
 }, */
-
-
 /*   {
     name: "enemy-naga",
     PathToPNG: "enemies/naga.png",
@@ -163,11 +279,6 @@ const enemies: EnemyData[] = [
     name: "enemy-lich",
     PathToPNG: "enemies/lich.png",
     PathToJSON: "enemies/lich.json"
-  },
-  {
-    name: "enemy-skeleton",
-    PathToPNG: "enemies/skeleton.png",
-    PathToJSON: "enemies/skeleton.json"
   },
   {
     name: "enemy-spider",
@@ -298,7 +409,7 @@ export const IdleAnim = (sprite: any) => {
       prefix: sprite.enemydata.JsonPrefixIdle,
       suffix: ".png",
     }),
-    repeat: -1,
+    repeat: 0,
     frameRate: 5,
   })
 }
