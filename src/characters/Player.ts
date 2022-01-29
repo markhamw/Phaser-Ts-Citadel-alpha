@@ -151,14 +151,19 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       },
       this
     );
+
     this.scene.events.addListener(
       "player-interact-enemy",
       (enemy) => {
-        console.log("Event: player-interact-enemy", enemy);
+
+
+        //old interaction code
+
+        /* console.log("Event: player-interact-enemy", enemy);
         this.scene.events.emit("player-clear-interactionIndicators");
         this.canInteractType = EntityType.Enemy;
         let context = this.generateContext(enemy);
-        this.handleInteraction(context, this.scene);
+        this.handleInteraction(context, this.scene); */
       },
       this
     );
@@ -254,16 +259,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         .setShadow(2, 2, "#000000", 2, true, true)
         .setFontSize(fontSize),
 
-      enterBtn: scene.add.sprite(0, 0, "enter-btn-down")
-        .setAlpha(0)
-        .setDepth(6)
-        .setInteractive(),
-
-      fightBtn: scene.add.sprite(0, 0, "fight-btn-down")
-        .setAlpha(0)
-        .setDepth(6)
-        .setInteractive()
-
     }
 
     //Enter Button events
@@ -345,10 +340,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     Phaser.Display.Align.In.Center(this.tb.frame, frameZone);
     Phaser.Display.Align.In.Center(this.tb.headPngforTalkBubble, headPngZone);
     Phaser.Display.Align.In.Center(this.tb.lines, linesZone);
-
-    //this.tb.lines.setPosition(lineXOffset, lineYOffset);
-    this.tb.enterBtn?.setPosition(lineXOffset, lineYOffset - 7);
-    this.tb.fightBtn?.setPosition(lineXOffset + 140, lineYOffset - 7);
+ 
   }
 
   updateTalkBubbleText(speech: Speech) {
@@ -497,11 +489,15 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   create() {
     this.on("pointerdown", () => {
-      let playerCondition = Condition[`${this.status.Condition}`];
-      let statusLine = `I'm ${playerCondition} with ${this.status.Gold} gp (lvl ${this.status.Level})`;
-      let playerStatus: Speech = { lines: statusLine }
-      let interactTalkBubbleContext: TalkBubbleContext = { scene: this, speech: playerStatus, canInteract: false };
-      this.Say(playerStatus, this.scene);
+
+      this.scene.scene.launch('SouthArea')
+
+
+      /*  let playerCondition = Condition[`${this.status.Condition}`];
+       let statusLine = `I'm ${playerCondition} with ${this.status.Gold} gp (lvl ${this.status.Level})`;
+       let playerStatus: Speech = { lines: statusLine }
+       let interactTalkBubbleContext: TalkBubbleContext = { scene: this, speech: playerStatus, canInteract: false };
+       this.Say(playerStatus, this.scene); */
     });
 
   }

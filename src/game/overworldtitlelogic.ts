@@ -22,43 +22,25 @@ export const startIntro = (scene: any) => {
         yoyo: false,
     })
 
-
-    scene.time.addEvent({
-        delay: 1200,
-        repeat: 0,
-        callback: () => {
-            scene.cameras.main.zoomTo(2, 4000, "Linear", true);
-            scene.cameras.main.pan(320, 310, 4000,);
-        },
-    });
-
-
-    scene.time.addEvent({
-        delay: 25,
-        repeat: 50,
-        callback: () => {
-            scene.sound.volume = scene.sound.volume -= 0.02;
-        },
-    });
-    scene.time.addEvent({
-        delay: 1000,
-        repeat: 0,
-        callback: () => {
-            scene.events.emit("fadeMobs");
-        },
-    });
-    scene.time.addEvent({
-        delay: 3000,
-        repeat: 0,
-        callback: () => {
-            scene.events.emit("removeTitleMobs");
-        },
-    });
+    /*     scene.time.addEvent({
+            delay: 1000,
+            repeat: 0,
+            callback: () => {
+                scene.events.emit("fadeMobs");
+            },
+        }); */
+    /*     scene.time.addEvent({
+            delay: 3000,
+            repeat: 0,
+            callback: () => {
+                scene.events.emit("removeTitleMobs");
+            },
+        }); */
     scene.time.addEvent({
         delay: 4300,
         repeat: 0,
         callback: () => {
-            scene.sound.stopAll();
+            //scene.sound.stopAll();
             scene.sound.volume = 0.3;
             scene.sound.play("doorOpen", { volume: 0.2 });
         },
@@ -70,24 +52,23 @@ export const startIntro = (scene: any) => {
             scene.sound.play("doorClose", { volume: 0.4 });
         },
     });
-    /*     scene.time.addEvent({
-            delay: 6500,
-            repeat: 0,
-            callback: () => {
-                scene.cameras.main.zoomTo(1, 3000, "Linear", true);
-                scene.cameras.main.pan(
-                    scene.cameras.main.centerX,
-                    scene.cameras.main.centerY,
-                    3000
-                );
-            },
-        }); */
+    scene.time.addEvent({
+        delay: 6500,
+        repeat: 0,
+        callback: () => {
+            scene.cameras.main.zoomTo(1, 3000, "Linear", true);
+            scene.cameras.main.pan(
+                scene.cameras.main.centerX,
+                scene.cameras.main.centerY,
+                3000
+            );
+        },
+    });
     scene.time.addEvent({
         delay: 10000,
         repeat: 0,
         callback: () => {
-            console.log("spawn chap 1")
-            //  scene.events.emit("spawnChapter1");
+            scene.events.emit("spawnChapter1");
         },
     });
 };

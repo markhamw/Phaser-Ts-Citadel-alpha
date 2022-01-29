@@ -33,7 +33,7 @@ export default class Bird extends Phaser.Physics.Arcade.Sprite {
 
     preUpdate(t: number, dt: number) {
         super.preUpdate(t, dt);
-
+      
     }
 }
 export interface startkeyFrame {

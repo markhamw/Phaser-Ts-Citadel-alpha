@@ -11,6 +11,7 @@ import {
   createBorder,
   createGoldOverlay,
   GetAnimsForOverworld,
+  createStructuresAndWeather,
 } from "../game/overworldlogic";
 import "../characters/Player";
 import { CreateEnemy, enemies, newEnemyGroup } from "~/enemies/enemies";
@@ -21,6 +22,7 @@ import TalkBubbleContext from "~/characters/Player";
 import { GetRandomExploreText } from "~/game/playerspeech";
 import Unit from "~/enemies/Unit";
 import { createUIAnimations } from "~/anims/EnemyAnims";
+
 
 export default class Overworld extends Phaser.Scene {
   keys!: Phaser.Types.Input.Keyboard.CursorKeys;
@@ -51,6 +53,7 @@ export default class Overworld extends Phaser.Scene {
   islightused!: boolean;
   constructor() {
     super("Overworld");
+
   }
 
   init(data) {
@@ -62,36 +65,26 @@ export default class Overworld extends Phaser.Scene {
   };
 
   createOverworldPlayer = (): Player => {
+
     this.player = this.add.player(320, 325, "playeroverworld", "player-movedown-1.png").setPipeline("Light2D").setDepth(10);
     this.player.body.setSize(this.player.width * 0.75, this.player.height * 0.75);
     this.physics.add.collider(this.player, this.baseLayer);
     this.physics.add.collider(this.player, this.decorLayer);
     this.physics.add.collider(this.player, this.topLayer);
-
     this.player.setInteractive();
     this.player.on("pointerdown", () => {
       this.player.Say(GetRandomExploreText(), this);
-    });
 
+    });
     this.player.on("pointerup", () => {
-      hidePlayerTalkBubble(this);
+      
+      //this.scene.pause();
+      this.scene.launch('SouthArea')
+
+      //hidePlayerTalkBubble(this);
     });
     return this.player;
   };
-
-  /*   createTiles() {
-      let map2 = this.make.tilemap({ key: "allbiomes" });
-      const tileset3 = map2.addTilesetImage("allbiomes", "tiles3");
-  
-      this.topLayer = map2.createLayer(Layers.Top, tileset3);
-      this.baseLayer = map2.createLayer(Layers.Base, tileset3);
-      this.decorLayer = map2.createLayer(Layers.Decor, tileset3);
-  
-       this.baseLayer.setCollisionByProperty({ collides: true });
-     // this.decorLayer.setCollisionByProperty({ collides: true });
-      // this.topLayer.setCollisionByProperty({ collides: true });
-  
-    } */
 
   showDebugWalls(): void {
     const debugGraphics = this.add.graphics().setAlpha(0.7);
@@ -114,45 +107,34 @@ export default class Overworld extends Phaser.Scene {
     });
   }
 
+
   preload() {
+    this.load.scenePlugin('AnimatedTiles', 'https://raw.githubusercontent.com/nkholski/phaser-animated-tiles/master/dist/AnimatedTiles.js', 'animatedTiles', 'animatedTiles');
     this.sound.play("ruinedworld", { volume: 0.03, loop: true });
-    CreateAllLayersAndSetCollisions(this);
-    GetAnimsForOverworld(this, 4);
-    GenerateBuildings(this);
-    createUIAnimations(this);
-    // createBorder(this);
 
     // this.showDebugWalls()
     this.lights.enable();
-    let mainlights = this.lights.setAmbientColor(0x000000);
-    this.playerTorch = this.lights.addLight(0, 0, 100, 0xe25822, 2)
 
-    /*     this.tweens.add({
-          targets: this.playerTorch,
-          radius: { value: { from: 100, to: 115 }, duration: 2000, ease: 'Power1' },
-          repeat: -1,
-          yoyo: true
-        }
-        
-        this.tweens.add({
-          targets: this.playerTorch,
-          radius: { value: { from: 104, to: 100 }, duration: 300, ease: 'Power1' },
-          repeat: -1,
-          yoyo: true
-        }) */
+    this.playerTorch = this.lights.addLight(0, 0, 100, 0xe25822, 2)
 
     this.events.addListener("spawnChapter1", () => {
       this.spawnChapter1();
     });
+    this.events.addListener("battlescene", () => {
+      this.scene.launch("SouthArea", this.player);
+    });
+
+
+    var particles = this.add.particles("smoke");
     this.time.addEvent({
       delay: 500,
       repeat: -1,
       callback: () => {
-        var particles = this.add.particles("smoke");
-        var emitter = particles
-          .createEmitter({ maxParticles: 2, speed: 3, blendMode: BlendModes.NORMAL, follow: this.player, followOffset: { x: 0, y: 0 }, scale: { start: 0.8, end: 0.2 } })
-          .setPosition(this.player.x, this.player.y + 5).setAlpha(0.4);
-
+        if (this.player.speed > 5) {
+          var emitter = particles
+            .createEmitter({ maxParticles: 2, speed: 3, lifespan: 2000, blendMode: BlendModes.NORMAL, follow: this.player, followOffset: { x: 0, y: 0 }, scale: { start: 0.8, end: 0.2 } })
+            .setPosition(this.player.x, this.player.y + 5).setAlpha(0.4)
+        }
       }
     })
     this.time.addEvent({
@@ -206,6 +188,22 @@ export default class Overworld extends Phaser.Scene {
     groklin.setImmovable(true);
     groklin.roam = true;
     this.lights.addLight(groklin.x, groklin.y, 30, 0x888866, .8)
+
+    let groklin2 = CreateEnemy(this, "enemy-groklin", 268, 352).
+      setPipeline("Light2D");
+    groklin2.setImmovable(true);
+    groklin2.roam = true;
+    this.lights.addLight(groklin2.x, groklin2.y, 30, 0x888866, .8)
+    let groklin3 = CreateEnemy(this, "enemy-groklin", 268, 372).
+      setPipeline("Light2D");
+    groklin3.setImmovable(true);
+    groklin3.roam = true;
+    this.lights.addLight(groklin3.x, groklin3.y, 30, 0x888866, .8)
+    let groklin4 = CreateEnemy(this, "enemy-groklin", 268, 382).
+      setPipeline("Light2D");
+    groklin4.setImmovable(true);
+    groklin4.roam = true;
+    this.lights.addLight(groklin4.x, groklin4.y, 30, 0x888866, .8)
 
 
     let skel1 = CreateEnemy(this, "enemy-skeleton", 112, 250).
@@ -272,12 +270,20 @@ export default class Overworld extends Phaser.Scene {
       repeat: -1
     })
 
-    RandomCloud(this);
-    RandomCloud(this);
 
-    /*  let groklin: Groklin = SummonMobs(this.GroklinGroup, "enemy-groklin", 1, 282, 362).setScale(
-       Phaser.Math.Between(0.6, 0.8)
-     ); */
+    let ghost = CreateEnemy(this, "enemy-ghost", 105, 261).setPipeline("Light2D");
+    ghost.roam = true;
+    let ghost2 = CreateEnemy(this, "enemy-ghost", 115, 263).setPipeline("Light2D");
+    ghost.roam = true;
+    let ghost3 = CreateEnemy(this, "enemy-ghost", 125, 260).setPipeline("Light2D");
+    ghost.roam = true;
+
+
+
+    /*     RandomCloud(this);
+        RandomCloud(this);
+     */
+
 
     this.buildingsGroup.children.iterate((child) => {
       child.on("pointerup", () => {
@@ -286,41 +292,40 @@ export default class Overworld extends Phaser.Scene {
     });
 
     this.unitgroup.children.iterate((child) => {
-      child.on("pointerup", () => {
+
+
+      this.events.emit("player-interact-enemy", child);
+
+      //disabling to test SouthArea transition
+      /* child.on("pointerup", () => {
         this.events.emit("player-interact-enemy", child);
-      });
+      }); */
     });
 
 
   }
 
   create() {
+
+    let allmappedtiles = CreateAllLayersAndSetCollisions(this);
+    this.animatedTiles.init(allmappedtiles)
+    GetAnimsForOverworld(this, 4);
+    createStructuresAndWeather(this);
+    this.lights.enable();
+    let mainlights = this.lights.setAmbientColor(0x999999);
+    let light = this.lights.addLight(0, 0, 100, 0xFF0000, 3);
+    let light2 = this.lights.addLight(500, 0, 100)
+    let intensity = Phaser.Math.Between(400, 800);
+    let speed = Phaser.Math.Between(100, 600);
+    var particles = this.add.particles("rain").setDepth(4)
+
     this.addHiddenInfoGraphic();
     this.createOverworldPlayer();
     this.spawnChapter1();
     createGoldOverlay(this);
     this.player.updateHealthIndicators(this);
     this.player.Say(GetRandomExploreText(), this);
-    this.baseLayer.setInteractive();
-    this.baseLayer.on("pointerdown", (clicked) => {
 
-      //nice to have leave it here for now
-      console.log(clicked.x, clicked.y);
-
-      var particles = this.add.particles("blueparticle");
-      var emitter = particles
-        .createEmitter({ maxParticles: 5, speed: 15, blendMode: BlendModes.ADD })
-        .setScale(0.1)
-        .setPosition(clicked.x, clicked.y).setAlpha(0.5);
-
-      let chanceForBanter = Phaser.Math.Between(0, 8);
-
-      if (chanceForBanter == 0) {
-        this.player.Say(GetRandomExploreText(), this);
-      } else if (chanceForBanter == 1 || 2 || 3) {
-        this.player.Say({ lines: "Its nothing.." }, this, 1000);
-      }
-    });
   }
 
   private addHiddenInfoGraphic() {
@@ -340,7 +345,7 @@ export default class Overworld extends Phaser.Scene {
     }
 
     if (this.input.keyboard.addKey("SPACE").isDown) {
-      this.cameras.main.zoomTo(1.65, 60, Phaser.Math.Easing.Bounce.In, true);
+      this.cameras.main.zoomTo(1.65, 60, Phaser.Math.Easing.Linear, true);
       this.cameras.main.startFollow(this.player);
     } else {
       this.cameras.main.zoomTo(1, 60, Phaser.Math.Easing.Linear, true);

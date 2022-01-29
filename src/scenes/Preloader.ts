@@ -9,24 +9,37 @@ export default class Preloader extends Phaser.Scene {
 
     preload() {
 
-
-        //plugins
-        this.load.scenePlugin('AnimatedTiles', 'https://raw.githubusercontent.com/nkholski/phaser-animated-tiles/master/dist/AnimatedTiles.js', 'animatedTiles', 'animatedTiles');
-
         this.load.atlas('smoke', "assets/smoke.png", "assets/smoke.json")
         this.load.atlas('clouds', "assets/clouds.png", "assets/clouds.json")
         this.load.atlas('cloudsshadows', "assets/cloudshadows.png", "assets/cloudsshadows.json")
 
+        this.load.image("Grass", "tileset/tiles/grass/grass.png")
+        this.load.image("GrassLand", "tileset/tiles/grass/GrassLand.png")
+        this.load.image("GrassCoast", "tileset/tiles/grass/GrassCoast.png")
+
+        this.load.image("treesmountains", "tileset/tiles/treesmountains.png")
+
+        this.load.image("rain", "assets/rain.png")
+
+        this.load.tilemapTiledJSON("allbiomes", "tileset/tilemap/tilemap.json");
         this.load.image("tiles3", "tileset/tiles/allbiomes.png")
         this.load.image("Dirt", "tileset/tiles/dirt/Dirt.png")
         this.load.image("DirtLand", "tileset/tiles/dirt/DirtLand.png")
         this.load.image("DirtRock", "tileset/tiles/dirt/DirtRock.png")
-        this.load.image("rain", "assets/rain.png")
-
+        this.load.image("CaveLand", "tileset/tiles/cave/CaveLand.png")
+        this.load.image("CaveRock", "tileset/tiles/cave/CaveRock.png")
         this.load.image("OceanAnimated", "tileset/tiles/ocean/OceanAnimated.png")
+        this.load.image("LavaLand", "tileset/tiles/lava/LavaLand.png")
+        this.load.image("LavaCoast", "tileset/tiles/lava/LavaCoast.png")
 
-        this.load.tilemapTiledJSON("allbiomes", "tileset/tilemap/tilemap.json");
+        this.load.tilemapTiledJSON("southareajson", "tileset/tilemap/southarea.json");
 
+        this.load.image("southareaterrain", "tileset/tiles/automapped/Tilesets/Tileset-Terrain.png")
+
+
+        this.load.tilemapTiledJSON("playerspeakjson", "tileset/tilemap/playerspeak.json");
+        this.load.image("ui-elements", "tileset/tiles/automapped/UI/UI-elements-32x32-original.png")
+        this.load.image("ui-elements-2", "tileset/tiles/UI_atlas.png")
         // this.load.image('cave', 'tileset/cavebiome/CB-LandTileset.png')
         // this.load.tilemapTiledJSON("allbiomesjson", "tiles/tilemapallbiomes.json");
 
@@ -34,6 +47,9 @@ export default class Preloader extends Phaser.Scene {
 
         this.load.atlas('buildings32', "assets/buildings32.png", "assets/buildings32.json")
         this.load.atlas('waterfall', "assets/waterfall.png", "assets/waterfall.json")
+        this.load.atlas('watermill', "assets/watermill.png", "assets/watermill.json")
+
+
         this.load.atlas('birds', "assets/birds.png", "assets/birds.json")
         this.load.atlas('buildings16', "assets/buildings16.png", "assets/buildings16.json")
         this.load.atlas('treasures', "assets/treasures.png", "assets/treasures.json")
@@ -61,13 +77,6 @@ export default class Preloader extends Phaser.Scene {
         this.load.image("titlegraphic", "assets/TitleGraphic.png")
         this.load.image("chooseavatarbg", "assets/chooseavatarbg.png")
 
-        //ui-enterbutton
-        this.load.image("enter-btn-up", "assets/enter-1.png")
-        this.load.image("enter-btn-down", "assets/enter-0.png")
-
-        //ui-fightbutton
-        this.load.image("fight-btn-up", "assets/fight-1.png")
-        this.load.image("fight-btn-down", "assets/fight-0.png")
 
         //particles
         this.load.image("blueparticle", "assets/blue.png")
@@ -97,11 +106,13 @@ export default class Preloader extends Phaser.Scene {
 
         this.load.audio('gato', ["assets/sounds/music/gatossongtrimmed.mp3"])
 
+
+        //southareaterrains
+
+
     }
 
     create() {
-        //loads true type fonts, do not remove!!!
-        loadfont(this)
 
         let wrGame: WRGame = {
             isStarted: true,
@@ -110,16 +121,8 @@ export default class Preloader extends Phaser.Scene {
             hasIntroStarted: false,
         }
 
-        this.scene.start("OverworldTitle", wrGame);
+        this.scene.start("PlayerSpeak", wrGame);
         /*    this.scene.start("Overworld", wrGame); */
 
     }
-}
-function loadfont(scene: any) {
-    scene.add.text(42, 470, ".", {
-        fontSize: "20px",
-        fontFamily: "breathfire",
-        color: "#77F8FF",
-
-    }).setAlpha(0);
 }

@@ -177,6 +177,27 @@ const enemies: EnemyData[] = [
     DeathAnimKey: "enemy-pitfiend-death",
     PlayerInteractionLines: ["Pitfiends are the best", "Pitfiends are the worst", "Its a Pitfiend", "A typical Pitfiend"],
     ResponseToPlayerLines: ["You will not pass by", "I look very scary but I think I could try to make friends. Be my friend and you can pass", "I dont know what to say except turn back, turn back now"]
+  },
+  {
+    name: "enemy-ghost",
+    descriptiveName: "Ghost",
+    speed: Phaser.Math.Between(2, 3),
+    IconPng: "IconGhost.png",
+    PathToPNG: "enemies/ghost.png",
+    PathToJSON: "enemies/ghost.json",
+    JsonPrefixIdle: "GhostIdle",
+    JsonPrefixWalk: "GhostWalk",
+    JsonPrefixAttack: "GhostAttack",
+    JsonPrefixHit: "GhostHit",
+    JsonPrefixDeath: "GhostDeath",
+    SpriteAtlasKey: "enemy-ghost",
+    IdleAnimKey: "enemy-ghost-idle",
+    WalkAnimKey: "enemy-ghost-walk",
+    HitAnimKey: "enemy-ghost-hit",
+    AttackAnimKey: "enemy-ghost-attack",
+    DeathAnimKey: "enemy-ghost-death",
+    PlayerInteractionLines: ["A living dead", "an Echo of the dead", "Its a ghost, stay alert", "Its a dangerous aparation"],
+    ResponseToPlayerLines: ["You can run but Ill find you", "Dont be surprised but ima to kill you", "GTFO!"]
   }
 ];
 /* {
@@ -269,11 +290,6 @@ const enemies: EnemyData[] = [
     name: "enemy-bknight",
     PathToPNG: "enemies/bknight.png",
     PathToJSON: "enemies/bknight.json"
-  },
-  {
-    name: "enemy-ghost",
-    PathToPNG: "enemies/ghost.png",
-    PathToJSON: "enemies/ghost.json"
   },
   {
     name: "enemy-lich",

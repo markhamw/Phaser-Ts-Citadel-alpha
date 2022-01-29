@@ -3,22 +3,15 @@ import { WRGame } from "~/game/game";
 import { AddWASDKeysToScene } from "~/game/gamelogic";
 import {
   WindDirection,
-  GenerateBuildings,
-  createBorder,
   CreateAllLayersAndSetCollisions,
-  newGroup,
-  createGoldOverlay,
   GetAnimsForOverworld,
   createStructuresAndWeather,
-  AddCloudWithShadow,
-  SummonMobs,
+  createBorder,
 } from "../game/overworldlogic";
 import "../characters/Player";
 import Player from "../characters/Player";
-import { addTitleTextToScene, displayTitleTextAndEnableInputs, startIntro } from "~/game/overworldtitlelogic";
-import { newEnemyGroup } from "~/enemies/enemies";
+import { displayTitleTextAndEnableInputs, startIntro } from "~/game/overworldtitlelogic";
 import Bird from "~/world/Bird";
-
 
 
 interface Title extends Phaser.Scene {
@@ -30,7 +23,7 @@ interface Title extends Phaser.Scene {
 }
 
 export default class OverworldTitle extends Phaser.Scene implements Title {
-  [x: string]: any;
+
   keys!: Phaser.Types.Input.Keyboard.CursorKeys;
   wasd!: Phaser.Input.Keyboard.Key[];
   winddirection: WindDirection = {
@@ -52,7 +45,6 @@ export default class OverworldTitle extends Phaser.Scene implements Title {
   head!: Phaser.GameObjects.Sprite;
   goldtext!: Phaser.GameObjects.Text;
   numberofclouds!: number;
-
   baseLayer!: Phaser.Tilemaps.TilemapLayer;
   decorLayer!: Phaser.Tilemaps.TilemapLayer;
   topLayer!: Phaser.Tilemaps.TilemapLayer;
@@ -62,7 +54,6 @@ export default class OverworldTitle extends Phaser.Scene implements Title {
   constructor() {
     super("OverworldTitle");
     this.numberofclouds = Phaser.Math.Between(1, 7);
-    this.isLightused = true;
   }
 
   init(data) {
@@ -95,6 +86,7 @@ export default class OverworldTitle extends Phaser.Scene implements Title {
     this.events.addListener("spawnChapter1", () => {
       this.scene.start("Overworld", this.wrGame);
     });
+    
     let initialTitleTextEvent = this.time.addEvent({
       delay: 500,
       repeat: 0,
@@ -106,31 +98,33 @@ export default class OverworldTitle extends Phaser.Scene implements Title {
 
   }
 
-
-  create() {
-
+  buildPrimarySceneContents = () => {
     let allmappedtiles = CreateAllLayersAndSetCollisions(this);
     this.animatedTiles.init(allmappedtiles)
     GetAnimsForOverworld(this, 4);
     createStructuresAndWeather(this);
+
     this.lights.enable();
-    let mainlights = this.lights.setAmbientColor(0x999999);
-    let light = this.lights.addLight(0, 0, 10, 0xFF0000);
+    this.lights.setAmbientColor(0x999999);
+    let light = this.lights.addLight(0, 0, 100, 0xFF0000, 3);
     let light2 = this.lights.addLight(500, 0, 100)
-    let intensity = Phaser.Math.Between(400, 800);
-    let speed = Phaser.Math.Between(100, 600);
-    var particles = this.add.particles("rain").setDepth(4)
+  }
+
+  create() {
+    this.buildPrimarySceneContents();
+    createBorder(this)
     let birdgroup = this.physics.add.group({
       classType: Bird,
       maxSize: 100,
     })
+    for (let i = 0; i < Phaser.Math.Between(19, 25); i++) {
+      let bird = birdgroup.get(Phaser.Math.Between(300, 500), Phaser.Math.Between(200, 400), "birds").setPipeline('Light2D').setScale(Phaser.Math.Between(0.1, 0.2)).setDepth(5);
 
-
-    for (let i = 0; i < Phaser.Math.Between(4, 15); i++) {
-      let bird = birdgroup.get(Phaser.Math.Between(300, 500), Phaser.Math.Between(200, 400), "birds").setPipeline('Light2D')
-      bird.setDepth(6);
       bird.anims.play('whiteflyup', true)
       bird.setVelocity(Phaser.Math.Between(2, -2), Phaser.Math.Between(-12, -36));
+      let speedRoot = Phaser.Math.Between(4, 6);
+      bird.anims.currentAnim.frameRate = speedRoot;
+      bird.setVelocity(0, -speedRoot * .4);
 
       this.tweens.add({
         targets: bird,
@@ -143,29 +137,8 @@ export default class OverworldTitle extends Phaser.Scene implements Title {
         ease: 'Linear',
         repeat: -1,
         yoyo: false,
-        scale: { from: .7, to: .6 },
       })
     }
-
-
-    /*   var emitter = particles
-        .createEmitter({
-          x: { min: -100, max: 500 }, y: { min: 0, max: 500 }, speed: 300,
-          speedY: 500, speedX: { min: 120, max: 300 }, lifespan: { min: 600, max: 1000 },
-          blendMode: BlendModes.DARKEN, gravityY: 30, frequency: 10,
-          scale: { start: .5, end: .5 }
-        },
-        ).setAlpha(1)
-  
-      var emitter2 = particles
-        .createEmitter({
-          x: { min: -50, max: 500 }, y: { min: 0, max: 500 },
-          maxParticles: 3, speedY: speed, speedX: intensity, lifespan: { min: 600, max: 1100 },
-          blendMode: BlendModes.DARKEN, frequency: 10,
-          scale: { min: .3, max: .9 }
-        },
-        ).setAlpha(1)
-   */
 
   }
 

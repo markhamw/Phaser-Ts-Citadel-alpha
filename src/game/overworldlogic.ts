@@ -40,10 +40,14 @@ export const enum Layers {
   Base,
   Decor,
 }
-
+export const enum SouthAreaLayers {
+  TileLayer3,
+  Detail,
+  Base,
+}
 export type WRGameScene = OverworldTitle | Overworld;
 
-export const CreateAllLayersAndSetCollisions = (scene: WRGameScene) => {
+export const CreateAllLayersAndSetCollisions = (scene: Overworld | OverworldTitle) => {
 
   var map = scene.make.tilemap({ key: "allbiomes" });
 
@@ -51,20 +55,43 @@ export const CreateAllLayersAndSetCollisions = (scene: WRGameScene) => {
   var dirttiles = map.addTilesetImage("Dirt", "Dirt");
   var dirtland = map.addTilesetImage("DirtLand", "DirtLand");
   var dirtrock = map.addTilesetImage("DirtRock", "DirtRock");
+  var caveland = map.addTilesetImage("CaveLand", "CaveLand");
+  var caverock = map.addTilesetImage("CaveRock", "CaveRock");
+  var grasstiles = map.addTilesetImage("Grass", "Grass");
+  var grassland = map.addTilesetImage("GrassLand", "GrassLand");
+  var grasscoast = map.addTilesetImage("GrassCoast", "GrassCoast");
+
+  var treesmountains = map.addTilesetImage("treesmountains", "treesmountains");
   var oceantiles = map.addTilesetImage("OceanAnimated", "OceanAnimated");
 
-  let allTileSets = [allbiomes, dirttiles, oceantiles, dirtland, dirtrock];
+  var lavaland = map.addTilesetImage("LavaLand", "LavaLand");
+  var lavacoast = map.addTilesetImage("LavaCoast", "LavaCoast");
+
+
+  let allTileSets = [
+    grasscoast,
+    grassland,
+    grasstiles,
+    allbiomes,
+    dirttiles,
+    oceantiles,
+    dirtland,
+    dirtrock,
+    caveland,
+    caverock,
+    lavaland,
+    lavacoast,
+    treesmountains];
+
 
   map.createLayer(Layers.TopDetail, allTileSets)
     .setPipeline("Light2D");
   map.createLayer(Layers.Top, allTileSets)
     .setPipeline("Light2D");
-  map.createLayer(Layers.Base, allTileSets)
-    .setPipeline("Light2D");
   map.createLayer(Layers.Decor, allTileSets)
     .setPipeline("Light2D");
-
-
+  map.createLayer(Layers.Base, allTileSets)
+    .setPipeline("Light2D");
 
   return map
 };
@@ -139,64 +166,7 @@ export const buildingsforWorldMap: Placement[] = [
     name: "Old Tree",
     collection: "treasures",
     tag: "OldTreeNests.png",
-    location: { x: 40, y: 65 },
-    identlines: ["An old Tree...", "Another tree", "Its just a tree", "Tree in the wind", "There are too many of these"],
-  },
-  {
-    name: "Old Tree",
-    collection: "treasures",
-    tag: "OldTreeNests.png",
-    location: { x: 68, y: 85 },
-    identlines: ["An old Tree...", "Another tree", "Its just a tree", "Tree in the wind", "There are too many of these"],
-
-  },
-  {
-    name: "Old Tree",
-    collection: "treasures",
-    tag: "OldTreeNests.png",
-    location: { x: 205, y: 75 },
-    identlines: ["An old Tree...", "Another tree", "Its just a tree", "Tree in the wind", "There are too many of these"],
-  },
-  {
-    name: "Old Tree",
-    collection: "treasures",
-    tag: "OldTreeNests.png",
-    location: { x: 215, y: 75 },
-    identlines: ["An old Tree...", "Another tree", "Its just a tree", "Tree in the wind", "There are too many of these"],
-  },
-  {
-    name: "Old Tree",
-    collection: "treasures",
-    tag: "OldTreeNests.png",
-    location: { x: 245, y: 33 },
-    identlines: ["An old Tree...", "Another tree", "Its just a tree", "Tree in the wind", "There are too many of these"],
-  },
-  {
-    name: "Old Tree",
-    collection: "treasures",
-    tag: "OldTreeNests.png",
-    location: { x: 265, y: 85 },
-    identlines: ["An old Tree...", "Another tree", "Its just a tree", "Tree in the wind", "There are too many of these"],
-  },
-  {
-    name: "Old Tree",
-    collection: "treasures",
-    tag: "OldTreeNests.png",
-    location: { x: 405, y: 135 },
-    identlines: ["An old Tree...", "Another tree", "Its just a tree", "Tree in the wind", "There are too many of these"],
-  },
-  {
-    name: "Old Tree",
-    collection: "treasures",
-    tag: "OldTreeNests.png",
-    location: { x: 395, y: 85 },
-    identlines: ["An old Tree...", "Another tree", "Its just a tree", "Tree in the wind", "There are too many of these"],
-  },
-  {
-    name: "Old Tree",
-    collection: "treasures",
-    tag: "OldTreeNests.png",
-    location: { x: 305, y: 130 },
+    location: { x: 405, y: 95 },
     identlines: ["An old Tree...", "Another tree", "Its just a tree", "Tree in the wind", "There are too many of these"],
   },
   {
@@ -301,13 +271,21 @@ export const buildingsforWorldMap: Placement[] = [
     location: { x: 219, y: 328 },
     identlines: ["The Well...its..well..a well", "The well is overflowing with..dryness"],
   },
+  {
+    name: "Watermill",
+    collection: "watermill",
+    tag: "watermill1.png",
+    location: { x: 349, y: 488 },
+    animationname: "watermill-action",
+    identlines: ["The mill is the best thing we have in this town, except for the tavern", "The mill is still running after all these years"],
+  },
 ];
 
 export const createBorder = (scene: Phaser.Scene) => {
   let borderBox = scene.add.sprite(0, 0, "border");
   borderBox.setOrigin(0, 0);
   borderBox.setScale(1);
-  borderBox.setDepth(5);
+  borderBox.setDepth(10);
 };
 
 export const newGroup = (scene: Phaser.Scene, type: any) => {
@@ -324,7 +302,6 @@ export const newGroup = (scene: Phaser.Scene, type: any) => {
 
 export const GenerateBuildings = (scene: Overworld | OverworldTitle) => {
   scene.buildingsGroup = newGroup(scene, Building);
-
 
   buildingsforWorldMap.forEach((building) => {
     let bldg = scene.buildingsGroup
@@ -370,7 +347,17 @@ export function createStructuresAndWeather(scene: OverworldTitle | Overworld) {
 }
 
 export const GetAnimsForOverworld = (scene: Phaser.Scene, rate: number) => {
-
+  scene.anims.create({
+    key: `watermill-action`,
+    frames: scene.anims.generateFrameNames("watermill", {
+      start: 1,
+      end: 4,
+      prefix: "watermill",
+      suffix: ".png",
+    }),
+    repeat: -1,
+    frameRate: 4,
+  });
   scene.anims.create({
     key: `waterfall-action`,
     frames: scene.anims.generateFrameNames("waterfall", {
