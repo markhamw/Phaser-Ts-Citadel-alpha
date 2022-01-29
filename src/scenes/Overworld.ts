@@ -5,7 +5,6 @@ import { AddWASDKeysToScene, CreateAnimationSet, RandomCoord } from "~/game/game
 import {
   WindDirection,
   GenerateBuildings,
-  RandomCloud,
   SummonMobs,
   Layers,
   CreateAllLayersAndSetCollisions,

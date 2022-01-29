@@ -34,7 +34,7 @@ export default class Preloader extends Phaser.Scene {
 
         this.load.atlas('buildings32', "assets/buildings32.png", "assets/buildings32.json")
         this.load.atlas('waterfall', "assets/waterfall.png", "assets/waterfall.json")
-
+        this.load.atlas('birds', "assets/birds.png", "assets/birds.json")
         this.load.atlas('buildings16', "assets/buildings16.png", "assets/buildings16.json")
         this.load.atlas('treasures', "assets/treasures.png", "assets/treasures.json")
         this.load.atlas('firecolumn', "assets/firecolumn.png", "assets/firecolumn.json")

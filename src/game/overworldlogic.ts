@@ -2,6 +2,7 @@ import { BlendModes } from "phaser";
 import Overworld from "~/scenes/Overworld";
 import OverworldTitle from "~/scenes/OverworldTitle";
 import Building from "~/structures/Building";
+import { BirdAnims } from "~/world/Bird";
 import { Speech } from "./game";
 import { RandomCoord } from "./gamelogic";
 
@@ -54,13 +55,16 @@ export const CreateAllLayersAndSetCollisions = (scene: WRGameScene) => {
 
   let allTileSets = [allbiomes, dirttiles, oceantiles, dirtland, dirtrock];
 
-  map.createLayer(Layers.TopDetail, allTileSets).setPipeline("Light2D");
+  map.createLayer(Layers.TopDetail, allTileSets)
+    .setPipeline("Light2D");
   map.createLayer(Layers.Top, allTileSets)
     .setPipeline("Light2D");
   map.createLayer(Layers.Base, allTileSets)
     .setPipeline("Light2D");
   map.createLayer(Layers.Decor, allTileSets)
     .setPipeline("Light2D");
+
+
 
   return map
 };
@@ -325,7 +329,7 @@ export const GenerateBuildings = (scene: Overworld | OverworldTitle) => {
   buildingsforWorldMap.forEach((building) => {
     let bldg = scene.buildingsGroup
       .get(building.location.x, building.location.y, building.collection, building.tag)
-      .setDepth(3);
+      .setDepth(3).setPipeline("Light2D");
     bldg.name = building.name;
     bldg.collides = true;
     bldg.setDepth(3);
@@ -334,9 +338,6 @@ export const GenerateBuildings = (scene: Overworld | OverworldTitle) => {
     bldg.on("pointerover", () => { });
     if (building.animationname) {
       bldg.anims.play(building.animationname, true);
-    }
-    if (scene.islightused) {
-      bldg.setPipeline("Light2D");
     }
     if (building.transform) {
       if (building.transform.scale) {
@@ -360,15 +361,16 @@ export function createGoldOverlay(scene: any) {
 }
 
 export function createStructuresAndWeather(scene: OverworldTitle | Overworld) {
-
+  GenerateBuildings(scene);
   scene.cloudGroup = scene.physics.add.group()
   for (let i = 0; i < scene.numberofclouds; i++) {
     AddCloudWithShadow(scene)
   }
-  GenerateBuildings(scene);
+
 }
 
 export const GetAnimsForOverworld = (scene: Phaser.Scene, rate: number) => {
+
   scene.anims.create({
     key: `waterfall-action`,
     frames: scene.anims.generateFrameNames("waterfall", {
@@ -424,6 +426,219 @@ export const GetAnimsForOverworld = (scene: Phaser.Scene, rate: number) => {
     repeat: 0,
     frameRate: rate,
   });
+
+
+
+  scene.anims.create({
+    key: BirdAnims.white.color + BirdAnims.white.flyleft.animkey,
+    frames: scene.anims.generateFrameNames("birds", {
+      start: BirdAnims.white.flyleft.start,
+      end: BirdAnims.white.flyleft.end,
+      prefix: BirdAnims.white.color,
+      suffix: ".png",
+    }),
+    repeat: -1,
+    frameRate: rate,
+  });
+
+  scene.anims.create({
+    key: BirdAnims.white.color + BirdAnims.white.flyright.animkey,
+    frames: scene.anims.generateFrameNames("birds", {
+      start: BirdAnims.white.flyright.start,
+      end: BirdAnims.white.flyright.end,
+      prefix: BirdAnims.white.color,
+      suffix: ".png",
+    }),
+    repeat: -1,
+    frameRate: rate,
+  });
+
+  scene.anims.create({
+    key: BirdAnims.white.color + BirdAnims.white.flyup.animkey,
+    frames: scene.anims.generateFrameNames("birds", {
+      start: BirdAnims.white.flyup.start,
+      end: BirdAnims.white.flyup.end,
+      prefix: BirdAnims.white.color,
+      suffix: ".png",
+    }),
+    repeat: -1,
+    frameRate: rate,
+  });
+
+  scene.anims.create({
+    key: BirdAnims.white.color + BirdAnims.white.flyup.animkey,
+    frames: scene.anims.generateFrameNames("birds", {
+      start: BirdAnims.white.flyup.start,
+      end: BirdAnims.white.flyup.end,
+      prefix: BirdAnims.white.color,
+      suffix: ".png",
+    }),
+    repeat: -1,
+    frameRate: rate,
+  });
+
+
+
+
+
+
+
+  scene.anims.create({
+    key: BirdAnims.blue.color + BirdAnims.blue.flyleft.animkey,
+    frames: scene.anims.generateFrameNames("birds", {
+      start: BirdAnims.blue.flyleft.start,
+      end: BirdAnims.blue.flyleft.end,
+      prefix: BirdAnims.blue.color,
+      suffix: ".png",
+    }),
+    repeat: -1,
+    frameRate: rate,
+  });
+
+  scene.anims.create({
+    key: BirdAnims.blue.color + BirdAnims.blue.flyright.animkey,
+    frames: scene.anims.generateFrameNames("birds", {
+      start: BirdAnims.blue.flyright.start,
+      end: BirdAnims.blue.flyright.end,
+      prefix: BirdAnims.blue.color,
+      suffix: ".png",
+    }),
+    repeat: -1,
+    frameRate: rate,
+  });
+
+  scene.anims.create({
+    key: BirdAnims.blue.color + BirdAnims.blue.flyup.animkey,
+    frames: scene.anims.generateFrameNames("birds", {
+      start: BirdAnims.blue.flyup.start,
+      end: BirdAnims.blue.flyup.end,
+      prefix: BirdAnims.blue.color,
+      suffix: ".png",
+    }),
+    repeat: -1,
+    frameRate: rate,
+  });
+
+  scene.anims.create({
+    key: BirdAnims.blue.color + BirdAnims.blue.flyup.animkey,
+    frames: scene.anims.generateFrameNames("birds", {
+      start: BirdAnims.blue.flyup.start,
+      end: BirdAnims.blue.flyup.end,
+      prefix: BirdAnims.blue.color,
+      suffix: ".png",
+    }),
+    repeat: -1,
+    frameRate: rate,
+  });
+
+
+
+
+
+
+
+  scene.anims.create({
+    key: BirdAnims.red.color + BirdAnims.red.flyleft.animkey,
+    frames: scene.anims.generateFrameNames("birds", {
+      start: BirdAnims.red.flyleft.start,
+      end: BirdAnims.red.flyleft.end,
+      prefix: BirdAnims.red.color,
+      suffix: ".png",
+    }),
+    repeat: -1,
+    frameRate: rate,
+  });
+
+  scene.anims.create({
+    key: BirdAnims.red.color + BirdAnims.red.flyright.animkey,
+    frames: scene.anims.generateFrameNames("birds", {
+      start: BirdAnims.red.flyright.start,
+      end: BirdAnims.red.flyright.end,
+      prefix: BirdAnims.red.color,
+      suffix: ".png",
+    }),
+    repeat: -1,
+    frameRate: rate,
+  });
+
+  scene.anims.create({
+    key: BirdAnims.red.color + BirdAnims.red.flyup.animkey,
+    frames: scene.anims.generateFrameNames("birds", {
+      start: BirdAnims.red.flyup.start,
+      end: BirdAnims.red.flyup.end,
+      prefix: BirdAnims.red.color,
+      suffix: ".png",
+    }),
+    repeat: -1,
+    frameRate: rate,
+  });
+
+  scene.anims.create({
+    key: BirdAnims.red.color + BirdAnims.red.flyup.animkey,
+    frames: scene.anims.generateFrameNames("birds", {
+      start: BirdAnims.red.flyup.start,
+      end: BirdAnims.red.flyup.end,
+      prefix: BirdAnims.red.color,
+      suffix: ".png",
+    }),
+    repeat: -1,
+    frameRate: rate,
+  });
+
+
+
+
+  scene.anims.create({
+    key: BirdAnims.brown.color + BirdAnims.brown.flyleft.animkey,
+    frames: scene.anims.generateFrameNames("birds", {
+      start: BirdAnims.brown.flyleft.start,
+      end: BirdAnims.brown.flyleft.end,
+      prefix: BirdAnims.brown.color,
+      suffix: ".png",
+    }),
+    repeat: -1,
+    frameRate: rate,
+  });
+
+  scene.anims.create({
+    key: BirdAnims.brown.color + BirdAnims.brown.flyright.animkey,
+    frames: scene.anims.generateFrameNames("birds", {
+      start: BirdAnims.brown.flyright.start,
+      end: BirdAnims.brown.flyright.end,
+      prefix: BirdAnims.brown.color,
+      suffix: ".png",
+    }),
+    repeat: -1,
+    frameRate: rate,
+  });
+
+  scene.anims.create({
+    key: BirdAnims.brown.color + BirdAnims.brown.flyup.animkey,
+    frames: scene.anims.generateFrameNames("birds", {
+      start: BirdAnims.brown.flyup.start,
+      end: BirdAnims.brown.flyup.end,
+      prefix: BirdAnims.brown.color,
+      suffix: ".png",
+    }),
+    repeat: -1,
+    frameRate: rate,
+  });
+
+  scene.anims.create({
+    key: BirdAnims.brown.color + BirdAnims.brown.flyup.animkey,
+    frames: scene.anims.generateFrameNames("birds", {
+      start: BirdAnims.brown.flyup.start,
+      end: BirdAnims.brown.flyup.end,
+      prefix: BirdAnims.brown.color,
+      suffix: ".png",
+    }),
+    repeat: -1,
+    frameRate: rate,
+  });
+
+
+
+
 };
 
 export const AddCloudWithShadow = (scene: Overworld | OverworldTitle) => {
@@ -434,13 +649,13 @@ export const AddCloudWithShadow = (scene: Overworld | OverworldTitle) => {
   let cloudy = Phaser.Math.Between(1, maxXorY);
   let cloudshadow = scene.physics.add
     .sprite(cloudx, cloudy, "cloudsshadows", `Clouds${cloudPngNumberVariant}.png`)
-    .setAlpha(0.1)
-    .setDepth(2)
+    .setAlpha(0.4)
+    .setDepth(4)
     .setPipeline(scene.islightused ? "Light2D" : "");
   let cloud = scene.physics.add
     .sprite(cloudx + 10, cloudy + 20, "clouds", `Clouds${cloudPngNumberVariant}.png`)
     .setAlpha(0.2)
-    .setDepth(2)
+    .setDepth(4)
     .setPipeline(scene.islightused ? "Light2D" : "");
   let cloudSize = Phaser.Math.Between(2, 10);
   cloud.setScale(cloudSize);
@@ -453,7 +668,7 @@ export const AddCloudWithShadow = (scene: Overworld | OverworldTitle) => {
 
   scene.tweens.add({
     targets: cloud,
-    alpha: { from: 0.2, to: 0 },
+    alpha: { from: 0.4, to: 0 },
     duration: 30000,
     ease: "Linear",
     repeat: 0,
@@ -464,7 +679,7 @@ export const AddCloudWithShadow = (scene: Overworld | OverworldTitle) => {
   });
   scene.tweens.add({
     targets: cloudshadow,
-    alpha: { from: 0.3, to: 0.2 },
+    alpha: { from: 0.2, to: 0 },
     duration: 30000,
     ease: "Linear",
     repeat: 0,
@@ -477,11 +692,7 @@ export const AddCloudWithShadow = (scene: Overworld | OverworldTitle) => {
   scene.time.addEvent({
     delay: 1000,
     callback: () => {
-      scene.cloudGroup.getChildren().forEach((cloud) => {
-        if (cloud.x > 500 || cloud.y || cloud.x < 0 || cloud.y < 0) {
-          scene.cloudGroup.remove(cloud);
-        }
-      })
+
     }
   });
 

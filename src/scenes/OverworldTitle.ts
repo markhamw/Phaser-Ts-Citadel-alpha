@@ -11,11 +11,13 @@ import {
   GetAnimsForOverworld,
   createStructuresAndWeather,
   AddCloudWithShadow,
+  SummonMobs,
 } from "../game/overworldlogic";
 import "../characters/Player";
 import Player from "../characters/Player";
 import { addTitleTextToScene, displayTitleTextAndEnableInputs, startIntro } from "~/game/overworldtitlelogic";
 import { newEnemyGroup } from "~/enemies/enemies";
+import Bird from "~/world/Bird";
 
 
 
@@ -107,39 +109,63 @@ export default class OverworldTitle extends Phaser.Scene implements Title {
 
   create() {
 
-
-
     let allmappedtiles = CreateAllLayersAndSetCollisions(this);
-    this.animatedTiles.init(allmappedtiles);
+    this.animatedTiles.init(allmappedtiles)
     GetAnimsForOverworld(this, 4);
     createStructuresAndWeather(this);
-    AddCloudWithShadow(this)
     this.lights.enable();
-    let mainlights = this.lights.setAmbientColor(0x555555);
-    let light = this.lights.addLight(0, 0, 300)
-    let light2 = this.lights.addLight(500, 0, 300);
+    let mainlights = this.lights.setAmbientColor(0x999999);
+    let light = this.lights.addLight(0, 0, 10, 0xFF0000);
+    let light2 = this.lights.addLight(500, 0, 100)
     let intensity = Phaser.Math.Between(400, 800);
     let speed = Phaser.Math.Between(100, 600);
-    var particles = this.add.particles("rain").setDepth(4).setPipeline(this.isLightused ? 'Light2D' : "");
+    var particles = this.add.particles("rain").setDepth(4)
+    let birdgroup = this.physics.add.group({
+      classType: Bird,
+      maxSize: 100,
+    })
 
 
-    var emitter = particles
-      .createEmitter({
-        x: { min: 0, max: 500 }, y: { min: 0, max: 500 }, speed: intensity,
-        maxParticles: 800, speedY: 500, speedX: { min: 120, max: 300 }, lifespan: { min: 200, max: 1000 },
-        blendMode: BlendModes.DARKEN, gravityY: 200,
-        scale: { start: .5, end: .1 }
-      },
-      ).setAlpha(1)
-    var emitter2 = particles
-      .createEmitter({
-        x: { min: 300, max: 500 }, y: { min: 0, max: 500 },
-        maxParticles: 800, speedY: speed, speedX: intensity, lifespan: { min: 300, max: 1100 },
-        blendMode: BlendModes.DARKEN,
-        scale: { min: .3, max: .9 }
-      },
-      ).setAlpha(1)
+    for (let i = 0; i < Phaser.Math.Between(4, 15); i++) {
+      let bird = birdgroup.get(Phaser.Math.Between(300, 500), Phaser.Math.Between(200, 400), "birds").setPipeline('Light2D')
+      bird.setDepth(6);
+      bird.anims.play('whiteflyup', true)
+      bird.setVelocity(Phaser.Math.Between(2, -2), Phaser.Math.Between(-12, -36));
 
+      this.tweens.add({
+        targets: bird,
+        framerate: 60,
+      })
+      this.tweens.add({
+        targets: bird,
+        y: { from: bird.y, to: bird.y - Phaser.Math.Between(800, 510) },
+        duration: 40000,
+        ease: 'Linear',
+        repeat: -1,
+        yoyo: false,
+        scale: { from: .7, to: .6 },
+      })
+    }
+
+
+    /*   var emitter = particles
+        .createEmitter({
+          x: { min: -100, max: 500 }, y: { min: 0, max: 500 }, speed: 300,
+          speedY: 500, speedX: { min: 120, max: 300 }, lifespan: { min: 600, max: 1000 },
+          blendMode: BlendModes.DARKEN, gravityY: 30, frequency: 10,
+          scale: { start: .5, end: .5 }
+        },
+        ).setAlpha(1)
+  
+      var emitter2 = particles
+        .createEmitter({
+          x: { min: -50, max: 500 }, y: { min: 0, max: 500 },
+          maxParticles: 3, speedY: speed, speedX: intensity, lifespan: { min: 600, max: 1100 },
+          blendMode: BlendModes.DARKEN, frequency: 10,
+          scale: { min: .3, max: .9 }
+        },
+        ).setAlpha(1)
+   */
 
   }
 

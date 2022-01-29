@@ -10,7 +10,7 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "birds-85.png",
+					"filename": "blue23.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "birds-88.png",
+					"filename": "brown23.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "birds-91.png",
+					"filename": "red23.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "birds-50.png",
+					"filename": "blue15.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "birds-94.png",
+					"filename": "white23.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "birds-49.png",
+					"filename": "blue14.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "birds-52.png",
+					"filename": "brown14.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "birds-84.png",
+					"filename": "blue22.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "birds-55.png",
+					"filename": "red14.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "birds-58.png",
+					"filename": "white14.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "birds-87.png",
+					"filename": "brown22.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "birds-60.png",
+					"filename": "blue16.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "birds-63.png",
+					"filename": "blue19.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -270,7 +270,7 @@
 						"h": 48
 					},
 					"spriteSourceSize": {
-						"x": 12,
+						"x": 10,
 						"y": 23,
 						"w": 26,
 						"h": 25
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "birds-66.png",
+					"filename": "brown16.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "birds-69.png",
+					"filename": "brown19.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -312,7 +312,7 @@
 						"h": 48
 					},
 					"spriteSourceSize": {
-						"x": 12,
+						"x": 10,
 						"y": 23,
 						"w": 26,
 						"h": 25
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "birds-53.png",
+					"filename": "brown15.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "birds-90.png",
+					"filename": "red22.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "birds-72.png",
+					"filename": "red16.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -375,7 +375,7 @@
 						"h": 48
 					},
 					"spriteSourceSize": {
-						"x": 10,
+						"x": 12,
 						"y": 23,
 						"w": 26,
 						"h": 25
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "birds-75.png",
+					"filename": "red19.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "birds-78.png",
+					"filename": "white16.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -417,7 +417,7 @@
 						"h": 48
 					},
 					"spriteSourceSize": {
-						"x": 10,
+						"x": 12,
 						"y": 23,
 						"w": 26,
 						"h": 25
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "birds-56.png",
+					"filename": "red15.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -451,7 +451,7 @@
 					}
 				},
 				{
-					"filename": "birds-93.png",
+					"filename": "white22.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -472,7 +472,7 @@
 					}
 				},
 				{
-					"filename": "birds-81.png",
+					"filename": "white19.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -493,7 +493,7 @@
 					}
 				},
 				{
-					"filename": "birds-62.png",
+					"filename": "blue18.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -514,7 +514,7 @@
 					}
 				},
 				{
-					"filename": "birds-65.png",
+					"filename": "blue21.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -522,7 +522,7 @@
 						"h": 48
 					},
 					"spriteSourceSize": {
-						"x": 12,
+						"x": 10,
 						"y": 30,
 						"w": 26,
 						"h": 18
@@ -535,7 +535,7 @@
 					}
 				},
 				{
-					"filename": "birds-59.png",
+					"filename": "white15.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -556,7 +556,7 @@
 					}
 				},
 				{
-					"filename": "birds-68.png",
+					"filename": "brown18.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -577,7 +577,7 @@
 					}
 				},
 				{
-					"filename": "birds-86.png",
+					"filename": "blue24.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -598,7 +598,7 @@
 					}
 				},
 				{
-					"filename": "birds-48.png",
+					"filename": "blue13.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -619,28 +619,7 @@
 					}
 				},
 				{
-					"filename": "birds-71.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 48,
-						"h": 48
-					},
-					"spriteSourceSize": {
-						"x": 12,
-						"y": 30,
-						"w": 26,
-						"h": 18
-					},
-					"frame": {
-						"x": 1,
-						"y": 150,
-						"w": 26,
-						"h": 18
-					}
-				},
-				{
-					"filename": "birds-74.png",
+					"filename": "brown21.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -654,6 +633,27 @@
 						"h": 18
 					},
 					"frame": {
+						"x": 1,
+						"y": 150,
+						"w": 26,
+						"h": 18
+					}
+				},
+				{
+					"filename": "red18.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 30,
+						"w": 26,
+						"h": 18
+					},
+					"frame": {
 						"x": 29,
 						"y": 150,
 						"w": 26,
@@ -661,7 +661,7 @@
 					}
 				},
 				{
-					"filename": "birds-77.png",
+					"filename": "red21.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -682,7 +682,7 @@
 					}
 				},
 				{
-					"filename": "birds-89.png",
+					"filename": "brown24.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -703,7 +703,7 @@
 					}
 				},
 				{
-					"filename": "birds-51.png",
+					"filename": "brown13.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -724,7 +724,7 @@
 					}
 				},
 				{
-					"filename": "birds-80.png",
+					"filename": "white18.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -732,7 +732,7 @@
 						"h": 48
 					},
 					"spriteSourceSize": {
-						"x": 10,
+						"x": 12,
 						"y": 30,
 						"w": 26,
 						"h": 18
@@ -745,7 +745,7 @@
 					}
 				},
 				{
-					"filename": "birds-83.png",
+					"filename": "white21.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -766,7 +766,7 @@
 					}
 				},
 				{
-					"filename": "birds-61.png",
+					"filename": "blue17.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -787,7 +787,7 @@
 					}
 				},
 				{
-					"filename": "birds-64.png",
+					"filename": "blue20.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -795,7 +795,7 @@
 						"h": 48
 					},
 					"spriteSourceSize": {
-						"x": 12,
+						"x": 10,
 						"y": 33,
 						"w": 26,
 						"h": 15
@@ -808,7 +808,7 @@
 					}
 				},
 				{
-					"filename": "birds-67.png",
+					"filename": "brown17.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -829,7 +829,7 @@
 					}
 				},
 				{
-					"filename": "birds-70.png",
+					"filename": "brown20.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -837,7 +837,7 @@
 						"h": 48
 					},
 					"spriteSourceSize": {
-						"x": 12,
+						"x": 10,
 						"y": 33,
 						"w": 26,
 						"h": 15
@@ -850,7 +850,7 @@
 					}
 				},
 				{
-					"filename": "birds-92.png",
+					"filename": "red24.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -871,7 +871,7 @@
 					}
 				},
 				{
-					"filename": "birds-54.png",
+					"filename": "red13.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -892,7 +892,7 @@
 					}
 				},
 				{
-					"filename": "birds-73.png",
+					"filename": "red17.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -900,7 +900,7 @@
 						"h": 48
 					},
 					"spriteSourceSize": {
-						"x": 10,
+						"x": 12,
 						"y": 33,
 						"w": 26,
 						"h": 15
@@ -913,7 +913,7 @@
 					}
 				},
 				{
-					"filename": "birds-76.png",
+					"filename": "red20.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -934,7 +934,7 @@
 					}
 				},
 				{
-					"filename": "birds-79.png",
+					"filename": "white17.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -942,7 +942,7 @@
 						"h": 48
 					},
 					"spriteSourceSize": {
-						"x": 10,
+						"x": 12,
 						"y": 33,
 						"w": 26,
 						"h": 15
@@ -955,7 +955,7 @@
 					}
 				},
 				{
-					"filename": "birds-95.png",
+					"filename": "white24.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -976,7 +976,7 @@
 					}
 				},
 				{
-					"filename": "birds-57.png",
+					"filename": "white13.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -997,7 +997,7 @@
 					}
 				},
 				{
-					"filename": "birds-82.png",
+					"filename": "white20.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1018,7 +1018,7 @@
 					}
 				},
 				{
-					"filename": "birds-12.png",
+					"filename": "blue4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1039,7 +1039,7 @@
 					}
 				},
 				{
-					"filename": "birds-14.png",
+					"filename": "blue6.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1060,7 +1060,7 @@
 					}
 				},
 				{
-					"filename": "birds-15.png",
+					"filename": "blue7.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1068,7 +1068,7 @@
 						"h": 48
 					},
 					"spriteSourceSize": {
-						"x": 14,
+						"x": 10,
 						"y": 31,
 						"w": 24,
 						"h": 16
@@ -1081,7 +1081,7 @@
 					}
 				},
 				{
-					"filename": "birds-17.png",
+					"filename": "blue9.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1089,7 +1089,7 @@
 						"h": 48
 					},
 					"spriteSourceSize": {
-						"x": 14,
+						"x": 10,
 						"y": 31,
 						"w": 24,
 						"h": 16
@@ -1102,7 +1102,7 @@
 					}
 				},
 				{
-					"filename": "birds-18.png",
+					"filename": "brown4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1123,7 +1123,7 @@
 					}
 				},
 				{
-					"filename": "birds-20.png",
+					"filename": "brown6.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1144,7 +1144,7 @@
 					}
 				},
 				{
-					"filename": "birds-21.png",
+					"filename": "brown7.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1152,7 +1152,7 @@
 						"h": 48
 					},
 					"spriteSourceSize": {
-						"x": 14,
+						"x": 10,
 						"y": 31,
 						"w": 24,
 						"h": 16
@@ -1165,7 +1165,28 @@
 					}
 				},
 				{
-					"filename": "birds-23.png",
+					"filename": "brown9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 27,
+						"y": 242,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "red4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1186,7 +1207,28 @@
 					}
 				},
 				{
-					"filename": "birds-36.png",
+					"filename": "red6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 31,
+						"w": 24,
+						"h": 16
+					},
+					"frame": {
+						"x": 1,
+						"y": 259,
+						"w": 24,
+						"h": 16
+					}
+				},
+				{
+					"filename": "blue10.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1207,7 +1249,7 @@
 					}
 				},
 				{
-					"filename": "birds-24.png",
+					"filename": "red7.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1228,7 +1270,7 @@
 					}
 				},
 				{
-					"filename": "birds-26.png",
+					"filename": "red9.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1249,7 +1291,7 @@
 					}
 				},
 				{
-					"filename": "birds-27.png",
+					"filename": "white4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1257,7 +1299,7 @@
 						"h": 48
 					},
 					"spriteSourceSize": {
-						"x": 10,
+						"x": 14,
 						"y": 31,
 						"w": 24,
 						"h": 16
@@ -1270,7 +1312,7 @@
 					}
 				},
 				{
-					"filename": "birds-29.png",
+					"filename": "white6.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1278,28 +1320,7 @@
 						"h": 48
 					},
 					"spriteSourceSize": {
-						"x": 10,
-						"y": 31,
-						"w": 24,
-						"h": 16
-					},
-					"frame": {
-						"x": 27,
-						"y": 260,
-						"w": 24,
-						"h": 16
-					}
-				},
-				{
-					"filename": "birds-30.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 48,
-						"h": 48
-					},
-					"spriteSourceSize": {
-						"x": 10,
+						"x": 14,
 						"y": 31,
 						"w": 24,
 						"h": 16
@@ -1312,28 +1333,7 @@
 					}
 				},
 				{
-					"filename": "birds-32.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 48,
-						"h": 48
-					},
-					"spriteSourceSize": {
-						"x": 10,
-						"y": 31,
-						"w": 24,
-						"h": 16
-					},
-					"frame": {
-						"x": 1,
-						"y": 277,
-						"w": 24,
-						"h": 16
-					}
-				},
-				{
-					"filename": "birds-33.png",
+					"filename": "white7.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1354,7 +1354,7 @@
 					}
 				},
 				{
-					"filename": "birds-35.png",
+					"filename": "white9.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1375,7 +1375,7 @@
 					}
 				},
 				{
-					"filename": "birds-13.png",
+					"filename": "blue5.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1396,7 +1396,7 @@
 					}
 				},
 				{
-					"filename": "birds-16.png",
+					"filename": "blue8.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1404,7 +1404,7 @@
 						"h": 48
 					},
 					"spriteSourceSize": {
-						"x": 15,
+						"x": 10,
 						"y": 32,
 						"w": 23,
 						"h": 16
@@ -1417,7 +1417,7 @@
 					}
 				},
 				{
-					"filename": "birds-19.png",
+					"filename": "brown5.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1438,7 +1438,7 @@
 					}
 				},
 				{
-					"filename": "birds-37.png",
+					"filename": "blue11.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1459,7 +1459,7 @@
 					}
 				},
 				{
-					"filename": "birds-38.png",
+					"filename": "blue12.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1480,7 +1480,7 @@
 					}
 				},
 				{
-					"filename": "birds-39.png",
+					"filename": "brown10.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1501,28 +1501,7 @@
 					}
 				},
 				{
-					"filename": "birds-22.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 48,
-						"h": 48
-					},
-					"spriteSourceSize": {
-						"x": 15,
-						"y": 32,
-						"w": 23,
-						"h": 16
-					},
-					"frame": {
-						"x": 79,
-						"y": 274,
-						"w": 23,
-						"h": 16
-					}
-				},
-				{
-					"filename": "birds-25.png",
+					"filename": "brown8.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1536,6 +1515,27 @@
 						"h": 16
 					},
 					"frame": {
+						"x": 79,
+						"y": 274,
+						"w": 23,
+						"h": 16
+					}
+				},
+				{
+					"filename": "red5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 32,
+						"w": 23,
+						"h": 16
+					},
+					"frame": {
 						"x": 104,
 						"y": 274,
 						"w": 23,
@@ -1543,7 +1543,7 @@
 					}
 				},
 				{
-					"filename": "birds-28.png",
+					"filename": "red8.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1564,7 +1564,7 @@
 					}
 				},
 				{
-					"filename": "birds-40.png",
+					"filename": "brown11.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1585,7 +1585,7 @@
 					}
 				},
 				{
-					"filename": "birds-41.png",
+					"filename": "brown12.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1606,7 +1606,7 @@
 					}
 				},
 				{
-					"filename": "birds-42.png",
+					"filename": "red10.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1627,7 +1627,7 @@
 					}
 				},
 				{
-					"filename": "birds-43.png",
+					"filename": "red11.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1648,7 +1648,7 @@
 					}
 				},
 				{
-					"filename": "birds-44.png",
+					"filename": "red12.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1669,7 +1669,7 @@
 					}
 				},
 				{
-					"filename": "birds-31.png",
+					"filename": "white5.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1677,7 +1677,7 @@
 						"h": 48
 					},
 					"spriteSourceSize": {
-						"x": 10,
+						"x": 15,
 						"y": 32,
 						"w": 23,
 						"h": 16
@@ -1690,7 +1690,7 @@
 					}
 				},
 				{
-					"filename": "birds-45.png",
+					"filename": "white10.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1711,7 +1711,7 @@
 					}
 				},
 				{
-					"filename": "birds-34.png",
+					"filename": "white8.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1732,7 +1732,7 @@
 					}
 				},
 				{
-					"filename": "birds-46.png",
+					"filename": "white11.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1753,7 +1753,7 @@
 					}
 				},
 				{
-					"filename": "birds-47.png",
+					"filename": "white12.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1774,7 +1774,7 @@
 					}
 				},
 				{
-					"filename": "birds-0.png",
+					"filename": "blue1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1795,7 +1795,7 @@
 					}
 				},
 				{
-					"filename": "birds-1.png",
+					"filename": "blue2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1816,7 +1816,7 @@
 					}
 				},
 				{
-					"filename": "birds-2.png",
+					"filename": "blue3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1837,7 +1837,28 @@
 					}
 				},
 				{
-					"filename": "birds-10.png",
+					"filename": "brown1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 25,
+						"w": 12,
+						"h": 20
+					},
+					"frame": {
+						"x": 93,
+						"y": 314,
+						"w": 12,
+						"h": 20
+					}
+				},
+				{
+					"filename": "brown2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1858,7 +1879,7 @@
 					}
 				},
 				{
-					"filename": "birds-11.png",
+					"filename": "brown3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1879,28 +1900,7 @@
 					}
 				},
 				{
-					"filename": "birds-9.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 48,
-						"h": 48
-					},
-					"spriteSourceSize": {
-						"x": 18,
-						"y": 25,
-						"w": 12,
-						"h": 20
-					},
-					"frame": {
-						"x": 93,
-						"y": 314,
-						"w": 12,
-						"h": 20
-					}
-				},
-				{
-					"filename": "birds-3.png",
+					"filename": "red1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1921,7 +1921,7 @@
 					}
 				},
 				{
-					"filename": "birds-4.png",
+					"filename": "red2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1942,7 +1942,7 @@
 					}
 				},
 				{
-					"filename": "birds-5.png",
+					"filename": "red3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1963,7 +1963,7 @@
 					}
 				},
 				{
-					"filename": "birds-6.png",
+					"filename": "white1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1984,7 +1984,7 @@
 					}
 				},
 				{
-					"filename": "birds-7.png",
+					"filename": "white2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -2005,7 +2005,7 @@
 					}
 				},
 				{
-					"filename": "birds-8.png",
+					"filename": "white3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -2031,6 +2031,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:756336c902f602b1a1c80c39d0baca80:de99855d62ac0d0268f893148f0bb3d4:05064d7bb83a0e2b52752dd6e3168bce$"
+		"smartupdate": "$TexturePacker:SmartUpdate:9016259ae48d323764358e1c268af913:f17cab7700cf11bc763f034eaaaa038a:05064d7bb83a0e2b52752dd6e3168bce$"
 	}
 }
